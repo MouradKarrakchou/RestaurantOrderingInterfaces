@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { IdleComponent } from './components/idle/idle.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
+import { CatalogComponent } from './components/catalog/catalog.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -18,7 +19,8 @@ const routes: Routes = [
     AppComponent,
     IdleComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    CatalogComponent
   ],
   imports: [
     BrowserModule,
