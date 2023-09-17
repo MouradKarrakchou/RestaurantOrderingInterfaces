@@ -1,0 +1,22 @@
+.bar{
+  display:flex;
+  background-color: #66a6dda8;
+}
+
+.menu-type-div{
+  margin: auto;
+  background-color: #7676c4;
+  border-radius: 5vw;
+  padding: 1.5vw;
+  width: 10vw;
+  text-align: center;
+  font-size: 1.5vw;
+  transition: font-size .5s ease;
+}
+
+.menu-type-div:hover{
+  cursor: pointer;
+  background-color: #565694;
+  font-size: 1.7vw;
+}
+
