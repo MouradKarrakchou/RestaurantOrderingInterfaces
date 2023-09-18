@@ -1,6 +1,24 @@
-<h1>RESTo</h1>
-<p>Catalogue</p>
-test TEST 123456789
-<div *ngFor="let item of menuItems" class="item-list">
-    <div class="item-box"></div>
+<div class="w-100 d-flex justify-content-center flex-wrap mt-4">
+    <div class="w-100 d-flex justify-content-start mt-2">
+        <label for="sortSelect">Trier par : </label>
+        <select id="sortSelect" [(ngModel)]="selectedSortOption" (change)="sortItems()">
+            <option value="nameAsc">Nom (croissant)</option>
+            <option value="nameDesc">Nom (décroissant)</option>
+            <option value="priceAsc">Prix (croissant)</option>
+            <option value="priceDesc">Prix (décroissant)</option>
+        </select>
+    </div>
+    
+    <div *ngFor="let item of menuItems" class="item-box m-2">
+        <div class="price py-1 px-2">
+            <p class="m-0">{{ item.price }}$</p>
+        </div>
+        <div class="image-container w-100">
+            <img [src]="item.image.toString()" alt="{{ item.shortName }}" class="item-image">
+        </div>
+        <div class="p-1 item-description" [truncateText]="62">
+            <p class="m-0">{{ item.fullName }}</p>
+        </div>
+    </div>
 </div>
+  

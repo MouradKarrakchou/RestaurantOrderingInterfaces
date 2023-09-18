@@ -7,6 +7,9 @@ import { IdleComponent } from './components/idle/idle.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
+import { TruncateTextDirective } from './directives/truncate-text.directive';
+import { FormsModule } from '@angular/forms'; // Importez FormsModule
+
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -20,11 +23,13 @@ const routes: Routes = [
     IdleComponent,
     HomeComponent,
     HeaderComponent,
-    CatalogComponent
+    CatalogComponent,
+    TruncateTextDirective
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

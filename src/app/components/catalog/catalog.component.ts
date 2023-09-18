@@ -10,7 +10,8 @@ import MenuItem from 'src/app/models/MenuItem';
 export class CatalogComponent implements OnInit {
 
   menuItems: MenuItem[] = [];
-
+  selectedSortOption: string = "nameAsc"; // Par défaut, triez par nom croissant
+  
   ngOnInit(): void {
     this.initMenuItems();
   }
@@ -21,6 +22,7 @@ export class CatalogComponent implements OnInit {
     this.fetchMenuItems()
       .then((menuItems: MenuItem[]) => {
         this.menuItems = menuItems;
+        this.sortItems();
         console.log("Les menu items ont été récupérés :", menuItems);
       })
       .catch((error) => {
@@ -54,6 +56,26 @@ export class CatalogComponent implements OnInit {
       // Gérer les erreurs de la requête
       console.error("Une erreur s'est produite lors de la récupération des menu items :", error);
       throw error;
+    }
+  }
+
+  // Fonction de tri appelée lorsque la sélection change
+  sortItems() {
+    switch (this.selectedSortOption) {
+      case "nameAsc":
+        this.menuItems.sort((a, b) => a.fullName.localeCompare(b.fullName));
+        break;
+      case "nameDesc":
+        this.menuItems.sort((a, b) => b.fullName.localeCompare(a.fullName));
+        break;
+      case "priceAsc":
+        this.menuItems.sort((a, b) => a.price - b.price);
+        break;
+      case "priceDesc":
+        this.menuItems.sort((a, b) => b.price - a.price);
+        break;
+      default:
+        break;
     }
   }
 }

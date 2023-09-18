@@ -1,10 +1,35 @@
 .item-box {
-    height: 25vw;
-    width: 25vw;
-    background-color: gray;
+    height: 23vw;
+    width: 23vw;
+    text-align: center;
+    border-radius: 5%;
+    position: relative;
+    background-color: rgb(232, 232, 232);
 }
 
-.item-list {
-    width: 100%;
-    height: 100%;
-}
+.image-container {
+    height: 70%;
+    overflow: hidden;
+    border-radius: 5%;
+  }
+
+  .item-image {
+    max-height: 100%;
+    border-radius: 5%;
+  }
+
+  .price {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white; /* Vous pouvez ajuster la couleur d'arrière-plan si nécessaire */
+    border: 3px solid green;
+    border-radius: 23% 0% 50% 0%;
+  }
+
+  .item-description {
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
