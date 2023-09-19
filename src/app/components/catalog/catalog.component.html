@@ -1,5 +1,5 @@
 <div class="mx-4 mt-2">
-  <mat-form-field appearance="outline">
+  <mat-form-field>
     <mat-select [(ngModel)]="selectedSortOption" (selectionChange)="sortItems()">
       <mat-option value="nameAsc">Name (ascending)</mat-option>
       <mat-option value="nameDesc">Name (descending)</mat-option>
@@ -11,7 +11,7 @@
 </div>
 
 <div class="w-100 d-flex justify-content-center flex-wrap">
-    <div *ngFor="let item of menuItems" >
+    <div *ngFor="let item of menuItems">
       <div class="item-box m-2">
         <div class="price py-1 px-2">
           <p class="m-0">{{ item.price }}$</p>
