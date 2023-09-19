@@ -11,7 +11,7 @@ export class CatalogComponent implements OnInit {
 
   menuItems: MenuItem[] = [];
   selectedSortOption: string = "nameAsc"; // Par défaut, triez par nom croissant
-  
+
   ngOnInit(): void {
     this.initMenuItems();
   }
@@ -33,12 +33,9 @@ export class CatalogComponent implements OnInit {
   async fetchMenuItems(): Promise<MenuItem[]> {
     try {
       const response = await fetch("http://localhost:3000/menus"); // Assurez-vous que votre serveur est en cours d'exécution à l'adresse spécifiée
-      if (!response.ok) {
-        throw new Error("La requête GET a échoué.");
-      }
-  
+
       const data = await response.json();
-  
+
       // Convertir les données JSON en des objets MenuItem
       const menuItems: MenuItem[] = data.map((item: any) => {
         return new MenuItem(
@@ -50,7 +47,7 @@ export class CatalogComponent implements OnInit {
           new URL(item.image)
         );
       });
-  
+
       return menuItems;
     } catch (error) {
       // Gérer les erreurs de la requête

@@ -23,8 +23,8 @@
     top: 0;
     left: 0;
     background-color: white; /* Vous pouvez ajuster la couleur d'arrière-plan si nécessaire */
-    border: 3px solid green;
-    border-radius: 23% 0% 50% 0%;
+    border: 3px solid #8BC34AFF;
+    border-radius: 23% 0 50% 0;
   }
 
   .item-description {
