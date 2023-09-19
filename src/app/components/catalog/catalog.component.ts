@@ -10,7 +10,7 @@ import MenuItem from 'src/app/models/MenuItem';
 export class CatalogComponent implements OnInit {
 
   menuItems: MenuItem[] = [];
-  selectedSortOption: string = "nameAsc"; // Par défaut, triez par nom croissant
+  selectedSortOption: string | undefined;
 
   ngOnInit(): void {
     this.initMenuItems();

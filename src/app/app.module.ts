@@ -11,6 +11,7 @@ import { TruncateTextDirective } from './directives/truncate-text.directive';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+import {MatSelectModule} from "@angular/material/select";
 
 
 const routes: Routes = [
@@ -34,6 +35,7 @@ const routes: Routes = [
     FormsModule,
     BrowserAnimationsModule,
     MatIconModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
