@@ -1,6 +1,6 @@
 <div class="w-100 d-flex justify-content-center flex-wrap mt-4">
     <div class="w-100 d-flex justify-content-start mt-2">
-        <label for="sortSelect">Trier par : </label>
+        <mat-icon class="primary">sort</mat-icon>
         <select id="sortSelect" [(ngModel)]="selectedSortOption" (change)="sortItems()">
             <option value="nameAsc">Nom (croissant)</option>
             <option value="nameDesc">Nom (décroissant)</option>
@@ -8,7 +8,7 @@
             <option value="priceDesc">Prix (décroissant)</option>
         </select>
     </div>
-    
+
     <div *ngFor="let item of menuItems" class="item-box m-2">
         <div class="price py-1 px-2">
             <p class="m-0">{{ item.price }}$</p>
@@ -21,4 +21,4 @@
         </div>
     </div>
 </div>
-  
+

@@ -8,7 +8,9 @@ import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { TruncateTextDirective } from './directives/truncate-text.directive';
-import { FormsModule } from '@angular/forms'; // Importez FormsModule
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
 
 
 const routes: Routes = [
@@ -29,7 +31,9 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
