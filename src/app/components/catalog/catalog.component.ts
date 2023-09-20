@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import MenuItem from 'src/app/models/MenuItem';
+import Category from "../../models/Category";
 
 
 @Component({
@@ -10,7 +11,10 @@ import MenuItem from 'src/app/models/MenuItem';
 export class CatalogComponent implements OnInit {
 
   menuItems: MenuItem[] = [];
+  filteredMenuItems: MenuItem[] = [];
+
   selectedSortOption: string | undefined;
+  currentCategory: Category = Category.STARTER;
 
   ngOnInit(): void {
     this.initMenuItems();
@@ -22,6 +26,7 @@ export class CatalogComponent implements OnInit {
     this.fetchMenuItems()
       .then((menuItems: MenuItem[]) => {
         this.menuItems = menuItems;
+        this.updateFiltered();
         this.sortItems();
         console.log("Les menu items ont été récupérés :", menuItems);
       })
@@ -56,20 +61,24 @@ export class CatalogComponent implements OnInit {
     }
   }
 
+  updateFiltered() {
+    this.filteredMenuItems = this.menuItems.filter((item) => item.category === this.currentCategory);
+  }
+
   // Fonction de tri appelée lorsque la sélection change
   sortItems() {
     switch (this.selectedSortOption) {
       case "nameAsc":
-        this.menuItems.sort((a, b) => a.fullName.localeCompare(b.fullName));
+        this.filteredMenuItems.sort((a, b) => a.fullName.localeCompare(b.fullName));
         break;
       case "nameDesc":
-        this.menuItems.sort((a, b) => b.fullName.localeCompare(a.fullName));
+        this.filteredMenuItems.sort((a, b) => b.fullName.localeCompare(a.fullName));
         break;
       case "priceAsc":
-        this.menuItems.sort((a, b) => a.price - b.price);
+        this.filteredMenuItems.sort((a, b) => a.price - b.price);
         break;
       case "priceDesc":
-        this.menuItems.sort((a, b) => b.price - a.price);
+        this.filteredMenuItems.sort((a, b) => b.price - a.price);
         break;
       default:
         break;

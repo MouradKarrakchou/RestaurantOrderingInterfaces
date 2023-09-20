@@ -1,9 +1,8 @@
 enum Category {
-    STARTER,
-    MAIN,
-    DESSERT,
-    BEVERAGE
+    STARTER = "STARTER",
+    MAIN = "MAIN",
+    DESSERT = "DESSERT",
+    BEVERAGE = "BEVERAGE",
   }
-  
+
   export default Category;
-  
