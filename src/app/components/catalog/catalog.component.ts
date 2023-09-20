@@ -14,7 +14,7 @@ export class CatalogComponent implements OnInit {
   filteredMenuItems: MenuItem[] = [];
 
   selectedSortOption: string | undefined;
-  currentCategory: Category = Category.STARTER;
+  currentCategory: Category = Category.ALL;
 
   ngOnInit(): void {
     this.initMenuItems();
@@ -26,7 +26,7 @@ export class CatalogComponent implements OnInit {
     this.fetchMenuItems()
       .then((menuItems: MenuItem[]) => {
         this.menuItems = menuItems;
-        this.updateFiltered();
+        this.filteredMenuItems = menuItems;
         this.sortItems();
         console.log("Les menu items ont été récupérés :", menuItems);
       })
@@ -61,8 +61,18 @@ export class CatalogComponent implements OnInit {
     }
   }
 
+  changeCategory(category: Category) {
+    this.currentCategory = category;
+    this.updateFiltered();
+    this.sortItems();
+  }
+
   updateFiltered() {
-    this.filteredMenuItems = this.menuItems.filter((item) => item.category === this.currentCategory);
+    if (this.currentCategory === Category.ALL) {
+      this.filteredMenuItems = this.menuItems;
+    } else {
+      this.filteredMenuItems = this.menuItems.filter((item) => item.category === this.currentCategory);
+    }
   }
 
   // Fonction de tri appelée lorsque la sélection change

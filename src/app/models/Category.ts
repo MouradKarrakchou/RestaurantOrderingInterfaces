@@ -3,6 +3,7 @@ enum Category {
     MAIN = "MAIN",
     DESSERT = "DESSERT",
     BEVERAGE = "BEVERAGE",
+    ALL = "ALL",
   }
 
   export default Category;
