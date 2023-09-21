@@ -36,6 +36,9 @@
 
 
 .background-div {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display:flex;
   background-color: #709370;
   width: 100%; /* Set the width to fill the container */
@@ -48,4 +51,5 @@
   position: absolute;
   top: 5px;
   right: 5px;
+  z-index: 105;
 }
