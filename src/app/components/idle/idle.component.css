@@ -15,11 +15,14 @@
 
 #idle-page h1 {
   font-size: 12vh;
+  line-height: normal;
   margin: 0;
+  white-space: normal;
 }
 
 #idle-page p {
   font-size: 3vh;
   margin: 0;
+  line-height: normal;
 }
 
