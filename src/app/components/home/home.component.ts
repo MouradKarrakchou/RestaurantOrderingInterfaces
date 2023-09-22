@@ -6,18 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  categorie:string="";
+  category: string = "ALL";
 
   constructor() { }
-
-  handleCustomEvent(data: string) {
-    this.categorie = data;
-  }
 
   ngOnInit(): void {
   }
 
-  handleCategorieEvent(categorie: string) {
-    this.categorie=categorie;
+  handleCategoryEvent(category: string) {
+    this.category = category;
   }
 }

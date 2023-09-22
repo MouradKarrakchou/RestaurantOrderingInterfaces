@@ -11,21 +11,23 @@ import {BasketService} from "../../services/basket.service";
 })
 export class CatalogComponent implements OnInit,OnChanges {
 
-  @Input() categorie: string="";
+  @Input() inputCategory: string = "ALL";
+  currentCategory: Category = Category.ALL;
 
   menuItems: MenuItem[] = [];
   filteredMenuItems: MenuItem[] = [];
 
   selectedSortOption: string | undefined;
-  currentCategory: Category = Category.ALL;
 
   ngOnInit(): void {
     this.initMenuItems();
   }
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-  }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['inputCategory'] != undefined && changes['inputCategory'].currentValue !== changes['inputCategory'].previousValue) {
+      this.changeCategory(this.inputCategory as Category);
+    }
+  }
 
   constructor(private basketService : BasketService) { }
 
@@ -48,8 +50,8 @@ export class CatalogComponent implements OnInit,OnChanges {
 
       const data = await response.json();
 
-      // Convertir les données JSON en des objets MenuItem
-      const menuItems: MenuItem[] = data.map((item: any) => {
+      // Convertir les données JSON en une liste d'objets MenuItem
+      return data.map((item: any) => {
         return new MenuItem(
           item.id,
           item.fullName,
@@ -59,8 +61,6 @@ export class CatalogComponent implements OnInit,OnChanges {
           new URL(item.image)
         );
       });
-
-      return menuItems;
     } catch (error) {
       // Gérer les erreurs de la requête
       console.error("Une erreur s'est produite lors de la récupération des menu items :", error);

@@ -6,16 +6,18 @@ import {Component, OnInit,EventEmitter, Output} from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  categorie: string=''
-  @Output() categorieEvent: EventEmitter<string> = new EventEmitter<string>();
+
+  category: string = "ALL";
+
+  @Output() categoryEvent: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  emitCategorieEvnet(categorie: string) {
-    this.categorie=categorie;
-    this.categorieEvent.emit(categorie);
+  emitCategoryEvent(category: string) {
+    this.category = category;
+    this.categoryEvent.emit(category);
   }
 }

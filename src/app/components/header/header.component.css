@@ -1,7 +1,3 @@
-.bar{
-  display:flex;
-  background-color: #66a6dda8;
-}
 .logoIntegrated{
   height:14vw
 }
@@ -25,6 +21,7 @@
 .menuIcon{
   font-size: 7vw;
 }
+
 .icon-bar{
   width: 80%;
   margin: auto;
@@ -33,10 +30,9 @@
 }
 
 .title{
-  font-size: 1.5vh;
+  font-size: 2.2vw;
   filter:brightness(100%);
 }
-
 
 .background-div {
   position: sticky;
@@ -44,9 +40,8 @@
   z-index: 100;
   display:flex;
   background-color: #709370;
-  width: 100%; /* Set the width to fill the container */
-  height: 15vh; /* Set the height as needed */
-  /* Add any other styles you want for the div */
+  width: 100%;
+  height: 15vh;
 }
 
 .logo{
@@ -59,5 +54,5 @@
 
 .logoIsSelected{
   background-color: #3b443b;
-  color: #a1caee;
+  color: #C5E1A5FF;
 }
