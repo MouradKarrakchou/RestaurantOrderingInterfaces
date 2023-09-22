@@ -2,8 +2,12 @@
   display:flex;
   background-color: #66a6dda8;
 }
+.logoIntegrated{
+  height:14vw
+}
 
 .menu-type-div{
+  color:white;
   background-color: #576057;
   margin: auto;
   border-radius: 50%;
@@ -30,7 +34,6 @@
 
 .title{
   font-size: 1.5vh;
-  color:white;
   filter:brightness(100%);
 }
 
@@ -52,4 +55,9 @@
   top: 5px;
   right: 5px;
   z-index: 105;
+}
+
+.logoIsSelected{
+  background-color: #3b443b;
+  color: #a1caee;
 }

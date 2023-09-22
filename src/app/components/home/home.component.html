@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header (categorieEvent)="handleCategorieEvent($event)" ></app-header>
 <div>
-    <app-catalog></app-catalog>
+    <app-catalog [categorie]="categorie"></app-catalog>
 </div>
