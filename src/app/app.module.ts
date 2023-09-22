@@ -13,11 +13,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import {MatSelectModule} from "@angular/material/select";
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
+import { BasketSummaryComponent } from './components/basket-summary/basket-summary.component';
 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'idle', component: IdleComponent },
+  { path: 'summary', component: BasketSummaryComponent }, // Temp
   { path: '', redirectTo: '/idle', pathMatch: 'full' }, // Page par défaut
 ];
 
@@ -28,7 +30,8 @@ const routes: Routes = [
     HomeComponent,
     HeaderComponent,
     CatalogComponent,
-    TruncateTextDirective
+    TruncateTextDirective,
+    BasketSummaryComponent
   ],
   imports: [
     BrowserModule,

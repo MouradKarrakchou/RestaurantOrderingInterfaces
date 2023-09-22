@@ -1,0 +1,38 @@
+.category-title {
+  display: flex;
+  align-items: center;
+}
+
+.category {
+  margin-bottom: 6vw;
+}
+
+.category-icon {
+  height: 7vw;
+  width: 7vw;
+  margin-right: .5vw;
+}
+
+.category-icon mat-icon {
+  font-size: 7vw;
+}
+
+.category-text {
+  margin-top: 1.5vw;
+  font-size: 5vw;
+}
+
+hr {
+  border: none;
+  height: 5px;
+  background-color: #8BC34AFF;
+  opacity:1;
+}
+
+.category-up {
+  width: fit-content;
+}
+
+.item-list {
+  font-size: 2vw;
+}
