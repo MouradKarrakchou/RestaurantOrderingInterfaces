@@ -1,9 +1,8 @@
-
-<div class="menu" *ngIf="isOpen" [@dropDownMenu]>
-  <div class="menu-item" *ngFor="let item of [1, 2, 3, 4, 5, 2, 3, 4, 5, 2, 3, 4, 5, 2, 3, 4, 5]; let i = index">
+<div class="basket" *ngIf="isOpen" [@dropUpBasket]>
+  <div class="basket-item" *ngFor="let item of [1, 2, 3, 4, 5, 2, 3, 4, 5, 2, 3, 4, 5, 2, 3, 4, 5]; let i = index">
     Menu Item {{ i }}
   </div>
 </div>
-<div class="menu-trigger" (click)="isOpen = !isOpen">
-  Basket <i [ngClass]="isOpen ? 'gg-chevron-up' : 'gg-chevron-down'"></i>
+<div class="basket-trigger" (click)="isOpen = !isOpen">
+  Basket <i [ngClass]="isOpen ? 'gg-chevron-down' : 'gg-chevron-up'"></i>
 </div>

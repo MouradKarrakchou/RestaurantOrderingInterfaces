@@ -2,19 +2,22 @@
   color: #ffffff;
 }
 
-.menu-trigger {
-  text-align: center;
+.basket-trigger {
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   padding: 10px;
   background-color: #4d9445;
 }
 
-.menu {
+.basket {
   border-bottom: 1px solid #dcdcdc;
   background: #487d39;
 }
 
-.menu-item {
+.basket-item {
   text-align: center;
   padding: 15px;
   border-bottom: 1px solid #dcdcdc;
@@ -23,11 +26,10 @@
   width: 100%;
   cursor: pointer;
 }
-.menu-item:last-child {
+.basket-item:last-child {
   border-bottom: none;
 }
-
-.menu-item:hover {
+.basket-item:hover {
   color: #c1c1c1;
 }
 
@@ -63,7 +65,6 @@
   border: 2px solid transparent;
   border-radius: 100px;
 }
-
 .gg-chevron-down::after {
   content: "";
   display: block;
