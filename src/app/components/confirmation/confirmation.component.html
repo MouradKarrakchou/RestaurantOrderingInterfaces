@@ -12,7 +12,7 @@
     <app-basket-summary></app-basket-summary>
   </div>
   <div id="confirmation-footer">
-    <p>TOTAL : 56,19$</p>
+    <p>Total : {{ basket_total_price | currency:'USD' }}</p>
     <button mat-raised-button color="primary">CONFIRM</button>
   </div>
 </div>

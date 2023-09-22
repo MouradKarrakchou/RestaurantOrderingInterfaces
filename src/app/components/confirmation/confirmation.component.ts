@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {BasketService} from "../../services/basket.service";
 
 @Component({
   selector: 'app-confirmation',
@@ -8,9 +9,12 @@ import {Router} from "@angular/router";
 })
 export class ConfirmationComponent implements OnInit {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private basket: BasketService) {}
+
+  basket_total_price = 0
 
   ngOnInit(): void {
+    this.basket_total_price = this.basket.getBasketTotal();
   }
 
   redirectToCatalog() {
