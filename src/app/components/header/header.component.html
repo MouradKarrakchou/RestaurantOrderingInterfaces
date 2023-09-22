@@ -1,27 +1,35 @@
 <div class="background-div">
-  <img class="logo"
-    src="../../../assets/resto-logo.png"
-   alt="RESTo app logo"/>
+
   <div class="icon-bar">
-    <div class="menu-type-div">
+    <div [class.logoIsSelected]="category==='ALL'" class="menu-type-div" (click)="emitCategoryEvent('ALL')">
+      <img *ngIf="category!=='ALL'" class="logoIntegrated"
+           src="../../../assets/resto-logo.png"
+           alt="RESTo app logo"/>
+      <img *ngIf="category==='ALL'" class="logoIntegrated"
+           src="../../../assets/resto-logo-vert.png"
+           alt="RESTo app logo"/>
+    </div>
+
+
+    <div [class.logoIsSelected]="category==='STARTER'" class="menu-type-div" (click)="emitCategoryEvent('STARTER')">
       <i class="material-icons menuIcon">local_restaurant</i>
       <div class="title">
         Starters
       </div>
     </div>
-    <div class="menu-type-div">
+    <div [class.logoIsSelected]="category==='MAIN'" class="menu-type-div" (click)="emitCategoryEvent('MAIN')">
       <i class="material-icons menuIcon">set_meal</i>
       <div class="title">
         Mains
       </div>
     </div>
-    <div class="menu-type-div">
+    <div [class.logoIsSelected]="category==='DESSERT'" class="menu-type-div" (click)="emitCategoryEvent('DESSERT')">
       <i class="material-icons menuIcon">icecream</i>
       <div class="title">
         Desserts
       </div>
     </div>
-    <div class="menu-type-div">
+    <div [class.logoIsSelected]="category==='BEVERAGE'" class="menu-type-div" (click)="emitCategoryEvent('BEVERAGE')">
       <i class="material-icons menuIcon">emoji_food_beverage</i>
       <div class="title">
         Beverages

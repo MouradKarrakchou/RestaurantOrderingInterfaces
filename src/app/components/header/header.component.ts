@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit,EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  category: string = "ALL";
+
+  @Output() categoryEvent: EventEmitter<string> = new EventEmitter<string>();
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  emitCategoryEvent(category: string) {
+    this.category = category;
+    this.categoryEvent.emit(category);
+  }
 }

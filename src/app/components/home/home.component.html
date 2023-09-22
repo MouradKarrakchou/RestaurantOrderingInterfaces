@@ -1,4 +1,5 @@
-<app-header></app-header>
+<app-header (categoryEvent)="handleCategoryEvent($event)" ></app-header>
 <div>
-    <app-catalog></app-catalog>
+    <app-catalog [inputCategory]="category"></app-catalog>
 </div>
+<app-basket class="basket-dropUp"></app-basket>

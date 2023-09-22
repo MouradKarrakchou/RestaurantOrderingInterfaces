@@ -35,4 +35,46 @@ hr {
 
 .item-list {
   font-size: 2vw;
+  align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.right-infos {
+  align-items: center;
+  width: 23%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.right-infos-no-edit {
+  align-items: center;
+  display: flex;
+  justify-content: end;
+}
+
+.left-infos {
+  max-width: 77%;
+  flex-wrap: nowrap;
+  display: flex;
+}
+
+.left-infos-no-edit {
+  flex-wrap: nowrap;
+  display: flex;
+}
+
+.mat-mini-fab {
+  color: white;
+  font-size: 2vw;
+}
+
+.edit-buttons {
+  display: flex;
+}
+
+.prefix {
+  display: inline-block;
+  white-space: nowrap;
 }
