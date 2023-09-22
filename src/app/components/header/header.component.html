@@ -1,1 +1,40 @@
-<p>header works!</p>
+<div class="background-div">
+
+
+  <div class="icon-bar">
+    <div [class.logoIsSelected]="categorie===''" class="menu-type-div" (click)="emitCategorieEvnet('')">
+      <img *ngIf="categorie!==''" class="logoIntegrated"
+           src="../../../assets/resto-logo.png"
+           alt="RESTo app logo"/>
+      <img *ngIf="categorie===''" class="logoIntegrated"
+           src="../../../assets/resto-logo-bleu.png"
+           alt="RESTo app logo"/>
+    </div>
+
+
+    <div [class.logoIsSelected]="categorie==='Starters'" class="menu-type-div" (click)="emitCategorieEvnet('Starters')">
+      <i class="material-icons menuIcon">local_restaurant</i>
+      <div class="title">
+        Starters
+      </div>
+    </div>
+    <div [class.logoIsSelected]="categorie==='Mains'" class="menu-type-div" (click)="emitCategorieEvnet('Mains')">
+      <i class="material-icons menuIcon">set_meal</i>
+      <div class="title">
+        Mains
+      </div>
+    </div>
+    <div [class.logoIsSelected]="categorie==='Desserts'" class="menu-type-div" (click)="emitCategorieEvnet('Desserts')">
+      <i class="material-icons menuIcon">icecream</i>
+      <div class="title">
+        Desserts
+      </div>
+    </div>
+    <div [class.logoIsSelected]="categorie==='Beverages'" class="menu-type-div" (click)="emitCategorieEvnet('Beverages')">
+      <i class="material-icons menuIcon">emoji_food_beverage</i>
+      <div class="title">
+        Beverages
+      </div>
+    </div>
+  </div>
+</div>

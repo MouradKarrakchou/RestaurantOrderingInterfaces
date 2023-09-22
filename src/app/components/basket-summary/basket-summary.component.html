@@ -1,0 +1,113 @@
+<div *ngIf="basketStarters.length != 0" class="category">
+  <div class="category-up">
+    <div class="category-title">
+      <div class="category-icon">
+        <mat-icon>local_restaurant</mat-icon>
+      </div>
+      <div class="category-text">
+        <span class="text">Starters</span>
+      </div>
+    </div>
+    <hr>
+  </div>
+  <div *ngFor="let item of this.basketStarters" class="item-list p-2 d-flex justify-content-between w-100">
+    <div class="d-flex">
+      <div>
+        <span class="primary">x{{ item.quantity }}</span>&nbsp;
+      </div>
+      <div>
+        <span>{{ item.menuItem.fullName }}</span>
+      </div>
+    </div>
+    <div>
+      <span class="primary">{{ item.menuItem.price * item.quantity | currency:'USD' }}</span>
+    </div>
+  </div>
+</div>
+
+
+
+<div *ngIf="basketMains.length != 0" class="category">
+  <div class="category-up">
+    <div class="category-title">
+      <div class="category-icon">
+        <mat-icon>set_meal</mat-icon>
+      </div>
+      <div class="category-text">
+        <span class="text">Mains</span>
+      </div>
+    </div>
+    <hr>
+  </div>
+  <div *ngFor="let item of this.basketMains" class="item-list p-2 d-flex justify-content-between w-100">
+    <div class="d-flex">
+      <div>
+        <span class="primary">x{{ item.quantity }}</span>&nbsp;
+      </div>
+      <div>
+        <span>{{ item.menuItem.fullName }}</span>
+      </div>
+    </div>
+    <div>
+      <span class="primary">{{ item.menuItem.price * item.quantity | currency:'USD' }}</span>
+    </div>
+  </div>
+</div>
+
+
+
+<div *ngIf="basketDesserts.length != 0" class="category">
+  <div class="category-up">
+    <div class="category-title">
+      <div class="category-icon">
+        <mat-icon>icecream</mat-icon>
+      </div>
+      <div class="category-text">
+        <span class="text">Desserts</span>
+      </div>
+    </div>
+    <hr>
+  </div>
+  <div *ngFor="let item of this.basketDesserts" class="item-list p-2 d-flex justify-content-between w-100">
+    <div class="d-flex">
+      <div>
+        <span class="primary">x{{ item.quantity }}</span>&nbsp;
+      </div>
+      <div>
+        <span>{{ item.menuItem.fullName }}</span>
+      </div>
+    </div>
+    <div>
+      <span class="primary">{{ item.menuItem.price * item.quantity | currency:'USD' }}</span>
+    </div>
+  </div>
+</div>
+
+
+
+<div *ngIf="basketBeverages.length != 0" class="category">
+  <div class="category-up">
+    <div class="category-title">
+      <div class="category-icon">
+        <mat-icon>emoji_food_beverage</mat-icon>
+      </div>
+      <div class="category-text">
+        <span class="text">Beverages</span>
+      </div>
+    </div>
+    <hr>
+  </div>
+  <div *ngFor="let item of this.basketBeverages" class="item-list p-2 d-flex justify-content-between w-100">
+    <div class="d-flex">
+      <div>
+        <span class="primary">x{{ item.quantity }}</span>&nbsp;
+      </div>
+      <div>
+        <span>{{ item.menuItem.fullName }}</span>
+      </div>
+    </div>
+    <div>
+      <span class="primary">{{ item.menuItem.price * item.quantity | currency:'USD' }}</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+.bar{
+  display:flex;
+  background-color: #66a6dda8;
+}
+.logoIntegrated{
+  height:14vw
+}
+
+.menu-type-div{
+  color:white;
+  background-color: #576057;
+  margin: auto;
+  border-radius: 50%;
+  padding: 1.5vw;
+  width: 15vw;
+  height: 15vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.menuIcon{
+  font-size: 7vw;
+}
+.icon-bar{
+  width: 80%;
+  margin: auto;
+  display: flex;
+  border-radius: 5vh;
+}
+
+.title{
+  font-size: 1.5vh;
+  filter:brightness(100%);
+}
+
+
+.background-div {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display:flex;
+  background-color: #709370;
+  width: 100%; /* Set the width to fill the container */
+  height: 15vh; /* Set the height as needed */
+  /* Add any other styles you want for the div */
+}
+
+.logo{
+  height: 12vw;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 105;
+}
+
+.logoIsSelected{
+  background-color: #3b443b;
+  color: #a1caee;
+}

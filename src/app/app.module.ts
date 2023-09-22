@@ -8,6 +8,16 @@ import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BasketComponent } from './components/basket/basket.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { CatalogComponent } from './components/catalog/catalog.component';
+import { TruncateTextDirective } from './directives/truncate-text.directive';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
+import {MatSelectModule} from "@angular/material/select";
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
+import { BasketSummaryComponent } from './components/basket-summary/basket-summary.component';
+import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -22,13 +32,24 @@ const routes: Routes = [
     HomeComponent,
     HeaderComponent,
     BasketComponent
+    HeaderComponent,
+    CatalogComponent,
+    TruncateTextDirective,
+    BasketSummaryComponent,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatSelectModule
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

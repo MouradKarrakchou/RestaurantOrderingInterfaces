@@ -1,0 +1,28 @@
+<div class="mx-4 mt-2">
+  <mat-form-field>
+    <mat-select [(ngModel)]="selectedSortOption" (selectionChange)="sortItems()">
+      <mat-option value="nameAsc">Name (ascending)</mat-option>
+      <mat-option value="nameDesc">Name (descending)</mat-option>
+      <mat-option value="priceAsc">Price (ascending)</mat-option>
+      <mat-option value="priceDesc">Price (descending)</mat-option>
+    </mat-select>
+    <mat-label>Sort</mat-label>
+  </mat-form-field>
+</div>
+
+<div class="w-100 d-flex justify-content-center flex-wrap">
+    <div *ngFor="let item of filteredMenuItems">
+      <div class="item-box m-2">
+        <div class="price py-1 px-2">
+          <p class="m-0">{{ item.price }}$</p>
+        </div>
+        <div class="image-container w-100">
+          <img [src]="item.image.toString()" alt="{{ item.shortName }}" class="item-image">
+        </div>
+        <div class="p-1 item-description" [truncateText]="62">
+          <p class="m-0">{{ item.fullName }}</p>
+        </div>
+      </div>
+    </div>
+</div>
+

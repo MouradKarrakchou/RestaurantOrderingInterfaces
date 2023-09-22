@@ -1,0 +1,28 @@
+#idle-page {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("/assets/pexels-kyle-roxas-2122294-assombri.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  color: white;
+  text-align: center;
+}
+
+#idle-page h1 {
+  font-size: 12vh;
+  line-height: normal;
+  margin: 0;
+  white-space: normal;
+}
+
+#idle-page p {
+  font-size: 3vh;
+  margin: 0;
+  line-height: normal;
+}
+
