@@ -15,9 +15,11 @@ import {MatSelectModule} from "@angular/material/select";
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
 import { BasketSummaryComponent } from './components/basket-summary/basket-summary.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import {MatButtonModule} from '@angular/material/button';
 
 
 const routes: Routes = [
+  { path: 'confirmation', component: ConfirmationComponent },
   { path: 'home', component: HomeComponent },
   { path: 'idle', component: IdleComponent },
   { path: 'summary', component: BasketSummaryComponent }, // Temp
@@ -41,7 +43,8 @@ const routes: Routes = [
     FormsModule,
     BrowserAnimationsModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    MatButtonModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}

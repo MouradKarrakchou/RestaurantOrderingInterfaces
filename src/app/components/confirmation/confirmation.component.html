@@ -1,1 +1,18 @@
-<p>confirmation works!</p>
+<div id="confirmation-page">
+  <div id="confirmation-header">
+    <div class="back-arrow-icon-container" (click)="redirectToCatalog()">
+      <button mat-fab color="accent" aria-label="Example icon button with a bookmark icon">
+        <mat-icon>arrow_circle_left</mat-icon>
+      </button>
+    </div>
+    <h1>SUMMARY</h1>
+    <span></span>
+  </div>
+  <div id="confirmation-body">
+    <p>body</p>
+  </div>
+  <div id="confirmation-footer">
+    <h2>TOTAL : 56,19$</h2>
+    <button mat-raised-button color="primary">CONFIRM</button>
+  </div>
+</div>
