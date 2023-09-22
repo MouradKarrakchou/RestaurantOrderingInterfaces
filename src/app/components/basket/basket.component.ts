@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { DropDownAnimation } from "./animations";
+import { DropUpAnimation } from "./animations";
 
 @Component({
   selector: 'app-basket',
   templateUrl: './basket.component.html',
   styleUrls: ['./basket.component.css'],
-  animations: [DropDownAnimation]
+  animations: [DropUpAnimation]
 })
 export class BasketComponent implements OnInit {
 

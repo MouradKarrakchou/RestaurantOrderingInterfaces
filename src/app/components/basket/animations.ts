@@ -8,15 +8,15 @@ import {
   trigger
 } from "@angular/animations";
 
-export const DropDownAnimation = trigger("dropDownMenu", [
+export const DropUpAnimation = trigger("dropUpBasket", [
   transition(":enter", [
     style({ height: 0, overflow: "hidden" }),
-    query(".menu-item", [
+    query(".basket-item", [
       style({ opacity: 0, transform: "translateY(50px)" })
     ]),
     sequence([
       animate("200ms", style({ height: "*", top: 0 })),
-      query(".menu-item", [
+      query(".basket-item", [
         stagger(-50, [
           animate("400ms ease", style({ opacity: 1, transform: "none" }))
         ])
@@ -26,9 +26,9 @@ export const DropDownAnimation = trigger("dropDownMenu", [
 
   transition(":leave", [
     style({ height: "*", overflow: "hidden" }),
-    query(".menu-item", [style({ opacity: 1, transform: "none" })]),
+    query(".basket-item", [style({ opacity: 1, transform: "none" })]),
     sequence([
-      query(".menu-item", [
+      query(".basket-item", [
         stagger(50, [
           animate(
             "400ms ease",
