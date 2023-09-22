@@ -1,3 +1,10 @@
+<div>
+  <mat-slide-toggle [(ngModel)]="canEdit">
+    <span>Edit mode</span>
+  </mat-slide-toggle>
+</div>
+
+<!-- STARTERS -->
 <div *ngIf="basketStarters.length != 0" class="category">
   <div class="category-up">
     <div class="category-title">
@@ -5,28 +12,54 @@
         <mat-icon>local_restaurant</mat-icon>
       </div>
       <div class="category-text">
-        <span class="text">Starters</span>
+        <span>Starters</span>
       </div>
     </div>
     <hr>
   </div>
-  <div *ngFor="let item of this.basketStarters" class="item-list p-2 d-flex justify-content-between w-100">
-    <div class="d-flex">
-      <div>
-        <span class="primary">x{{ item.quantity }}</span>&nbsp;
+  <div *ngFor="let item of this.basketStarters" class="item-list py-2">
+    <div [ngClass]="{'left-infos': canEdit, 'left-infos-no-edit': !canEdit}">
+      <div *ngIf="!canEdit" class="prefix">
+        <span class="primary">{{ item.quantity }} x</span>&nbsp;
       </div>
-      <div>
+      <div *ngIf="canEdit">
+        <span class="primary">-</span>&nbsp;
+      </div>
+      <div class="pr-3">
         <span>{{ item.menuItem.fullName }}</span>
       </div>
     </div>
-    <div>
-      <span class="primary">{{ item.menuItem.price * item.quantity | currency:'USD' }}</span>
+    <div [ngClass]="{'right-infos': canEdit, 'right-infos-no-edit': !canEdit}">
+      <div class="edit-buttons gap-2 px-2" *ngIf="canEdit">
+        <div>
+          <button mat-mini-fab color="primary" (click)="addItemQuantity(item)">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+        <div>
+          <button mat-mini-fab color="accent" disabled>
+            <span class="pt-1">{{ item.quantity }}</span>
+          </button>
+        </div>
+        <div *ngIf="item.quantity == 1">
+          <button mat-mini-fab color="warn" (click)="removeItemQuantity(item)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+        <div *ngIf="item.quantity > 1">
+          <button mat-mini-fab color="warn" (click)="removeItemQuantity(item)">
+            <mat-icon>remove</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div>
+        <span class="primary">{{ item.menuItem.price * item.quantity | currency:'USD' }}</span>
+      </div>
     </div>
   </div>
 </div>
 
-
-
+<!-- MAINS -->
 <div *ngIf="basketMains.length != 0" class="category">
   <div class="category-up">
     <div class="category-title">
@@ -34,28 +67,54 @@
         <mat-icon>set_meal</mat-icon>
       </div>
       <div class="category-text">
-        <span class="text">Mains</span>
+        <span>Mains</span>
       </div>
     </div>
     <hr>
   </div>
-  <div *ngFor="let item of this.basketMains" class="item-list p-2 d-flex justify-content-between w-100">
-    <div class="d-flex">
-      <div>
-        <span class="primary">x{{ item.quantity }}</span>&nbsp;
+  <div *ngFor="let item of this.basketMains" class="item-list py-2">
+    <div [ngClass]="{'left-infos': canEdit, 'left-infos-no-edit': !canEdit}">
+      <div *ngIf="!canEdit" class="prefix">
+        <span class="primary">{{ item.quantity }} x</span>&nbsp;
       </div>
-      <div>
+      <div *ngIf="canEdit">
+        <span class="primary">-</span>&nbsp;
+      </div>
+      <div class="pr-3">
         <span>{{ item.menuItem.fullName }}</span>
       </div>
     </div>
-    <div>
-      <span class="primary">{{ item.menuItem.price * item.quantity | currency:'USD' }}</span>
+    <div [ngClass]="{'right-infos': canEdit, 'right-infos-no-edit': !canEdit}">
+      <div class="edit-buttons gap-2 px-2" *ngIf="canEdit">
+        <div>
+          <button mat-mini-fab color="primary" (click)="addItemQuantity(item)">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+        <div>
+          <button mat-mini-fab color="accent" disabled>
+            <span class="pt-1">{{ item.quantity }}</span>
+          </button>
+        </div>
+        <div *ngIf="item.quantity == 1">
+          <button mat-mini-fab color="warn" (click)="removeItemQuantity(item)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+        <div *ngIf="item.quantity > 1">
+          <button mat-mini-fab color="warn" (click)="removeItemQuantity(item)">
+            <mat-icon>remove</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div>
+        <span class="primary">{{ item.menuItem.price * item.quantity | currency:'USD' }}</span>
+      </div>
     </div>
   </div>
 </div>
 
-
-
+<!-- DESSERTS -->
 <div *ngIf="basketDesserts.length != 0" class="category">
   <div class="category-up">
     <div class="category-title">
@@ -63,51 +122,104 @@
         <mat-icon>icecream</mat-icon>
       </div>
       <div class="category-text">
-        <span class="text">Desserts</span>
+        <span>Desserts</span>
       </div>
     </div>
     <hr>
   </div>
-  <div *ngFor="let item of this.basketDesserts" class="item-list p-2 d-flex justify-content-between w-100">
-    <div class="d-flex">
-      <div>
-        <span class="primary">x{{ item.quantity }}</span>&nbsp;
+  <div *ngFor="let item of this.basketDesserts" class="item-list py-2">
+    <div [ngClass]="{'left-infos': canEdit, 'left-infos-no-edit': !canEdit}">
+      <div *ngIf="!canEdit" class="prefix">
+        <span class="primary">{{ item.quantity }} x</span>&nbsp;
       </div>
-      <div>
+      <div *ngIf="canEdit">
+        <span class="primary">-</span>&nbsp;
+      </div>
+      <div class="pr-3">
         <span>{{ item.menuItem.fullName }}</span>
       </div>
     </div>
-    <div>
-      <span class="primary">{{ item.menuItem.price * item.quantity | currency:'USD' }}</span>
+    <div [ngClass]="{'right-infos': canEdit, 'right-infos-no-edit': !canEdit}">
+      <div class="edit-buttons gap-2 px-2" *ngIf="canEdit">
+        <div>
+          <button mat-mini-fab color="primary" (click)="addItemQuantity(item)">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+        <div>
+          <button mat-mini-fab color="accent" disabled>
+            <span class="pt-1">{{ item.quantity }}</span>
+          </button>
+        </div>
+        <div *ngIf="item.quantity == 1">
+          <button mat-mini-fab color="warn" (click)="removeItemQuantity(item)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+        <div *ngIf="item.quantity > 1">
+          <button mat-mini-fab color="warn" (click)="removeItemQuantity(item)">
+            <mat-icon>remove</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div>
+        <span class="primary">{{ item.menuItem.price * item.quantity | currency:'USD' }}</span>
+      </div>
     </div>
   </div>
 </div>
 
-
-
+<!-- BEVERAGES -->
 <div *ngIf="basketBeverages.length != 0" class="category">
   <div class="category-up">
     <div class="category-title">
       <div class="category-icon">
-        <mat-icon>emoji_food_beverage</mat-icon>
+        <mat-icon>emoji_food_beverages</mat-icon>
       </div>
       <div class="category-text">
-        <span class="text">Beverages</span>
+        <span>Beverages</span>
       </div>
     </div>
     <hr>
   </div>
-  <div *ngFor="let item of this.basketBeverages" class="item-list p-2 d-flex justify-content-between w-100">
-    <div class="d-flex">
-      <div>
-        <span class="primary">x{{ item.quantity }}</span>&nbsp;
+  <div *ngFor="let item of this.basketBeverages" class="item-list py-2">
+    <div [ngClass]="{'left-infos': canEdit, 'left-infos-no-edit': !canEdit}">
+      <div *ngIf="!canEdit" class="prefix">
+        <span class="primary">{{ item.quantity }} x</span>&nbsp;
       </div>
-      <div>
+      <div *ngIf="canEdit">
+        <span class="primary">-</span>&nbsp;
+      </div>
+      <div class="pr-3">
         <span>{{ item.menuItem.fullName }}</span>
       </div>
     </div>
-    <div>
-      <span class="primary">{{ item.menuItem.price * item.quantity | currency:'USD' }}</span>
+    <div [ngClass]="{'right-infos': canEdit, 'right-infos-no-edit': !canEdit}">
+      <div class="edit-buttons gap-2 px-2" *ngIf="canEdit">
+        <div>
+          <button mat-mini-fab color="primary" (click)="addItemQuantity(item)">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+        <div>
+          <button mat-mini-fab color="accent" disabled>
+            <span class="pt-1">{{ item.quantity }}</span>
+          </button>
+        </div>
+        <div *ngIf="item.quantity == 1">
+          <button mat-mini-fab color="warn" (click)="removeItemQuantity(item)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+        <div *ngIf="item.quantity > 1">
+          <button mat-mini-fab color="warn" (click)="removeItemQuantity(item)">
+            <mat-icon>remove</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div>
+        <span class="primary">{{ item.menuItem.price * item.quantity | currency:'USD' }}</span>
+      </div>
     </div>
   </div>
 </div>

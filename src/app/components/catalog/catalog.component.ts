@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import MenuItem from 'src/app/models/MenuItem';
 import Category from "../../models/Category";
+import {BasketService} from "../../services/basket.service";
 
 
 @Component({
@@ -20,7 +21,7 @@ export class CatalogComponent implements OnInit {
     this.initMenuItems();
   }
 
-  constructor() { }
+  constructor(private basketService : BasketService) { }
 
   initMenuItems(): void {
     this.fetchMenuItems()
@@ -93,5 +94,9 @@ export class CatalogComponent implements OnInit {
       default:
         break;
     }
+  }
+
+  addItemToBasket(item: MenuItem) {
+    this.basketService.addToBasket(item);
   }
 }

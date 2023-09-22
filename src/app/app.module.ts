@@ -14,12 +14,13 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatSelectModule} from "@angular/material/select";
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
 import { BasketSummaryComponent } from './components/basket-summary/basket-summary.component';
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatButtonModule} from '@angular/material/button';
 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'idle', component: IdleComponent },
-  { path: 'summary', component: BasketSummaryComponent }, // Temp
   { path: '', redirectTo: '/idle', pathMatch: 'full' }, // Page par défaut
 ];
 
@@ -39,7 +40,9 @@ const routes: Routes = [
     FormsModule,
     BrowserAnimationsModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSlideToggleModule,
+    MatButtonModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
