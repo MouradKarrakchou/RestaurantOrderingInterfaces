@@ -12,7 +12,7 @@
 
 <div class="w-100 d-flex justify-content-center flex-wrap">
     <div *ngFor="let item of filteredMenuItems">
-      <div class="item-box m-2">
+      <div class="item-box m-2" (click)="addItemToBasket(item)">
         <div class="price py-1 px-2">
           <p class="m-0">{{ item.price }}$</p>
         </div>
