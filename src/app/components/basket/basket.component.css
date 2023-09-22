@@ -3,7 +3,10 @@
 }
 
 .basket-trigger {
-  text-align: center;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   padding: 10px;
   background-color: #4d9445;

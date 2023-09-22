@@ -12,13 +12,13 @@ export const DropUpAnimation = trigger("dropUpBasket", [
   transition(":enter", [
     style({ height: 0, overflow: "hidden" }),
     query(".basket-item", [
-      style({ opacity: 0, transform: "translateY(50px)" })
+      style({ opacity: 0, transform: "translateY(-50px)" })
     ]),
     sequence([
-      animate("200ms", style({ height: "*", top: 0 })),
+      animate("200ms", style({ height: "*" })),
       query(".basket-item", [
         stagger(-50, [
-          animate("400ms ease", style({ opacity: 1, transform: "none" }))
+          animate("200ms ease", style({ opacity: 1, transform: "none" }))
         ])
       ])
     ])
@@ -31,8 +31,8 @@ export const DropUpAnimation = trigger("dropUpBasket", [
       query(".basket-item", [
         stagger(50, [
           animate(
-            "400ms ease",
-            style({ opacity: 0, transform: "translateY(50px)" })
+            "50ms ease",
+            style({ opacity: 0, transform: "translateY(-50px)" })
           )
         ])
       ]),
