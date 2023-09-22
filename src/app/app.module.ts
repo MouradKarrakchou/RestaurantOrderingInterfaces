@@ -6,10 +6,11 @@ import { AppComponent } from './app.component';
 import { IdleComponent } from './components/idle/idle.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
+import { BasketComponent } from './components/basket/basket.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { TruncateTextDirective } from './directives/truncate-text.directive';
 import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import {MatSelectModule} from "@angular/material/select";
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
@@ -21,7 +22,7 @@ import { ConfirmationComponent } from './components/confirmation/confirmation.co
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'idle', component: IdleComponent },
-  { path: '', redirectTo: '/idle', pathMatch: 'full' }, // Page par défaut
+  { path: '', redirectTo: '/idle', pathMatch: 'full' }, // default page
 ];
 
 @NgModule({
@@ -29,6 +30,8 @@ const routes: Routes = [
     AppComponent,
     IdleComponent,
     HomeComponent,
+    HeaderComponent,
+    BasketComponent,
     HeaderComponent,
     CatalogComponent,
     TruncateTextDirective,
@@ -38,6 +41,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
+    BrowserAnimationsModule,
     FormsModule,
     BrowserAnimationsModule,
     MatIconModule,
