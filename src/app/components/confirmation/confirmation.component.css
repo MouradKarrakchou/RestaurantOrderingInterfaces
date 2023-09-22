@@ -52,6 +52,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 15vh;
 }
 
 #confirmation-body app-basket-summary {
@@ -66,6 +67,9 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
 }
 
 #confirmation-footer p {
