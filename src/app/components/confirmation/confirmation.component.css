@@ -28,7 +28,7 @@
 #confirmation-header .back-arrow-icon-container button mat-icon {
 }
 
-#confirmation-header h1 {
+#confirmation-header p {
   margin: 0;
   line-height: normal;
   font-size: 4vh;
@@ -49,6 +49,14 @@
 #confirmation-body {
   background-color: greenyellow;
   flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#confirmation-body app-basket-summary {
+  height: 95%;
+  width: 90%;
 }
 
 #confirmation-footer {
@@ -60,7 +68,7 @@
   align-items: center;
 }
 
-#confirmation-footer h2 {
+#confirmation-footer p {
   margin: 0;
   font-size: 2.5vh;
 }

@@ -13,7 +13,7 @@
   text-align: center;
 }
 
-#idle-page h1 {
+#idle-page #idle-title {
   font-size: 12vh;
   line-height: normal;
   margin: 0;
