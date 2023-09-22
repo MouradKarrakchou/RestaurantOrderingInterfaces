@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import MenuItem from 'src/app/models/MenuItem';
 import Category from "../../models/Category";
 import {BasketService} from "../../services/basket.service";
@@ -9,7 +9,9 @@ import {BasketService} from "../../services/basket.service";
   templateUrl: './catalog.component.html',
   styleUrls: ['./catalog.component.css']
 })
-export class CatalogComponent implements OnInit {
+export class CatalogComponent implements OnInit,OnChanges {
+
+  @Input() categorie: string="";
 
   menuItems: MenuItem[] = [];
   filteredMenuItems: MenuItem[] = [];
@@ -20,6 +22,10 @@ export class CatalogComponent implements OnInit {
   ngOnInit(): void {
     this.initMenuItems();
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+  }
+
 
   constructor(private basketService : BasketService) { }
 

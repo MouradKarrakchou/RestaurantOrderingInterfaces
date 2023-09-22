@@ -14,8 +14,8 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatSelectModule} from "@angular/material/select";
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
 import { BasketSummaryComponent } from './components/basket-summary/basket-summary.component';
-import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatButtonModule} from '@angular/material/button';
+import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 
 
 const routes: Routes = [
@@ -32,7 +32,8 @@ const routes: Routes = [
     HeaderComponent,
     CatalogComponent,
     TruncateTextDirective,
-    BasketSummaryComponent
+    BasketSummaryComponent,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +42,6 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MatIconModule,
     MatSelectModule,
-    MatSlideToggleModule,
     MatButtonModule
   ],
   providers: [
