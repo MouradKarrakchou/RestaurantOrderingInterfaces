@@ -17,7 +17,6 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
 import { BasketSummaryComponent } from './components/basket-summary/basket-summary.component';
 import {MatButtonModule} from '@angular/material/button';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
-import {MatButtonModule} from '@angular/material/button';
 
 
 const routes: Routes = [
