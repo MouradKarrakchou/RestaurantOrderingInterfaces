@@ -5,6 +5,17 @@
     border-radius: 5%;
     position: relative;
     background-color: rgb(232, 232, 232);
+    cursor: pointer;
+}
+
+.item-box:hover {
+  background-color: rgb(204, 204, 204);
+}
+
+.item-box:active {
+  background-color: #C5E1A5FF;
+  box-shadow: 0 5px #8BC34AFF;
+  transform: translateY(4px);
 }
 
 .image-container {
