@@ -5,14 +5,14 @@
         <mat-icon>arrow_circle_left</mat-icon>
       </button>
     </div>
-    <h1>SUMMARY</h1>
+    <p>SUMMARY</p>
     <span></span>
   </div>
   <div id="confirmation-body">
-    <p>body</p>
+    <app-basket-summary></app-basket-summary>
   </div>
   <div id="confirmation-footer">
-    <h2>TOTAL : 56,19$</h2>
+    <p>Total : {{ basket_total_price | currency:'USD' }}</p>
     <button mat-raised-button color="primary">CONFIRM</button>
   </div>
 </div>
