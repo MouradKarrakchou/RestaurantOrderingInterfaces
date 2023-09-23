@@ -11,7 +11,8 @@ export class TruncateTextDirective implements AfterViewInit {
   ngAfterViewInit() {
     const element = this.el.nativeElement;
     if (element.innerText.length > this.maxLength) {
-      element.innerText = element.innerText.substring(0, this.maxLength) + '...';
+      const lastSpace = element.innerText.substring(0, this.maxLength).lastIndexOf(' ');
+      element.innerText = element.innerText.substring(0, lastSpace) + '...';
     }
   }
 }
