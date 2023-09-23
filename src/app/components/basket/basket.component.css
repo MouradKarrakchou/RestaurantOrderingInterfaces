@@ -20,16 +20,11 @@
   border-bottom: 1px solid #dcdcdc;
   background: #487d39;
   width: 100%;
+  padding: 1vh;
 }
 
 .basket-item {
-  text-align: center;
-  padding: 15px;
-  border-bottom: 1px solid #dcdcdc;
-  max-width: 300px;
   margin: auto;
-  width: 100%;
-  cursor: pointer;
 }
 .basket-item:last-child {
   border-bottom: none;

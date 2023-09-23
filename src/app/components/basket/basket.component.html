@@ -1,7 +1,5 @@
 <div class="basket" *ngIf="isOpen" [@dropUpBasket]>
-  <div class="basket-item" *ngFor="let item of [1, 2, 3, 4, 5, 2, 3, 4, 5, 2, 3, 4, 5, 2, 3, 4, 5]; let i = index">
-    Menu Item {{ i }}
-  </div>
+    <app-basket-summary class="basket-item" [canEdit]="true"></app-basket-summary>
 </div>
 <div class="basket-trigger" (click)="isOpen = !isOpen">
   <i [ngClass]="isOpen ? 'gg-chevron-down' : 'gg-chevron-up'"></i>
