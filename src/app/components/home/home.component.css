@@ -1,6 +1,13 @@
+.home {
+  height: 100%;
+  width: 100%;
+}
+
 .basket-dropUp {
   position: sticky;
   bottom: 0;
   z-index: 100;
-  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column-reverse;
 }
