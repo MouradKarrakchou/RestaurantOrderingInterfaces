@@ -1,16 +1,36 @@
+.body{
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+
 #idle-page {
-  height: 100vh;
-  width: 100vw;
-  background-image: url("/assets/pexels-kyle-roxas-2122294-assombri.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   flex-direction: column;
   color: white;
   text-align: center;
+}
+
+.main{
+  background-image: url("../../../assets/pizza.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80%;
+  width: 100%;
+}
+
+.footer{
+  height: 20%;
+  background-color: #709370;
+  width: 100%;
+  display: flex;
 }
 
 #idle-page #idle-title {
@@ -20,9 +40,13 @@
   white-space: normal;
 }
 
-#idle-page p {
-  font-size: 3vh;
-  margin: 0;
-  line-height: normal;
+.footer-text{
+  font-size: 3.5vh;
+  margin:auto;
+}
+
+.logoIntegrated{
+  height: 15vh;
+  margin: auto auto auto 2vh;
 }
 
