@@ -1,11 +1,11 @@
-<body class="home">
-<app-header (categoryEvent)="handleCategoryEvent($event)" ></app-header>
-<button>
-    <a routerLink="/confirmation">Confirmation</a>
+<button class="temp-button">
+  <a routerLink="/confirmation">Confirmation</a>
 </button>
-<div>
-    <app-catalog [inputCategory]="category"></app-catalog>
-</div>
+<body class="home">
+  <app-header (categoryEvent)="handleCategoryEvent($event)" ></app-header>
+  <div>
+      <app-catalog [inputCategory]="category"></app-catalog>
+  </div>
 </body>
 <app-basket class="basket-dropUp"></app-basket>
 
