@@ -15,6 +15,12 @@
   background-color: #8BC34AFF;
 }
 
+.confirm:disabled {
+  border: #C5E1A5FF solid 5px;
+  background-color: #8BC34AFF;
+  opacity: 0.5;
+}
+
 .abort {
   border: #ef9a9a solid 5px;
   background-color: #f44336;

@@ -102,6 +102,11 @@ export class CatalogComponent implements OnInit,OnChanges {
     }
   }
 
+  setSortOption(option: string) {
+    this.selectedSortOption = option;
+    this.sortItems();
+  }
+
   addItemToBasket(item: MenuItem) {
     this.basketService.addToBasket(item);
   }
