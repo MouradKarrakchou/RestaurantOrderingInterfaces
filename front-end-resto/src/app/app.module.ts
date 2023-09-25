@@ -18,6 +18,8 @@ import { BasketSummaryComponent } from './components/basket-summary/basket-summa
 import {MatButtonModule} from '@angular/material/button';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { DialogContentComponent } from "./components/dialog-content/dialog-content.component";
+import { MatDialogModule } from "@angular/material/dialog";
 
 
 const routes: Routes = [
@@ -38,7 +40,8 @@ const routes: Routes = [
     TruncateTextDirective,
     BasketSummaryComponent,
     ConfirmationComponent,
-    FooterComponent
+    FooterComponent,
+    DialogContentComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MatIconModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
