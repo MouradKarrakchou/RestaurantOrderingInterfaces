@@ -35,14 +35,8 @@ export class FooterComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogContentComponent, {
-      width: '250px', // Vous pouvez personnaliser la largeur selon vos besoins
-      data: {message: 'Êtes-vous sûr de vouloir annuler ?'} // Message de confirmation
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-      } else {
-      }
+      width: '500px',
+      data: { message: 'Are you sure you want to abort your order? You will lose your basket' }
     });
   }
 }
