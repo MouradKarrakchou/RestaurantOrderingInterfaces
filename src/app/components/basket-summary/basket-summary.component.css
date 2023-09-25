@@ -78,3 +78,7 @@ hr {
   display: inline-block;
   white-space: nowrap;
 }
+
+.white-font {
+  color: white;
+}
