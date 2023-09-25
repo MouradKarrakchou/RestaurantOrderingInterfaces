@@ -1,3 +1,5 @@
-<div class="background-div">
-
+<div class="background-div p-2">
+  <button class="button abort" mat-raised-button>ABORT ORDER</button>
+  <p class="total-text pt-4">TOTAL: {{ basketTotalPrice | currency:'USD' }}</p>
+  <button [disabled]="basketSize == 0" class="button confirm" (click)="redirectToConfirmation()" mat-raised-button>ORDER</button>
 </div>
