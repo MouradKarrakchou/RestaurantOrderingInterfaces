@@ -17,10 +17,10 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
 import { BasketSummaryComponent } from './components/basket-summary/basket-summary.component';
 import {MatButtonModule} from '@angular/material/button';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 const routes: Routes = [
-  { path: 'confirmation', component: ConfirmationComponent },
   { path: 'home', component: HomeComponent },
   { path: 'idle', component: IdleComponent },
   { path: '', redirectTo: '/idle', pathMatch: 'full' }, // default page
@@ -37,7 +37,8 @@ const routes: Routes = [
     CatalogComponent,
     TruncateTextDirective,
     BasketSummaryComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
