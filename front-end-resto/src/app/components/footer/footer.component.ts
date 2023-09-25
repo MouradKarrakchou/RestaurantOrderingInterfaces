@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {BasketService} from "../../services/basket.service";
+import BasketItem from "../../models/BasketItem";
+import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogContentComponent} from "../dialog-content/dialog-content.component";
 
@@ -9,26 +12,37 @@ import {DialogContentComponent} from "../dialog-content/dialog-content.component
 })
 export class FooterComponent implements OnInit {
 
-    constructor(public dialog: MatDialog) { }
+  constructor(private router: Router,
+              private basketService: BasketService,
+              private dialog: MatDialog) {}
 
-    ngOnInit(): void {
-    }
+  basketTotalPrice = 0;
+  basketSize = 0;
 
-    openDialog(): void {
-      const dialogRef = this.dialog.open(DialogContentComponent, {
-        width: '250px', // Vous pouvez personnaliser la largeur selon vos besoins
-        data: {message: 'Êtes-vous sûr de vouloir annuler ?'} // Message de confirmation
-      });
+  ngOnInit(): void {
+    this.basketTotalPrice = this.basketService.getBasketTotal();
+    this.basketSize = this.basketService.getBasketSize();
 
-      dialogRef.afterClosed().subscribe(result => {
-        if (result) {
-          // Le résultat sera true si l'utilisateur a confirmé
-          // Ajoutez ici le code à exécuter si l'annulation est confirmée
-        } else {
-          // Le résultat sera false si l'utilisateur a annulé
-          // Ajoutez ici le code à exécuter si l'annulation est annulée
-        }
-      });
-    }
+    this.basketService.basket.subscribe((basket: BasketItem[]) => {
+      this.basketTotalPrice = this.basketService.getBasketTotal();
+      this.basketSize = this.basketService.getBasketSize();
+    });
+  }
 
+  redirectToConfirmation() {
+    this.router.navigate(['/confirmation'])
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogContentComponent, {
+      width: '250px', // Vous pouvez personnaliser la largeur selon vos besoins
+      data: {message: 'Êtes-vous sûr de vouloir annuler ?'} // Message de confirmation
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+      } else {
+      }
+    });
+  }
 }

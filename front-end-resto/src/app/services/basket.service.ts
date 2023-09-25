@@ -48,4 +48,8 @@ export class BasketService {
     return this.basket.value;
   }
 
+  getBasketSize(): number {
+    return this.basket.value.reduce((total, basketItem) => total + basketItem.quantity, 0);
+  }
+
 }

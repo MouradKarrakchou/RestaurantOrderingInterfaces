@@ -33,6 +33,11 @@ hr {
   width: fit-content;
 }
 
+.no-item {
+  text-align: center;
+  font-size: 3vw;
+}
+
 .item-list {
   font-size: 2vw;
   align-items: center;

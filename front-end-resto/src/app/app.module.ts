@@ -23,6 +23,7 @@ import { MatDialogModule } from "@angular/material/dialog";
 
 
 const routes: Routes = [
+  { path: 'confirmation', component: ConfirmationComponent },
   { path: 'home', component: HomeComponent },
   { path: 'idle', component: IdleComponent },
   { path: '', redirectTo: '/idle', pathMatch: 'full' }, // default page
