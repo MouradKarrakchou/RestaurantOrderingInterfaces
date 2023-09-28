@@ -4,6 +4,7 @@ enum Category {
     DESSERT = "DESSERT",
     BEVERAGE = "BEVERAGE",
     ALL = "ALL",
+    TREND = "TREND"
   }
 
   export default Category;

@@ -9,8 +9,12 @@
            src="../../../assets/resto-logo-vert.png"
            alt="RESTo app logo"/>
     </div>
-
-
+    <div [class.logoIsSelected]="category==='TREND'" class="menu-type-div" (click)="emitCategoryEvent('TREND')">
+      <i class="material-icons menuIcon">local_fire_department</i>
+      <div class="title">
+        Trends
+      </div>
+    </div>
     <div [class.logoIsSelected]="category==='STARTER'" class="menu-type-div" (click)="emitCategoryEvent('STARTER')">
       <i class="material-icons menuIcon">local_restaurant</i>
       <div class="title">
