@@ -1,0 +1,35 @@
+body {
+
+}
+
+.text {
+  text-align: center;
+}
+
+.title {
+  text-align: center;
+  font-size: 4vh;
+}
+
+.question {
+  text-align: center;
+  font-size: 3vh;
+}
+
+.message {
+  text-align: center;
+  font-size: 2vh;
+}
+
+.button {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 4vh;
+}
+
+.answer {font-size: 3vh;
+  height: 5vh;
+  width: 10vh;
+  background-color: lightgray;
+  border-radius: 20px;
+}

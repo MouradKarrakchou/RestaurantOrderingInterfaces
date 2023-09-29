@@ -1,3 +1,9 @@
-<h2>{{ data.message }}</h2>
-  <button mat-button (click)="onYesClick()">Yes</button>
-<button mat-button (click)="onNoClick()">No</button>
+<body>
+  <div class="text title">{{ data.title }}</div>
+  <div class="text question">{{ data.question }}</div>
+  <div class="text message">{{ data.message }}</div>
+  <div class="button">
+    <button class="answer" mat-button (click)="onYesClick()">Yes</button>
+    <button class="answer" mat-button (click)="onNoClick()">No</button>
+  </div>
+</body>
