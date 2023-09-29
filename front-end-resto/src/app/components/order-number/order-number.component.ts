@@ -13,6 +13,8 @@ export class OrderNumberComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.time = new Date();
+
     setInterval(() => {
       this.time = new Date();
     }, 1000);
