@@ -1,5 +1,7 @@
 <body class="body">
-  <div class="header-band"></div>
+  <div class="header-band">
+    <p class="time" *ngIf="time">{{ time | date:"HH:mm:ss" }}</p>
+  </div>
 
   <div class="order-number-text">
     Order number:

@@ -9,6 +9,13 @@
   height: 5%;
   background-color: #709370;
   width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.time {
+  font-size: 2vh;
+  padding-top: 1vh;
 }
 
 .order-number-text {
