@@ -20,13 +20,15 @@ import { ConfirmationComponent } from './components/confirmation/confirmation.co
 import { FooterComponent } from './components/footer/footer.component';
 import { DialogContentComponent } from "./components/dialog-content/dialog-content.component";
 import { MatDialogModule } from "@angular/material/dialog";
+import { OrderNumberComponent } from './components/order-number/order-number.component';
 
 
 const routes: Routes = [
-  { path: 'confirmation', component: ConfirmationComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'idle', component: IdleComponent },
   { path: '', redirectTo: '/idle', pathMatch: 'full' }, // default page
+  { path: 'idle', component: IdleComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'confirmation', component: ConfirmationComponent },
+  { path: 'order-number', component: OrderNumberComponent },
 ];
 
 @NgModule({
@@ -42,7 +44,8 @@ const routes: Routes = [
     BasketSummaryComponent,
     ConfirmationComponent,
     FooterComponent,
-    DialogContentComponent
+    DialogContentComponent,
+    OrderNumberComponent
   ],
   imports: [
     BrowserModule,
