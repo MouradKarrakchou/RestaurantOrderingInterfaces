@@ -77,6 +77,9 @@ export class CatalogComponent implements OnInit,OnChanges {
   updateFiltered() {
     if (this.currentCategory === Category.ALL) {
       this.filteredMenuItems = this.menuItems;
+    } else if (this.currentCategory === Category.TREND) {
+      //TODO: Do something with the BFF
+      this.filteredMenuItems = [];
     } else {
       this.filteredMenuItems = this.menuItems.filter((item) => item.category === this.currentCategory);
     }
@@ -100,6 +103,11 @@ export class CatalogComponent implements OnInit,OnChanges {
       default:
         break;
     }
+  }
+
+  setSortOption(option: string) {
+    this.selectedSortOption = option;
+    this.sortItems();
   }
 
   addItemToBasket(item: MenuItem) {

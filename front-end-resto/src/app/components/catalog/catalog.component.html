@@ -1,13 +1,24 @@
-<div class="mx-4 mt-2">
-  <mat-form-field>
-    <mat-select [(ngModel)]="selectedSortOption" (selectionChange)="sortItems()">
-      <mat-option value="nameAsc">Name (ascending)</mat-option>
-      <mat-option value="nameDesc">Name (descending)</mat-option>
-      <mat-option value="priceAsc">Price (ascending)</mat-option>
-      <mat-option value="priceDesc">Price (descending)</mat-option>
-    </mat-select>
-    <mat-label>Sort</mat-label>
-  </mat-form-field>
+<div class="sort-buttons-container mt-2">
+  <button mat-stroked-button
+          class="sort-button"
+          [class.selected-sort]="selectedSortOption == 'nameAsc'"
+          (click)="setSortOption('nameAsc')">Name (ascending)
+  </button>
+  <button mat-stroked-button
+          class="sort-button"
+          [class.selected-sort]="selectedSortOption == 'nameDesc'"
+          (click)="setSortOption('nameDesc')">Name (descending)
+  </button>
+  <button mat-stroked-button
+          class="sort-button"
+          [class.selected-sort]="selectedSortOption == 'priceAsc'"
+          (click)="setSortOption('priceAsc')">Price (ascending)
+  </button>
+  <button mat-stroked-button
+          class="sort-button"
+          [class.selected-sort]="selectedSortOption == 'priceDesc'"
+          (click)="setSortOption('priceDesc')">Price (descending)
+  </button>
 </div>
 
 <div class="w-100 d-flex justify-content-center flex-wrap">
