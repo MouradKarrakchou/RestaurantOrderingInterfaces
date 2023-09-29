@@ -21,4 +21,8 @@ export class ConfirmationComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
+  redirectToOrderNumber() {
+    this.router.navigate(['/order-number']);
+  }
+
 }
