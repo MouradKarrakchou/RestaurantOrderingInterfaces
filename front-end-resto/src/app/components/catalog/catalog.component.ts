@@ -16,6 +16,7 @@ export class CatalogComponent implements OnInit,OnChanges {
 
   menuItems: MenuItem[] = [];
   filteredMenuItems: MenuItem[] = [];
+  trendingItems:MenuItem[]=[];
 
   selectedSortOption: string | undefined;
 
@@ -42,11 +43,45 @@ export class CatalogComponent implements OnInit,OnChanges {
       .catch((error) => {
         console.error("Une erreur s'est produite lors de la récupération des menu items :", error);
       });
+
+    this.fetchTrendingItems()
+      .then((menuItems: MenuItem[]) => {
+        this.trendingItems = menuItems;
+        console.log("Les trending items ont été récupérés :", menuItems);
+      })
+      .catch((error) => {
+        console.error("Une erreur s'est produite lors de la récupération des menu items :", error);
+      });
   }
 
   async fetchMenuItems(): Promise<MenuItem[]> {
     try {
       const response = await fetch("http://localhost:3000/menus"); // Assurez-vous que votre serveur est en cours d'exécution à l'adresse spécifiée
+
+      const data = await response.json();
+
+      // Convertir les données JSON en une liste d'objets MenuItem
+      return data.map((item: any) => {
+        return new MenuItem(
+          item.id,
+          item.fullName,
+          item.shortName,
+          item.price,
+          item.category,
+          new URL(item.image)
+        );
+      });
+    } catch (error) {
+      // Gérer les erreurs de la requête
+      console.error("Une erreur s'est produite lors de la récupération des menu items :", error);
+      throw error;
+    }
+  }
+
+
+  async fetchTrendingItems(): Promise<MenuItem[]> {
+    try {
+      const response = await fetch("http://localhost:8080/api/preference"); // Assurez-vous que votre serveur est en cours d'exécution à l'adresse spécifiée
 
       const data = await response.json();
 
@@ -79,7 +114,7 @@ export class CatalogComponent implements OnInit,OnChanges {
       this.filteredMenuItems = this.menuItems;
     } else if (this.currentCategory === Category.TREND) {
       //TODO: Do something with the BFF
-      this.filteredMenuItems = [];
+      this.filteredMenuItems = this.trendingItems;
     } else {
       this.filteredMenuItems = this.menuItems.filter((item) => item.category === this.currentCategory);
     }
