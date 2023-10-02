@@ -19,7 +19,7 @@ export class OrderNumberComponent implements OnInit {
       this.time = new Date();
     }, 1000);
 
-    setInterval(() => {
+    setTimeout(() => {
       this.router.navigate(['/idle'])
     }, 30000)
   }

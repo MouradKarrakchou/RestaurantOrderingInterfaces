@@ -113,7 +113,6 @@ export class CatalogComponent implements OnInit,OnChanges {
     if (this.currentCategory === Category.ALL) {
       this.filteredMenuItems = this.menuItems;
     } else if (this.currentCategory === Category.TREND) {
-      //TODO: Do something with the BFF
       this.filteredMenuItems = this.trendingItems;
     } else {
       this.filteredMenuItems = this.menuItems.filter((item) => item.category === this.currentCategory);

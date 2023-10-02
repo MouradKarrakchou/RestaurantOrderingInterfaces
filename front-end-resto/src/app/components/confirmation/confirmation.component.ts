@@ -9,12 +9,12 @@ import {BasketService} from "../../services/basket.service";
 })
 export class ConfirmationComponent implements OnInit {
 
-  constructor(private router: Router, private basket: BasketService) {}
+  constructor(private router: Router, private basketService: BasketService) {}
 
   basket_total_price = 0
 
   ngOnInit(): void {
-    this.basket_total_price = this.basket.getBasketTotal();
+    this.basket_total_price = this.basketService.getBasketTotal();
   }
 
   redirectToCatalog() {
@@ -22,6 +22,7 @@ export class ConfirmationComponent implements OnInit {
   }
 
   redirectToOrderNumber() {
+    this.basketService.emptyBasket();
     this.router.navigate(['/order-number']);
   }
 
