@@ -1,4 +1,4 @@
-<div class="sort-buttons-container mt-2">
+<div class="sort-buttons-container mt-2" *ngIf="inputCategory != 'TREND'">
   <button mat-stroked-button
           class="sort-button"
           [class.selected-sort]="selectedSortOption == 'nameAsc'"
@@ -21,7 +21,7 @@
   </button>
 </div>
 
-<div class="w-100 d-flex justify-content-center flex-wrap">
+<div class="w-100 d-flex justify-content-center flex-wrap" *ngIf="inputCategory != 'TREND'">
     <div *ngFor="let item of filteredMenuItems">
       <div class="item-box m-2" (click)="addItemToBasket(item)">
         <div class="price py-1 px-2">
@@ -35,5 +35,22 @@
         </div>
       </div>
     </div>
+</div>
+
+<div *ngIf="inputCategory == 'TREND'" class="podium-container mt-5">
+  <div class="podium">
+    <div class="step">
+      <img src="assets/podium-silver.png" alt="Podium or médaille d'or" class="podium-img">
+      <img src="assets/image-2.jpg" alt="Image 1" class="round silver">
+    </div>
+    <div class="step">
+      <img src="assets/podium-gold.png" alt="Podium or médaille d'or" class="podium-img">
+      <img src="assets/image-2.jpg" alt="Image 1" class="round gold">
+    </div>
+    <div class="step">
+      <img src="assets/podium-bronze.png" alt="Podium or médaille d'or" class="podium-img">
+      <img src="assets/image-2.jpg" alt="Image 1" class="round bronze">
+    </div>
+  </div>
 </div>
 
