@@ -27,7 +27,7 @@ public class PreferenceController {
 
     @GetMapping
     public ResponseEntity<List<MenuItem>> retriveMostSoldItems() throws DiningServiceUnavaibleException, OrderServiceUnavailableException {
-        LoggerHelper.logInfo("The mission has started");
+        LoggerHelper.logInfo("Finding most sold items");
         List<MenuItem> menuItems = preferenceComponent.retrieveMostSoldItems(3);
         return ResponseEntity.ok(menuItems);
     }

@@ -17,7 +17,7 @@ public class MenuProxy implements IMenuProxy {
     @Override
     public MenuItem findByID(String id) throws OrderServiceUnavailableException {
         try {
-            LoggerHelper.logInfo("Notify mission-service that the mission that the Payload has been dropped.");
+            LoggerHelper.logInfo("Ask Menu service for the item with id:"+ id);
             return restTemplate.getForEntity(apiBaseUrlHostAndPort+"/menus/"+id, MenuItem.class).getBody();
         } catch (Exception e) {
             LoggerHelper.logError(e.toString());

@@ -20,7 +20,7 @@ public class DiningProxy implements IDiningProxy {
     @Override
     public List<TableOrder> getAllTableOrders() throws  DiningServiceUnavaibleException {
         try {
-            LoggerHelper.logInfo("Notify mission-service that the mission that the Payload has been dropped.");
+            LoggerHelper.logInfo("Ask Dining service for all tableOrders");
             TableOrder[] tableOrders = restTemplate.getForEntity(apiBaseUrlHostAndPort +"/tableOrders", TableOrder[].class).getBody();
             List<TableOrder> tablesOrders = Stream.of(tableOrders).toList();
             return tablesOrders;

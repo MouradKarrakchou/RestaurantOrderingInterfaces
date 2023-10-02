@@ -24,7 +24,6 @@ public class PreferenceComponent implements IPreferenceComponent {
     @Cacheable("MostSoldItems")
     @Override
     public List<MenuItem> retrieveMostSoldItems(int numberOfEntries) throws DiningServiceUnavaibleException, OrderServiceUnavailableException {
-        LoggerHelper.logInfo("RETRIEVING");
         HashMap<OrderingItem, Integer> hashMap=new HashMap<>();
         for (TableOrder tableOrder:diningProxy.getAllTableOrders()){
             for (OrderingLine orderingLine :tableOrder.getLines()){
@@ -36,7 +35,6 @@ public class PreferenceComponent implements IPreferenceComponent {
                 }
             }
         }
-        System.out.println(hashMap.toString());
         List<Map.Entry<OrderingItem, Integer>> entryList = new ArrayList<>(hashMap.entrySet());
         entryList.sort(Map.Entry.<OrderingItem, Integer>comparingByValue().reversed());
         List<OrderingItem> topOrderedItems = new ArrayList<>();
