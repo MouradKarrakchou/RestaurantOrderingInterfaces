@@ -1,8 +1,8 @@
-package fr.teama.bff.entities;
+package fr.teama.bff.connectors.externalDTO;
 
 import java.util.Objects;
 
-public class OrderingItem {
+public class OrderingItemDTO {
 
     private String id; // id of the item from the menu
 
@@ -30,8 +30,8 @@ public class OrderingItem {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof OrderingItem)) return false;
-        OrderingItem that = (OrderingItem) o;
+        if (!(o instanceof OrderingItemDTO)) return false;
+        OrderingItemDTO that = (OrderingItemDTO) o;
         return Objects.equals(id, that.id) && Objects.equals(shortName, that.shortName) && Objects.equals(category, that.category);
     }
 

@@ -1,4 +1,4 @@
-package fr.teama.bff.entities;
+package fr.teama.bff.connectors.externalDTO;
 
 import java.util.Objects;
 import java.util.UUID;
