@@ -6,6 +6,14 @@ public class StartOrderingDTO {
 
     private int customersCount;
 
+    public StartOrderingDTO() {
+    }
+
+    public StartOrderingDTO(Long tableId, int customersCount) {
+        this.tableId = tableId;
+        this.customersCount = customersCount;
+    }
+
     public int getCustomersCount() {
         return customersCount;
     }

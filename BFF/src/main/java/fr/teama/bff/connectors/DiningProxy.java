@@ -1,15 +1,18 @@
 package fr.teama.bff.connectors;
 
-import fr.teama.bff.connectors.externalDTO.TableDTO;
-import fr.teama.bff.connectors.externalDTO.TableOrderDTO;
+import fr.teama.bff.connectors.externalDTO.*;
 import fr.teama.bff.exceptions.DiningServiceUnavaibleException;
 import fr.teama.bff.helpers.LoggerHelper;
 import fr.teama.bff.interfaces.IDiningProxy;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.Period;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Stream;
 
 @Component
@@ -47,8 +50,52 @@ public class DiningProxy implements IDiningProxy {
     public TableOrderDTO openTable(Long tableId) throws DiningServiceUnavaibleException {
         try {
             LoggerHelper.logInfo("Ask Dining service to open a table");
-            TableOrderDTO tableOrderDTO = restTemplate.getForEntity(apiBaseUrlHostAndPort +"/tables", TableOrderDTO.class).getBody();
-            return tableOrderDTO;
+            StartOrderingDTO startOrderingDTO = new StartOrderingDTO(tableId, 1);
+            return restTemplate.postForEntity(apiBaseUrlHostAndPort, startOrderingDTO, TableOrderDTO.class).getBody();
+        } catch (Exception e) {
+            LoggerHelper.logError(e.toString());
+            throw new DiningServiceUnavaibleException();
+        }
+    }
+
+    @Override
+    public TableOrderDTO tableOrder(UUID tableOrderId) throws DiningServiceUnavaibleException {
+        try {
+            LoggerHelper.logInfo("Ask Dining service to get a table order");
+            return restTemplate.getForEntity(apiBaseUrlHostAndPort + "/" + tableOrderId, TableOrderDTO.class).getBody();
+        } catch (Exception e) {
+            LoggerHelper.logError(e.toString());
+            throw new DiningServiceUnavaibleException();
+        }
+    }
+
+    @Override
+    public TableOrderDTO addToTableOrder(UUID tableOrderId, ItemDTO itemDTO) throws DiningServiceUnavaibleException {
+        try {
+            LoggerHelper.logInfo("Ask Dining service to add an item to a table order");
+            return restTemplate.postForEntity(apiBaseUrlHostAndPort + "/" + tableOrderId, itemDTO, TableOrderDTO.class).getBody();
+        } catch (Exception e) {
+            LoggerHelper.logError(e.toString());
+            throw new DiningServiceUnavaibleException();
+        }
+    }
+
+    @Override
+    public List<Preparation> prepare(@PathVariable("tableOrderId") UUID tableOrderId) throws DiningServiceUnavaibleException {
+        try {
+            LoggerHelper.logInfo("Ask Dining service to prepare a table order");
+            return (List<Preparation>) restTemplate.getForEntity(apiBaseUrlHostAndPort + "/" + tableOrderId + "/prepare", List.class).getBody();
+        } catch (Exception e) {
+            LoggerHelper.logError(e.toString());
+            throw new DiningServiceUnavaibleException();
+        }
+    }
+
+    @Override
+    public TableOrderDTO bill(@PathVariable("tableOrderId") UUID tableOrderId) throws DiningServiceUnavaibleException {
+        try {
+            LoggerHelper.logInfo("Ask Dining service to bill a table order");
+            return restTemplate.postForEntity(apiBaseUrlHostAndPort + "/" + tableOrderId + "/bill", null, TableOrderDTO.class).getBody();
         } catch (Exception e) {
             LoggerHelper.logError(e.toString());
             throw new DiningServiceUnavaibleException();
