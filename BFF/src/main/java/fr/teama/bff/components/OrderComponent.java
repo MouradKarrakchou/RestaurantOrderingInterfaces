@@ -19,9 +19,10 @@ public class OrderComponent implements IOrderComponent {
 
 
     public List<Table> tableOrderList() throws DiningServiceUnavaibleException {
-        List<Table> tables=diningProxy.getAllTable();
+        /**List<Table> tables=diningProxy.getAllTable();
         List<Table> availableTables= (List<Table>) tables.stream().filter(table -> !table.isTaken());
         BffApplication.kioskOrderList
+        return null;**/
         return null;
     }
 
@@ -31,8 +32,10 @@ public class OrderComponent implements IOrderComponent {
      * @return true if tables has been filled else false
      */
     private boolean fillTables(List<Table> availableTables){
-        for (KioskOrder kioskItem:BffApplication.kioskOrderList){
+        /**for (KioskOrder kioskItem:BffApplication.kioskOrderList){
             if (kioskItem.getItems())
         }
+         **/
+        return true;
     }
 }
