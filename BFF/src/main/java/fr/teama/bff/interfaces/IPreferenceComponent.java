@@ -1,13 +1,14 @@
 package fr.teama.bff.interfaces;
 
 
-import fr.teama.bff.entities.OrderingItem;
+import fr.teama.bff.entities.MenuItem;
 import fr.teama.bff.exceptions.DiningServiceUnavaibleException;
+import fr.teama.bff.exceptions.OrderServiceUnavailableException;
 
 import java.util.List;
 
 public interface IPreferenceComponent {
 
 
-    List<OrderingItem> retrieveMostSoldItems(int numberOfEntries) throws DiningServiceUnavaibleException;
+    List<MenuItem> retrieveMostSoldItems(int numberOfEntries) throws DiningServiceUnavaibleException, OrderServiceUnavailableException;
 }
