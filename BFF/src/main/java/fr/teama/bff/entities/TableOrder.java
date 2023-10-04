@@ -1,6 +1,7 @@
 package fr.teama.bff.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -54,6 +55,8 @@ public class TableOrder {
         }
 
         public List<OrderingLine> getLines() {
+                if (this.lines==null)
+                        this.lines = new ArrayList<>();
                 return lines;
         }
 
