@@ -1,39 +1,42 @@
 package fr.teama.bff.entities;
 
-import java.util.Objects;
-
 public class Table {
 
     private Long number;
 
     private boolean taken;
 
-    public Long getNumber() {
-        return number;
+    private KioskOrder order;
+
+    public Table(Long number) {
+        this.number = number;
+        this.taken = false;
     }
 
-    public void setNumber(Long number) {
+    public Table(Long number, boolean taken) {
         this.number = number;
+        this.taken = taken;
+    }
+
+    public KioskOrder getOrder(){
+        return this.order;
     }
 
     public boolean isTaken() {
         return taken;
     }
 
-    public void setTaken(boolean taken) {
-        this.taken = taken;
-    }
+    public void takeTable(KioskOrder order){
+            boolean taken = true;
+            this.order = order;
+        }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Table)) return false;
-        Table table = (Table) o;
-        return taken == table.taken && Objects.equals(number, table.number);
-    }
+        public void freeTable(){
+            boolean taken = false;
+            this.order = null;
+        }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(number, taken);
+    public Long getNumber() {
+        return number;
     }
 }

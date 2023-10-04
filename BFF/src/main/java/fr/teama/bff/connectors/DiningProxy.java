@@ -1,7 +1,7 @@
 package fr.teama.bff.connectors;
 
-import fr.teama.bff.entities.Table;
-import fr.teama.bff.entities.TableOrder;
+import fr.teama.bff.connectors.externalDTO.TableDTO;
+import fr.teama.bff.connectors.externalDTO.TableOrderDTO;
 import fr.teama.bff.exceptions.DiningServiceUnavaibleException;
 import fr.teama.bff.helpers.LoggerHelper;
 import fr.teama.bff.interfaces.IDiningProxy;
@@ -18,11 +18,11 @@ public class DiningProxy implements IDiningProxy {
     private String apiBaseUrlHostAndPort;
     private final RestTemplate restTemplate = new RestTemplate();
     @Override
-    public List<TableOrder> getAllTableOrders() throws  DiningServiceUnavaibleException {
+    public List<TableOrderDTO> getAllTableOrders() throws  DiningServiceUnavaibleException {
         try {
             LoggerHelper.logInfo("Ask Dining service for all tableOrders");
-            TableOrder[] tableOrders = restTemplate.getForEntity(apiBaseUrlHostAndPort +"/tableOrders", TableOrder[].class).getBody();
-            List<TableOrder> tablesOrders = Stream.of(tableOrders).toList();
+            TableOrderDTO[] tableOrderDTOS = restTemplate.getForEntity(apiBaseUrlHostAndPort +"/tableOrders", TableOrderDTO[].class).getBody();
+            List<TableOrderDTO> tablesOrders = Stream.of(tableOrderDTOS).toList();
             return tablesOrders;
         } catch (Exception e) {
             LoggerHelper.logError(e.toString());
@@ -31,11 +31,11 @@ public class DiningProxy implements IDiningProxy {
     }
 
     @Override
-    public List<Table> getAllTable() throws DiningServiceUnavaibleException {
+    public List<TableDTO> getAllTable() throws DiningServiceUnavaibleException {
         try {
-            LoggerHelper.logInfo("Notify mission-service that the mission that the Payload has been dropped.");
-            Table[] tables = restTemplate.getForEntity(apiBaseUrlHostAndPort +"/tables", Table[].class).getBody();
-            List<Table> tablesOrders = Stream.of(tables).toList();
+            LoggerHelper.logInfo("Ask Dining service for all tables");
+            TableDTO[] tableDTOS = restTemplate.getForEntity(apiBaseUrlHostAndPort +"/tables", TableDTO[].class).getBody();
+            List<TableDTO> tablesOrders = Stream.of(tableDTOS).toList();
             return tablesOrders;
         } catch (Exception e) {
             LoggerHelper.logError(e.toString());
@@ -43,4 +43,15 @@ public class DiningProxy implements IDiningProxy {
         }
     }
 
+    @Override
+    public TableOrderDTO openTable(Long tableId) throws DiningServiceUnavaibleException {
+        try {
+            LoggerHelper.logInfo("Ask Dining service to open a table");
+            TableOrderDTO tableOrderDTO = restTemplate.getForEntity(apiBaseUrlHostAndPort +"/tables", TableOrderDTO.class).getBody();
+            return tableOrderDTO;
+        } catch (Exception e) {
+            LoggerHelper.logError(e.toString());
+            throw new DiningServiceUnavaibleException();
+        }
+    }
 }

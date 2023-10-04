@@ -1,11 +1,11 @@
-package fr.teama.bff.entities;
+package fr.teama.bff.connectors.externalDTO;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-public class Preparation {
+public class PreparationDTO {
 
     private UUID id;
 
@@ -40,8 +40,8 @@ public class Preparation {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Preparation)) return false;
-        Preparation that = (Preparation) o;
+        if (!(o instanceof PreparationDTO)) return false;
+        PreparationDTO that = (PreparationDTO) o;
         return id.equals(that.id) && shouldBeReadyAt.equals(that.shouldBeReadyAt) && preparedItems.equals(that.preparedItems);
     }
 

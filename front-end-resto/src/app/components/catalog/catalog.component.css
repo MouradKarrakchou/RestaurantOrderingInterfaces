@@ -58,3 +58,52 @@
   .selected-sort {
     background-color: #C5E1A5FF;
   }
+
+  .podium {
+    display: flex;
+  }
+
+  .podium-img {
+    height: 90%;
+  }
+
+  .step {
+    height: 40vw;
+    width: 33vw;
+    text-align: center;
+  }
+
+  .round {
+    border-radius: 50%;
+    position: relative;
+    z-index: 50;
+  }
+
+  .gold {
+    height: 18vw;
+    max-width: 18vw;
+    top: -31vw;
+    border: 5px solid #FFD600FF;
+  }
+
+  .silver {
+    height: 15vw;
+    max-width: 15vw;
+    top: -25.5vw;
+    border: 5px solid #BDBDBDFF;
+  }
+
+  .bronze {
+    height: 14vw;
+    max-width: 14vw;
+    top: -23.5vw;
+    border: 5px solid #CD7F32FF;
+  }
+
+  .podium-text {
+    position: relative;
+    top: -14vw;
+    color: white;
+    font-size: 2.5vw;
+    line-height: 2.5vw;
+  }
