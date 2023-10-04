@@ -4,7 +4,6 @@ package fr.teama.bff.controllers;
 import fr.teama.bff.connectors.MenuProxy;
 import fr.teama.bff.entities.Category;
 import fr.teama.bff.entities.MenuItem;
-import fr.teama.bff.entities.OrderingItem;
 import fr.teama.bff.exceptions.DiningServiceUnavaibleException;
 import fr.teama.bff.exceptions.OrderServiceUnavailableException;
 import fr.teama.bff.helpers.LoggerHelper;

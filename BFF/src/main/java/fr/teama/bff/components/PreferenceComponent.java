@@ -1,5 +1,8 @@
 package fr.teama.bff.components;
 
+import fr.teama.bff.connectors.externalDTO.OrderingItemDTO;
+import fr.teama.bff.connectors.externalDTO.OrderingLineDTO;
+import fr.teama.bff.connectors.externalDTO.TableOrderDTO;
 import fr.teama.bff.entities.*;
 import fr.teama.bff.entities.MenuItem;
 import fr.teama.bff.exceptions.DiningServiceUnavaibleException;
@@ -25,15 +28,15 @@ public class PreferenceComponent implements IPreferenceComponent {
     @Cacheable("MostSoldItems")
     @Override
     public List<MenuItem> retrieveMostSoldItems(int numberOfEntries) throws DiningServiceUnavaibleException, OrderServiceUnavailableException {
-        List<Map.Entry<OrderingItem, Integer>> entryList = retrieveAllItemRanking();
+        List<Map.Entry<OrderingItemDTO, Integer>> entryList = retrieveAllItemRanking();
         LoggerHelper.logInfo("Calculating the most sold items");
 
-        List<OrderingItem> topOrderedItems = new ArrayList<>();
-        for (Map.Entry<OrderingItem, Integer> entry : entryList.subList(0, Math.min(numberOfEntries, entryList.size()))) {
+        List<OrderingItemDTO> topOrderedItems = new ArrayList<>();
+        for (Map.Entry<OrderingItemDTO, Integer> entry : entryList.subList(0, Math.min(numberOfEntries, entryList.size()))) {
             topOrderedItems.add(entry.getKey());
         }
         List<MenuItem> menuItems= new ArrayList<>();
-        for (OrderingItem orderingItem: topOrderedItems) {
+        for (OrderingItemDTO orderingItem: topOrderedItems) {
             menuItems.add(menuProxy.findByID(orderingItem.getId()));
         }
         return menuItems;
@@ -52,13 +55,13 @@ public class PreferenceComponent implements IPreferenceComponent {
     @Cacheable("MostSoldItemsByCategories")
     @Override
     public HashMap<Category, MenuItem> retrieveMostSoldByCategories() throws DiningServiceUnavaibleException, OrderServiceUnavailableException {
-        List<Map.Entry<OrderingItem, Integer>> entryList = retrieveAllItemRanking();
+        List<Map.Entry<OrderingItemDTO, Integer>> entryList = retrieveAllItemRanking();
         LoggerHelper.logInfo("Calculating the most sold item by category");
 
         HashMap<UUID,MenuItem> hashMapMenuItems= getMenuHashMap();
         HashMap<Category,ItemQuantity> hashMapCategories=new HashMap<>();
         //finding the most sold item for each category
-        for (Map.Entry<OrderingItem, Integer> entry : entryList) {
+        for (Map.Entry<OrderingItemDTO, Integer> entry : entryList) {
             MenuItem menuItem=hashMapMenuItems.get(UUID.fromString(entry.getKey().getId()));
             Category category=menuItem.getCategory();
             if (hashMapCategories.containsKey(category)){
@@ -78,13 +81,13 @@ public class PreferenceComponent implements IPreferenceComponent {
         return hashMap;
     }
 
-    public List<Map.Entry<OrderingItem, Integer>> retrieveAllItemRanking() throws DiningServiceUnavaibleException {
+    public List<Map.Entry<OrderingItemDTO, Integer>> retrieveAllItemRanking() throws DiningServiceUnavaibleException {
         LoggerHelper.logInfo("Calculating all item ranking");
 
-        HashMap<OrderingItem, Integer> hashMap=new HashMap<>();
-        for (TableOrder tableOrder:diningProxy.getAllTableOrders()){
-            for (OrderingLine orderingLine :tableOrder.getLines()){
-                OrderingItem item= orderingLine.getItem();
+        HashMap<OrderingItemDTO, Integer> hashMap=new HashMap<>();
+        for (TableOrderDTO tableOrder:diningProxy.getAllTableOrders()){
+            for (OrderingLineDTO orderingLine :tableOrder.getLines()){
+                OrderingItemDTO item= orderingLine.getItem();
                 if (hashMap.containsKey(item)) {
                     hashMap.put(item, hashMap.get(item) + orderingLine.getHowMany());
                 } else {
@@ -92,8 +95,8 @@ public class PreferenceComponent implements IPreferenceComponent {
                 }
             }
         }
-        List<Map.Entry<OrderingItem, Integer>> entryList = new ArrayList<>(hashMap.entrySet());
-        entryList.sort(Map.Entry.<OrderingItem, Integer>comparingByValue().reversed());
+        List<Map.Entry<OrderingItemDTO, Integer>> entryList = new ArrayList<>(hashMap.entrySet());
+        entryList.sort(Map.Entry.<OrderingItemDTO, Integer>comparingByValue().reversed());
         return entryList;
     }
 
