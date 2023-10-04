@@ -26,8 +26,8 @@ public class OrderController {
     @PostMapping
     public ResponseEntity<UUID> processOrder(@RequestBody KioskOrderDTO kioskOrderDTO) throws DiningServiceUnavaibleException, NoAvailableTableException {
         LoggerHelper.logInfo("Processing order request for " + kioskOrderDTO.toString());
-        if (kioskOrderDTO.getItems() == null || kioskOrderDTO.getOrderNumber() == null) {
-            LoggerHelper.logError("Bad request for order request");
+        if (kioskOrderDTO.getItems() == null) {
+            LoggerHelper.logError("Order request with null items");
             return ResponseEntity.badRequest().build();
         }
         UUID orderId = orderComponent.processOrder(kioskOrderDTO);
