@@ -1,24 +1,37 @@
-package fr.teama.bff.entities;
+package fr.teama.bff.controllers.dto;
 
 import java.util.UUID;
 
-public class KioskItem {
-    private UUID itemID;
+public class KioskItemDTO {
+    private String itemID;
 
     private String shortName;
+
     private int quantity;
 
-    public KioskItem(UUID itemID, String shortName, int quantity) {
+    public KioskItemDTO() {
+    }
+
+    public KioskItemDTO(String itemID, String shortName, int quantity) {
         this.itemID = itemID;
         this.shortName = shortName;
         this.quantity = quantity;
     }
 
-    public UUID getItemID() {
+    @Override
+    public String toString() {
+        return "KioskItemDTO{" +
+                "itemID='" + itemID + '\'' +
+                ", shortName='" + shortName + '\'' +
+                ", quantity=" + quantity +
+                '}';
+    }
+
+    public String getItemID() {
         return itemID;
     }
 
-    public void setItemID(UUID itemID) {
+    public void setItemID(String itemID) {
         this.itemID = itemID;
     }
 

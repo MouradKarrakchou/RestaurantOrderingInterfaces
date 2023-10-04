@@ -1,5 +1,7 @@
 package fr.teama.bff.connectors.externalDTO;
 
+import fr.teama.bff.controllers.dto.KioskItemDTO;
+
 public class ItemDTO {
 
     private String id; // id of the item from the menu
@@ -11,10 +13,19 @@ public class ItemDTO {
     public ItemDTO() {
     }
 
-    public ItemDTO(OrderingLineDTO orderingLineDTO) {
-        this.id = orderingLineDTO.getItem().getId();
-        this.shortName = orderingLineDTO.getItem().getShortName();
-        this.howMany = orderingLineDTO.getHowMany();
+    public ItemDTO(KioskItemDTO kioskItemDTO) {
+        this.id = kioskItemDTO.getItemID();
+        this.shortName = kioskItemDTO.getShortName();
+        this.howMany = kioskItemDTO.getQuantity();
+    }
+
+    @Override
+    public String toString() {
+        return "ItemDTO{" +
+                "id='" + id + '\'' +
+                ", shortName='" + shortName + '\'' +
+                ", howMany=" + howMany +
+                '}';
     }
 
     public String getId() {

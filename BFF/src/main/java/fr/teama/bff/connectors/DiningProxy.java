@@ -20,10 +20,11 @@ public class DiningProxy implements IDiningProxy {
     @Value("${dining.host.baseurl}")
     private String apiBaseUrlHostAndPort;
     private final RestTemplate restTemplate = new RestTemplate();
+
     @Override
     public List<TableOrderDTO> getAllTableOrders() throws  DiningServiceUnavaibleException {
         try {
-            LoggerHelper.logInfo("Ask Dining service for all tableOrders");
+            LoggerHelper.logInfo("Ask Dining service to get all tableOrders");
             TableOrderDTO[] tableOrderDTOS = restTemplate.getForEntity(apiBaseUrlHostAndPort +"/tableOrders", TableOrderDTO[].class).getBody();
             List<TableOrderDTO> tablesOrders = Stream.of(tableOrderDTOS).toList();
             return tablesOrders;
@@ -51,7 +52,7 @@ public class DiningProxy implements IDiningProxy {
         try {
             LoggerHelper.logInfo("Ask Dining service to open a table");
             StartOrderingDTO startOrderingDTO = new StartOrderingDTO(tableId, 1);
-            return restTemplate.postForEntity(apiBaseUrlHostAndPort, startOrderingDTO, TableOrderDTO.class).getBody();
+            return restTemplate.postForEntity(apiBaseUrlHostAndPort + "/tableOrders", startOrderingDTO, TableOrderDTO.class).getBody();
         } catch (Exception e) {
             LoggerHelper.logError(e.toString());
             throw new DiningServiceUnavaibleException();
@@ -62,7 +63,7 @@ public class DiningProxy implements IDiningProxy {
     public TableOrderDTO tableOrder(UUID tableOrderId) throws DiningServiceUnavaibleException {
         try {
             LoggerHelper.logInfo("Ask Dining service to get a table order");
-            return restTemplate.getForEntity(apiBaseUrlHostAndPort + "/" + tableOrderId, TableOrderDTO.class).getBody();
+            return restTemplate.getForEntity(apiBaseUrlHostAndPort + "/tableOrders" + tableOrderId, TableOrderDTO.class).getBody();
         } catch (Exception e) {
             LoggerHelper.logError(e.toString());
             throw new DiningServiceUnavaibleException();
@@ -72,8 +73,8 @@ public class DiningProxy implements IDiningProxy {
     @Override
     public TableOrderDTO addToTableOrder(UUID tableOrderId, ItemDTO itemDTO) throws DiningServiceUnavaibleException {
         try {
-            LoggerHelper.logInfo("Ask Dining service to add an item to a table order");
-            return restTemplate.postForEntity(apiBaseUrlHostAndPort + "/" + tableOrderId, itemDTO, TableOrderDTO.class).getBody();
+            LoggerHelper.logInfo("Ask Dining service to add an item to a table order " + itemDTO);
+            return restTemplate.postForEntity(apiBaseUrlHostAndPort + "/tableOrders/" + tableOrderId, itemDTO, TableOrderDTO.class).getBody();
         } catch (Exception e) {
             LoggerHelper.logError(e.toString());
             throw new DiningServiceUnavaibleException();
@@ -81,10 +82,10 @@ public class DiningProxy implements IDiningProxy {
     }
 
     @Override
-    public List<Preparation> prepare(@PathVariable("tableOrderId") UUID tableOrderId) throws DiningServiceUnavaibleException {
+    public List<PreparationDTO> prepare(UUID tableOrderId) throws DiningServiceUnavaibleException {
         try {
             LoggerHelper.logInfo("Ask Dining service to prepare a table order");
-            return (List<Preparation>) restTemplate.getForEntity(apiBaseUrlHostAndPort + "/" + tableOrderId + "/prepare", List.class).getBody();
+            return (List<PreparationDTO>) restTemplate.postForEntity(apiBaseUrlHostAndPort + "/tableOrders/" + tableOrderId + "/prepare", null, List.class).getBody();
         } catch (Exception e) {
             LoggerHelper.logError(e.toString());
             throw new DiningServiceUnavaibleException();
@@ -92,10 +93,10 @@ public class DiningProxy implements IDiningProxy {
     }
 
     @Override
-    public TableOrderDTO bill(@PathVariable("tableOrderId") UUID tableOrderId) throws DiningServiceUnavaibleException {
+    public TableOrderDTO bill(UUID tableOrderId) throws DiningServiceUnavaibleException {
         try {
             LoggerHelper.logInfo("Ask Dining service to bill a table order");
-            return restTemplate.postForEntity(apiBaseUrlHostAndPort + "/" + tableOrderId + "/bill", null, TableOrderDTO.class).getBody();
+            return restTemplate.postForEntity(apiBaseUrlHostAndPort + "/tableOrders/" + tableOrderId + "/bill", null, TableOrderDTO.class).getBody();
         } catch (Exception e) {
             LoggerHelper.logError(e.toString());
             throw new DiningServiceUnavaibleException();

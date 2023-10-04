@@ -1,9 +1,6 @@
 package fr.teama.bff.interfaces;
 
-import fr.teama.bff.connectors.externalDTO.ItemDTO;
-import fr.teama.bff.connectors.externalDTO.Preparation;
-import fr.teama.bff.connectors.externalDTO.TableDTO;
-import fr.teama.bff.connectors.externalDTO.TableOrderDTO;
+import fr.teama.bff.connectors.externalDTO.*;
 import fr.teama.bff.exceptions.DiningServiceUnavaibleException;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -21,7 +18,7 @@ public interface IDiningProxy {
 
     TableOrderDTO addToTableOrder(UUID tableOrderId, ItemDTO itemDTO) throws DiningServiceUnavaibleException;
 
-    List<Preparation> prepare(@PathVariable("tableOrderId") UUID tableOrderId) throws DiningServiceUnavaibleException;
+    List<PreparationDTO> prepare(@PathVariable("tableOrderId") UUID tableOrderId) throws DiningServiceUnavaibleException;
 
     TableOrderDTO bill(@PathVariable("tableOrderId") UUID tableOrderId) throws DiningServiceUnavaibleException;
 }
