@@ -21,6 +21,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { DialogContentComponent } from "./components/dialog-content/dialog-content.component";
 import { MatDialogModule } from "@angular/material/dialog";
 import { OrderNumberComponent } from './components/order-number/order-number.component';
+import {HttpClientModule} from "@angular/common/http";
 
 
 const routes: Routes = [
@@ -56,7 +57,8 @@ const routes: Routes = [
     MatIconModule,
     MatSelectModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}

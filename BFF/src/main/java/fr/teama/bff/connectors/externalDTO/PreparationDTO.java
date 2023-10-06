@@ -11,7 +11,7 @@ public class PreparationDTO {
 
     private LocalDateTime shouldBeReadyAt;
 
-    private List<CookedItem> preparedItems;
+    private List<CookedItemDTO> preparedItems;
 
     public UUID getId() {
         return id;
@@ -29,12 +29,21 @@ public class PreparationDTO {
         this.shouldBeReadyAt = shouldBeReadyAt;
     }
 
-    public List<CookedItem> getPreparedItems() {
+    public List<CookedItemDTO> getPreparedItems() {
         return preparedItems;
     }
 
-    public void setPreparedItems(List<CookedItem> preparedItems) {
+    public void setPreparedItems(List<CookedItemDTO> preparedItems) {
         this.preparedItems = preparedItems;
+    }
+
+    @Override
+    public String toString() {
+        return "PreparationDTO{" +
+                "id=" + id +
+                ", shouldBeReadyAt=" + shouldBeReadyAt +
+                ", preparedItems=" + preparedItems +
+                '}';
     }
 
     @Override
