@@ -3,22 +3,24 @@
 }
 
 .basket-trigger {
+  position: relative;
+  bottom: -6px;
   display: flex;
   align-items: center;
   cursor: pointer;
   padding: 10px;
-  background-color: #4d9445;
+  background-color: #6b856b;
   flex-direction: column;
   border-radius: 80px 80px 0 0;
   width: 50%;
 }
 
 .basket {
-  border-bottom: 1vh solid #487d39;
-  border-top: 1vh solid #487d39;
-  background: #487d39;
+  position: relative;
+  bottom: -3px;
+  padding: 2vw;
+  background: #6b856b;
   width: 100%;
-  padding: 1vh;
   overflow-y: auto;
 }
 
@@ -27,9 +29,6 @@
 }
 .basket-item:last-child {
   border-bottom: none;
-}
-.basket-item:hover {
-  color: #c1c1c1;
 }
 
 .gg-chevron-up {

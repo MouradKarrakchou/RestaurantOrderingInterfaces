@@ -7,6 +7,9 @@
       background-color: rgb(232, 232, 232);
       cursor: pointer;
   }
+  .itemWrapper{
+    padding-bottom: 25vw;
+  }
 
   .item-box:hover {
     background-color: rgb(204, 204, 204);

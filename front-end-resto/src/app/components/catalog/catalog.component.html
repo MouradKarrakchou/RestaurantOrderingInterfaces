@@ -21,7 +21,7 @@
   </button>
 </div>
 
-<div class="w-100 d-flex justify-content-center flex-wrap" *ngIf="inputCategory != 'TREND'">
+<div class="w-100 d-flex justify-content-center flex-wrap itemWrapper" *ngIf="inputCategory != 'TREND'">
     <div *ngFor="let item of filteredMenuItems">
       <div class="item-box m-2" (click)="addItemToBasket(item)">
         <div class="price py-1 px-2">
