@@ -38,6 +38,15 @@ public class PreparationDTO {
     }
 
     @Override
+    public String toString() {
+        return "PreparationDTO{" +
+                "id=" + id +
+                ", shouldBeReadyAt=" + shouldBeReadyAt +
+                ", preparedItems=" + preparedItems +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof PreparationDTO)) return false;

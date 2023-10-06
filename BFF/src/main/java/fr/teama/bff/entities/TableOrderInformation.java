@@ -1,19 +1,15 @@
-package fr.teama.bff.controllers.dto;
+package fr.teama.bff.entities;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public class OrderInformationDTO {
-    public UUID tableOrderId;
-    public long orderId;
-    public LocalDateTime shouldBeReadyAt;
+public class TableOrderInformation {
+    private UUID tableOrderId;
+    private LocalDateTime shouldBeReadyAt;
 
-    public OrderInformationDTO() {
-    }
-
-    public OrderInformationDTO(UUID tableOrderId, long orderId, LocalDateTime shouldBeReadyAt) {
+    public TableOrderInformation(UUID tableOrderId, LocalDateTime shouldBeReadyAt) {
         this.tableOrderId = tableOrderId;
-        this.orderId = orderId;
+        this.shouldBeReadyAt = shouldBeReadyAt;
     }
 
     public UUID getTableOrderId() {
@@ -22,14 +18,6 @@ public class OrderInformationDTO {
 
     public void setTableOrderId(UUID tableOrderId) {
         this.tableOrderId = tableOrderId;
-    }
-
-    public long getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(long orderId) {
-        this.orderId = orderId;
     }
 
     public LocalDateTime getShouldBeReadyAt() {

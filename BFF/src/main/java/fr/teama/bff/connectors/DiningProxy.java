@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.Period;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Stream;
@@ -85,7 +86,9 @@ public class DiningProxy implements IDiningProxy {
     public List<PreparationDTO> prepare(UUID tableOrderId) throws DiningServiceUnavaibleException {
         try {
             LoggerHelper.logInfo("Ask Dining service to prepare a table order");
-            return (List<PreparationDTO>) restTemplate.postForEntity(apiBaseUrlHostAndPort + "/tableOrders/" + tableOrderId + "/prepare", null, List.class).getBody();
+            PreparationDTO[] preparationDTOArray = restTemplate.postForEntity(apiBaseUrlHostAndPort + "/tableOrders/" + tableOrderId + "/prepare", null, PreparationDTO[].class).getBody();
+            assert preparationDTOArray != null;
+            return Stream.of(preparationDTOArray).toList();
         } catch (Exception e) {
             LoggerHelper.logError(e.toString());
             throw new DiningServiceUnavaibleException();

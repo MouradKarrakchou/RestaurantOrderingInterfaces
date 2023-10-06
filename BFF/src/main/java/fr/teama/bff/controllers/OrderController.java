@@ -3,6 +3,7 @@ package fr.teama.bff.controllers;
 
 import fr.teama.bff.controllers.dto.KioskOrderDTO;
 import fr.teama.bff.controllers.dto.OrderInformationDTO;
+import fr.teama.bff.entities.TableOrderInformation;
 import fr.teama.bff.exceptions.DiningServiceUnavaibleException;
 import fr.teama.bff.exceptions.NoAvailableTableException;
 import fr.teama.bff.helpers.LoggerHelper;
@@ -36,10 +37,10 @@ public class OrderController {
             LoggerHelper.logError("Order request with no items");
             return ResponseEntity.badRequest().build();
         }
-        UUID tableOrderId = orderComponent.processOrder(kioskOrderDTO);
-        LoggerHelper.logInfo("Order processed with table order id " + tableOrderId.toString());
-        OrderInformationDTO orderInformationDTO = new OrderInformationDTO(tableOrderId, nextOrderId);
-        orderIdLinkWithTableOrderId.put(nextOrderId, tableOrderId);
+        TableOrderInformation tableOrderInformation = orderComponent.processOrder(kioskOrderDTO);
+        LoggerHelper.logInfo("Order processed with table order id " + tableOrderInformation.getTableOrderId().toString());
+        orderIdLinkWithTableOrderId.put(nextOrderId, tableOrderInformation.getTableOrderId());
+        OrderInformationDTO orderInformationDTO = new OrderInformationDTO(tableOrderInformation.getTableOrderId(), nextOrderId, tableOrderInformation.getShouldBeReadyAt());
         LoggerHelper.logInfo("Order return with order id " + orderInformationDTO.getOrderId());
         nextOrderId++;
         return ResponseEntity.ok(orderInformationDTO);

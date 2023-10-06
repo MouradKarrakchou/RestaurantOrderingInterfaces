@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {BasketService} from "../../services/basket.service";
 import {Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-order-number',
@@ -13,6 +14,7 @@ export class OrderNumberComponent implements OnInit {
 
   time: Date | undefined;
   orderNumber: string | undefined;
+  shouldBeReadyAt: Date | undefined;
 
   constructor(private router: Router, private basketService: BasketService, private http: HttpClient) { }
 
@@ -25,6 +27,7 @@ export class OrderNumberComponent implements OnInit {
 
     this.sendOrderToBFF().subscribe(orderInformation => {
       this.orderNumber = orderInformation.orderId;
+      this.shouldBeReadyAt = new Date(orderInformation.shouldBeReadyAt);
       console.log(orderInformation);
       this.basketService.emptyBasket();
     });
