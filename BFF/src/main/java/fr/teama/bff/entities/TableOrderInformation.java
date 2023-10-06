@@ -12,6 +12,14 @@ public class TableOrderInformation {
         this.shouldBeReadyAt = shouldBeReadyAt;
     }
 
+    @Override
+    public String toString() {
+        return "TableOrderInformation{" +
+                "tableOrderId=" + tableOrderId +
+                ", shouldBeReadyAt=" + shouldBeReadyAt +
+                '}';
+    }
+
     public UUID getTableOrderId() {
         return tableOrderId;
     }

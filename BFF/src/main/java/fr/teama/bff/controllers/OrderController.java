@@ -41,7 +41,7 @@ public class OrderController {
         LoggerHelper.logInfo("Order processed with table order id " + tableOrderInformation.getTableOrderId().toString());
         orderIdLinkWithTableOrderId.put(nextOrderId, tableOrderInformation.getTableOrderId());
         OrderInformationDTO orderInformationDTO = new OrderInformationDTO(tableOrderInformation.getTableOrderId(), nextOrderId, tableOrderInformation.getShouldBeReadyAt());
-        LoggerHelper.logInfo("Order return with order id " + orderInformationDTO.getOrderId());
+        LoggerHelper.logInfo("Order information returned : " + orderInformationDTO);
         nextOrderId++;
         return ResponseEntity.ok(orderInformationDTO);
     }

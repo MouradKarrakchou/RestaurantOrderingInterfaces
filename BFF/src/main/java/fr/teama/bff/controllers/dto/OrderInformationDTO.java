@@ -14,6 +14,16 @@ public class OrderInformationDTO {
     public OrderInformationDTO(UUID tableOrderId, long orderId, LocalDateTime shouldBeReadyAt) {
         this.tableOrderId = tableOrderId;
         this.orderId = orderId;
+        this.shouldBeReadyAt = shouldBeReadyAt;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderInformationDTO{" +
+                "tableOrderId=" + tableOrderId +
+                ", orderId=" + orderId +
+                ", shouldBeReadyAt=" + shouldBeReadyAt +
+                '}';
     }
 
     public UUID getTableOrderId() {

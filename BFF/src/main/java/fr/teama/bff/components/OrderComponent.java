@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -55,6 +56,7 @@ public class OrderComponent implements IOrderComponent {
                 shouldBeReadyAt = preparationDTO.getShouldBeReadyAt();
             }
         }
+        LoggerHelper.logInfo("Table order should be ready at :" + shouldBeReadyAt);
         return shouldBeReadyAt;
     }
 }
