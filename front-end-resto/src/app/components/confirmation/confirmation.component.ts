@@ -12,7 +12,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 })
 export class ConfirmationComponent implements OnInit {
 
-  constructor(private router: Router, private basketService: BasketService, private http: HttpClient) {}
+  constructor(private router: Router, private basketService: BasketService) {}
 
   basket_total_price = 0
 
@@ -25,31 +25,7 @@ export class ConfirmationComponent implements OnInit {
   }
 
   redirectToOrderNumber() {
-    this.basketService.getBasket();
-    this.sendOrderToBFF().subscribe(orderId => {
-      this.basketService.emptyBasket();
-      this.router.navigate(['/order-number'], orderId);
-    });
-  }
-
-  sendOrderToBFF(): Observable<any> {
-    const url = "http://localhost:3000/api/order";
-
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
-
-    const data = {
-      items: this.basketService.getBasket().map(item => ({
-        itemID: item.menuItem.id,
-        shortName: item.menuItem.shortName,
-        quantity: item.quantity
-      }))
-    }
-
-    return this.http.post<any>(url, data, httpOptions);
+    this.router.navigate(['/order-number']);
   }
 
 }
