@@ -224,6 +224,8 @@ export class CatalogComponent implements OnInit,OnChanges {
       const response = await fetch(`${this.menuBaseUrlHostAndPort}/menus/${id}`);
       if (response.ok) {
         return await response.json();
+      } else {
+        throw new Error('Order service is unavailable');
       }
     } catch (error) {
       console.error(error);
