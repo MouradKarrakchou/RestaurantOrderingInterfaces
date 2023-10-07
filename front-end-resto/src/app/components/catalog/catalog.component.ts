@@ -4,8 +4,8 @@ import Category from "../../models/Category";
 import {BasketService} from "../../services/basket.service";
 import {formatCurrency} from "@angular/common";
 import {HttpClient} from "@angular/common/http";
-import {TableOrderDTO} from "../../models/TableOrderDTO";
-import {OrderingItemDTO} from "../../models/OrderingItemDTO";
+import {TableOrder} from "../../models/TableOrder";
+import {OrderingItem} from "../../models/OrderingItem";
 import {ItemQuantity} from "../../models/ItemQuantity";
 
 
@@ -22,7 +22,7 @@ export class CatalogComponent implements OnInit,OnChanges {
   private menuBaseUrlHostAndPort: string="http://localhost:3000";
   private diningBaseUrlHostAndPort: string="http://localhost:3001";
 
-  private bffMode=false;
+  private bffMode = true;
 
 
   menuItems: MenuItem[] = [];
@@ -223,10 +223,7 @@ export class CatalogComponent implements OnInit,OnChanges {
       console.log(`Ask Menu service for the item with id: ${id}`);
       const response = await fetch(`${this.menuBaseUrlHostAndPort}/menus/${id}`);
       if (response.ok) {
-        const menuItem: MenuItem = await response.json();
-        return menuItem;
-      } else {
-        throw new Error('Order service is unavailable');
+        return await response.json();
       }
     } catch (error) {
       console.error(error);
@@ -246,13 +243,13 @@ export class CatalogComponent implements OnInit,OnChanges {
         throw new Error('The menu service is not available');
       });
   }
-  getAllTableOrders(): Promise<TableOrderDTO[]> {
+  getAllTableOrders(): Promise<TableOrder[]> {
     const apiUrl = `${this.diningBaseUrlHostAndPort}/tableOrders`;
     console.log('Requesting Dining service to get all table orders.');
 
-    return this.http.get<TableOrderDTO[]>(apiUrl)
+    return this.http.get<TableOrder[]>(apiUrl)
       .toPromise()
-      .then(response => response as TableOrderDTO[])
+      .then(response => response as TableOrder[])
       .catch(error => {
         console.error(error);
         throw new Error('Dining service is unavailable.');
@@ -261,7 +258,7 @@ export class CatalogComponent implements OnInit,OnChanges {
 
   async retrieveMostSoldItems(numberOfEntries: number): Promise<MenuItem[]> {
     try {
-      const entryList: [OrderingItemDTO, number][] = await this.retrieveAllItemRanking();
+      const entryList: [OrderingItem, number][] = await this.retrieveAllItemRanking();
       console.log('Retrieving the most sold items');
       console.log(entryList)
 
@@ -298,7 +295,7 @@ export class CatalogComponent implements OnInit,OnChanges {
 
   async retrieveMostSoldByCategories(): Promise<Map<Category, MenuItem>> {
     try {
-      const entryList: [OrderingItemDTO, number][] = await this.retrieveAllItemRanking();
+      const entryList: [OrderingItem, number][] = await this.retrieveAllItemRanking();
       console.log('Calculating the most sold item by category');
 
       const hashMapMenuItems: Map<string, MenuItem> = await this.getMenuHashMap();
@@ -333,16 +330,16 @@ export class CatalogComponent implements OnInit,OnChanges {
     }
   }
 
-  async retrieveAllItemRanking(): Promise<[OrderingItemDTO, number][]> {
+  async retrieveAllItemRanking(): Promise<[OrderingItem, number][]> {
     try {
       console.log('Calculating all item ranking');
 
-      const hashMap: Map<OrderingItemDTO, number> = new Map();
-      const tableOrders: TableOrderDTO[] = await this.getAllTableOrders();
+      const hashMap: Map<OrderingItem, number> = new Map();
+      const tableOrders: TableOrder[] = await this.getAllTableOrders();
 
       tableOrders.forEach(tableOrder => {
         tableOrder.lines.forEach(orderingLine => {
-          const item: OrderingItemDTO = orderingLine.item;
+          const item: OrderingItem = orderingLine.item;
           const howMany: number = orderingLine.howMany;
 
           if (hashMap.has(item)) {
@@ -354,7 +351,7 @@ export class CatalogComponent implements OnInit,OnChanges {
       });
 
       // Convert the Map to an array of key-value pairs and sort it by value in descending order
-      const entryList: [OrderingItemDTO, number][] = Array.from(hashMap.entries());
+      const entryList: [OrderingItem, number][] = Array.from(hashMap.entries());
       entryList.sort((a, b) => b[1] - a[1]);
 
       return entryList;
