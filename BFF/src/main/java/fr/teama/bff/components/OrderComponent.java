@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -50,12 +51,13 @@ public class OrderComponent implements IOrderComponent {
 
     private LocalDateTime getShouldBeReadyAt(List<Preparation> preparationDTOList) {
         LoggerHelper.logInfo("Calculating the date when the order should be ready for :" + preparationDTOList.toString());
-        LocalDateTime shouldBeReadyAt = LocalDateTime.now();
+        LocalDateTime shouldBeReadyAt = LocalDateTime.now(ZoneOffset.UTC); // Convert to UTC because the date in the back end is in UTC
         for (Preparation preparationDTO : preparationDTOList) {
             if (shouldBeReadyAt.isBefore(preparationDTO.getShouldBeReadyAt())) {
                 shouldBeReadyAt = preparationDTO.getShouldBeReadyAt();
             }
         }
+        shouldBeReadyAt = shouldBeReadyAt.plusHours(2); // Convert to UTC+2
         LoggerHelper.logInfo("Table order should be ready at :" + shouldBeReadyAt);
         return shouldBeReadyAt;
     }
