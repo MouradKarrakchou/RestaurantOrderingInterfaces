@@ -1,5 +1,12 @@
 <div class="background-div">
 
+  <div class="admin-panel">
+    <mat-slide-toggle (change)="switchBFF()" [ngModel]="getBFF()">BFF</mat-slide-toggle>
+    <button mat-icon-button (click)="reloadPage()">
+      <mat-icon style="font-size: 3vw">refresh</mat-icon>
+    </button>
+  </div>
+
   <div class="icon-bar">
     <div [class.logoIsSelected]="category==='ALL'" class="menu-type-div" (click)="emitCategoryEvent('ALL')">
       <img *ngIf="category!=='ALL'" class="logoIntegrated"

@@ -22,6 +22,7 @@ import { DialogContentComponent } from "./components/dialog-content/dialog-conte
 import { MatDialogModule } from "@angular/material/dialog";
 import { OrderNumberComponent } from './components/order-number/order-number.component';
 import {HttpClientModule} from "@angular/common/http";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 
 const routes: Routes = [
@@ -48,18 +49,19 @@ const routes: Routes = [
     DialogContentComponent,
     OrderNumberComponent
   ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(routes),
-    BrowserAnimationsModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    MatIconModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatDialogModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        RouterModule.forRoot(routes),
+        BrowserAnimationsModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+        MatSelectModule,
+        MatButtonModule,
+        MatDialogModule,
+        HttpClientModule,
+        MatSlideToggleModule
+    ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
   ],
