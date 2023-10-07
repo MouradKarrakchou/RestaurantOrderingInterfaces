@@ -7,6 +7,7 @@ import {HttpClient} from "@angular/common/http";
 import {TableOrder} from "../../models/TableOrder";
 import {OrderingItem} from "../../models/OrderingItem";
 import {ItemQuantity} from "../../models/ItemQuantity";
+import {SwitchService} from "../../services/switch.service";
 
 
 @Component({
@@ -21,9 +22,6 @@ export class CatalogComponent implements OnInit,OnChanges {
 
   private menuBaseUrlHostAndPort: string="http://localhost:3000";
   private diningBaseUrlHostAndPort: string="http://localhost:3001";
-
-  private bffMode = false;
-
 
   menuItems: MenuItem[] = [];
   filteredMenuItems: MenuItem[] = [];
@@ -44,7 +42,9 @@ export class CatalogComponent implements OnInit,OnChanges {
     }
   }
 
-  constructor(private basketService : BasketService, private http: HttpClient) {
+  constructor(private basketService : BasketService,
+              private http: HttpClient,
+              private switchService: SwitchService) {
 
   }
 
@@ -59,26 +59,26 @@ export class CatalogComponent implements OnInit,OnChanges {
       .catch((error) => {
         console.error("Une erreur s'est produite lors de la récupération des menu items :", error);
       });
-    if (this.bffMode) {
-    this.fetchTrendingItems()
-      .then((menuItems: MenuItem[]) => {
-        this.trendingItems = menuItems;
-        console.log("Les trending items ont été récupérés :", menuItems);
-      })
-      .catch((error) => {
-        console.error("Une erreur s'est produite lors de la récupération des menu items :", error);
-      });
+    if (this.switchService.isBFF()) {
+      this.fetchTrendingItems()
+        .then((menuItems: MenuItem[]) => {
+          this.trendingItems = menuItems;
+          console.log("Les trending items ont été récupérés :", menuItems);
+        })
+        .catch((error) => {
+          console.error("Une erreur s'est produite lors de la récupération des menu items :", error);
+        });
 
-    this.fetchTrendingCategoryItems()
-      .then((menuItems: MenuItem[]) => {
-        this.trendingCategoryItem = menuItems;
-        this.trendingCategoryItem.sort((a, b) => b.category.localeCompare(a.category));
-        console.log("Les trending category items ont été récupérés :", menuItems);
-      })
-      .catch((error) => {
-        console.error("Une erreur s'est produite lors de la récupération des menu items :", error);
-      });}
-    else{
+      this.fetchTrendingCategoryItems()
+        .then((menuItems: MenuItem[]) => {
+          this.trendingCategoryItem = menuItems;
+          this.trendingCategoryItem.sort((a, b) => b.category.localeCompare(a.category));
+          console.log("Les trending category items ont été récupérés :", menuItems);
+        })
+        .catch((error) => {
+          console.error("Une erreur s'est produite lors de la récupération des menu items :", error);
+        });
+    } else{
       this.trendingItems = await this.retrieveMostSoldItems(3);
       console.log("TRENDING ITEMS")
       console.log(this.trendingItems);

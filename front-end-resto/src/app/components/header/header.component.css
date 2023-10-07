@@ -19,6 +19,16 @@
   cursor: pointer;
 }
 
+.admin-panel {
+  display: flex;
+  background-color: #C5E1A5FF;
+  height: fit-content;
+  border-bottom-right-radius: 5px;
+  font-size: 2vw;
+  align-items: center;
+  position: absolute;
+}
+
 .menuIcon{
   font-size: 7vw;
 }
