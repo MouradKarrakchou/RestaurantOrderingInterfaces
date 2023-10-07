@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import { Router} from "@angular/router";
 import {BasketService} from "../../services/basket.service";
 import {Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-order-number',
@@ -34,7 +33,7 @@ export class OrderNumberComponent implements OnInit {
 
     setTimeout(() => {
       this.router.navigate(['/idle'])
-    }, 30000)
+    }, 20000)
   }
 
   sendOrderToBFF(): Observable<any> {

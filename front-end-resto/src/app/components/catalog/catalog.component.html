@@ -42,35 +42,39 @@
   <hr>
 </div>
 
-<div *ngIf="inputCategory == 'TREND'">
-  <div class="podium">
-    <div class="step mt-4">
-      <img src="assets/podium-silver.png" alt="Podium or médaille d'or" class="podium-img">
-      <img src="assets/image-2.jpg" alt="Image 1" class="round silver">
+<div *ngIf="inputCategory == 'TREND' && trendingItems.length == 0">
+  <p class="no-item mt-4">No items to display</p>
+</div>
+
+<div *ngIf="inputCategory == 'TREND' && trendingItems.length != 0">
+  <div class="podium" [ngClass]="{'justify-content-center': trendingItems.length == 1}">
+    <div class="step mt-4" *ngIf="trendingItems.length >= 2">
+      <img src="assets/podium-silver.png" alt="Podium silver" class="podium-img">
+      <img [src]="trendingItems[1]?.image?.toString()" alt="{{ trendingItems[1]?.shortName }}" class="round silver">
       <div class="podium-text" style="top: -14vw;">
-        <p>Ouais Ouais Ouais Ouais Ouais Ouais Ouais Ouais </p>
-        <button mat-raised-button class="button-add" style="width: 25vw;">
-          <span>Add to basket</span>
+        <p>{{ trendingItems[1]?.fullName }}</p>
+        <button mat-raised-button class="button-add" (click)="addItemToBasket(trendingItems[1])">
+          <span>Add to basket ({{ trendingItems[1]?.price }}$)</span>
         </button>
       </div>
     </div>
     <div class="step mt-4">
-      <img src="assets/podium-gold.png" alt="Podium or médaille d'or" class="podium-img">
-      <img src="assets/image-2.jpg" alt="Image 1" class="round gold">
+      <img src="assets/podium-gold.png" alt="Podium or" class="podium-img">
+      <img [src]="trendingItems[0].image.toString()" alt="{{ trendingItems[0].shortName }}" class="round gold">
       <div class="podium-text" style="top: -17vw;">
-        <p>Ouais Ouais Ouais Ouais Ouais Ouais Ouais Ouais </p>
-        <button mat-raised-button class="button-add" style="width: 25vw;">
-          <span>Add to basket</span>
+        <p>{{ trendingItems[0].fullName }}</p>
+        <button mat-raised-button class="button-add" (click)="addItemToBasket(trendingItems[0])">
+          <span>Add to basket ({{ trendingItems[0].price }}$)</span>
         </button>
       </div>
     </div>
-    <div class="step mt-4">
-      <img src="assets/podium-bronze.png" alt="Podium or médaille d'or" class="podium-img">
-      <img src="assets/image-2.jpg" alt="Image 1" class="round bronze">
+    <div class="step mt-4" *ngIf="trendingItems.length == 3">
+      <img src="assets/podium-bronze.png" alt="Podium bronze" class="podium-img">
+      <img [src]="trendingItems[2]?.image?.toString()" alt="{{ trendingItems[2]?.shortName }}" class="round bronze">
       <div class="podium-text" style="top: -13vw;">
-        <p>Ouais Ouais Ouais Ouais Ouais</p>
-        <button mat-raised-button class="button-add" style="width: 25vw;">
-          <span>Add to basket</span>
+        <p>{{ trendingItems[2]?.fullName }}</p>
+        <button mat-raised-button class="button-add" (click)="addItemToBasket(trendingItems[2])">
+          <span>Add to basket ({{ trendingItems[2]?.price }}$)</span>
         </button>
       </div>
     </div>
@@ -82,14 +86,21 @@
   <hr>
 </div>
 
-<div *ngIf="inputCategory == 'TREND'" class="w-100 d-flex justify-content-center flex-wrap">
+<div *ngIf="inputCategory == 'TREND' && trendingCategoryItem.length == 0">
+  <p class="no-item mt-4">No items to display</p>
+</div>
+
+<div *ngIf="inputCategory == 'TREND' && trendingCategoryItem.length != 0" class="w-100 d-flex justify-content-center flex-wrap">
   <div *ngFor="let item of filteredMenuItems">
+    <div class="best-text mb-3">
+      Best {{ item.category.toLocaleLowerCase() }}
+    </div>
     <div class="item-box m-2" (click)="addItemToBasket(item)">
       <div class="price py-1 px-2">
         <p class="m-0">{{ item.price }}$</p>
       </div>
       <div class="medal">
-        <img style="height: 8vw; width: auto" src="../../../assets/1st-medal.png">
+        <img style="height: 8vw; width: auto" src="../../../assets/1st-medal.png" alt="Medal">
       </div>
       <div class="image-container w-100">
         <img [src]="item.image.toString()" alt="{{ item.shortName }}" class="item-image">
@@ -98,12 +109,15 @@
         <p class="m-0">{{ item.fullName }}</p>
       </div>
     </div>
-    <div class="best-text mt-3">
+    <div class="best-text">
       Best {{ item.category.toLocaleLowerCase() }}
     </div>
   </div>
+</div>
+<div *ngIf="inputCategory == 'TREND' && trendingCategoryItem.length != 0" class="d-flex justify-content-center">
   <button mat-raised-button class="button-add mt-4" (click)="addFullMenu()">
-    <span>Add the full menu to the basket ({{ this.trendingItemPrice }}$)</span>
+    <span>Add the full menu to the basket ({{ this.trendingCategoryItemPrice }}$)</span>
   </button>
 </div>
+
 

@@ -39,7 +39,8 @@ hr {
 }
 
 .item-list {
-  font-size: 2vw;
+  font-size: 2.5vw;
+  line-height: 2.5vw;
   align-items: center;
   width: 100%;
   display: flex;
@@ -48,7 +49,7 @@ hr {
 
 .right-infos {
   align-items: center;
-  width: 23%;
+  width: 26%;
   display: flex;
   justify-content: space-between;
 }
@@ -60,7 +61,7 @@ hr {
 }
 
 .left-infos {
-  max-width: 77%;
+  max-width: 74%;
   flex-wrap: nowrap;
   display: flex;
 }
@@ -77,6 +78,16 @@ hr {
 
 .edit-buttons {
   display: flex;
+}
+
+.edit-buttons button {
+  height: 4vw;
+  width: 4vw;
+}
+
+.edit-buttons mat-icon {
+  font-size: 3vw;
+  transform: translate3d(-.42vw, -.4vw, 0);
 }
 
 .prefix {

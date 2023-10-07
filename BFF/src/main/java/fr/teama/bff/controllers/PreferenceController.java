@@ -34,10 +34,11 @@ public class PreferenceController {
     }
 
     @GetMapping("/by-category")
-    public ResponseEntity<HashMap<Category, MenuItem>> retriveMostSoldItemsByCategory() throws DiningServiceUnavaibleException, OrderServiceUnavailableException {
+    public ResponseEntity<List<MenuItem>> retriveMostSoldItemsByCategory() throws DiningServiceUnavaibleException, OrderServiceUnavailableException {
         LoggerHelper.logInfo("Finding most sold items by category");
         HashMap<Category, MenuItem> menuItems = preferenceComponent.retrieveMostSoldByCategories();
-        return ResponseEntity.ok(menuItems);
+        List<MenuItem> menuItemsList = new ArrayList<>(menuItems.values());
+        return ResponseEntity.ok(menuItemsList);
     }
 
 }
