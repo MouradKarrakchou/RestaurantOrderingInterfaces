@@ -83,6 +83,8 @@ export class CatalogComponent implements OnInit,OnChanges {
       console.log("TRENDING ITEMS")
       console.log(this.trendingItems);
       let map=await this.retrieveMostSoldByCategories();
+      this.trendingCategoryItem=Array.from(map.values());
+      this.trendingCategoryItem.sort((a, b) => b.category.localeCompare(a.category));
       console.log(map);
     }
   }
