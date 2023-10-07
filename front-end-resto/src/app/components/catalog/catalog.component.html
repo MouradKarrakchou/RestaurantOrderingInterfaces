@@ -48,34 +48,34 @@
 
 <div *ngIf="inputCategory == 'TREND' && trendingItems.length != 0">
   <div class="podium" [ngClass]="{'justify-content-center': trendingItems.length == 1}">
-    <div class="step mt-4" *ngIf="trendingItems.length >= 2">
+    <div class="step mt-4 silverImage" *ngIf="trendingItems.length >= 2">
+      <button mat-raised-button class="button-add silverButton" (click)="addItemToBasket(trendingItems[1])">
+        <span>Add to basket ({{ trendingItems[1]?.price }}$)</span>
+      </button>
       <img src="assets/podium-silver.png" alt="Podium silver" class="podium-img">
       <img [src]="trendingItems[1]?.image?.toString()" alt="{{ trendingItems[1]?.shortName }}" class="round silver">
       <div class="podium-text" style="top: -14vw;">
-        <p>{{ trendingItems[1]?.fullName }}</p>
-        <button mat-raised-button class="button-add" (click)="addItemToBasket(trendingItems[1])">
-          <span>Add to basket ({{ trendingItems[1]?.price }}$)</span>
-        </button>
+        <p class="silverText">{{ trendingItems[1]?.fullName }}</p>
       </div>
     </div>
     <div class="step mt-4">
+      <button mat-raised-button class="button-add goldButton" (click)="addItemToBasket(trendingItems[0])">
+        <span>Add to basket ({{ trendingItems[0].price }}$)</span>
+      </button>
       <img src="assets/podium-gold.png" alt="Podium or" class="podium-img">
       <img [src]="trendingItems[0].image.toString()" alt="{{ trendingItems[0].shortName }}" class="round gold">
       <div class="podium-text" style="top: -17vw;">
-        <p>{{ trendingItems[0].fullName }}</p>
-        <button mat-raised-button class="button-add" (click)="addItemToBasket(trendingItems[0])">
-          <span>Add to basket ({{ trendingItems[0].price }}$)</span>
-        </button>
+        <p class="goldText">{{ trendingItems[0].fullName }}</p>
       </div>
     </div>
     <div class="step mt-4" *ngIf="trendingItems.length == 3">
+      <button mat-raised-button class="button-add bronzeButton" (click)="addItemToBasket(trendingItems[2])">
+        <span>Add to basket ({{ trendingItems[2]?.price }}$)</span>
+      </button>
       <img src="assets/podium-bronze.png" alt="Podium bronze" class="podium-img">
       <img [src]="trendingItems[2]?.image?.toString()" alt="{{ trendingItems[2]?.shortName }}" class="round bronze">
       <div class="podium-text" style="top: -13vw;">
-        <p>{{ trendingItems[2]?.fullName }}</p>
-        <button mat-raised-button class="button-add" (click)="addItemToBasket(trendingItems[2])">
-          <span>Add to basket ({{ trendingItems[2]?.price }}$)</span>
-        </button>
+        <p class="bronzeText">{{ trendingItems[2]?.fullName }}</p>
       </div>
     </div>
   </div>
@@ -115,7 +115,7 @@
   </div>
 </div>
 <div *ngIf="inputCategory == 'TREND' && trendingCategoryItem.length != 0" class="d-flex justify-content-center">
-  <button mat-raised-button class="button-add mt-4" (click)="addFullMenu()">
+  <button mat-raised-button class="button-add mt-4 AddFullMenu" (click)="addFullMenu()">
     <span>Add the full menu to the basket ({{ this.trendingCategoryItemPrice }}$)</span>
   </button>
 </div>

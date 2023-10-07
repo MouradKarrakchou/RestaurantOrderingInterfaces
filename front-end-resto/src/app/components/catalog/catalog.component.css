@@ -72,6 +72,9 @@
     height: 90%;
   }
 
+
+
+
   .step {
     height: 40vw;
     width: 33vw;
@@ -104,6 +107,8 @@
     top: -23.5vw;
     border: 5px solid #CD7F32FF;
   }
+
+
 
   .podium-text {
     position: relative;
@@ -140,8 +145,32 @@
 
   }
   @keyframes shine {
-    to{background-position: right}
+    to {
+      background-position: 120% 0;
+    }
+  }
 
+
+  .goldText{
+    color: #bfa100;
+  }
+  .silverText{
+    color: #9f9f9f;
+  }
+  .bronzeText{
+    color: #CD7F32FF;
+  }
+  .goldButton{
+    background-color: gold;
+    border: #a08704 solid 3px;
+  }
+  .silverButton{
+    background-color: #f6f2f2;
+    border: #8a8686 solid 3px;
+  }
+  .bronzeButton{
+    background-color: #CD7F32FF;
+    border: #7d4d1e solid 3px;
   }
 
   .medal {

@@ -22,7 +22,7 @@ export class CatalogComponent implements OnInit,OnChanges {
   private menuBaseUrlHostAndPort: string="http://localhost:3000";
   private diningBaseUrlHostAndPort: string="http://localhost:3001";
 
-  private bffMode = true;
+  private bffMode = false;
 
 
   menuItems: MenuItem[] = [];
