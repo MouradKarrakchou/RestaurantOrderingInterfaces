@@ -1,11 +1,12 @@
   .item-box {
-      height: 23vw;
+      height: 25vw;
       width: 23vw;
       text-align: center;
       border-radius: 5%;
       position: relative;
       background-color: rgb(232, 232, 232);
       cursor: pointer;
+      font-size: 1.6vw;
   }
   .itemWrapper{
     padding-bottom: 25vw;
@@ -56,6 +57,7 @@
   .sort-button {
     width: 23vw;
     border: 3px solid #8BC34AFF;
+    font-size: 1.5vw;
   }
 
   .selected-sort {
@@ -126,9 +128,20 @@
   }
 
   .best-text {
+    line-height:1;
     text-align: center;
-    font-size: 2vw;
-    color: #8BC34AFF;
+    font-size: 2.5vw;
+    background: linear-gradient(90deg, rgba(186,148,62,1) 0%, rgba(236,172,32,1) 20%, rgba(186,148,62,1) 39%, rgba(249,244,180,1) 50%, rgba(186,148,62,1) 60%, rgba(236,172,32,1) 80%, rgba(186,148,62,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s infinite;
+    background-size: 200%;
+    background-position: left;
+
+  }
+  @keyframes shine {
+    to{background-position: right}
+
   }
 
   .medal {
@@ -136,4 +149,9 @@
     top: -2vw;
     right: -1vw;
     z-index: 100;
+  }
+
+  .no-item {
+    text-align: center;
+    font-size: 3vw;
   }
