@@ -11,6 +11,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  color:white;
 }
 
 .time {
@@ -20,6 +21,7 @@
 
 .order-number-text {
   font-size: 5vh;
+  text-align: center;
 }
 
 .order-number {
@@ -44,6 +46,7 @@
 .footer-text {
   font-size: 2.2vh;
   margin:auto;
+  color: white;
 }
 
 .logoIntegrated {

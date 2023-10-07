@@ -4,13 +4,13 @@
   </div>
 
   <div class="order-number-text">
-    Order number:
+    <p>Order number: <br>{{ orderNumber }}</p>
   </div>
 
   <div class="order-number"></div>
 
   <div class="estimated-time-text">
-    Estimated time:
+    Estimated time: {{ shouldBeReadyAt | date:"shortTime" }}
   </div>
 
   <div class="estimated-time"></div>

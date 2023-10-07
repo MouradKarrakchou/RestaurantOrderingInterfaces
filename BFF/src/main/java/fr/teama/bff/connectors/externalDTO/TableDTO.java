@@ -1,8 +1,8 @@
-package fr.teama.bff.entities;
+package fr.teama.bff.connectors.externalDTO;
 
 import java.util.Objects;
 
-public class Table {
+public class TableDTO {
 
     private Long number;
 
@@ -27,9 +27,9 @@ public class Table {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Table)) return false;
-        Table table = (Table) o;
-        return taken == table.taken && Objects.equals(number, table.number);
+        if (!(o instanceof TableDTO)) return false;
+        TableDTO tableDTO = (TableDTO) o;
+        return taken == tableDTO.taken && Objects.equals(number, tableDTO.number);
     }
 
     @Override

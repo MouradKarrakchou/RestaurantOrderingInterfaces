@@ -7,6 +7,7 @@ import org.springframework.cache.caffeine.CaffeineCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @Configuration
@@ -14,8 +15,14 @@ import java.util.concurrent.TimeUnit;
 public class CacheConfig {
     @Bean
     public CacheManager cacheManager() {
-        CaffeineCacheManager cacheManager = new CaffeineCacheManager("MostSoldItems");
-        cacheManager.setCaffeine(Caffeine.newBuilder().expireAfterWrite(30, TimeUnit.MINUTES));
+        CaffeineCacheManager cacheManager = new CaffeineCacheManager();
+        cacheManager.setCaffeine(Caffeine.newBuilder().expireAfterWrite(30, TimeUnit.SECONDS));
+
+        cacheManager.setCacheNames(List.of("MostSoldItems"));
+
+        cacheManager.setCacheNames(List.of("MostSoldItemsByCategories"));
+
+
         return cacheManager;
     }
 }

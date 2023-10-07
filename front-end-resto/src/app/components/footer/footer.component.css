@@ -3,33 +3,48 @@
   bottom: 0;
   z-index: 100;
   display:flex;
-  background-color: #4d9445;
+  background-color: #709370;
   width: 100%;
-  height: 8vw;
+  height: 12vw;
   justify-content: space-between;
   align-items: center;
 }
 
 .confirm {
-  border: #C5E1A5FF solid 5px;
+  border: #C5E1A5FF solid 1px;
   background-color: #8BC34AFF;
+  margin-left:auto;
 }
 
 .confirm:disabled {
-  border: #C5E1A5FF solid 5px;
+
+  border: #C5E1A5FF solid 1px;
   background-color: #8BC34AFF;
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 .abort {
-  border: #ef9a9a solid 5px;
-  background-color: #f44336;
+  border: #ef9a9a solid 1px;
+  background-color: #d7534a;
+  margin-right:auto;
+}
+.button-text{
+  font-size:2.5vw;
+  margin:auto;
+}
+.clear{
+  margin:auto;
 }
 
 .button {
   font-size: 3vw;
   width: 25vw;
   color: white;
+  padding: 10px;
+  border-radius: 25px;
+  display:flex;
+  height: 5vw;
+  flex-direction: column;
 }
 
 .total-text {
