@@ -106,7 +106,34 @@
   .podium-text {
     position: relative;
     top: -14vw;
-    color: white;
     font-size: 2.5vw;
     line-height: 2.5vw;
+  }
+
+  hr {
+    border: none;
+    height: 5px;
+    background-color: #8BC34AFF;
+    opacity:1;
+  }
+
+  .button-add {
+    font-size: 2vw;
+    border-radius: 25px;
+    height: 5vw;
+    border: #8BC34AFF solid 3px;
+    background-color: #C5E1A5FF;
+  }
+
+  .best-text {
+    text-align: center;
+    font-size: 2vw;
+    color: #8BC34AFF;
+  }
+
+  .medal {
+    position: absolute;
+    top: -2vw;
+    right: -1vw;
+    z-index: 100;
   }

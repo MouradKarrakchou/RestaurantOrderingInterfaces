@@ -2,6 +2,7 @@ import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core'
 import MenuItem from 'src/app/models/MenuItem';
 import Category from "../../models/Category";
 import {BasketService} from "../../services/basket.service";
+import {formatCurrency} from "@angular/common";
 
 
 @Component({
@@ -16,7 +17,9 @@ export class CatalogComponent implements OnInit,OnChanges {
 
   menuItems: MenuItem[] = [];
   filteredMenuItems: MenuItem[] = [];
-  trendingItems:MenuItem[]=[];
+  trendingItems: MenuItem[]=[];
+  trendingItemPrice: number = 0;
+
 
   selectedSortOption: string | undefined;
 
@@ -113,7 +116,9 @@ export class CatalogComponent implements OnInit,OnChanges {
     if (this.currentCategory === Category.ALL) {
       this.filteredMenuItems = this.menuItems;
     } else if (this.currentCategory === Category.TREND) {
-      this.filteredMenuItems = this.trendingItems;
+      //this.filteredMenuItems = this.trendingItems;
+      this.filteredMenuItems = this.menuItems.splice(0,4);
+      this.trendingItemPrice = this.filteredMenuItems.reduce((sum, product) => sum + product.price, 0)
     } else {
       this.filteredMenuItems = this.menuItems.filter((item) => item.category === this.currentCategory);
     }
@@ -147,4 +152,10 @@ export class CatalogComponent implements OnInit,OnChanges {
   addItemToBasket(item: MenuItem) {
     this.basketService.addToBasket(item);
   }
+
+  addFullMenu() {
+    this.filteredMenuItems.forEach(item => this.basketService.addToBasket(item));
+  }
+
+  protected readonly formatCurrency = formatCurrency;
 }
