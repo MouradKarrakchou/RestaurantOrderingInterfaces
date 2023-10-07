@@ -214,10 +214,6 @@ export class CatalogComponent implements OnInit,OnChanges {
     this.filteredMenuItems.forEach(item => this.basketService.addToBasket(item));
   }
 
-
-
-
-
   async findByID(id: string): Promise<MenuItem> {
     try {
       console.log(`Ask Menu service for the item with id: ${id}`);
@@ -340,16 +336,18 @@ export class CatalogComponent implements OnInit,OnChanges {
       const tableOrders: TableOrder[] = await this.getAllTableOrders();
 
       tableOrders.forEach(tableOrder => {
-        tableOrder.lines.forEach(orderingLine => {
-          const item: OrderingItem = orderingLine.item;
-          const howMany: number = orderingLine.howMany;
+        if(tableOrder.lines!=null){
+          tableOrder.lines.forEach(orderingLine => {
+            const item: OrderingItem = orderingLine.item;
+            const howMany: number = orderingLine.howMany;
 
-          if (hashMap.has(item)) {
-            hashMap.set(item, hashMap.get(item)! + howMany);
-          } else {
-            hashMap.set(item, howMany);
-          }
-        });
+            if (hashMap.has(item)) {
+              hashMap.set(item, hashMap.get(item)! + howMany);
+            } else {
+              hashMap.set(item, howMany);
+            }
+          });
+        }
       });
 
       // Convert the Map to an array of key-value pairs and sort it by value in descending order
