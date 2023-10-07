@@ -5,13 +5,13 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-public class PreparationDTO {
+public class Preparation {
 
     private UUID id;
 
     private LocalDateTime shouldBeReadyAt;
 
-    private List<CookedItemDTO> preparedItems;
+    private List<CookedItem> preparedItems;
 
     public UUID getId() {
         return id;
@@ -29,17 +29,17 @@ public class PreparationDTO {
         this.shouldBeReadyAt = shouldBeReadyAt;
     }
 
-    public List<CookedItemDTO> getPreparedItems() {
+    public List<CookedItem> getPreparedItems() {
         return preparedItems;
     }
 
-    public void setPreparedItems(List<CookedItemDTO> preparedItems) {
+    public void setPreparedItems(List<CookedItem> preparedItems) {
         this.preparedItems = preparedItems;
     }
 
     @Override
     public String toString() {
-        return "PreparationDTO{" +
+        return "Preparation{" +
                 "id=" + id +
                 ", shouldBeReadyAt=" + shouldBeReadyAt +
                 ", preparedItems=" + preparedItems +
@@ -49,8 +49,8 @@ public class PreparationDTO {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof PreparationDTO)) return false;
-        PreparationDTO that = (PreparationDTO) o;
+        if (!(o instanceof Preparation)) return false;
+        Preparation that = (Preparation) o;
         return id.equals(that.id) && shouldBeReadyAt.equals(that.shouldBeReadyAt) && preparedItems.equals(that.preparedItems);
     }
 

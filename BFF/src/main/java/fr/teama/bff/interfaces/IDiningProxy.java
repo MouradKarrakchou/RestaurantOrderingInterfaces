@@ -8,17 +8,17 @@ import java.util.List;
 import java.util.UUID;
 
 public interface IDiningProxy {
-    List<TableOrderDTO> getAllTableOrders() throws DiningServiceUnavaibleException;
+    List<TableOrder> getAllTableOrders() throws DiningServiceUnavaibleException;
 
     List<TableDTO> getAllTable() throws DiningServiceUnavaibleException;
 
-    TableOrderDTO openTable(Long tableId) throws DiningServiceUnavaibleException;
+    TableOrder openTable(Long tableId) throws DiningServiceUnavaibleException;
 
-    TableOrderDTO tableOrder(UUID tableOrderId) throws DiningServiceUnavaibleException;
+    TableOrder tableOrder(UUID tableOrderId) throws DiningServiceUnavaibleException;
 
-    TableOrderDTO addToTableOrder(UUID tableOrderId, ItemDTO itemDTO) throws DiningServiceUnavaibleException;
+    TableOrder addToTableOrder(UUID tableOrderId, ItemDTO itemDTO) throws DiningServiceUnavaibleException;
 
-    List<PreparationDTO> prepare(@PathVariable("tableOrderId") UUID tableOrderId) throws DiningServiceUnavaibleException;
+    List<Preparation> prepare(@PathVariable("tableOrderId") UUID tableOrderId) throws DiningServiceUnavaibleException;
 
-    TableOrderDTO bill(@PathVariable("tableOrderId") UUID tableOrderId) throws DiningServiceUnavaibleException;
+    TableOrder bill(@PathVariable("tableOrderId") UUID tableOrderId) throws DiningServiceUnavaibleException;
 }

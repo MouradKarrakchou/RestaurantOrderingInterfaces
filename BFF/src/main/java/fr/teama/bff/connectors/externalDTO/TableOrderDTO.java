@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-public class TableOrderDTO {
+public class TableOrder {
 
         private UUID id;
 
@@ -16,9 +16,9 @@ public class TableOrderDTO {
 
         private LocalDateTime opened;
 
-        private List<OrderingLineDTO> lines;
+        private List<OrderingLine> lines;
 
-        private List<PreparationDTO> preparationDTOS;
+        private List<Preparation> preparationDTOS;
 
         private LocalDateTime billed;
 
@@ -54,21 +54,21 @@ public class TableOrderDTO {
                 this.opened = opened.withNano(0); // MongoDB is precise at millisecond, not nano (avoid equality problem)
         }
 
-        public List<OrderingLineDTO> getLines() {
+        public List<OrderingLine> getLines() {
                 if (this.lines==null)
                         this.lines = new ArrayList<>();
                 return lines;
         }
 
-        public void setLines(List<OrderingLineDTO> lines) {
+        public void setLines(List<OrderingLine> lines) {
                 this.lines = lines;
         }
 
-        public List<PreparationDTO> getPreparations() {
+        public List<Preparation> getPreparations() {
                 return preparationDTOS;
         }
 
-        public void setPreparations(List<PreparationDTO> preparationDTOS) {
+        public void setPreparations(List<Preparation> preparationDTOS) {
                 this.preparationDTOS = preparationDTOS;
         }
 
@@ -84,8 +84,8 @@ public class TableOrderDTO {
         @Override
         public boolean equals(Object o) {
                 if (this == o) return true;
-                if (!(o instanceof TableOrderDTO)) return false;
-                TableOrderDTO that = (TableOrderDTO) o;
+                if (!(o instanceof TableOrder)) return false;
+                TableOrder that = (TableOrder) o;
                 return customersCount == that.customersCount && id.equals(that.id) && tableNumber.equals(that.tableNumber) && opened.equals(that.opened) && Objects.equals(lines, that.lines) && Objects.equals(preparationDTOS, that.preparationDTOS) && Objects.equals(billed, that.billed);
         }
 

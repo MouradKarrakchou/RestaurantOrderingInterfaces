@@ -2,19 +2,19 @@ package fr.teama.bff.connectors.externalDTO;
 
 import java.util.Objects;
 
-public class OrderingLineDTO {
+public class OrderingLine {
 
-    private OrderingItemDTO item;
+    private OrderingItem item;
 
     private int howMany;
 
     private boolean sentForPreparation;
 
-    public OrderingItemDTO getItem() {
+    public OrderingItem getItem() {
         return item;
     }
 
-    public void setItem(OrderingItemDTO item) {
+    public void setItem(OrderingItem item) {
         this.item = item;
     }
 
@@ -37,8 +37,8 @@ public class OrderingLineDTO {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof OrderingLineDTO)) return false;
-        OrderingLineDTO that = (OrderingLineDTO) o;
+        if (!(o instanceof OrderingLine)) return false;
+        OrderingLine that = (OrderingLine) o;
         return howMany == that.howMany && sentForPreparation == that.sentForPreparation && Objects.equals(item, that.item);
     }
 

@@ -3,7 +3,7 @@ package fr.teama.bff.connectors.externalDTO;
 import java.util.Objects;
 import java.util.UUID;
 
-public class CookedItemDTO {
+public class CookedItem {
 
     private UUID id;
 
@@ -28,8 +28,8 @@ public class CookedItemDTO {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof CookedItemDTO)) return false;
-        CookedItemDTO that = (CookedItemDTO) o;
+        if (!(o instanceof CookedItem)) return false;
+        CookedItem that = (CookedItem) o;
         return shortName.equals(that.shortName);
     }
 

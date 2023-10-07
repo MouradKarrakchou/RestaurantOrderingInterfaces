@@ -38,20 +38,20 @@ public class OrderComponent implements IOrderComponent {
         }
 
         TableDTO table = availableTables.get(0);
-        TableOrderDTO tableOrderDTO = diningProxy.openTable(table.getNumber());
+        TableOrder tableOrderDTO = diningProxy.openTable(table.getNumber());
         for (KioskItemDTO kioskItemDTO : kioskOrderDTO.getItems()) {
             diningProxy.addToTableOrder(tableOrderDTO.getId(), new ItemDTO(kioskItemDTO));
         }
-        List<PreparationDTO> preparationDTOList = diningProxy.prepare(tableOrderDTO.getId());
+        List<Preparation> preparationDTOList = diningProxy.prepare(tableOrderDTO.getId());
         diningProxy.bill(tableOrderDTO.getId());
         LocalDateTime shouldBeReadyAt = getShouldBeReadyAt(preparationDTOList);
         return new TableOrderInformation(tableOrderDTO.getId(), shouldBeReadyAt);
     }
 
-    private LocalDateTime getShouldBeReadyAt(List<PreparationDTO> preparationDTOList) {
+    private LocalDateTime getShouldBeReadyAt(List<Preparation> preparationDTOList) {
         LoggerHelper.logInfo("Calculating the date when the order should be ready for :" + preparationDTOList.toString());
         LocalDateTime shouldBeReadyAt = LocalDateTime.now();
-        for (PreparationDTO preparationDTO : preparationDTOList) {
+        for (Preparation preparationDTO : preparationDTOList) {
             if (shouldBeReadyAt.isBefore(preparationDTO.getShouldBeReadyAt())) {
                 shouldBeReadyAt = preparationDTO.getShouldBeReadyAt();
             }
