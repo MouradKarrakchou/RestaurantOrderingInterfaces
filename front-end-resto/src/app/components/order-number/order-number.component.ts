@@ -250,4 +250,8 @@ export class OrderNumberComponent implements OnInit {
     }
   }
 
+  quit(): void {
+    this.router.navigate(['/idle'])
+  }
+
 }
