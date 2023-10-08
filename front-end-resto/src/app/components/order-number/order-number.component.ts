@@ -11,7 +11,6 @@ import {Item} from "../../models/Item";
 import {Preparation} from "../../models/Preparation";
 import {TableOrderInformation} from "../../models/TableOrderInformation";
 import {OrderInformation} from "../../models/OrderInformation";
-import {OrderIdService} from "../../services/order-id.service";
 
 @Component({
   selector: 'app-order-number',
@@ -31,8 +30,7 @@ export class OrderNumberComponent implements OnInit {
   constructor(private router: Router,
               private basketService: BasketService,
               private http: HttpClient,
-              private switchService: SwitchService,
-              private orderIdService: OrderIdService) {
+              private switchService: SwitchService) {
   }
 
   async ngOnInit(): Promise<void> {
@@ -53,7 +51,7 @@ export class OrderNumberComponent implements OnInit {
       } else {
         this.orderInformation = await this.sendOrderToBackend();
         console.log("Order informations: ", this.orderInformation);
-        this.orderNumber = this.orderInformation.orderId.toString();
+        this.orderNumber = this.orderInformation.tableOrderId
         this.shouldBeReadyAt = this.orderInformation.shouldBeReadyAt;
         this.basketService.emptyBasket();
       }
@@ -88,7 +86,6 @@ export class OrderNumberComponent implements OnInit {
 
   async sendOrderToBackend(): Promise<OrderInformation> {
     try {
-
       const availableTables: Table[] = await this.availableTables();
 
       console.log("Available tables: ", availableTables);
@@ -122,13 +119,7 @@ export class OrderNumberComponent implements OnInit {
 
       console.log("Order processed with table order id " + tableOrderInformation.tableOrderId);
 
-      const orderId: number = this.orderIdService.getNextOrderId();
-
-      this.orderIdService.linkOrderIdWithTableOrderId(orderId, tableOrderInformation.tableOrderId);
-
-      const orderInformation: OrderInformation = new OrderInformation(tableOrderInformation.tableOrderId, orderId, tableOrderInformation.shouldBeReadyAt);
-
-      this.orderIdService.incrementOrderId();
+      const orderInformation: OrderInformation = new OrderInformation(tableOrderInformation.tableOrderId, tableOrderInformation.shouldBeReadyAt);
 
       return orderInformation
 
