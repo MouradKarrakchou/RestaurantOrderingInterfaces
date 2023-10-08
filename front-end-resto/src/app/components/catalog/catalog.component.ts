@@ -28,6 +28,7 @@ export class CatalogComponent implements OnInit,OnChanges {
   trendingItems: MenuItem[]=[];
   trendingCategoryItem: MenuItem[]=[];
   trendingCategoryItemPrice: number = 0;
+  entryList: [OrderingItem, number][] = [];
 
 
   selectedSortOption: string | undefined;
@@ -79,6 +80,7 @@ export class CatalogComponent implements OnInit,OnChanges {
           console.error("Une erreur s'est produite lors de la récupération des menu items :", error);
         });
     } else{
+      this.entryList = await this.retrieveAllItemRanking();
       this.trendingItems = await this.retrieveMostSoldItems(3);
       console.log("TRENDING ITEMS")
       console.log(this.trendingItems);
@@ -229,18 +231,6 @@ export class CatalogComponent implements OnInit,OnChanges {
     }
   }
 
-  findAllMenuItems(): Promise<MenuItem[]> {
-    const apiUrl = `${this.menuBaseUrlHostAndPort}/menus`;
-    console.log('Ask the menu service for all menu items');
-
-    return this.http.get<MenuItem[]>(apiUrl)
-      .toPromise()
-      .then(response => response as MenuItem[])
-      .catch(error => {
-        console.error(error);
-        throw new Error('The menu service is not available');
-      });
-  }
   getAllTableOrders(): Promise<TableOrder[]> {
     const apiUrl = `${this.diningBaseUrlHostAndPort}/tableOrders`;
     console.log('Requesting Dining service to get all table orders.');
@@ -256,16 +246,14 @@ export class CatalogComponent implements OnInit,OnChanges {
 
   async retrieveMostSoldItems(numberOfEntries: number): Promise<MenuItem[]> {
     try {
-      const entryList: [OrderingItem, number][] = await this.retrieveAllItemRanking();
       console.log('Retrieving the most sold items');
-      console.log(entryList)
 
       const mostSoldItems: MenuItem[] = [];
       for (let i = 0; i < numberOfEntries; i++) {
-        if (i>= entryList.length) {
+        if (i >= this.entryList.length) {
           break;
         }
-        const menuItem: MenuItem = await this.findByID(entryList[i][0].id);
+        const menuItem: MenuItem = await this.findByID(this.entryList[i][0].id);
         mostSoldItems.push(menuItem);
       }
       return mostSoldItems;
@@ -277,7 +265,7 @@ export class CatalogComponent implements OnInit,OnChanges {
 
   async getMenuHashMap(): Promise<Map<string, MenuItem>> {
     try {
-      const menuItems: MenuItem[] = await this.findAllMenuItems();
+      const menuItems: MenuItem[] = this.menuItems;
       console.log('Retrieving menu items');
 
       const hashMap: Map<string, MenuItem> = new Map();
@@ -293,14 +281,13 @@ export class CatalogComponent implements OnInit,OnChanges {
 
   async retrieveMostSoldByCategories(): Promise<Map<Category, MenuItem>> {
     try {
-      const entryList: [OrderingItem, number][] = await this.retrieveAllItemRanking();
       console.log('Calculating the most sold item by category');
 
       const hashMapMenuItems: Map<string, MenuItem> = await this.getMenuHashMap();
       const hashMapCategories: Map<Category, ItemQuantity> = new Map();
 
       // Finding the most sold item for each category
-      for (const entry of entryList) {
+      for (const entry of this.entryList) {
         let menuItem = hashMapMenuItems.get(entry[0].id);
         if (menuItem) {
         const category: Category = menuItem.category;

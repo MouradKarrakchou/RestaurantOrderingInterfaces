@@ -42,19 +42,21 @@ export class OrderNumberComponent implements OnInit {
       this.time = new Date();
     }, 1000);
 
-    if (this.switchService.isBFF()) {
-      this.sendOrderToBFF().subscribe(orderInformation => {
-        this.orderNumber = orderInformation.orderId;
-        this.shouldBeReadyAt = new Date(orderInformation.shouldBeReadyAt);
-        console.log(orderInformation);
+    if (this.basketService.getBasketSize() !== 0) {
+      if (this.switchService.isBFF()) {
+        this.sendOrderToBFF().subscribe(orderInformation => {
+          this.orderNumber = orderInformation.orderId;
+          this.shouldBeReadyAt = new Date(orderInformation.shouldBeReadyAt);
+          console.log(orderInformation);
+          this.basketService.emptyBasket();
+        });
+      } else {
+        this.orderInformation = await this.sendOrderToBackend();
+        console.log("Order informations: ", this.orderInformation);
+        this.orderNumber = this.orderInformation.orderId.toString();
+        this.shouldBeReadyAt = this.orderInformation.shouldBeReadyAt;
         this.basketService.emptyBasket();
-      });
-    } else {
-      this.orderInformation = await this.sendOrderToBackend();
-      console.log("Order informations: ", this.orderInformation);
-      this.orderNumber = this.orderInformation.orderId.toString();
-      this.shouldBeReadyAt = this.orderInformation.shouldBeReadyAt;
-      this.basketService.emptyBasket();
+      }
     }
 
     setTimeout(() => {
@@ -88,6 +90,8 @@ export class OrderNumberComponent implements OnInit {
     try {
 
       const availableTables: Table[] = await this.availableTables();
+
+      console.log("Available tables: ", availableTables);
 
       if (availableTables.length === 0) {
         throw new Error('No available table');
