@@ -7,13 +7,9 @@
     <p>Order number: <br>{{ orderNumber }}</p>
   </div>
 
-  <div class="order-number"></div>
-
   <div class="estimated-time-text">
-    Estimated time: {{ shouldBeReadyAt | date:"shortTime" }}
+    Should be ready at <br>{{ shouldBeReadyAt | date:"shortTime" }}
   </div>
-
-  <div class="estimated-time"></div>
 
   <div class="footer">
     <img class="logoIntegrated"

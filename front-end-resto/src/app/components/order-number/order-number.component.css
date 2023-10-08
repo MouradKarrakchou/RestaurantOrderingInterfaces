@@ -24,16 +24,9 @@
   text-align: center;
 }
 
-.order-number {
-
-}
-
 .estimated-time-text {
   font-size: 3vh;
-}
-
-.estimated-time {
-
+  text-align: center;
 }
 
 .footer {
