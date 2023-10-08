@@ -54,7 +54,7 @@ public class OrderController {
             LoggerHelper.logError("No table order id found for order id " + orderId);
             return ResponseEntity.notFound().build();
         }
-        LoggerHelper.logInfo("Table order id found for order id " + orderId + " : " + tableOrderId.toString());
+        LoggerHelper.logInfo("Table order id found for order id " + orderId + " : " + tableOrderId);
         return ResponseEntity.ok(tableOrderId);
     }
 
