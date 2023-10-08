@@ -54,8 +54,26 @@ public class OrderController {
             LoggerHelper.logError("No table order id found for order id " + orderId);
             return ResponseEntity.notFound().build();
         }
-        LoggerHelper.logInfo("Table order id found for order id " + orderId + " : " + tableOrderId.toString());
+        LoggerHelper.logInfo("Table order id found for order id " + orderId + " : " + tableOrderId);
         return ResponseEntity.ok(tableOrderId);
+    }
+
+    @PostMapping("/order-id")
+    public ResponseEntity<Long> getOrderIdFromTableOrderId(UUID tableOrderId) {
+        LoggerHelper.logInfo("Getting order id for table order id " + tableOrderId);
+        Long orderId = 0L;
+        for (Map.Entry<Long, UUID> entry : orderIdLinkWithTableOrderId.entrySet()) {
+            if (entry.getValue().equals(tableOrderId)) {
+                orderId = entry.getKey();
+                break;
+            }
+        }
+        if (orderId == 0L) {
+            LoggerHelper.logError("No order id found for table order id " + tableOrderId);
+            return ResponseEntity.notFound().build();
+        }
+        LoggerHelper.logInfo("Order id found for table order id " + tableOrderId + " : " + orderId);
+        return ResponseEntity.ok(orderId);
     }
 
     @PostMapping("/reset-order-id")
