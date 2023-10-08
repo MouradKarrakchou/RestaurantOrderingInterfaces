@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 export class IdleComponent implements OnInit {
   constructor(private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   redirectToHome() {
     this.router.navigate(['/home']);

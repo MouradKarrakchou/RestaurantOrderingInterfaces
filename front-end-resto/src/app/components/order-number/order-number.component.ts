@@ -22,6 +22,7 @@ export class OrderNumberComponent implements OnInit {
   time: Date | undefined;
   orderNumber: string | undefined;
   shouldBeReadyAt: Date | undefined;
+  idleTimeout: NodeJS.Timeout | undefined;
 
   orderInformation: OrderInformation | undefined;
 
@@ -57,7 +58,7 @@ export class OrderNumberComponent implements OnInit {
       }
     }
 
-    setTimeout(() => {
+    this.idleTimeout = setTimeout(() => {
       this.router.navigate(['/idle'])
     }, 20000);
   }
@@ -246,7 +247,7 @@ export class OrderNumberComponent implements OnInit {
   }
 
   quit(): void {
-    clearTimeout();
+    clearTimeout(this.idleTimeout);
     this.router.navigate(['/idle'])
   }
 
