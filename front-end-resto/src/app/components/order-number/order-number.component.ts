@@ -59,7 +59,7 @@ export class OrderNumberComponent implements OnInit {
 
     setTimeout(() => {
       this.router.navigate(['/idle'])
-    }, 20000)
+    }, 20000);
   }
 
   sendOrderToBFF(): Observable<any> {
@@ -251,6 +251,7 @@ export class OrderNumberComponent implements OnInit {
   }
 
   quit(): void {
+    clearTimeout();
     this.router.navigate(['/idle'])
   }
 

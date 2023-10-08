@@ -29,6 +29,19 @@
   text-align: center;
 }
 
+.quit-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4vw;
+  width: 40%;
+  height: 5%;
+  border-radius: 25px;
+  color: white;
+  border: #C5E1A5FF solid 1px;
+  background-color: #8BC34AFF;
+}
+
 .footer {
   height: 20%;
   background-color: #709370;
