@@ -62,9 +62,11 @@ mat-icon {
 }
 
 .confirm-button {
-  color: white;
   font-size: 5vw;
-  border: #C5E1A5FF solid 5px;
+  border-radius: 25px;
+  width: 50vw;
+  height: 10vw;
+  color: white;
+  border: #C5E1A5FF solid 1px;
   background-color: #8BC34AFF;
-  vertical-align: center;
 }
