@@ -38,7 +38,7 @@
 </div>
 
 <div style="padding-inline: 5%" *ngIf="inputCategory == 'TREND'">
-  <p style="font-size: 5vw; text-align: center; margin-bottom: 2vw" class="mt-5">Most popular items</p>
+  <p style="font-size: 5vh; text-align: center; margin-bottom: 2vh" class="mt-5">Most popular items</p>
   <hr>
 </div>
 
@@ -54,7 +54,7 @@
       </button>
       <img src="assets/podium-silver.png" alt="Podium silver" class="podium-img">
       <img [src]="trendingItems[1]?.image?.toString()" alt="{{ trendingItems[1]?.shortName }}" class="round silver">
-      <div class="podium-text" style="top: -14vw;">
+      <div class="podium-text" style="top: -14vh;">
         <p class="silverText">{{ trendingItems[1]?.fullName }}</p>
       </div>
     </div>
@@ -64,7 +64,7 @@
       </button>
       <img src="assets/podium-gold.png" alt="Podium or" class="podium-img">
       <img [src]="trendingItems[0].image.toString()" alt="{{ trendingItems[0].shortName }}" class="round gold">
-      <div class="podium-text" style="top: -17vw;">
+      <div class="podium-text" style="top: -17vh;">
         <p class="goldText">{{ trendingItems[0].fullName }}</p>
       </div>
     </div>
@@ -74,7 +74,7 @@
       </button>
       <img src="assets/podium-bronze.png" alt="Podium bronze" class="podium-img">
       <img [src]="trendingItems[2]?.image?.toString()" alt="{{ trendingItems[2]?.shortName }}" class="round bronze">
-      <div class="podium-text" style="top: -13vw;">
+      <div class="podium-text" style="top: -13vh;">
         <p class="bronzeText">{{ trendingItems[2]?.fullName }}</p>
       </div>
     </div>
@@ -82,7 +82,7 @@
 </div>
 
 <div style="padding-inline: 5%" *ngIf="inputCategory == 'TREND'">
-  <p style="font-size: 5vw; text-align: center; margin-top: 20vw; margin-bottom: 2vw">Most popular menu</p>
+  <p style="font-size: 5vh; text-align: center; margin-top: 20vh; margin-bottom: 2vh">Most popular menu</p>
   <hr>
 </div>
 
@@ -100,7 +100,7 @@
         <p class="m-0">{{ item.price }}$</p>
       </div>
       <div class="medal">
-        <img style="height: 8vw; width: auto" src="../../../assets/1st-medal.png" alt="Medal">
+        <img style="height: 8vh; width: auto" src="../../../assets/1st-medal.png" alt="Medal">
       </div>
       <div class="image-container w-100">
         <img [src]="item.image.toString()" alt="{{ item.shortName }}" class="item-image">

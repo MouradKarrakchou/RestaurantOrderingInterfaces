@@ -33,13 +33,13 @@ hr {
 }
 
 .confirm-title {
-  font-size: 8vw;
+  font-size: 8vh;
   width: 95%;
   text-align: center;
 }
 
 .confirm-total {
-  font-size: 5vw;
+  font-size: 5vh;
   width: 95%;
   text-align: center;
 }
@@ -47,7 +47,7 @@ hr {
 .confirm-back-button {
   position: absolute;
   top: .2vh;
-  left: 2.5vw;
+  left: 2.5vh;
 }
 
 .button-container {
@@ -62,10 +62,10 @@ mat-icon {
 }
 
 .confirm-button {
-  font-size: 5vw;
+  font-size: 5vh;
   border-radius: 25px;
-  width: 50vw;
-  height: 10vw;
+  width: 50vh;
+  height: 10vh;
   color: white;
   border: #C5E1A5FF solid 1px;
   background-color: #8BC34AFF;

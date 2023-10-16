@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class SwitchService {
 
-  private callToBff: boolean = false;
+  private callToBff: boolean = true;
   constructor() { }
 
   public isBFF(): boolean {

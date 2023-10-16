@@ -32,8 +32,8 @@ export class HeaderComponent implements OnInit {
     return this.swicthService.isBFF();
   }
 
-  reloadPage() {
-    this.router.navigate(['/idle'])
+  viewFullTable() {
+    //TODO
   }
 
   protected readonly print = print;

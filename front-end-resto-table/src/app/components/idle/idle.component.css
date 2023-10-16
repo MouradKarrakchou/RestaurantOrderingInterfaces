@@ -31,6 +31,7 @@
   background-color: #709370;
   width: 100%;
   display: flex;
+  justify-content: center;
 }
 
 #idle-page #idle-title {
@@ -46,7 +47,9 @@
 }
 
 .logoIntegrated{
+  position: absolute;
   height: 15vh;
-  margin: auto auto auto 2vh;
+  bottom: 2vh;
+  left: 2vh;
 }
 

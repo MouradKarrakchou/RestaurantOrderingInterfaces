@@ -18,7 +18,7 @@
 .basket {
   position: relative;
   bottom: -3px;
-  padding: 2vw;
+  padding: 2vh;
   background: #6b856b;
   width: 100%;
   overflow-y: auto;

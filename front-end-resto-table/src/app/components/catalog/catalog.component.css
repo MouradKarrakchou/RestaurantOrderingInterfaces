@@ -1,15 +1,15 @@
   .item-box {
-      height: 25vw;
-      width: 23vw;
+      height: 25vh;
+      width: 23vh;
       text-align: center;
       border-radius: 5%;
       position: relative;
       background-color: rgb(232, 232, 232);
       cursor: pointer;
-      font-size: 1.6vw;
+      font-size: 1.6vh;
   }
   .itemWrapper{
-    padding-bottom: 25vw;
+    padding-bottom: 25vh;
   }
 
   .item-box:hover {
@@ -55,9 +55,9 @@
   }
 
   .sort-button {
-    width: 23vw;
+    width: 23vh;
     border: 3px solid #8BC34AFF;
-    font-size: 1.5vw;
+    font-size: 1.5vh;
   }
 
   .selected-sort {
@@ -73,8 +73,8 @@
   }
 
   .step {
-    height: 40vw;
-    width: 33vw;
+    height: 40vh;
+    width: 33vh;
     text-align: center;
   }
 
@@ -85,23 +85,23 @@
   }
 
   .gold {
-    height: 18vw;
-    max-width: 18vw;
-    top: -31vw;
+    height: 18vh;
+    max-width: 18vh;
+    top: -31vh;
     border: 5px solid #FFD600FF;
   }
 
   .silver {
-    height: 15vw;
-    max-width: 15vw;
-    top: -25.5vw;
+    height: 15vh;
+    max-width: 15vh;
+    top: -25.5vh;
     border: 5px solid #BDBDBDFF;
   }
 
   .bronze {
-    height: 14vw;
-    max-width: 14vw;
-    top: -23.5vw;
+    height: 14vh;
+    max-width: 14vh;
+    top: -23.5vh;
     border: 5px solid #CD7F32FF;
   }
 
@@ -109,9 +109,9 @@
 
   .podium-text {
     position: relative;
-    top: -14vw;
-    font-size: 2.5vw;
-    line-height: 2.5vw;
+    top: -14vh;
+    font-size: 2.5vh;
+    line-height: 2.5vh;
   }
 
   hr {
@@ -122,9 +122,9 @@
   }
 
   .button-add {
-    font-size: 2vw;
+    font-size: 2vh;
     border-radius: 25px;
-    height: 5vw;
+    height: 5vh;
     border: #8BC34AFF solid 3px;
     background-color: #C5E1A5FF;
   }
@@ -132,7 +132,7 @@
   .best-text {
     line-height:1;
     text-align: center;
-    font-size: 2.5vw;
+    font-size: 2.5vh;
     background: linear-gradient(90deg, rgba(186,148,62,1) 0%, rgba(236,172,32,1) 20%, rgba(186,148,62,1) 39%, rgba(249,244,180,1) 50%, rgba(186,148,62,1) 60%, rgba(236,172,32,1) 80%, rgba(186,148,62,1) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -172,12 +172,12 @@
 
   .medal {
     position: absolute;
-    top: -2vw;
-    right: -1vw;
+    top: -2vh;
+    right: -1vh;
     z-index: 100;
   }
 
   .no-item {
     text-align: center;
-    font-size: 3vw;
+    font-size: 3vh;
   }
