@@ -113,6 +113,9 @@
             <p class="m-0">{{ item.fullName }}</p>
           </div>
         </div>
+        <div class="best-text mb-3">
+          Best {{ item.category.toLocaleLowerCase() }}
+        </div>
       </div>
     </div>
     <div *ngIf="inputCategory == 'TREND' && trendingCategoryItem.length != 0" class="d-flex justify-content-center">
