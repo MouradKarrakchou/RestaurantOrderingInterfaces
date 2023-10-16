@@ -50,7 +50,7 @@ hr {
 
 .right-infos {
   align-items: center;
-  width: 26%;
+  width: 15%;
   display: flex;
   justify-content: space-between;
 }
@@ -62,7 +62,7 @@ hr {
 }
 
 .left-infos {
-  max-width: 74%;
+  max-width: 85%;
   flex-wrap: nowrap;
   display: flex;
 }

@@ -51,17 +51,35 @@
 
   .sort-buttons-container {
     display: flex;
-    justify-content: space-evenly;
   }
 
   .sort-button {
-    width: 23vh;
+    flex-grow: 1;
     border: 3px solid #8BC34AFF;
-    font-size: 1.5vh;
+    font-size: 2vh;
+    margin-inline: 2vh;
   }
 
   .selected-sort {
     background-color: #C5E1A5FF;
+  }
+
+  .trend-container {
+    height: 100%;
+    width: 100%;
+    background-color: blue;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .podium-container {
+    background-color: green;
+    width: 50%;
+  }
+
+  .popular-container {
+    background-color: red;
+    width: 50%;
   }
 
   .podium {
@@ -104,8 +122,6 @@
     top: -23.5vh;
     border: 5px solid #CD7F32FF;
   }
-
-
 
   .podium-text {
     position: relative;

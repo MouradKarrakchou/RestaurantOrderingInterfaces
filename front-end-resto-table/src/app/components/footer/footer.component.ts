@@ -35,8 +35,8 @@ export class FooterComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogContentComponent, {
-      width: '600px',
-      height: '1000px',
+      width: '40vh',
+      height: '35vh',
       data: { title: 'Abort order',
               question: 'Are you sure?',
               message: 'You will lose your basket'

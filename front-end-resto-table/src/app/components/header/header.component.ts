@@ -1,5 +1,4 @@
 import {Component, OnInit,EventEmitter, Output} from '@angular/core';
-import {SwitchService} from "../../services/switch.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -13,8 +12,7 @@ export class HeaderComponent implements OnInit {
 
   @Output() categoryEvent: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor(private swicthService: SwitchService,
-              private router: Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -22,14 +20,6 @@ export class HeaderComponent implements OnInit {
   emitCategoryEvent(category: string) {
     this.category = category;
     this.categoryEvent.emit(category);
-  }
-
-  switchBFF() {
-    this.swicthService.switchBFF();
-  }
-
-  getBFF(): boolean {
-    return this.swicthService.isBFF();
   }
 
   viewFullTable() {
