@@ -7,7 +7,7 @@
 .confirm-body {
   flex-grow: 1;
   padding-inline: 2.5%;
-  max-height: 80%;
+  max-height: 65%;
   overflow-y: auto;
 }
 
@@ -15,14 +15,14 @@
   display: flex;
   justify-content: center;
   align-items: end;
-  min-height: 7%;
+  min-height: 12%;
 }
 
 .confirm-footer {
   display: flex;
   justify-content: center;
   align-items: start;
-  min-height: 7%;
+  min-height: 12%;
 }
 
 hr {
@@ -46,7 +46,7 @@ hr {
 
 .confirm-back-button {
   position: absolute;
-  top: .2vh;
+  top: 2.2vh;
   left: 2.5vh;
 }
 
@@ -57,7 +57,7 @@ hr {
 
 mat-icon {
   font-size: 5vh;
-  transform: translate3d(-2vh, -1.8vh, 0);
+  transform: translate3d(-1.5vh, -1.4vh, 0);
   color: white;
 }
 
