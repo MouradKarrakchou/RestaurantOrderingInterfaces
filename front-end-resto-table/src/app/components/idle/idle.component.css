@@ -1,0 +1,52 @@
+.body{
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+
+#idle-page {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  color: white;
+  text-align: center;
+}
+
+.main{
+  background-image: url("../../../assets/pizza.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80%;
+  width: 100%;
+}
+
+.footer{
+  height: 20%;
+  background-color: #709370;
+  width: 100%;
+  display: flex;
+}
+
+#idle-page #idle-title {
+  font-size: 12vh;
+  line-height: normal;
+  margin: 0;
+  white-space: normal;
+}
+
+.footer-text{
+  font-size: 3.5vh;
+  margin:auto;
+}
+
+.logoIntegrated{
+  height: 15vh;
+  margin: auto auto auto 2vh;
+}
+

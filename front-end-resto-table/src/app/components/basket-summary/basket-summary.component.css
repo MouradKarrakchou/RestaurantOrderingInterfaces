@@ -1,0 +1,101 @@
+.category-title {
+  display: flex;
+  align-items: center;
+}
+
+.category {
+  margin-bottom: 6vw;
+}
+
+.category-icon {
+  height: 7vw;
+  width: 7vw;
+  margin-right: .5vw;
+}
+
+.category-icon mat-icon {
+  font-size: 7vw;
+}
+
+.category-text {
+  margin-top: 1.5vw;
+  font-size: 5vw;
+}
+
+hr {
+  border: none;
+  height: 5px;
+  background-color: #8BC34AFF;
+  opacity:1;
+}
+
+.category-up {
+  width: fit-content;
+}
+
+.no-item {
+  text-align: center;
+  font-size: 3vw;
+  line-height: 1;
+}
+
+.item-list {
+  font-size: 2.5vw;
+  line-height: 2.5vw;
+  align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.right-infos {
+  align-items: center;
+  width: 26%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.right-infos-no-edit {
+  align-items: center;
+  display: flex;
+  justify-content: end;
+}
+
+.left-infos {
+  max-width: 74%;
+  flex-wrap: nowrap;
+  display: flex;
+}
+
+.left-infos-no-edit {
+  flex-wrap: nowrap;
+  display: flex;
+}
+
+.mat-mini-fab {
+  color: white;
+  font-size: 2vw;
+}
+
+.edit-buttons {
+  display: flex;
+}
+
+.edit-buttons button {
+  height: 4vw;
+  width: 4vw;
+}
+
+.edit-buttons mat-icon {
+  font-size: 3vw;
+  transform: translate3d(-.42vw, -.4vw, 0);
+}
+
+.prefix {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.white-font {
+  color: white;
+}

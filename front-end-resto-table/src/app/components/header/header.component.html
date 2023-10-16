@@ -1,0 +1,51 @@
+<div class="background-div">
+
+  <div class="admin-panel px-1">
+    <mat-slide-toggle (change)="switchBFF()" [ngModel]="getBFF()"></mat-slide-toggle>
+    <p style="margin: .8vw 0vw 0vw 1vw">BFF</p>
+    <button mat-icon-button (click)="reloadPage()">
+      <mat-icon style="font-size: 3vw">refresh</mat-icon>
+    </button>
+  </div>
+
+  <div class="icon-bar">
+    <div [class.logoIsSelected]="category==='ALL'" class="menu-type-div" (click)="emitCategoryEvent('ALL')">
+      <img *ngIf="category!=='ALL'" class="logoIntegrated"
+           src="../../../assets/resto-logo.png"
+           alt="RESTo app logo"/>
+      <img *ngIf="category==='ALL'" class="logoIntegrated"
+           src="../../../assets/resto-logo-vert.png"
+           alt="RESTo app logo"/>
+    </div>
+    <div [class.logoIsSelected]="category==='TREND'" class="menu-type-div" (click)="emitCategoryEvent('TREND')">
+      <i class="material-icons menuIcon">local_fire_department</i>
+      <div class="title">
+        Trends
+      </div>
+    </div>
+    <div [class.logoIsSelected]="category==='STARTER'" class="menu-type-div" (click)="emitCategoryEvent('STARTER')">
+      <i class="material-icons menuIcon">local_restaurant</i>
+      <div class="title">
+        Starters
+      </div>
+    </div>
+    <div [class.logoIsSelected]="category==='MAIN'" class="menu-type-div" (click)="emitCategoryEvent('MAIN')">
+      <i class="material-icons menuIcon">set_meal</i>
+      <div class="title">
+        Mains
+      </div>
+    </div>
+    <div [class.logoIsSelected]="category==='DESSERT'" class="menu-type-div" (click)="emitCategoryEvent('DESSERT')">
+      <i class="material-icons menuIcon">icecream</i>
+      <div class="title">
+        Desserts
+      </div>
+    </div>
+    <div [class.logoIsSelected]="category==='BEVERAGE'" class="menu-type-div" (click)="emitCategoryEvent('BEVERAGE')">
+      <i class="material-icons menuIcon">emoji_food_beverage</i>
+      <div class="title">
+        Beverages
+      </div>
+    </div>
+  </div>
+</div>

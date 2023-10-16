@@ -1,0 +1,183 @@
+  .item-box {
+      height: 25vw;
+      width: 23vw;
+      text-align: center;
+      border-radius: 5%;
+      position: relative;
+      background-color: rgb(232, 232, 232);
+      cursor: pointer;
+      font-size: 1.6vw;
+  }
+  .itemWrapper{
+    padding-bottom: 25vw;
+  }
+
+  .item-box:hover {
+    background-color: rgb(204, 204, 204);
+  }
+
+  .item-box:active {
+    background-color: #C5E1A5FF;
+    box-shadow: 0 5px #8BC34AFF;
+    transform: translateY(4px);
+  }
+
+.image-container {
+    height: 70%;
+    overflow: hidden;
+    border-radius: 5%;
+  }
+
+  .item-image {
+    max-height: 100%;
+    border-radius: 5%;
+  }
+
+  .price {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #C5E1A5FF;
+    border: 3px solid #8BC34AFF;
+    border-radius: 23% 0 50% 0;
+  }
+
+  .item-description {
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .sort-buttons-container {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .sort-button {
+    width: 23vw;
+    border: 3px solid #8BC34AFF;
+    font-size: 1.5vw;
+  }
+
+  .selected-sort {
+    background-color: #C5E1A5FF;
+  }
+
+  .podium {
+    display: flex;
+  }
+
+  .podium-img {
+    height: 90%;
+  }
+
+  .step {
+    height: 40vw;
+    width: 33vw;
+    text-align: center;
+  }
+
+  .round {
+    border-radius: 50%;
+    position: relative;
+    z-index: 50;
+  }
+
+  .gold {
+    height: 18vw;
+    max-width: 18vw;
+    top: -31vw;
+    border: 5px solid #FFD600FF;
+  }
+
+  .silver {
+    height: 15vw;
+    max-width: 15vw;
+    top: -25.5vw;
+    border: 5px solid #BDBDBDFF;
+  }
+
+  .bronze {
+    height: 14vw;
+    max-width: 14vw;
+    top: -23.5vw;
+    border: 5px solid #CD7F32FF;
+  }
+
+
+
+  .podium-text {
+    position: relative;
+    top: -14vw;
+    font-size: 2.5vw;
+    line-height: 2.5vw;
+  }
+
+  hr {
+    border: none;
+    height: 5px;
+    background-color: #8BC34AFF;
+    opacity:1;
+  }
+
+  .button-add {
+    font-size: 2vw;
+    border-radius: 25px;
+    height: 5vw;
+    border: #8BC34AFF solid 3px;
+    background-color: #C5E1A5FF;
+  }
+
+  .best-text {
+    line-height:1;
+    text-align: center;
+    font-size: 2.5vw;
+    background: linear-gradient(90deg, rgba(186,148,62,1) 0%, rgba(236,172,32,1) 20%, rgba(186,148,62,1) 39%, rgba(249,244,180,1) 50%, rgba(186,148,62,1) 60%, rgba(236,172,32,1) 80%, rgba(186,148,62,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s infinite;
+    background-size: 200%;
+    background-position: left;
+
+  }
+  @keyframes shine {
+    to {
+      background-position: 120% 0;
+    }
+  }
+
+
+  .goldText{
+    color: #bfa100;
+  }
+  .silverText{
+    color: #9f9f9f;
+  }
+  .bronzeText{
+    color: #CD7F32FF;
+  }
+  .goldButton{
+    background-color: gold;
+    border: #a08704 solid 3px;
+  }
+  .silverButton{
+    background-color: #f6f2f2;
+    border: #8a8686 solid 3px;
+  }
+  .bronzeButton{
+    background-color: #CD7F32FF;
+    border: #7d4d1e solid 3px;
+  }
+
+  .medal {
+    position: absolute;
+    top: -2vw;
+    right: -1vw;
+    z-index: 100;
+  }
+
+  .no-item {
+    text-align: center;
+    font-size: 3vw;
+  }
