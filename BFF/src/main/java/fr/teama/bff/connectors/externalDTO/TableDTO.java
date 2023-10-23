@@ -1,12 +1,15 @@
 package fr.teama.bff.connectors.externalDTO;
 
 import java.util.Objects;
+import java.util.UUID;
 
 public class TableDTO {
 
     private Long number;
 
     private boolean taken;
+
+    private UUID tableOrderId;
 
     public Long getNumber() {
         return number;
@@ -22,6 +25,14 @@ public class TableDTO {
 
     public void setTaken(boolean taken) {
         this.taken = taken;
+    }
+
+    public UUID getTableOrderId() {
+        return tableOrderId;
+    }
+
+    public void setTableOrderId(UUID tableOrderId) {
+        this.tableOrderId = tableOrderId;
     }
 
     @Override

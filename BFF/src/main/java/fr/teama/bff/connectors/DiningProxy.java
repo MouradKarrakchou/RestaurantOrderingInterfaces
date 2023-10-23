@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.client.RestTemplate;
 
+import javax.swing.text.TabableView;
 import java.time.Period;
 import java.util.Arrays;
 import java.util.List;
@@ -29,6 +30,17 @@ public class DiningProxy implements IDiningProxy {
             TableOrder[] tableOrderDTOS = restTemplate.getForEntity(apiBaseUrlHostAndPort +"/tableOrders", TableOrder[].class).getBody();
             List<TableOrder> tablesOrders = Stream.of(tableOrderDTOS).toList();
             return tablesOrders;
+        } catch (Exception e) {
+            LoggerHelper.logError(e.toString());
+            throw new DiningServiceUnavaibleException();
+        }
+    }
+
+    @Override
+    public TableDTO getTable(Long tableNumber) throws DiningServiceUnavaibleException {
+        try {
+            LoggerHelper.logInfo("Ask Dining service for table " + tableNumber);
+            return restTemplate.getForEntity(apiBaseUrlHostAndPort +"/tables/" + tableNumber, TableDTO.class).getBody();
         } catch (Exception e) {
             LoggerHelper.logError(e.toString());
             throw new DiningServiceUnavaibleException();

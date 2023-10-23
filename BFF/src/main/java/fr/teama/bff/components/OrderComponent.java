@@ -1,6 +1,7 @@
 package fr.teama.bff.components;
 
 import fr.teama.bff.connectors.externalDTO.*;
+import fr.teama.bff.controllers.dto.ConnectedTableKioskOrderDTO;
 import fr.teama.bff.controllers.dto.KioskItemDTO;
 import fr.teama.bff.controllers.dto.KioskOrderDTO;
 import fr.teama.bff.entities.TableOrderInformation;
@@ -32,19 +33,36 @@ public class OrderComponent implements IOrderComponent {
     }
 
     @Override
-    public TableOrderInformation processOrder(KioskOrderDTO kioskOrderDTO) throws DiningServiceUnavaibleException, NoAvailableTableException {
+    public void bill(Long tableNumber) throws DiningServiceUnavaibleException {
+        TableDTO table = diningProxy.getTable(tableNumber);
+        diningProxy.bill(table.getTableOrderId());
+    }
+
+    @Override
+    public TableOrderInformation processKioskOrder(KioskOrderDTO kioskOrderDTO) throws DiningServiceUnavaibleException, NoAvailableTableException {
         List<TableDTO> availableTables = availableTables();
         if (availableTables.isEmpty()){
             throw new NoAvailableTableException();
         }
-
         TableDTO table = availableTables.get(0);
+        return processOrder(table, kioskOrderDTO.getItems(), true);
+    }
+
+    @Override
+    public TableOrderInformation processConnectedTableOrder(ConnectedTableKioskOrderDTO connectedTableKioskOrderDTO) throws DiningServiceUnavaibleException {
+        TableDTO table = diningProxy.getTable(connectedTableKioskOrderDTO.getTableNumber());
+        return processOrder(table, connectedTableKioskOrderDTO.getItems(), false);
+    }
+
+    private TableOrderInformation processOrder(TableDTO table, List<KioskItemDTO> kioskItemDTOList, boolean bill) throws DiningServiceUnavaibleException {
         TableOrder tableOrderDTO = diningProxy.openTable(table.getNumber());
-        for (KioskItemDTO kioskItemDTO : kioskOrderDTO.getItems()) {
+        for (KioskItemDTO kioskItemDTO : kioskItemDTOList) {
             diningProxy.addToTableOrder(tableOrderDTO.getId(), new ItemDTO(kioskItemDTO));
         }
         List<Preparation> preparationDTOList = diningProxy.prepare(tableOrderDTO.getId());
-        diningProxy.bill(tableOrderDTO.getId());
+        if (bill) {
+            diningProxy.bill(tableOrderDTO.getId());
+        }
         LocalDateTime shouldBeReadyAt = getShouldBeReadyAt(preparationDTOList);
         return new TableOrderInformation(tableOrderDTO.getId(), shouldBeReadyAt);
     }

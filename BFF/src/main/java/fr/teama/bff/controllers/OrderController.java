@@ -37,7 +37,7 @@ public class OrderController {
             LoggerHelper.logError("Order request with no items");
             return ResponseEntity.badRequest().build();
         }
-        TableOrderInformation tableOrderInformation = orderComponent.processOrder(kioskOrderDTO);
+        TableOrderInformation tableOrderInformation = orderComponent.processKioskOrder(kioskOrderDTO);
         LoggerHelper.logInfo("Order processed with table order id " + tableOrderInformation.getTableOrderId().toString());
         orderIdLinkWithTableOrderId.put(nextOrderId, tableOrderInformation.getTableOrderId());
         OrderInformationDTO orderInformationDTO = new OrderInformationDTO(tableOrderInformation.getTableOrderId(), nextOrderId, tableOrderInformation.getShouldBeReadyAt());
