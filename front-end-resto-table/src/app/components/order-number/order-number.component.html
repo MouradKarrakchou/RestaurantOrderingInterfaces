@@ -4,19 +4,15 @@
   </div>
 
   <div class="order-number-text">
-    <p>Order number: <br>{{ orderNumber }}</p>
-  </div>
-
-  <div class="estimated-time-text">
-    Should be ready at <br>{{ shouldBeReadyAt | date:"shortTime" }}
+    <p>Order pre-validated</p>
   </div>
 
   <button class="quit-button" mat-raised-button (click)="quit()">Quit</button>
 
   <div class="footer">
-    <img class="logoIntegrated"
-         src="../../../assets/resto-logo.png"
-         alt="RESTo app logo"/>
-    <p class="footer-text">Thank you for your visit!</p>
+    <p class="footer-text">Thank you for your order!</p>
   </div>
+  <img class="logoIntegrated"
+       src="../../../assets/resto-logo.png"
+       alt="RESTo app logo"/>
 </body>
