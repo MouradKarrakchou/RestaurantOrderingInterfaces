@@ -23,6 +23,7 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { OrderNumberComponent } from './components/order-number/order-number.component';
 import {HttpClientModule} from "@angular/common/http";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import { MiddleTableComponent } from './components/middle-table/middle-table.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'confirmation', component: ConfirmationComponent },
   { path: 'order-number', component: OrderNumberComponent },
+  { path: 'middle-table', component: MiddleTableComponent },
 ];
 
 @NgModule({
@@ -47,7 +49,8 @@ const routes: Routes = [
     ConfirmationComponent,
     FooterComponent,
     DialogContentComponent,
-    OrderNumberComponent
+    OrderNumberComponent,
+    MiddleTableComponent
   ],
     imports: [
         BrowserModule,
