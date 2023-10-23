@@ -18,7 +18,7 @@
 }
 
 .main{
-  background-image: url("../../../assets/pizza.jpeg");
+  background-image: url("../../../assets/pizza.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -42,7 +42,7 @@
 }
 
 .footer-text{
-  font-size: 3.5vh;
+  font-size: 5vh;
   margin:auto;
 }
 
