@@ -75,8 +75,8 @@ public class DiningProxy implements IDiningProxy {
     @Override
     public TableOrder tableOrder(UUID tableOrderId) throws DiningServiceUnavaibleException {
         try {
-            LoggerHelper.logInfo("Ask Dining service to get a table order");
-            return restTemplate.getForEntity(apiBaseUrlHostAndPort + "/tableOrders" + tableOrderId, TableOrder.class).getBody();
+            LoggerHelper.logInfo("Ask Dining service to table order " + tableOrderId);
+            return restTemplate.getForEntity(apiBaseUrlHostAndPort + "/tableOrders/" + tableOrderId, TableOrder.class).getBody();
         } catch (Exception e) {
             LoggerHelper.logError(e.toString());
             throw new DiningServiceUnavaibleException();
