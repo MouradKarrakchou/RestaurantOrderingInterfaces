@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
   }
 
   viewFullTable() {
-    //TODO
+    this.router.navigate(['/table-viewer'])
   }
 
   protected readonly print = print;
