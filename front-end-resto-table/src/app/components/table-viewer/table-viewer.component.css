@@ -1,0 +1,38 @@
+.tableVertical{
+  width: 20%;
+  height: 100%;
+}
+
+.tablePrincipal{
+  width: 60%;
+  height: 40%;
+  margin: 0;
+  position: absolute;
+  display: flex;
+  font-size: 5vh;
+}
+
+.confirm-back-button {
+  position: absolute;
+  top: 2.2vh;
+  left: 2.5vh;
+  z-index: 1000;
+}
+.button-container {
+  height: 10vh;
+  width: 10vh;
+}
+
+.tableHorizontal{
+  width: 60%;
+  height: 30%;
+}
+
+.table{
+  border: 5px solid black;
+  margin: 0;
+  position: absolute;
+  display: flex;
+  font-size: 5vh;
+  flex-direction: column;
+}

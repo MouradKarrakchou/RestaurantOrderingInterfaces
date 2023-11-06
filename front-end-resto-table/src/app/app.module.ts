@@ -24,15 +24,17 @@ import { OrderNumberComponent } from './components/order-number/order-number.com
 import {HttpClientModule} from "@angular/common/http";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import { MiddleTableComponent } from './components/middle-table/middle-table.component';
+import { TableViewerComponent } from './components/table-viewer/table-viewer.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/idle', pathMatch: 'full' }, // default page
-  { path: 'idle', component: IdleComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'confirmation', component: ConfirmationComponent },
-  { path: 'order-number', component: OrderNumberComponent },
+  { path: 'idle/:id', component: IdleComponent },
+  { path: 'home/:id', component: HomeComponent },
+  { path: 'confirmation/:id', component: ConfirmationComponent },
+  { path: 'order-number/:id', component: OrderNumberComponent },
   { path: 'middle-table', component: MiddleTableComponent },
+  { path: 'table-viewer/:id', component: TableViewerComponent },
 ];
 
 @NgModule({
@@ -50,7 +52,8 @@ const routes: Routes = [
     FooterComponent,
     DialogContentComponent,
     OrderNumberComponent,
-    MiddleTableComponent
+    MiddleTableComponent,
+    TableViewerComponent
   ],
     imports: [
         BrowserModule,

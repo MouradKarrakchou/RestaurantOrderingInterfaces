@@ -4,6 +4,7 @@ import Category from "../../models/Category";
 import {BasketService} from "../../services/basket.service";
 import {formatCurrency} from "@angular/common";
 import {HttpClient} from "@angular/common/http";
+import {ActivatedRoute} from "@angular/router";
 
 
 @Component({
@@ -22,11 +23,15 @@ export class CatalogComponent implements OnInit,OnChanges {
   trendingCategoryItem: MenuItem[]=[];
   trendingCategoryItemPrice: number = 0;
 
+  tabletId: string = '0';
 
   selectedSortOption: string | undefined;
 
   ngOnInit(): void {
-    this.initMenuItems();
+    this.route.params.subscribe(params => {
+      this.tabletId = params['id'];
+      this.initMenuItems();
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -36,7 +41,8 @@ export class CatalogComponent implements OnInit,OnChanges {
   }
 
   constructor(private basketService : BasketService,
-              private http: HttpClient) {
+              private http: HttpClient,
+              private route: ActivatedRoute) {
   }
 
   async initMenuItems(): Promise<void> {
@@ -185,11 +191,11 @@ export class CatalogComponent implements OnInit,OnChanges {
   }
 
   addItemToBasket(item: MenuItem) {
-    this.basketService.addToBasket(item);
+    this.basketService.addToBasket(this.tabletId, item);
   }
 
   addFullMenu() {
-    this.filteredMenuItems.forEach(item => this.basketService.addToBasket(item));
+    this.filteredMenuItems.forEach(item => this.basketService.addToBasket(this.tabletId, item));
   }
 
   protected readonly formatCurrency = formatCurrency;

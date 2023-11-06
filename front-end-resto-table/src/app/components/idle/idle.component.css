@@ -18,7 +18,7 @@
 }
 
 .main{
-  background-image: url("../../../assets/pizza.jpeg");
+  background-image: url("../../../assets/pizza.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -42,7 +42,7 @@
 }
 
 .footer-text{
-  font-size: 3.5vh;
+  font-size: 5vh;
   margin:auto;
 }
 
@@ -51,5 +51,32 @@
   height: 15vh;
   bottom: 2vh;
   left: 2vh;
+}
+
+
+
+
+
+.pr-2 {
+  padding-right: 0.5rem !important;
+}
+.admin-panel {
+  display: flex;
+  background-color: #C5E1A5FF;
+  height: 8vh;
+  width: 10vh;
+  border-bottom-right-radius: 5px;
+  font-size: 2vh;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.icon-table{
+  font-size: 10vh;
+  position: absolute;
+  top:1vh;
+  left:0;
+  color:black;
 }
 

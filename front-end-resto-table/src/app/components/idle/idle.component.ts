@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-idle',
@@ -7,12 +7,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./idle.component.css']
 })
 export class IdleComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router,
+              private route: ActivatedRoute) {}
 
   ngOnInit() {
   }
 
   redirectToHome() {
-    this.router.navigate(['/home']);
+    this.route.params.subscribe(params => {
+      const id = params['id'];
+
+      this.router.navigate(['/home', id]);
+    });
+  }
+  viewFullTable() {
+    this.router.navigate(['/table-viewer'])
   }
 }

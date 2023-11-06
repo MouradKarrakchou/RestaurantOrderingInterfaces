@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import BasketItem from "../../models/BasketItem";
 import Category from "../../models/Category";
 import {BasketService} from "../../services/basket.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-basket-summary',
@@ -18,18 +19,23 @@ export class BasketSummaryComponent implements OnInit {
   basketBeverages: BasketItem[] = [];
 
   @Input() canEdit: boolean = false;
+  tabletId: string = '0';
 
-  constructor(private basketService: BasketService) { }
+  constructor(private basketService: BasketService,
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.initBasket();
+    this.route.params.subscribe(params => {
+      this.tabletId = params['id'];
+      this.initBasket();
+    });
   }
 
   initBasket(): void {
-    this.basket = this.basketService.getBasket();
+    this.basket = this.basketService.getBasket(this.tabletId);
     this.splitBasketCategories();
 
-    this.basketService.basket.subscribe((basket: BasketItem[]) => {
+    this.basketService.baskets[this.tabletId].subscribe((basket: BasketItem[]) => {
       this.basket = basket;
       this.splitBasketCategories();
     });
@@ -43,10 +49,10 @@ export class BasketSummaryComponent implements OnInit {
   }
 
   addItemQuantity(item: BasketItem) {
-    this.basketService.addToBasket(item.menuItem);
+    this.basketService.addToBasket(this.tabletId, item.menuItem);
   }
 
   removeItemQuantity(item: BasketItem) {
-    this.basketService.removeFromBasket(item.menuItem);
+    this.basketService.removeFromBasket(this.tabletId, item.menuItem);
   }
 }
