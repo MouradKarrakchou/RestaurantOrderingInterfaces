@@ -15,4 +15,7 @@ export class IdleComponent implements OnInit {
   redirectToHome() {
     this.router.navigate(['/home']);
   }
+  viewFullTable() {
+    this.router.navigate(['/table-viewer'])
+  }
 }
