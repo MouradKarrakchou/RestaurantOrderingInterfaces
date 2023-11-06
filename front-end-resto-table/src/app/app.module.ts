@@ -28,11 +28,11 @@ import { TableViewerComponent } from './components/table-viewer/table-viewer.com
 
 const routes: Routes = [
   { path: '', redirectTo: '/idle', pathMatch: 'full' }, // default page
-  { path: 'idle', component: IdleComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'confirmation', component: ConfirmationComponent },
-  { path: 'order-number', component: OrderNumberComponent },
-  { path: 'table-viewer', component: TableViewerComponent },
+  { path: 'idle/:id', component: IdleComponent },
+  { path: 'home/:id', component: HomeComponent },
+  { path: 'confirmation/:id', component: ConfirmationComponent },
+  { path: 'order-number/:id', component: OrderNumberComponent },
+  { path: 'table-viewer/:id', component: TableViewerComponent },
 ];
 
 @NgModule({

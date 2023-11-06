@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {BasketService} from "../../services/basket.service";
 
 @Component({
@@ -10,14 +10,20 @@ import {BasketService} from "../../services/basket.service";
 })
 export class DialogContentComponent implements OnInit {
 
+  tabletId: string = '0';
+
   constructor(
     public dialogRef: MatDialogRef<DialogContentComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private router: Router,
-    private basketService: BasketService
+    private basketService: BasketService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.tabletId = params['id'];
+    });
   }
 
   onNoClick(): void {
@@ -26,8 +32,8 @@ export class DialogContentComponent implements OnInit {
 
   onYesClick(): void {
     this.dialogRef.close(true);
-    this.basketService.emptyBasket();
-    this.router.navigate(['/idle'])
+    this.basketService.emptyBasket(this.tabletId);
+    this.router.navigate(['/idle', this.tabletId]);
   }
 
 }

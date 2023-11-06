@@ -8,22 +8,27 @@ import {BehaviorSubject} from "rxjs";
 })
 export class BasketService {
 
-  basket: BehaviorSubject<BasketItem[]> = new BehaviorSubject<BasketItem[]>([]);
+  baskets: { [key: string]: BehaviorSubject<BasketItem[]> } = {
+    '1': new BehaviorSubject<BasketItem[]>([]),
+    '2': new BehaviorSubject<BasketItem[]>([]),
+    '3': new BehaviorSubject<BasketItem[]>([]),
+    '4': new BehaviorSubject<BasketItem[]>([]),
+  };
 
   constructor() { }
 
-  addToBasket(item: MenuItem) {
-    let basketItem = this.basket.value.find(basketItem => basketItem.menuItem.id === item.id);
+  addToBasket(tabletId: string, item: MenuItem) {
+    let basketItem = this.baskets[tabletId].value.find(basketItem => basketItem.menuItem.id === item.id);
     if (basketItem) {
       basketItem.quantity++;
     } else {
-      this.basket.value.push(new BasketItem(item, 1));
+      this.baskets[tabletId].value.push(new BasketItem(item, 1));
     }
-    this.basket.next(this.basket.value);
+    this.baskets[tabletId].next(this.baskets[tabletId].value);
   }
 
-  removeFromBasket(item: MenuItem) {
-    let basketItem = this.basket.value.find(basketItem => basketItem.menuItem.id === item.id);
+  removeFromBasket(tabletId: string, item: MenuItem) {
+    let basketItem = this.baskets[tabletId].value.find(basketItem => basketItem.menuItem.id === item.id);
     if (basketItem == undefined) {
       return;
     }
@@ -31,25 +36,55 @@ export class BasketService {
     if (basketItem.quantity > 1) {
       basketItem.quantity--;
     } else {
-      this.basket.value.splice(this.basket.value.indexOf(basketItem), 1);
+      this.baskets[tabletId].value.splice(this.baskets[tabletId].value.indexOf(basketItem), 1);
     }
-    this.basket.next(this.basket.value);
+    this.baskets[tabletId].next(this.baskets[tabletId].value);
   }
 
-  emptyBasket() {
-    this.basket.next([]);
+  emptyBasket(tabletId: string) {
+    this.baskets[tabletId].next([]);
   }
 
-  getBasketTotal(): number {
-    return this.basket.value.reduce((total, basketItem) => total + basketItem.menuItem.price * basketItem.quantity, 0);
+  emptyAllBaskets() {
+    this.baskets['1'].next([]);
+    this.baskets['2'].next([]);
+    this.baskets['3'].next([]);
+    this.baskets['4'].next([]);
   }
 
-  getBasket(): BasketItem[] {
-    return this.basket.value;
+  getBasketTotal(tabletId: string): number {
+    return this.baskets[tabletId].value.reduce((total, basketItem) => total + basketItem.menuItem.price * basketItem.quantity, 0);
   }
 
-  getBasketSize(): number {
-    return this.basket.value.reduce((total, basketItem) => total + basketItem.quantity, 0);
+  getAllBasketsTotal(): number {
+    let total = 0;
+    for (let i = 1; i <= 4; i++) {
+      total += this.baskets[i].value.reduce((total, basketItem) => total + basketItem.menuItem.price * basketItem.quantity, 0);
+    }
+    return total;
   }
 
+  getBasket(tabletId: string): BasketItem[] {
+    return this.baskets[tabletId].value;
+  }
+
+  getAllBaskets(): BasketItem[] {
+    let allBaskets: any[] = [];
+    for (let i = 1; i <= 4; i++) {
+      allBaskets = allBaskets.concat(this.baskets[i].value);
+    }
+    return allBaskets;
+  }
+
+  getBasketSize(tabletId: string): number {
+    return this.baskets[tabletId].value.reduce((total, basketItem) => total + basketItem.quantity, 0);
+  }
+
+  getAllBasketsSize(): number {
+    let total = 0;
+    for (let i = 1; i <= 4; i++) {
+      total += this.baskets[i].value.reduce((total, basketItem) => total + basketItem.quantity, 0);
+    }
+    return total;
+  }
 }

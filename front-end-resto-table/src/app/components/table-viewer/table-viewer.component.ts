@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {BasketService} from "../../services/basket.service";
 
 @Component({
   selector: 'app-table-viewer',
@@ -8,12 +9,21 @@ import {Router} from "@angular/router";
 })
 export class TableViewerComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
   }
 
   redirectToHome() {
-    this.router.navigate(['/home'])
+    this.route.params.subscribe(params => {
+      const id = params['id'];
+
+      this.router.navigate(['/home', id]);
+    });
+  }
+
+  changeTablette(number: number) {
+    this.router.navigate(['/home', number]);
   }
 }
