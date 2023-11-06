@@ -4,6 +4,7 @@ import fr.teama.bff.connectors.externalDTO.KitchenPreparation;
 import fr.teama.bff.connectors.externalDTO.TableDTO;
 import fr.teama.bff.controllers.dto.ConnectedTableKioskOrderDTO;
 import fr.teama.bff.controllers.dto.KioskOrderDTO;
+import fr.teama.bff.entities.KitchenPreparationStatus;
 import fr.teama.bff.entities.TableOrderInformation;
 import fr.teama.bff.exceptions.DiningServiceUnavaibleException;
 import fr.teama.bff.exceptions.KitchenServiceNoAvailableException;
@@ -18,5 +19,5 @@ public interface IOrderComponent {
     TableOrderInformation processKioskOrder(KioskOrderDTO kioskOrderDTO) throws DiningServiceUnavaibleException, NoAvailableTableException;
     List<TableDTO> availableTables() throws DiningServiceUnavaibleException;
     void bill(Long tableNumber) throws DiningServiceUnavaibleException;
-    List<KitchenPreparation> getTableOrderKitchenPreparation(UUID tableOrderId) throws KitchenServiceNoAvailableException;
+    List<KitchenPreparationStatus> getTableOrderKitchenPreparation(Long tableNumber) throws KitchenServiceNoAvailableException, DiningServiceUnavaibleException;
 }

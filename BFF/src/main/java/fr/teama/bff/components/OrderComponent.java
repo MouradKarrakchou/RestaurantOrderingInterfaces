@@ -1,9 +1,13 @@
 package fr.teama.bff.components;
 
+import fr.teama.bff.connectors.KitchenProxy;
 import fr.teama.bff.connectors.externalDTO.*;
 import fr.teama.bff.controllers.dto.ConnectedTableKioskOrderDTO;
 import fr.teama.bff.controllers.dto.KioskItemDTO;
 import fr.teama.bff.controllers.dto.KioskOrderDTO;
+import fr.teama.bff.entities.Item;
+import fr.teama.bff.entities.KitchenPreparationStatus;
+import fr.teama.bff.entities.Post;
 import fr.teama.bff.entities.TableOrderInformation;
 import fr.teama.bff.exceptions.DiningServiceUnavaibleException;
 import fr.teama.bff.exceptions.KitchenServiceNoAvailableException;
@@ -19,9 +23,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Component
 public class OrderComponent implements IOrderComponent {
@@ -73,8 +75,33 @@ public class OrderComponent implements IOrderComponent {
     }
 
     // methode to get preparation status
-    public List<KitchenPreparation> getTableOrderKitchenPreparation(UUID tableOrderId) throws KitchenServiceNoAvailableException {
-        return kitchenProxy.getTableOrderKitchenPreparation(tableOrderId);
+    public List<KitchenPreparationStatus> getTableOrderKitchenPreparation(Long tableNumber) throws KitchenServiceNoAvailableException, DiningServiceUnavaibleException {
+        UUID tableOrderId = diningProxy.getTable(tableNumber).getTableOrderId();
+        List<KitchenPreparationStatus> kitchenPreparationStatusList = new ArrayList<>();
+        List<KitchenPreparation> kitchenPreparationList = kitchenProxy.getTableOrderKitchenPreparation(tableOrderId);
+        for (KitchenPreparation kitchenPreparation : kitchenPreparationList) {
+            Map<String, Integer> map = new HashMap<>();
+            Post post = null;
+            for (KitchenItem preparedItem : kitchenPreparation.getPreparedItems()) {
+                if (post == null) {
+                    post = kitchenProxy.getRecipe(preparedItem.getId()).getPost();
+                }
+                if (map.containsKey(preparedItem.getShortName())) {
+                    map.put(preparedItem.getShortName(), map.get(preparedItem.getShortName()) + 1);
+                } else {
+                    map.put(preparedItem.getShortName(), 1);
+                }
+            }
+            KitchenPreparationStatus kitchenPreparationStatus = new KitchenPreparationStatus(kitchenPreparation.getId(),
+                    kitchenPreparation.getCompletedAt(),
+                    kitchenPreparation.getTakenForServiceAt(),
+                    post);
+            for (Map.Entry<String, Integer> entry : map.entrySet()) {
+                kitchenPreparationStatus.getPreparedItems().add(new Item(entry.getKey(), entry.getValue()));
+            }
+            kitchenPreparationStatusList.add(kitchenPreparationStatus);
+        }
+        return kitchenPreparationStatusList;
     }
 
 

@@ -67,3 +67,28 @@
   background-color: #3b443b;
   color: #C5E1A5FF;
 }
+
+
+.admin-panel {
+  display: flex;
+  background-color: #C5E1A5FF;
+  height: 8vh;
+  width: 16vh;
+  border-bottom-right-radius: 5px;
+  font-size: 2vh;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.icon-table{
+  font-size: 10vh;
+  position: absolute;
+  top:1vh;
+  left:0;
+}
+
+.table-number{
+  position: relative;
+  left: 10vh;
+}
