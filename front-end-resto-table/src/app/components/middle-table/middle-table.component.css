@@ -38,11 +38,26 @@
   margin-right: 2vh;
 }
 
+.one-and-two {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 30vh;
+}
+
 .number {
   font-size: 4vh;
   background-color: #72c072;
-  width: 30vh;
-  height: 10vh;
   border-radius: 25px;
   border-style: none;
+}
+
+.one, .two {
+  width: 35vh;
+  height: 10vh;
+}
+
+.three, .four {
+  width: 10vh;
+  height: 30vh;
 }
