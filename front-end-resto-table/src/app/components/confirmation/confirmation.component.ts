@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {BasketService} from "../../services/basket.service";
-import MenuItem from "../../models/MenuItem";
-import {Observable} from "rxjs";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Component({
   selector: 'app-confirmation',
