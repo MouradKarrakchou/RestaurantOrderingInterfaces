@@ -19,16 +19,6 @@
   cursor: pointer;
 }
 
-.admin-panel {
-  display: flex;
-  background-color: #C5E1A5FF;
-  height: fit-content;
-  border-bottom-right-radius: 5px;
-  font-size: 2vh;
-  align-items: center;
-  position: absolute;
-}
-
 .menuIcon{
   font-size: 7vh;
 }
@@ -73,7 +63,7 @@
   display: flex;
   background-color: #C5E1A5FF;
   height: 8vh;
-  width: 16vh;
+  width: 19vh;
   border-bottom-right-radius: 5px;
   font-size: 2vh;
   align-items: center;
@@ -82,7 +72,7 @@
   top: 0;
 }
 .icon-table{
-  font-size: 10vh;
+  font-size: 8vh;
   position: absolute;
   top:1vh;
   left:0;
@@ -90,5 +80,6 @@
 
 .table-number{
   position: relative;
-  left: 10vh;
+  left: 8vh;
+  font-size: 2vh;
 }
