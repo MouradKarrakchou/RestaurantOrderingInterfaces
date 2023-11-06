@@ -12,4 +12,12 @@ export class MiddleTableComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  selectTab(tabNumber: number) {
+
+  }
+
+  selectPaymentMethod() {
+
+  }
+
 }
