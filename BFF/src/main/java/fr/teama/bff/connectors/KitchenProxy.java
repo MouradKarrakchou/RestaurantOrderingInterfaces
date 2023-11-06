@@ -4,6 +4,7 @@ import fr.teama.bff.components.OrderComponent;
 import fr.teama.bff.connectors.externalDTO.KitchenPreparation;
 import fr.teama.bff.connectors.externalDTO.Preparation;
 import fr.teama.bff.connectors.externalDTO.TableOrder;
+import fr.teama.bff.entities.Recipe;
 import fr.teama.bff.exceptions.DiningServiceUnavaibleException;
 import fr.teama.bff.exceptions.KitchenServiceNoAvailableException;
 import fr.teama.bff.helpers.LoggerHelper;
@@ -45,6 +46,17 @@ public class KitchenProxy implements IKitchenProxy {
                 }
             }
             return kitchenPreparations;
+        } catch (Exception e) {
+            LoggerHelper.logError(e.toString());
+            throw new KitchenServiceNoAvailableException();
+        }
+    }
+
+    @Override
+    public Recipe getRecipe(UUID itemId) throws KitchenServiceNoAvailableException {
+        try {
+            LoggerHelper.logInfo("Ask Kitchen service for recipe " + itemId);
+            return restTemplate.getForEntity(apiBaseUrlHostAndPort + "/preparedItems/" + itemId + "/recipe", Recipe.class).getBody();
         } catch (Exception e) {
             LoggerHelper.logError(e.toString());
             throw new KitchenServiceNoAvailableException();
