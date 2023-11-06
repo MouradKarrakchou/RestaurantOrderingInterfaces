@@ -52,7 +52,7 @@
   border-style: none;
 }
 
-.one, .two {
+.one, .two, .together, .separately {
   width: 35vh;
   height: 10vh;
 }
@@ -60,4 +60,27 @@
 .three, .four {
   width: 10vh;
   height: 30vh;
+}
+
+.payment-method-title {
+  margin-top: 8vh;
+  height: 10vh;
+  display: flex;
+  font-size: 5vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.payment-method-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.together, .separately {
+  margin-top: 3vh;
+  font-size: 3vh;
+  background-color: #72c072;
+  border-radius: 25px;
+  border-style: none;
 }
