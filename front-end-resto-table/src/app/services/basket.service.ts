@@ -9,6 +9,12 @@ import {BehaviorSubject} from "rxjs";
 export class BasketService {
 
   basket: BehaviorSubject<BasketItem[]> = new BehaviorSubject<BasketItem[]>([]);
+  selectedTables: Map<number, BasketItem[] | string> = new Map<number, BasketItem[] | string>([
+    [1, "empty"],
+    [2, "empty"],
+    [3, "empty"],
+    [4, "empty"]
+  ]);
 
   constructor() { }
 
@@ -52,4 +58,7 @@ export class BasketService {
     return this.basket.value.reduce((total, basketItem) => total + basketItem.quantity, 0);
   }
 
+  setSelectedTable(number: number) {
+    this.selectedTables.set(number, []);
+  }
 }
