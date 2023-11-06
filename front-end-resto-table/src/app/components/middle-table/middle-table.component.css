@@ -47,7 +47,7 @@
 
 .number {
   font-size: 4vh;
-  background-color: #72c072;
+  background-color: #a9a9a9;
   border-radius: 25px;
   border-style: none;
 }
@@ -80,7 +80,7 @@
 .together, .separately {
   margin-top: 3vh;
   font-size: 3vh;
-  background-color: #72c072;
+  background-color: #a9a9a9;
   border-radius: 25px;
   border-style: none;
 }
