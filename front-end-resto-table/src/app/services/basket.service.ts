@@ -80,7 +80,15 @@ export class BasketService {
     }
     return total;
   }
-
+  getAllTabletteActivated(): number[] {
+    let allTables = [];
+    for (let i = 1; i <= 4; i++) {
+      if (this.alreadyOrdered[i]) {
+        allTables.push(i);
+      }
+    }
+    return allTables;
+  }
   getBasket(tabletId: string, final: boolean = false): BasketItem[] {
     if(final) {
       return this.alreadyOrdered[tabletId] || [];

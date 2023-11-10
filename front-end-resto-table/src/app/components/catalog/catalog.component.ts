@@ -27,6 +27,7 @@ export class CatalogComponent implements OnInit,OnChanges {
 
   selectedSortOption: string | undefined;
 
+
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.tabletId = params['id'];

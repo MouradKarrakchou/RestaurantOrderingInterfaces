@@ -24,7 +24,7 @@ export class TableViewerComponent implements OnInit {
 
   changeTablette(number: number) {
     if (number==0){
-      this.router.navigate(['/table-viewer/0/global-basket-summary']);
+      this.router.navigate(['/middle-table/0/global-basket-summary']);
     }
     else{
       this.router.navigate(['/home', number]);
