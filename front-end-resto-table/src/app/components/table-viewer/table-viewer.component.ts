@@ -40,13 +40,13 @@ export class TableViewerComponent implements OnInit {
           this.router.navigate(['/summary', number]);
           break;
         case MiddleTabletState.Waiting:
-          this.router.navigate(['/wait']);
+          this.router.navigate(['/waiting-screen']);
           break;
         case MiddleTabletState.Sleep:
           this.router.navigate(['/sleep-mode']);
           break;
         case MiddleTabletState.Final:
-          this.router.navigate(['/global-receipt', number]);
+          this.router.navigate(['/summary', number]);
           break;
       }
     }
@@ -58,6 +58,12 @@ export class TableViewerComponent implements OnInit {
           break;
         case UserTabletState.Normal:
           this.router.navigate(['/home', number]);
+          break;
+        case UserTabletState.Prevalidated:
+          this.router.navigate(['/order-number', number]);
+          break;
+        case UserTabletState.Game:
+          this.router.navigate(['/game', number]);
           break;
         case UserTabletState.Sleep:
           this._snackBar.open("This tablet is off", "Close", {

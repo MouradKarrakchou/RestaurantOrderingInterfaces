@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {BasketService} from "../../services/basket.service";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {MiddleTabletState, StateService} from "../../services/state.service";
+import {MiddleTabletState, StateService, UserTabletState} from "../../services/state.service";
 import {PaymentService} from "../../services/payment.service";
 
 @Component({
@@ -58,7 +58,11 @@ export class GlobalBasketSummaryComponent implements OnInit {
         this.sendOrderToBFF().subscribe((orderInformation: any) => {
           console.log(orderInformation);
           this.basketService.confirmBasket();
-          this.router.navigate([''])
+          this.state.setMiddleTabletState(MiddleTabletState.Waiting);
+          this.allTabletteActivated.forEach((tabletId) => {
+            this.state.setUserTabletState(tabletId.toString(), UserTabletState.Game);
+          });
+          this.router.navigate(['/waiting-screen']);
         });
     }
   }
