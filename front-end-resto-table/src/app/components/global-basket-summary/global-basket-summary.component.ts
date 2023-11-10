@@ -4,6 +4,7 @@ import {BasketService} from "../../services/basket.service";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {MiddleTabletState, StateService} from "../../services/state.service";
+import {PaymentService} from "../../services/payment.service";
 
 @Component({
   selector: 'app-global-basket-summary',
@@ -15,6 +16,7 @@ export class GlobalBasketSummaryComponent implements OnInit {
   private diningBaseUrlHostAndPort: string = "http://localhost:3001";
 
   constructor(private router: Router, private basketService: BasketService,
+              private paymentService: PaymentService,
               private route: ActivatedRoute,private http: HttpClient,
               private state: StateService) {}
 
@@ -22,11 +24,11 @@ export class GlobalBasketSummaryComponent implements OnInit {
   tabletId: string = "0";
 
   selectedSortOption: string ="global";
-  allTabletteActivated: number[]=[1,2] ;
+  allTabletteActivated: number[]=[] ;
 
   isPaymentPage: boolean=false;
 
-  paymentOnEachTab: boolean=false;
+  paymentOnEachTab: boolean=!this.paymentService.getGroupPayment();
 
 
   ngOnInit(): void {
