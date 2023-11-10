@@ -25,7 +25,7 @@
 .people-number-title {
   height: 10vh;
   display: flex;
-  font-size: 5vh;
+  font-size: 4vh;
   justify-content: center;
   align-items: center;
 }
@@ -52,7 +52,7 @@
   border-style: none;
 }
 
-.one, .two, .together, .separately {
+.one, .two, .together, .separately, .validate {
   width: 35vh;
   height: 10vh;
 }
@@ -63,10 +63,10 @@
 }
 
 .payment-method-title {
-  margin-top: 8vh;
-  height: 10vh;
+  margin-top: 4vh;
+  height: 8vh;
   display: flex;
-  font-size: 5vh;
+  font-size: 4vh;
   justify-content: center;
   align-items: center;
 }
@@ -78,7 +78,27 @@
 }
 
 .together, .separately {
+  font-size: 3vh;
+  background-color: #a9a9a9;
+  border-radius: 25px;
+  border-style: none;
+}
+
+.validate-title {
   margin-top: 3vh;
+  height: 6vh;
+  display: flex;
+  font-size: 4vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.validate-button {
+  display: flex;
+  justify-content: center;
+}
+
+.validate {
   font-size: 3vh;
   background-color: #a9a9a9;
   border-radius: 25px;

@@ -30,7 +30,7 @@ import { SwitchToTabsComponent } from './components/header/switch-to-tabs/switch
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/idle', pathMatch: 'full' }, // default page
+  { path: '', redirectTo: '/idle/1', pathMatch: 'full' }, // default page
   { path: 'idle/:id', component: IdleComponent },
   { path: 'home/:id', component: HomeComponent },
   { path: 'confirmation/:id', component: ConfirmationComponent },
