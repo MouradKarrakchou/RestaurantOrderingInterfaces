@@ -36,6 +36,7 @@ export class GlobalBasketSummaryComponent implements OnInit {
   ngOnInit(): void {
     this.basket_total_price = this.basketService.getAllBasketsTotal();
     this.allTabletteActivated= this.basketService.getAllTabletteActivated();
+    this.state.setMiddleTabletState(MiddleTabletState.Preorder);
   }
 
   redirectToCatalog() {
@@ -58,10 +59,9 @@ export class GlobalBasketSummaryComponent implements OnInit {
         this.sendOrderToBFF().subscribe((orderInformation: any) => {
           console.log(orderInformation);
           this.basketService.confirmBasket();
+          this.router.navigate([''])
         });
     }
-
-    //this.router.navigate([''])
   }
 
   payOrder() {
