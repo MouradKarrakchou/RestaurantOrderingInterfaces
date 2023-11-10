@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 export enum UserTabletState {
   Idle = 'Idle', // Before starting the order
   Normal = 'Normal', // Order
+  OrderAgain = 'OrderAgain', //Ordering again
   Prevalidated = 'Prevalidated', // /order-number
   Game = 'Game', // /game
   Sleep = 'Sleep', // no route needed

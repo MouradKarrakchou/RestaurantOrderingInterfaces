@@ -162,6 +162,16 @@ export class BasketService {
     this.readyToOrder.next(new Map<string, boolean>([]));
   }
 
+  confirmBasketForIndex(i : string) {
+    let readyMap = this.readyToOrder.value;
+    if (this.baskets[i].value.length !== 0) {
+      this.alreadyOrdered[i.toString()] = this.baskets[i].value;
+      this.baskets[i].next([]);
+    }
+    readyMap.set(i.toString(), false);
+    this.readyToOrder.next(readyMap);
+  }
+
   isCustomerReady(tabletId: string) {
     let readyMap = this.readyToOrder.value;
     return(readyMap.get(tabletId));

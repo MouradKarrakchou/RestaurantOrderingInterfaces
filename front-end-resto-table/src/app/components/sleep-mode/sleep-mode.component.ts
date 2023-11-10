@@ -48,28 +48,30 @@ export class SleepModeComponent implements OnInit {
 
   selectTab(tabNumber: string) {
     //TODO: reorder on tablet
-    switch (tabNumber) {
-      case 'tab1':
-        this.tab1Selected = !this.tab1Selected;
-        this.state.setUserTabletState('1', this.tab1Selected ? UserTabletState.Normal : UserTabletState.Sleep);
-        break;
-      case 'tab2':
-        this.tab2Selected = !this.tab2Selected;
-        this.state.setUserTabletState('2', this.tab2Selected ? UserTabletState.Normal : UserTabletState.Sleep);
-        break;
-      case 'tab3':
-        this.tab3Selected = !this.tab3Selected;
-        this.state.setUserTabletState('3', this.tab3Selected ? UserTabletState.Normal : UserTabletState.Sleep);
-        break;
-      case 'tab4':
-        this.tab4Selected = !this.tab4Selected;
-        this.state.setUserTabletState('4', this.tab4Selected ? UserTabletState.Normal : UserTabletState.Sleep);
-        break;
+    if (this.powerUp) {
+      switch (tabNumber) {
+        case 'tab1':
+          this.tab1Selected = !this.tab1Selected;
+          this.state.setUserTabletState('1', this.tab1Selected ? UserTabletState.Normal : UserTabletState.Sleep);
+          break;
+        case 'tab2':
+          this.tab2Selected = !this.tab2Selected;
+          this.state.setUserTabletState('2', this.tab2Selected ? UserTabletState.Normal : UserTabletState.Sleep);
+          break;
+        case 'tab3':
+          this.tab3Selected = !this.tab3Selected;
+          this.state.setUserTabletState('3', this.tab3Selected ? UserTabletState.Normal : UserTabletState.Sleep);
+          break;
+        case 'tab4':
+          this.tab4Selected = !this.tab4Selected;
+          this.state.setUserTabletState('4', this.tab4Selected ? UserTabletState.Normal : UserTabletState.Sleep);
+          break;
+      }
     }
   }
 
   selectPaymentMethod(paymentMethod: string) {
-    if ((this.together.nativeElement.style.background == ''
+    if (this.powerUp) {if ((this.together.nativeElement.style.background == ''
       && this.separately.nativeElement.style.background == '')
       || (this.together.nativeElement.style.background == 'rgb(169, 169, 169)'
         && this.separately.nativeElement.style.background == 'rgb(169, 169, 169)')
@@ -109,19 +111,20 @@ export class SleepModeComponent implements OnInit {
       this.together.nativeElement.style.background = 'rgb(169, 169, 169)';
       this.separately.nativeElement.style.background = 'rgb(112, 147, 112)';
       this.paymentMethodSelected = paymentMethod;
-    }
-    else if ((this.together.nativeElement.style.background == 'rgb(169, 169, 169)'
-        || this.together.nativeElement.style.background == '')
-      && (this.separately.nativeElement.style.background == 'rgb(112, 147, 112)'
-        || this.separately.nativeElement.style.background == '')
-      && paymentMethod != this.paymentMethodSelected) {
-      console.log("else if 2")
-      this.together.nativeElement.style.background = 'rgb(112, 147, 112)';
-      this.separately.nativeElement.style.background = 'rgb(169, 169, 169)';
-      this.paymentMethodSelected = paymentMethod;
-    }
 
-    this.checkValidation();
+      } else if ((this.together.nativeElement.style.background == 'rgb(169, 169, 169)'
+              || this.together.nativeElement.style.background == '')
+          && (this.separately.nativeElement.style.background == 'rgb(112, 147, 112)'
+              || this.separately.nativeElement.style.background == '')
+          && paymentMethod != this.paymentMethodSelected) {
+        console.log("else if 2")
+        this.together.nativeElement.style.background = 'rgb(112, 147, 112)';
+        this.separately.nativeElement.style.background = 'rgb(169, 169, 169)';
+        this.paymentMethodSelected = paymentMethod;
+      }
+
+      this.checkValidation();
+    }
   }
 
   power() {
@@ -134,19 +137,22 @@ export class SleepModeComponent implements OnInit {
   }
 
   validatePayment() {
-    this.state.setMiddleTabletState(MiddleTabletState.Final);
-    this.basketService.getAllTabletteActivated().forEach((tabletId) => {
-      this.state.setUserTabletState(tabletId.toString(), UserTabletState.Final);
-    });
-    this.router.navigate(['/summary/0']);
+    if (this.powerUp && this.checkValidation()) {
+        this.state.setMiddleTabletState(MiddleTabletState.Final);
+        this.basketService.getAllTabletteActivated().forEach((tabletId) => {
+            this.state.setUserTabletState(tabletId.toString(), UserTabletState.Final);
+        });
+        this.router.navigate(['/summary/0']);
+    }
   }
 
   checkValidation() {
     if (this.paymentMethodSelected == 'together' || this.paymentMethodSelected == 'separately') {
       this.validate.nativeElement.style.background = 'rgb(112, 147, 112)';
+      return true;
     } else {
       this.validate.nativeElement.style.background = 'rgb(169, 169, 169)';
+      return false;
     }
   }
-
 }

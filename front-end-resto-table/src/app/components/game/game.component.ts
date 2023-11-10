@@ -1,6 +1,8 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {GameService} from "../../services/game.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import table from "../../models/Table";
+import {StateService, UserTabletState} from "../../services/state.service";
 
 @Component({
   selector: 'app-game',
@@ -16,7 +18,9 @@ export class GameComponent implements OnInit {
   score: number = 0;
 
   constructor(private gameService: GameService,
-              private route: ActivatedRoute) { }
+              private stateService: StateService,
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit(): void {
       this.route.params.subscribe(params => {
@@ -31,6 +35,9 @@ export class GameComponent implements OnInit {
 
   orderAgain() {
     //TODO redirection to order again
+    this.stateService.setUserTabletState(this.tabletId,UserTabletState.OrderAgain)
+    this.router.navigate(['/home',this.tabletId]);
+
   }
 
   cancel() {
