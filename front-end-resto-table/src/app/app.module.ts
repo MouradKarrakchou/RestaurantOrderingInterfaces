@@ -48,7 +48,7 @@ const routes: Routes = [
   { path: 'client-receipt/:id', component: ClientReceiptComponent },
   { path: 'end/:id', component: EndComponent },
   { path: 'status', component: PreparationStatusComponent},
-  { path: 'wait', component: WaitingScreenComponent},
+  { path: 'waiting-screen', component: WaitingScreenComponent},
   { path: 'summary/:id', component: GlobalBasketSummaryComponent },
   { path: '**', redirectTo: '/table-viewer' } // GARDER TOUT EN BAS
 ];
@@ -75,6 +75,8 @@ const routes: Routes = [
     ClientReceiptComponent,
     MiddleTableComponent,
     EndComponent,
+    WaitingScreenComponent,
+    GameLeaderboardComponent,
   ],
     imports: [
         BrowserModule,
