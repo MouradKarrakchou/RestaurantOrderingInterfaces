@@ -37,7 +37,7 @@ const routes: Routes = [
   { path: 'order-number/:id', component: OrderNumberComponent },
   { path: 'middle-table', component: MiddleTableComponent },
   { path: 'table-viewer/:id', component: TableViewerComponent },
-  { path: 'table-viewer/:id/global-basket-summary', component: GlobalBasketSummaryComponent }
+  { path: 'middle-table/:id/global-basket-summary', component: GlobalBasketSummaryComponent }
 ];
 
 @NgModule({

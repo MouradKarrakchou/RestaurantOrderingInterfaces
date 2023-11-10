@@ -17,7 +17,7 @@ import {OrderInformation} from "../../models/OrderInformation";
   templateUrl: './order-number.component.html',
   styleUrls: ['./order-number.component.css'],
 })
-export class OrderNumberComponent implements OnInit {
+export class  OrderNumberComponent implements OnInit {
 
   time: Date | undefined;
   orderNumber: string | undefined;

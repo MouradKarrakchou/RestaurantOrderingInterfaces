@@ -19,14 +19,15 @@ export class BasketSummaryComponent implements OnInit {
   basketBeverages: BasketItem[] = [];
 
   @Input() canEdit: boolean = false;
-  tabletId: string = '0';
+  @Input() tabletId!: string ;
 
   constructor(private basketService: BasketService,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.tabletId = params['id'];
+      if (!this.tabletId)
+          this.tabletId = params['id'];
       this.initBasket();
     });
   }

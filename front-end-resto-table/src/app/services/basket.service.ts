@@ -15,12 +15,12 @@ export class BasketService {
     '4': new BehaviorSubject<BasketItem[]>([]),
   };
 
-  alreadyOrdered: Map<string, BasketItem[] | undefined> = new Map<string, BasketItem[] | undefined>([
-    ["1", undefined],
-    ["2", undefined],
-    ["3", undefined],
-    ["4", undefined]
-  ]);
+  alreadyOrdered: { [key: string]: BasketItem[] | undefined } = {
+    '1': undefined,
+    '2': undefined,
+    '3': undefined,
+    '4': undefined,
+  };
 
   readyToOrder: BehaviorSubject<Map<string, boolean>> = new BehaviorSubject<Map<string, boolean>>(new Map<string, boolean>([
     ["1", false],
@@ -78,6 +78,16 @@ export class BasketService {
     return total;
   }
 
+  getAllTabletteActivated(): number[] {
+    let allTables = [];
+    for (let i = 1; i <= 4; i++) {
+      if (this.alreadyOrdered[i]) {
+        allTables.push(i);
+      }
+    }
+    return allTables;
+  }
+
   getBasket(tabletId: string): BasketItem[] {
     return this.baskets[tabletId].value;
   }
@@ -103,7 +113,7 @@ export class BasketService {
   }
 
   setSelectedTable(number: string) {
-    this.alreadyOrdered.set(number, []);
+    this.alreadyOrdered[number] = [];
   }
 
   getBasketReadyToOrder(tabletId: string) {
@@ -122,7 +132,7 @@ export class BasketService {
     let readyMap = this.readyToOrder.value;
     for (let i = 1; i <= 4; i++) {
       if (this.baskets[i].value.length !== 0) {
-        this.alreadyOrdered.set(i.toString(), this.baskets[i].value);
+        this.alreadyOrdered[i.toString()] = this.baskets[i].value;
         this.baskets[i].next([]);
       }
       readyMap.set(i.toString(), false);

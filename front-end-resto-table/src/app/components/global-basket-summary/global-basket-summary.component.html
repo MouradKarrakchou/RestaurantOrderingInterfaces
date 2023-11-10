@@ -6,9 +6,39 @@
       <hr>
     </div>
   </div>
-  <div class="confirm-body">
+  <div class="sort-buttons-container mt-2">
+  <button mat-stroked-button
+          class="sort-button"
+          [class.selected-sort]="selectedSortOption == 'global'"
+          (click)="setSortOption('global')">Global recap
+  </button>
+  <button mat-stroked-button
+          class="sort-button"
+          [class.selected-sort]="selectedSortOption == 'byPerson'"
+          (click)="setSortOption('byPerson')">Individual recap
+  </button>
+  </div>
+
+  <div class="confirm-body" style="margin-top: 5vh" *ngIf="selectedSortOption == 'global'">
     <app-basket-summary></app-basket-summary>
   </div>
+  <div class="confirm-body" *ngIf="selectedSortOption == 'byPerson'">
+    <ng-container *ngFor="let tabletId of allTabletteActivated" >
+      <div class="category-up">
+        <div class="category-title">
+          <div class="category-icon" style="color:black">
+            <mat-icon>person</mat-icon>
+          </div>
+          <div class="category-text">
+            <span> Customer {{ tabletId }} </span>
+          </div>
+        </div>
+        <hr style="background-color: #4c4ac3">
+      </div>
+      <app-basket-summary [tabletId]="tabletId.toString()"></app-basket-summary>
+    </ng-container>
+  </div>
+
   <div class="confirm-footer">
     <div class="confirm-total">
       <hr>
