@@ -34,6 +34,7 @@ import { PreparationStatusComponent } from './components/preparation-status/prep
 import { MatSnackBarModule} from "@angular/material/snack-bar";
 import { GameLeaderboardComponent } from './components/game-leaderboard/game-leaderboard.component';
 import { WaitingScreenComponent } from './components/waiting-screen/waiting-screen.component';
+import { GameComponent } from './components/game/game.component';
 
 
 const routes: Routes = [
@@ -50,6 +51,7 @@ const routes: Routes = [
   { path: 'status', component: PreparationStatusComponent},
   { path: 'wait', component: WaitingScreenComponent},
   { path: 'summary/:id', component: GlobalBasketSummaryComponent },
+  { path: 'game', component: GameComponent },
   { path: '**', redirectTo: '/table-viewer' } // GARDER TOUT EN BAS
 ];
 
@@ -75,6 +77,7 @@ const routes: Routes = [
     ClientReceiptComponent,
     MiddleTableComponent,
     EndComponent,
+    GameComponent,
   ],
     imports: [
         BrowserModule,
