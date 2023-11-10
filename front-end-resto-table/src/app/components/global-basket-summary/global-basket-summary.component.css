@@ -68,10 +68,11 @@ hr {
 
 
 .sort-button {
+  height: 6vh;
   flex-grow: 1;
   border: 3px solid #8BC34AFF;
-  font-size: 2vh;
-  margin-inline: 2vh;
+  font-size: 3vh;
+  margin-inline: 4vh;
 }
 
 .selected-sort {
