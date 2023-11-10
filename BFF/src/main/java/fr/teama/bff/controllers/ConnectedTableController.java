@@ -38,7 +38,7 @@ public class ConnectedTableController {
     @PostMapping("/continue-order")
     public ResponseEntity<TableOrderInformation> continueOrdering(@RequestBody ConnectedTableKioskOrderDTO connectedTableKioskOrderDTO) throws DiningServiceUnavaibleException, TableAlreadyTakenException {
         LoggerHelper.logInfo("Processing order request for " + connectedTableKioskOrderDTO.toString());
-        TableOrderInformation tableOrderInformation = orderComponent.processConnectedTableOrder(connectedTableKioskOrderDTO);
+        TableOrderInformation tableOrderInformation = orderComponent.continueProcessingOrder(connectedTableKioskOrderDTO);
         return ResponseEntity.ok(tableOrderInformation);
     }
 

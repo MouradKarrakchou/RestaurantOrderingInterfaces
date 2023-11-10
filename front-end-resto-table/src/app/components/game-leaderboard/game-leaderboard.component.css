@@ -1,0 +1,33 @@
+.leaderboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(243, 243, 243, 0.95);
+  padding: 2vh;
+  border-radius: 5%;
+}
+
+.title {
+  font-size: 3vh;
+  margin-block: 2vh;
+}
+
+.medal-img {
+  width: 4vh;
+  height: 4vh;
+}
+
+.ranks {
+  border: solid 0.5vh #8BC34AFF;
+  border-radius: 5px;
+}
+
+.player-rank {
+  margin: 1vh;
+  font-size: 2vh;
+
+}
+
+.text-score {
+  font-size: 3vh;
+}
