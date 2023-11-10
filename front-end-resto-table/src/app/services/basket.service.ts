@@ -151,4 +151,5 @@ export class BasketService {
     }
     this.readyToOrder.next(readyMap);
   }
+
 }

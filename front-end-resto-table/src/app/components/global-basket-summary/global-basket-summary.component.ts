@@ -22,11 +22,14 @@ export class GlobalBasketSummaryComponent implements OnInit {
   selectedSortOption: string ="global";
   allTabletteActivated: number[]=[1,2] ;
 
+  isPaimentPage: boolean=false;
+
+  paymentOnEachTab: boolean=false;
+
 
   ngOnInit(): void {
     this.basket_total_price = this.basketService.getAllBasketsTotal();
-    //this.allTabletteActivated= this.basketService.getAllTabletteActivated();
-    console.log(this.basketService.baskets);
+    this.allTabletteActivated= this.basketService.getAllTabletteActivated();
   }
 
   redirectToCatalog() {
