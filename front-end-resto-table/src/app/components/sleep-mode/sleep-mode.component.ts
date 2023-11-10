@@ -12,4 +12,11 @@ export class SleepModeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  selectTab(tab: string) {
+
+  }
+
+  selectPaymentMethod(choice: string) {
+
+  }
 }

@@ -1,1 +1,22 @@
-<p>sleep-mode works!</p>
+<body>
+  <div class="people-number-title">What screen do you want to turn on?</div>
+  <div class="people-number-buttons">
+    <button class="number three" #tab3 (click)="selectTab('tab3')">3</button>
+    <div class="one-and-two">
+      <button class="number one" #tab1 (click)="selectTab('tab1')">1</button>
+      <button class="number two" #tab2 (click)="selectTab('tab2')">2</button>
+    </div>
+    <button class="number four" #tab4 (click)="selectTab('tab4')">4</button>
+  </div>
+
+  <div class="exit-sleep-mode">
+    <button class="exit-sleep-mode-button">Turn on this screen</button>
+  </div>
+
+  <div class="order-or-pay-title">Still hungry or full? :)</div>
+  <div class="order-or-pay-buttons">
+    <button class="order-again" #orderAgain (click)="selectPaymentMethod('order-again')">Order again</button>
+    <button class="pay" #pay (click)="selectPaymentMethod('pay')">Let's pay</button>
+  </div>
+
+</body>
