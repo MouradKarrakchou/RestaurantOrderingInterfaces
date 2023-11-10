@@ -27,6 +27,7 @@ export class ClientReceiptComponent implements OnInit {
   }
 
   redirectToEndPage() {
+    this.paymentService.setPaid(this.tabletId);
     this.router.navigate(['/end', this.tabletId]);
   }
 
