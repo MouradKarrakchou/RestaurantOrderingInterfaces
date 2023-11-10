@@ -20,7 +20,7 @@
   </div>
 
   <div class="confirm-body" *ngIf="selectedSortOption == 'global'">
-    <app-basket-summary [finalOrder]="isPaimentPage" ></app-basket-summary>
+    <app-basket-summary [finalOrder]="isPaymentPage" ></app-basket-summary>
   </div>
   <div class="confirm-body" *ngIf="selectedSortOption == 'byPerson'">
     <ng-container *ngFor="let tabletId of allTabletteActivated" >
@@ -35,7 +35,7 @@
         </div>
         <hr style="background-color: #4c4ac3">
       </div>
-      <app-basket-summary [finalOrder]="isPaimentPage" [tabletId]="tabletId.toString()"></app-basket-summary>
+      <app-basket-summary [finalOrder]="isPaymentPage" [tabletId]="tabletId.toString()"></app-basket-summary>
     </ng-container>
   </div>
 
@@ -43,7 +43,11 @@
     <div class="confirm-total">
       <hr>
       <p class="py-4">TOTAL: {{ basket_total_price | currency:'USD' }}</p>
-      <button *ngIf="!paymentOnEachTab" class="mb-4 p-3 confirm-button" mat-raised-button  (click)="confirmOrder()">  {{ isPaimentPage ? 'PAY' : 'CONFIRM' }}
+      <button *ngIf="!isPaymentPage" class="mb-4 p-3 confirm-button" [disabled]="!isEvryoneReady"
+              [ngClass]="{'darker-button': isEvryoneReady}"
+              mat-raised-button (click)="confirmOrder()">  {{'CONFIRM' }}
+      </button>
+      <button *ngIf="paymentOnEachTab && isPaymentPage" class="mb-4 p-3 confirm-button" mat-raised-button (click)="payOrder()">  {{ 'PAY' }}
       </button>
     </div>
   </div>
