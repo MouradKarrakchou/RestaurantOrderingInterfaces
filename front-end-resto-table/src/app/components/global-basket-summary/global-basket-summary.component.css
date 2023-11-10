@@ -66,6 +66,10 @@ hr {
   background-color: #8BC34AFF;
 }
 
+.darker-button{
+  background-color: #5f6b51;
+}
+
 
 .sort-button {
   flex-grow: 1;
