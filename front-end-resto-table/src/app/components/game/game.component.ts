@@ -10,6 +10,7 @@ import {ActivatedRoute} from "@angular/router";
 export class GameComponent implements OnInit {
 
   @ViewChild('alert') alert!: ElementRef;
+  @ViewChild('cookie') cookie!: ElementRef;
 
   tabletId: string = "0";
 
@@ -35,6 +36,13 @@ export class GameComponent implements OnInit {
   }
 
   increment() {
+    if (this.cookie.nativeElement.style.width == '70vh') {
+      this.cookie.nativeElement.style.width = '65vh';
+    } else {
+      this.cookie.nativeElement.style.width = '70vh';
+    }
+    this.cookie.nativeElement.style.height = 'auto';
+    this.cookie.nativeElement.style.transform += 'rotate(10deg)';
     this.gameService.click(this.tabletId);
   }
 }

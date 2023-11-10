@@ -29,9 +29,14 @@
 
 .cookie-image {
   margin-top: 4vh;
+  width: 70vh;
+  height: auto;
 }
 
 .order-again {
+  position: absolute;
+  bottom: 5%;
+  left: 2%;
   width: 35vh;
   height: 10vh;
   font-size: 3vh;
