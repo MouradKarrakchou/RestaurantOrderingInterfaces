@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 export enum UserTabletState {
   Idle = 'Idle', // Before starting the order
   Normal = 'Normal', // Order
+  Prevalidated = 'Prevalidated', // /order-number
+  Game = 'Game', // /game
   Sleep = 'Sleep', // TODO: no route needed (after order served)
   Final = 'Final', // TODO: /client-receipt (after click on payment on middle tablet)
 }
@@ -11,9 +13,9 @@ export enum MiddleTabletState {
   Idle = 'Idle', // /idle
   Config = 'Config', // /middle-table
   Preorder = 'Preorder', // /summary
-  Waiting = 'Status', // TODO: /wait (after confirm first order)
+  Waiting = 'Status', // /waiting-screen
   Sleep = 'Sleep', // TODO: /sleep-mode (after order served)
-  Final = 'Final', // TODO: /global-receipt (after click on payment)
+  Final = 'Final', // TODO: /summary (after click on payment)
 }
 
 @Injectable({

@@ -45,9 +45,9 @@ hr {
   margin-block: 2vh;
 }
 
-.container {
-  margin: auto;
-  width: fit-content;
+.status-container {
+  margin-inline: 5vh;
+  height: 100vh;
 }
 
 .category-container {
