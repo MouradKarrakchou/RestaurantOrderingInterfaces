@@ -32,6 +32,7 @@ import { ClientReceiptComponent } from './components/client-receipt/client-recei
 import { EndComponent } from './components/common/end/end.component';
 import { PreparationStatusComponent } from './components/preparation-status/preparation-status.component';
 import { GameLeaderboardComponent } from './components/game-leaderboard/game-leaderboard.component';
+import { WaitingScreenComponent } from './components/waiting-screen/waiting-screen.component';
 
 
 const routes: Routes = [
@@ -46,8 +47,7 @@ const routes: Routes = [
   { path: 'sleep-mode', component: SleepModeComponent },
   { path: 'client-receipt/:id', component: ClientReceiptComponent },
   { path: 'end/:id', component: EndComponent },
-  { path: 'status', component: PreparationStatusComponent},
-  { path: 'leaderboard', component: GameLeaderboardComponent},
+  { path: 'wait', component: WaitingScreenComponent},
   { path: 'middle-table/:id/global-basket-summary', component: GlobalBasketSummaryComponent },
   { path: '**', redirectTo: '/idle/1' } // GARDER TOUT EN BAS
 ];
@@ -77,6 +77,7 @@ const routes: Routes = [
     MiddleTableComponent,
     EndComponent,
     GameLeaderboardComponent,
+    WaitingScreenComponent,
   ],
     imports: [
         BrowserModule,
