@@ -1,7 +1,10 @@
-.leaderboard {
+.leaderboard-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: rgba(243, 243, 243, 0.95);
+  padding: 2vh;
+  border-radius: 5%;
 }
 
 .title {
@@ -23,4 +26,8 @@
   margin: 1vh;
   font-size: 2vh;
 
+}
+
+.text-score {
+  font-size: 3vh;
 }

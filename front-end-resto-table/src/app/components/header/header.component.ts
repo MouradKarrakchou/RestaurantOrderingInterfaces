@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
   }
 
   viewFullTable() {
-    this.router.navigate(['/table-viewer', this.tabletId])
+    this.router.navigate(['/table-viewer'])
   }
 
   protected readonly print = print;

@@ -22,6 +22,13 @@ export class SleepModeComponent implements OnInit {
 
   @ViewChild('black') black!: ElementRef;
 
+  @ViewChild('together') together!: ElementRef;
+  @ViewChild('separately') separately!: ElementRef;
+
+  paymentMethodSelected: string = "";
+
+  @ViewChild('validate') validate!: ElementRef;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -49,11 +56,54 @@ export class SleepModeComponent implements OnInit {
     }
   }
 
-  selectPaymentMethod(choice: string) {
-    if (this.powerUp) {
-      this.sleepMode.nativeElement.style.background = 'rgb(169, 169, 169)';
+  selectPaymentMethod(paymentMethod: string) {
+    if ((this.together.nativeElement.style.background == ''
+      && this.separately.nativeElement.style.background == '')
+      || (this.together.nativeElement.style.background == 'rgb(169, 169, 169)'
+        && this.separately.nativeElement.style.background == 'rgb(169, 169, 169)')
+      || (this.together.nativeElement.style.background == ''
+        && this.separately.nativeElement.style.background == 'rgb(169, 169, 169)')
+      || (this.together.nativeElement.style.background == 'rgb(169, 169, 169)'
+        && this.separately.nativeElement.style.background == '')) {
+      console.log("if")
+      switch (paymentMethod) {
+        case 'together': this.together.nativeElement.style.background = 'rgb(112, 147, 112)'; break;
+        case 'separately': this.separately.nativeElement.style.background = 'rgb(112, 147, 112)'; break;
+      }
+      this.paymentMethodSelected = paymentMethod;
     }
-    this.sleepMode.nativeElement.style.background = 'rgb(112, 147, 112)';
+    else if (this.together.nativeElement.style.background == 'rgb(112, 147, 112)'
+      && paymentMethod == this.paymentMethodSelected) {
+      this.together.nativeElement.style.background = 'rgb(169, 169, 169)';
+      this.paymentMethodSelected = '';
+    }
+    else if (this.separately.nativeElement.style.background == 'rgb(112, 147, 112)'
+      && paymentMethod == this.paymentMethodSelected) {
+      this.separately.nativeElement.style.background = 'rgb(169, 169, 169)';
+      this.paymentMethodSelected = '';
+    }
+    else if ((this.together.nativeElement.style.background == 'rgb(112, 147, 112)'
+        || this.together.nativeElement.style.background == '')
+      && (this.separately.nativeElement.style.background == 'rgb(169, 169, 169)'
+        || this.separately.nativeElement.style.background == '')
+      && paymentMethod != this.paymentMethodSelected) {
+      console.log("else if")
+      this.together.nativeElement.style.background = 'rgb(169, 169, 169)';
+      this.separately.nativeElement.style.background = 'rgb(112, 147, 112)';
+      this.paymentMethodSelected = paymentMethod;
+    }
+    else if ((this.together.nativeElement.style.background == 'rgb(169, 169, 169)'
+        || this.together.nativeElement.style.background == '')
+      && (this.separately.nativeElement.style.background == 'rgb(112, 147, 112)'
+        || this.separately.nativeElement.style.background == '')
+      && paymentMethod != this.paymentMethodSelected) {
+      console.log("else if 2")
+      this.together.nativeElement.style.background = 'rgb(112, 147, 112)';
+      this.separately.nativeElement.style.background = 'rgb(169, 169, 169)';
+      this.paymentMethodSelected = paymentMethod;
+    }
+
+    this.checkValidation();
   }
 
   power() {
@@ -66,11 +116,15 @@ export class SleepModeComponent implements OnInit {
     this.powerUp = !this.powerUp;
   }
 
-  orderAgain() {
-    //TODO redirection
+  validatePayment() {
+    //TODO redirection ?? Bill ??
   }
 
-  pay() {
-    //TODO redirection
+  checkValidation() {
+    if (this.paymentMethodSelected == 'together' || this.paymentMethodSelected == 'separately') {
+      this.validate.nativeElement.style.background = 'rgb(112, 147, 112)';
+    } else {
+      this.validate.nativeElement.style.background = 'rgb(169, 169, 169)';
+    }
   }
 }

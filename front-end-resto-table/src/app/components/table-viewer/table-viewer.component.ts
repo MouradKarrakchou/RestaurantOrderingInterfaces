@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import { Router} from "@angular/router";
+import {MiddleTabletState, StateService, UserTabletState} from "../../services/state.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-table-viewer',
@@ -8,26 +10,64 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class TableViewerComponent implements OnInit {
 
+
+  middleState: string = MiddleTabletState.Idle;
+  tabletStates: string[] = ["Idle", "Idle", "Idle", "Idle"];
+
   constructor(private router: Router,
-              private route: ActivatedRoute) { }
+              private stateService: StateService,
+              private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    for (let i = 0; i < 4; i++) {
+      this.tabletStates[i] = this.stateService.getUserTabletState((i+1).toString());
+    }
+    this.middleState = this.stateService.getMiddleTabletState();
   }
 
-  redirectToHome() {
-    this.route.params.subscribe(params => {
-      const id = params['id'];
 
-      this.router.navigate(['/home', id]);
-    });
-  }
-
-  changeTablette(number: number) {
-    if (number==0){
-      this.router.navigate(['/middle-table/0/global-basket-summary']);
+  changeTablet(number: number) {
+    if (number == 0){
+      let state = this.stateService.getMiddleTabletState();
+      switch (state) {
+        case MiddleTabletState.Idle:
+          this.router.navigate(['/idle', number]);
+          break;
+        case MiddleTabletState.Config:
+          this.router.navigate(['/middle-table']);
+          break;
+        case MiddleTabletState.Preorder:
+          this.router.navigate(['/summary', number]);
+          break;
+        case MiddleTabletState.Waiting:
+          this.router.navigate(['/wait']);
+          break;
+        case MiddleTabletState.Sleep:
+          this.router.navigate(['/sleep-mode']);
+          break;
+        case MiddleTabletState.Final:
+          this.router.navigate(['/global-receipt', number]);
+          break;
+      }
     }
     else{
-      this.router.navigate(['/home', number]);
+      let state = this.stateService.getUserTabletState(number.toString());
+      switch (state) {
+        case UserTabletState.Idle:
+          this.router.navigate(['/idle', number]);
+          break;
+        case UserTabletState.Normal:
+          this.router.navigate(['/home', number]);
+          break;
+        case UserTabletState.Sleep:
+          this._snackBar.open("This tablet is off", "Close", {
+            duration: 5000,
+          });
+          break;
+        case UserTabletState.Final:
+          this.router.navigate(['/client-receipt', number]);
+          break;
+      }
     }
   }
 }

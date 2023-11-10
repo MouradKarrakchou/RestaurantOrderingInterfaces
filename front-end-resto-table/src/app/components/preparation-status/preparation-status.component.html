@@ -2,16 +2,21 @@
   <div class="category-container" *ngFor="let categoryStatus of preparationStatus">
     <div *ngIf="categoryStatus.status !== 'TAKEN_FOR_SERVICE'">
       <div class="category-up">
-        <div class="category-title">
-          <div class="category-icon">
-            <mat-icon>{{getCategoryIconText(categoryStatus.post)}}</mat-icon>
-          </div>
-          <span class="category-text">
-            {{getCategoryText(categoryStatus.post)}} -
-            <span [ngStyle]="{'color': getStatusColor(categoryStatus.status)}">
-              {{getStatusText(categoryStatus.status)}}
+        <div class="category-header">
+          <div class="category-title">
+            <div class="category-icon">
+              <mat-icon>{{getCategoryIconText(categoryStatus.post)}}</mat-icon>
+            </div>
+            <span class="category-title-text">
+              {{getCategoryText(categoryStatus.post)}} -
+              <span [ngStyle]="{'color': getStatusColor(categoryStatus.status)}">
+                {{getStatusText(categoryStatus.status)}}
+              </span>
             </span>
-          </span>
+          </div>
+          <div class="category-time">
+            <span>Should be ready at {{categoryStatus.shouldBeReadyAt | date:"mediumTime"}}</span>
+          </div>
         </div>
         <hr>
       </div>

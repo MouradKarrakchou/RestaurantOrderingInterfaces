@@ -24,7 +24,6 @@ body {
 
 .exit-sleep-mode-button {
   z-index: 150;
-  color: white;
   background-color: #709370;
   border-radius: 25px;
   border-style: none;
@@ -61,7 +60,7 @@ body {
   border-style: none;
 }
 
-.one, .two, .order-again, .pay, .exit-sleep-mode-button {
+.one, .two, .together, .separately, .validate, .exit-sleep-mode-button {
   width: 35vh;
   height: 10vh;
 }
@@ -71,7 +70,7 @@ body {
   height: 30vh;
 }
 
-.order-or-pay-title {
+.payment-method-title {
   color: white;
   height: 8vh;
   display: flex;
@@ -80,13 +79,20 @@ body {
   align-items: center;
 }
 
-.order-or-pay-buttons {
+.payment-method-buttons {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
 }
 
-.order-again, .pay {
+.together, .separately {
+  font-size: 3vh;
+  background-color: #a9a9a9;
+  border-radius: 25px;
+  border-style: none;
+}
+
+.validate {
   font-size: 3vh;
   background-color: #a9a9a9;
   border-radius: 25px;

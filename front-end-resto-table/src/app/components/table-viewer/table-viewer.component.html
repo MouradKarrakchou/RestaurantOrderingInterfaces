@@ -1,20 +1,21 @@
 
-<div class="table tableHorizontal" (click)="changeTablette(1)" style="top:0;left:20%;background-color: #619461;border-color: #465b46">
-  <div style="margin:auto;margin-bottom: 5px;">Tablette 1</div>
-  <div style="margin:auto;margin-top:5px;font-size: 20px">didn't order yet</div>
+<div class="table tableHorizontal" (click)="changeTablet(1)" style="top:0;left:20%;background-color: #619461;border-color: #465b46">
+  <div style="margin:auto;margin-bottom: 5px;">Tablet 1</div>
+  <div style="margin:auto;margin-top:15px;font-size: 3vh;color:rgba(0,0,0,0.6)">State: {{ tabletStates[0] }}</div>
 </div>
-<div class="table tableHorizontal" (click)="changeTablette(2)" style="bottom:0;left:20%; background-color: #d7534a;border-color: #803630">
-  <div style="margin:auto;margin-bottom: 5px;">Tablette 2</div>
-  <div style="margin:auto;margin-top:5px;font-size: 20px">didn't order yet</div>
+<div class="table tableHorizontal" (click)="changeTablet(2)" style="bottom:0;left:20%; background-color: #d7534a;border-color: #803630">
+  <div style="margin:auto;margin-bottom: 5px;">Tablet 2</div>
+  <div style="margin:auto;margin-top:15px;font-size: 3vh;color:rgba(0,0,0,0.6)">State: {{ tabletStates[1] }}</div>
 </div>
-<div class="table tableVertical" (click)="changeTablette(3)" style="left:0; background-color: aqua;border-color: #206565">
-  <div style="margin:auto;margin-bottom: 5px;">Tablette 3</div>
-  <div style="margin:auto;margin-top:5px;font-size: 20px">didn't order yet</div>
+<div class="table tableVertical" (click)="changeTablet(3)" style="left:0; background-color: aqua;border-color: #206565">
+  <div style="margin:auto;margin-bottom: 5px;">Tablet 3</div>
+  <div style="margin:auto;margin-top:15px;font-size: 3vh;color:rgba(0,0,0,0.6)">State: {{ tabletStates[2] }}</div>
 </div>
-<div class="table tableVertical" (click)="changeTablette(4)" style="right:0; background-color: blueviolet;border-color: #501d80">
-  <div  style="margin:auto;margin-bottom: 5px;">Tablette 4</div>
-  <div style="margin:auto;margin-top:5px;font-size: 20px">didn't order yet</div>
+<div class="table tableVertical" (click)="changeTablet(4)" style="right:0; background-color: blueviolet;border-color: #501d80">
+  <div  style="margin:auto;margin-bottom: 5px;">Tablet 4</div>
+  <div style="margin:auto;margin-top:15px;font-size: 3vh;color:rgba(0,0,0,0.6)">State: {{ tabletStates[3] }}</div>
 </div>
-<div class="tablePrincipal" style="left:20%;top:30%; background-color: #31e22b;" (click)="changeTablette(0)">
-  <div style="margin:auto" >Tablette principal</div>
+<div class="table tablePrincipal" style="left:20%;top:30%; background-color: #31e22b;" (click)="changeTablet(0)">
+  <div style="margin:auto" >Middle tablet</div>
+  <div style="margin:auto;margin-top:15px;font-size: 3vh;color:rgba(0,0,0,0.6)">State: {{ middleState }}</div>
 </div>

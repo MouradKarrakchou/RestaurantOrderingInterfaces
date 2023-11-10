@@ -94,7 +94,9 @@ public class OrderComponent implements IOrderComponent {
                     map.put(preparedItem.getShortName(), 1);
                 }
             }
-            KitchenPreparationStatus kitchenPreparationStatus = new KitchenPreparationStatus(kitchenPreparation.getId(),
+            KitchenPreparationStatus kitchenPreparationStatus = new KitchenPreparationStatus(
+                    kitchenPreparation.getId(),
+                    kitchenPreparation.getShouldBeReadyAt(),
                     kitchenPreparation.getCompletedAt(),
                     kitchenPreparation.getTakenForServiceAt(),
                     post,

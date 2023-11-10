@@ -1,3 +1,5 @@
+<app-switch-to-tabs></app-switch-to-tabs>
+
 <div class="header">
   <img class="logo" src="assets/resto-logo.png" alt="RESTo app logo">
   <p class="welcome-text">Welcome to RESTo</p>
@@ -18,14 +20,6 @@
   </div>
   <button class="number four" #tab4 (click)="selectTab('tab4')">4</button>
 </div>
-
-
-<div class="payment-method-title">Do you want to pay together or separately?</div>
-<div class="payment-method-buttons">
-  <button class="together" #together (click)="selectPaymentMethod('together')">Together</button>
-  <button class="separately" #separately (click)="selectPaymentMethod('separately')">Separately</button>
-</div>
-
 
 <div class="validate-title">Ready to order?</div>
 <div class="validate-button">
