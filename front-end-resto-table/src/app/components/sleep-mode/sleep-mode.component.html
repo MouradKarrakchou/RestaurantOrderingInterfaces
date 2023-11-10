@@ -10,7 +10,12 @@
   </div>
 
   <div class="exit-sleep-mode">
-    <button class="exit-sleep-mode-button" #sleepMode (click)="power()">Turn on this screen</button>
+    <button class="exit-sleep-mode-button" #sleepMode (click)="power()">
+      <p class="exit-sleep-mode-text" *ngIf="this.powerUp; else falseBlock">Turn off this screen</p>
+      <ng-template #falseBlock>
+        <p class="exit-sleep-mode-text">Turn on this screen</p>
+      </ng-template>
+    </button>
   </div>
 
   <div class="payment-method-title">Do you want to proceed to the payment?</div>

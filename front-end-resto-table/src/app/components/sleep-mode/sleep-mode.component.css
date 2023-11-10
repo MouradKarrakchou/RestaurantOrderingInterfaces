@@ -29,6 +29,10 @@ body {
   border-style: none;
 }
 
+.exit-sleep-mode-text {
+  margin-top: 2vh;
+}
+
 .people-number-title {
   color: white;
   height: 10vh;
