@@ -1,4 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {GameService} from "../../services/game.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-game',
@@ -9,9 +11,15 @@ export class GameComponent implements OnInit {
 
   @ViewChild('alert') alert!: ElementRef;
 
-  constructor() { }
+  tabletId: string = "0";
+
+  constructor(private gameService: GameService,
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+      this.route.params.subscribe(params => {
+          this.tabletId = params['id'];
+      });
   }
 
   OrderAgain() {
@@ -24,5 +32,9 @@ export class GameComponent implements OnInit {
 
   cancel() {
     this.alert.nativeElement.style.display = 'none';
+  }
+
+  increment() {
+    this.gameService.click(this.tabletId);
   }
 }
