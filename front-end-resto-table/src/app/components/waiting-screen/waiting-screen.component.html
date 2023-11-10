@@ -1,11 +1,18 @@
 <app-switch-to-tabs></app-switch-to-tabs>
 <div class="waiting-container">
   <div class="waiting-header">
-    <span>ORDER PREPARATION ADVANCEMENT</span>
-    <hr>
+    <span class="title">ORDER PREPARATION ADVANCEMENT</span>
+    <div class="time">
+      <mat-icon>schedule</mat-icon>
+      <span *ngIf="time">{{ time | date:"mediumTime" }}</span>
+    </div>
   </div>
   <div class="waiting-body">
-    <app-preparation-status></app-preparation-status>
+    <div class="preparation-status-container">
+      <div>
+        <app-preparation-status class="test"></app-preparation-status>
+      </div>
+    </div>
     <app-game-leaderboard></app-game-leaderboard>
   </div>
 </div>

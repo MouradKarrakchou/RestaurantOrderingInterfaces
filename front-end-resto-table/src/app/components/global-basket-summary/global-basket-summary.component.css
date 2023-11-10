@@ -9,6 +9,7 @@
   padding-inline: 2.5%;
   max-height: 65%;
   overflow-y: auto;
+  margin-top: 2vh;
 }
 
 .confirm-header {
@@ -67,10 +68,11 @@ hr {
 
 
 .sort-button {
+  height: 6vh;
   flex-grow: 1;
   border: 3px solid #8BC34AFF;
-  font-size: 2vh;
-  margin-inline: 2vh;
+  font-size: 3vh;
+  margin-inline: 4vh;
 }
 
 .selected-sort {
@@ -108,9 +110,18 @@ hr {
   width: 7vh;
   margin-right: .5vh;
 }
+.category-icon-v2{
+  height: 4vh;
+  width: 4vh;
+  margin-right: .5vh;
+}
 
 .category-icon mat-icon {
   font-size: 7vh;
+}
+
+.category-icon-v2 mat-icon {
+  font-size: 4vh;
 }
 
 .category-text {

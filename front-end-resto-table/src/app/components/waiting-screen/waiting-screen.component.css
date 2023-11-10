@@ -6,17 +6,35 @@
 }
 
 .waiting-header {
-  width: 95%;
+  width: 100vw;
   height: 15vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: #619461;
 }
 
 .waiting-header span {
-  font-size: 4vh;
   text-align: center;
-  margin-block: 1vh;
+  color: white;
+}
+
+.waiting-header .title {
+  font-size: 4vh;
+  margin-block: 2vh;
+}
+
+.waiting-header .time {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: white;
+  font-size: 1.5vh;
+}
+
+.waiting-header .time span {
+  margin-top: 0.4vh;
+  margin-left: 1vh;
 }
 
 hr {
@@ -31,4 +49,16 @@ hr {
   flex-direction: row;
   justify-content: space-evenly;
   width: 100vw;
+  margin-top: 3vh;
+}
+
+.preparation-status-container {
+  background-color: #F3F3F3F3;
+  border-radius: 2%;
+  padding-block: 2vh;
+}
+
+.preparation-status-container div {
+  overflow-y: auto;
+  max-height: 75vh;
 }

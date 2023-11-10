@@ -59,7 +59,7 @@ public class OrderComponent implements IOrderComponent {
     public TableOrderInformation processConnectedTableOrder(ConnectedTableKioskOrderDTO connectedTableKioskOrderDTO) throws DiningServiceUnavaibleException, TableAlreadyTakenException {
         TableDTO table = diningProxy.getTable(connectedTableKioskOrderDTO.getTableNumber());
         if (table.isTaken()) {
-            throw new TableAlreadyTakenException();
+            continueProcessingOrder(connectedTableKioskOrderDTO);
         }
         return processOrder(table, connectedTableKioskOrderDTO.getItems(), false);
     }

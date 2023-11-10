@@ -23,13 +23,21 @@ export class BasketService {
   };
 
   readyToOrder: BehaviorSubject<Map<string, boolean>> = new BehaviorSubject<Map<string, boolean>>(new Map<string, boolean>([
-    ["1", false],
-    ["2", false],
-    ["3", false],
-    ["4", false]
   ]));
 
   constructor() { }
+
+  checkIfEveryoneIsReadyToOrder() {
+    let everyoneReady = true;
+    let readyMap = this.readyToOrder.value;
+    for (const key of readyMap.keys()) {
+      if (!readyMap.get(key)) {
+        everyoneReady = false;
+      }
+    }
+    console.log(this.readyToOrder.value);
+    return everyoneReady && this.readyToOrder.value.size > 0;
+  }
 
   addToBasket(tabletId: string, item: MenuItem) {
     let basketItem = this.baskets[tabletId].value.find(basketItem => basketItem.menuItem.id === item.id);
@@ -126,6 +134,8 @@ export class BasketService {
 
   setSelectedTable(number: string) {
     this.alreadyOrdered[number] = [];
+    let readyMap = this.readyToOrder.value;
+    readyMap.set(number, false);
   }
 
   getBasketReadyToOrder(tabletId: string) {
@@ -150,5 +160,10 @@ export class BasketService {
       readyMap.set(i.toString(), false);
     }
     this.readyToOrder.next(readyMap);
+  }
+
+  isCustomerReady(tabletId: string) {
+    let readyMap = this.readyToOrder.value;
+    return(readyMap.get(tabletId));
   }
 }

@@ -48,7 +48,6 @@ const routes: Routes = [
   { path: 'sleep-mode', component: SleepModeComponent },
   { path: 'client-receipt/:id', component: ClientReceiptComponent },
   { path: 'end/:id', component: EndComponent },
-  { path: 'status', component: PreparationStatusComponent},
   { path: 'waiting-screen', component: WaitingScreenComponent},
   { path: 'summary/:id', component: GlobalBasketSummaryComponent },
   { path: 'game/:id', component: GameComponent },
@@ -77,8 +76,8 @@ const routes: Routes = [
     ClientReceiptComponent,
     MiddleTableComponent,
     EndComponent,
-    WaitingScreenComponent,
     GameLeaderboardComponent,
+    WaitingScreenComponent,
     GameComponent,
   ],
     imports: [
@@ -92,7 +91,8 @@ const routes: Routes = [
         MatButtonModule,
         MatDialogModule,
         HttpClientModule,
-        MatSlideToggleModule
+        MatSlideToggleModule,
+        MatSnackBarModule,
     ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
