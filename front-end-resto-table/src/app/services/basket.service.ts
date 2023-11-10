@@ -7,23 +7,42 @@ import {BehaviorSubject} from "rxjs";
   providedIn: 'root'
 })
 export class BasketService {
-  static TABLE_NUMBER: number = 1;
-  basket: BehaviorSubject<BasketItem[]> = new BehaviorSubject<BasketItem[]>([]);
+
+  baskets: { [key: string]: BehaviorSubject<BasketItem[]> } = {
+    '1': new BehaviorSubject<BasketItem[]>([]),
+    '2': new BehaviorSubject<BasketItem[]>([]),
+    '3': new BehaviorSubject<BasketItem[]>([]),
+    '4': new BehaviorSubject<BasketItem[]>([]),
+  };
+
+  alreadyOrdered: { [key: string]: BasketItem[] | undefined } = {
+    '1': undefined,
+    '2': undefined,
+    '3': undefined,
+    '4': undefined,
+  };
+
+  readyToOrder: BehaviorSubject<Map<string, boolean>> = new BehaviorSubject<Map<string, boolean>>(new Map<string, boolean>([
+    ["1", false],
+    ["2", false],
+    ["3", false],
+    ["4", false]
+  ]));
 
   constructor() { }
 
-  addToBasket(item: MenuItem) {
-    let basketItem = this.basket.value.find(basketItem => basketItem.menuItem.id === item.id);
+  addToBasket(tabletId: string, item: MenuItem) {
+    let basketItem = this.baskets[tabletId].value.find(basketItem => basketItem.menuItem.id === item.id);
     if (basketItem) {
       basketItem.quantity++;
     } else {
-      this.basket.value.push(new BasketItem(item, 1));
+      this.baskets[tabletId].value.push(new BasketItem(item, 1));
     }
-    this.basket.next(this.basket.value);
+    this.baskets[tabletId].next(this.baskets[tabletId].value);
   }
 
-  removeFromBasket(item: MenuItem) {
-    let basketItem = this.basket.value.find(basketItem => basketItem.menuItem.id === item.id);
+  removeFromBasket(tabletId: string, item: MenuItem) {
+    let basketItem = this.baskets[tabletId].value.find(basketItem => basketItem.menuItem.id === item.id);
     if (basketItem == undefined) {
       return;
     }
@@ -31,25 +50,97 @@ export class BasketService {
     if (basketItem.quantity > 1) {
       basketItem.quantity--;
     } else {
-      this.basket.value.splice(this.basket.value.indexOf(basketItem), 1);
+      this.baskets[tabletId].value.splice(this.baskets[tabletId].value.indexOf(basketItem), 1);
     }
-    this.basket.next(this.basket.value);
+    this.baskets[tabletId].next(this.baskets[tabletId].value);
   }
 
-  emptyBasket() {
-    this.basket.next([]);
+  emptyBasket(tabletId: string) {
+    this.baskets[tabletId].next([]);
   }
 
-  getBasketTotal(): number {
-    return this.basket.value.reduce((total, basketItem) => total + basketItem.menuItem.price * basketItem.quantity, 0);
+  emptyAllBaskets() {
+    this.baskets['1'].next([]);
+    this.baskets['2'].next([]);
+    this.baskets['3'].next([]);
+    this.baskets['4'].next([]);
   }
 
-  getBasket(): BasketItem[] {
-    return this.basket.value;
+  getBasketTotal(tabletId: string, final: boolean = false): number {
+    if (final) {
+        return this.alreadyOrdered[tabletId]!.reduce((total, basketItem) => total + basketItem.menuItem.price * basketItem.quantity, 0);
+    }
+    return this.baskets[tabletId].value.reduce((total, basketItem) => total + basketItem.menuItem.price * basketItem.quantity, 0);
   }
 
-  getBasketSize(): number {
-    return this.basket.value.reduce((total, basketItem) => total + basketItem.quantity, 0);
+  getAllBasketsTotal(): number {
+    let total = 0;
+    for (let i = 1; i <= 4; i++) {
+      total += this.baskets[i].value.reduce((total, basketItem) => total + basketItem.menuItem.price * basketItem.quantity, 0);
+    }
+    return total;
   }
 
+  getBasket(tabletId: string, final: boolean = false): BasketItem[] {
+    if(final) {
+      return this.alreadyOrdered[tabletId] || [];
+    }
+    return this.baskets[tabletId].value;
+  }
+
+  getAllBaskets(final: boolean = false): BasketItem[] {
+    let allBaskets: any[] = [];
+    if(final) {
+      for (let i = 1; i <= 4; i++) {
+        if (this.alreadyOrdered[i.toString()] !== undefined) {
+          allBaskets = allBaskets.concat(this.alreadyOrdered[i.toString()]);
+        }
+      }
+    } else {
+      for (let i = 1; i <= 4; i++) {
+        allBaskets = allBaskets.concat(this.baskets[i].value);
+      }
+    }
+    return allBaskets;
+  }
+
+  getBasketSize(tabletId: string): number {
+    return this.baskets[tabletId].value.reduce((total, basketItem) => total + basketItem.quantity, 0);
+  }
+
+  getAllBasketsSize(): number {
+    let total = 0;
+    for (let i = 1; i <= 4; i++) {
+      total += this.baskets[i].value.reduce((total, basketItem) => total + basketItem.quantity, 0);
+    }
+    return total;
+  }
+
+  setSelectedTable(number: string) {
+    this.alreadyOrdered[number] = [];
+  }
+
+  getBasketReadyToOrder(tabletId: string) {
+    let readyMap = this.readyToOrder.value;
+    readyMap.set(tabletId, true);
+    this.readyToOrder.next(readyMap);
+  }
+
+  getBasketNotReadyToOrder(tabletId: string) {
+    let readyMap = this.readyToOrder.value;
+    readyMap.set(tabletId, false);
+    this.readyToOrder.next(readyMap);
+  }
+
+  confirmBasket() {
+    let readyMap = this.readyToOrder.value;
+    for (let i = 1; i <= 4; i++) {
+      if (this.baskets[i].value.length !== 0) {
+        this.alreadyOrdered[i.toString()] = this.baskets[i].value;
+        this.baskets[i].next([]);
+      }
+      readyMap.set(i.toString(), false);
+    }
+    this.readyToOrder.next(readyMap);
+  }
 }

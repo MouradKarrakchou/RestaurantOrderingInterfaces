@@ -1,0 +1,19 @@
+<app-switch-to-tabs></app-switch-to-tabs>
+<div class="confirm-container">
+  <div class="confirm-header">
+    <div class="confirm-title">
+      <p class="py-4">SUMMARY</p>
+      <hr>
+    </div>
+  </div>
+  <div class="confirm-body">
+    <app-basket-summary></app-basket-summary>
+  </div>
+  <div class="confirm-footer">
+    <div class="confirm-total">
+      <hr>
+      <p class="py-4">TOTAL: {{ basket_total_price | currency:'USD' }}</p>
+      <button class="mb-4 p-3 confirm-button" mat-raised-button >CONFIRM</button>
+    </div>
+  </div>
+</div>

@@ -23,18 +23,28 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { OrderNumberComponent } from './components/order-number/order-number.component';
 import {HttpClientModule} from "@angular/common/http";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import { MiddleTableComponent } from './components/middle-table/middle-table.component';
 import { TableViewerComponent } from './components/table-viewer/table-viewer.component';
 import { CentralBasketComponent } from './components/central-basket/central-basket.component';
+import { GlobalBasketSummaryComponent } from './components/global-basket-summary/global-basket-summary.component';
+import { SwitchToTabsComponent } from './components/header/switch-to-tabs/switch-to-tabs.component';
+import { ClientReceiptComponent } from './components/client-receipt/client-receipt.component';
+import { EndComponent } from './components/common/end/end.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/idle', pathMatch: 'full' }, // default page
-  { path: 'idle', component: IdleComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'confirmation', component: ConfirmationComponent },
-  { path: 'order-number', component: OrderNumberComponent },
-  { path: 'table-viewer', component: TableViewerComponent },
-  { path: 'central-basket', component: CentralBasketComponent }
+  { path: '', redirectTo: '/idle/1', pathMatch: 'full' }, // default page
+  { path: 'idle/:id', component: IdleComponent },
+  { path: 'home/:id', component: HomeComponent },
+  { path: 'confirmation/:id', component: ConfirmationComponent },
+  { path: 'order-number/:id', component: OrderNumberComponent },
+  { path: 'middle-table', component: MiddleTableComponent },
+  { path: 'table-viewer/:id', component: TableViewerComponent },
+  { path: 'table-viewer/:id/global-basket-summary', component: GlobalBasketSummaryComponent },
+  { path: 'client-receipt/:id', component: ClientReceiptComponent },
+  { path: 'end/:id', component: EndComponent },
+  { path: 'central-basket', component: CentralBasketComponent },
+  { path: '**', redirectTo: '/idle/1' } // GARDER TOUT EN BAS
 ];
 
 @NgModule({
@@ -52,8 +62,7 @@ const routes: Routes = [
     FooterComponent,
     DialogContentComponent,
     OrderNumberComponent,
-    TableViewerComponent,
-    CentralBasketComponent
+    TableViewerComponent
   ],
     imports: [
         BrowserModule,

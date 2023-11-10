@@ -1,0 +1,72 @@
+.confirm-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.confirm-body {
+  flex-grow: 1;
+  padding-inline: 2.5%;
+  max-height: 65%;
+  overflow-y: auto;
+}
+
+.confirm-header {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  min-height: 12%;
+}
+
+.confirm-footer {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  min-height: 12%;
+}
+
+hr {
+  border: none;
+  height: 5px;
+  background-color: #8BC34AFF;
+  opacity:1;
+}
+
+.confirm-title {
+  font-size: 8vh;
+  width: 95%;
+  text-align: center;
+}
+
+.confirm-total {
+  font-size: 5vh;
+  width: 95%;
+  text-align: center;
+}
+
+.confirm-back-button {
+  position: absolute;
+  top: 2.2vh;
+  left: 2.5vh;
+}
+
+.button-container {
+  height: 5vh;
+  width: 5vh;
+}
+
+mat-icon {
+  font-size: 5vh;
+  transform: translate3d(-1.5vh, -1.4vh, 0);
+  color: white;
+}
+
+.confirm-button {
+  font-size: 5vh;
+  border-radius: 25px;
+  width: 50vh;
+  height: 10vh;
+  color: white;
+  border: #C5E1A5FF solid 1px;
+  background-color: #8BC34AFF;
+}

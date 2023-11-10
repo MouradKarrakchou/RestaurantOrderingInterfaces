@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BasketService} from "../../services/basket.service";
 import BasketItem from "../../models/BasketItem";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogContentComponent} from "../dialog-content/dialog-content.component";
 
@@ -14,23 +14,28 @@ export class FooterComponent implements OnInit {
 
   constructor(private router: Router,
               private basketService: BasketService,
-              private dialog: MatDialog) {}
+              private dialog: MatDialog,
+              private route: ActivatedRoute) {}
 
   basketTotalPrice = 0;
   basketSize = 0;
+  tabletId: string = "0";
 
   ngOnInit(): void {
-    this.basketTotalPrice = this.basketService.getBasketTotal();
-    this.basketSize = this.basketService.getBasketSize();
+    this.route.params.subscribe(params => {
+      this.tabletId = params['id'];
+      this.basketTotalPrice = this.basketService.getBasketTotal(this.tabletId);
+      this.basketSize = this.basketService.getBasketSize(this.tabletId);
 
-    this.basketService.basket.subscribe((basket: BasketItem[]) => {
-      this.basketTotalPrice = this.basketService.getBasketTotal();
-      this.basketSize = this.basketService.getBasketSize();
+      this.basketService.baskets[this.tabletId].subscribe((basket: BasketItem[]) => {
+        this.basketTotalPrice = this.basketService.getBasketTotal(this.tabletId);
+        this.basketSize = this.basketService.getBasketSize(this.tabletId);
+      });
     });
   }
 
   redirectToConfirmation() {
-    this.router.navigate(['/confirmation'])
+    this.router.navigate(['/confirmation', this.tabletId]);
   }
 
   openDialog(): void {

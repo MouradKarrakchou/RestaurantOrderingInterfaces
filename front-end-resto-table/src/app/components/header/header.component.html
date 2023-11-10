@@ -1,12 +1,6 @@
 <div class="background-div">
 
-  <div class="admin-panel pr-2">
-    <button mat-icon-button (click)="viewFullTable()">
-      <mat-icon class="icon-table">table_restaurant</mat-icon>
-      <h1 class="table-number">Tab:1</h1>
-    </button>
-
-  </div>
+  <app-switch-to-tabs></app-switch-to-tabs>
 
   <div class="icon-bar">
     <div [class.logoIsSelected]="category==='ALL'" class="menu-type-div" (click)="emitCategoryEvent('ALL')">

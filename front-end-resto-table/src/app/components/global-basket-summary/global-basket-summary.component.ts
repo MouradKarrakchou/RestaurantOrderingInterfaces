@@ -3,11 +3,11 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {BasketService} from "../../services/basket.service";
 
 @Component({
-  selector: 'app-confirmation',
-  templateUrl: './confirmation.component.html',
-  styleUrls: ['./confirmation.component.css']
+  selector: 'app-global-basket-summary',
+  templateUrl: './global-basket-summary.component.html',
+  styleUrls: ['./global-basket-summary.component.css']
 })
-export class ConfirmationComponent implements OnInit {
+export class GlobalBasketSummaryComponent implements OnInit {
 
   constructor(private router: Router, private basketService: BasketService,
               private route: ActivatedRoute) {}
@@ -16,10 +16,7 @@ export class ConfirmationComponent implements OnInit {
   tabletId: string = "0";
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.tabletId = params['id'];
-      this.basket_total_price = this.basketService.getBasketTotal(this.tabletId);
-    });
+    this.basket_total_price = this.basketService.getAllBasketsTotal();
   }
 
   redirectToCatalog() {
