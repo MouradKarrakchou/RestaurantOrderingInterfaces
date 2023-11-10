@@ -13,6 +13,7 @@ export class GameComponent implements OnInit {
   @ViewChild('cookie') cookie!: ElementRef;
 
   tabletId: string = "0";
+  score: number = 0;
 
   constructor(private gameService: GameService,
               private route: ActivatedRoute) { }
@@ -36,6 +37,7 @@ export class GameComponent implements OnInit {
   }
 
   increment() {
+    this.score++;
     if (this.cookie.nativeElement.style.width == '70vh') {
       this.cookie.nativeElement.style.width = '65vh';
     } else {
