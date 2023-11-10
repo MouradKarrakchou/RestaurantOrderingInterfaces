@@ -7,15 +7,15 @@
     </div>
   </div>
   <div class="sort-buttons-container mt-2">
+    <button mat-stroked-button
+            class="sort-button"
+            [class.selected-sort]="selectedSortOption == 'byPerson'"
+            (click)="setSortOption('byPerson')">Individual recap
+    </button>
   <button mat-stroked-button
           class="sort-button"
           [class.selected-sort]="selectedSortOption == 'global'"
           (click)="setSortOption('global')">Global recap
-  </button>
-  <button mat-stroked-button
-          class="sort-button"
-          [class.selected-sort]="selectedSortOption == 'byPerson'"
-          (click)="setSortOption('byPerson')">Individual recap
   </button>
   </div>
 
@@ -30,8 +30,19 @@
             <mat-icon>person</mat-icon>
           </div>
           <div class="category-text">
-            <span> Customer {{ tabletId }} </span>
+            <span> Customer {{ tabletId }}</span>
           </div>
+          <span *ngIf="isCustomerReady(tabletId.toString()); else notReady">
+              <div class="category-icon-v2">
+                <mat-icon style="color: green;">check</mat-icon>
+              </div>
+
+            </span>
+          <ng-template #notReady>
+            <div class="category-icon-v2">
+              <mat-icon style="color: red;">clear</mat-icon>
+            </div>
+          </ng-template>
         </div>
         <hr style="background-color: #4c4ac3">
       </div>
@@ -44,7 +55,6 @@
       <hr>
       <p class="py-4">TOTAL: {{ basket_total_price | currency:'USD' }}</p>
       <button *ngIf="!isPaymentPage" class="mb-4 p-3 confirm-button" [disabled]="!isEvryoneReady"
-              [ngClass]="{'darker-button': isEvryoneReady}"
               mat-raised-button (click)="confirmOrder()">  {{'CONFIRM' }}
       </button>
       <button *ngIf="paymentOnEachTab && isPaymentPage" class="mb-4 p-3 confirm-button" mat-raised-button (click)="payOrder()">  {{ 'PAY' }}

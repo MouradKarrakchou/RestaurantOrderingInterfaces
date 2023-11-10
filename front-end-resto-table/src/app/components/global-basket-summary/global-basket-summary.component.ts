@@ -23,14 +23,14 @@ export class GlobalBasketSummaryComponent implements OnInit {
   basket_total_price = 0
   tabletId: string = "0";
 
-  selectedSortOption: string ="global";
+  selectedSortOption: string ="byPerson";
   allTabletteActivated: number[]=[] ;
 
   isPaymentPage: boolean=false;
 
   paymentOnEachTab: boolean=!this.paymentService.getGroupPayment();
 
-  isEvryoneReady: boolean=this.basketService.checkIfEvryoneIsReadyToOrder();
+  isEvryoneReady: boolean=this.basketService.checkIfEveryoneIsReadyToOrder();
 
 
   ngOnInit(): void {
@@ -108,6 +108,7 @@ export class GlobalBasketSummaryComponent implements OnInit {
   }
 
 
-
-
+  isCustomerReady(tabletId: string) {
+    return this.basketService.isCustomerReady(tabletId);
+  }
 }
