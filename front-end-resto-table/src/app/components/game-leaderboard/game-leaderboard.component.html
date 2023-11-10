@@ -1,0 +1,11 @@
+<div class="leaderboard-container">
+  <span class="title">Leaderboard</span>
+  <div class="ranks">
+    <div class="player-rank" *ngFor="let playerScore of leaderboard">
+      <img class="medal-img" src="assets/{{getMedalNameByRank(playerScore.rank)}}.png">
+      <span> Tablet {{playerScore.tabletId}} :
+        <span class="text-score">{{playerScore.score}}</span>
+      </span>
+    </div>
+  </div>
+</div>

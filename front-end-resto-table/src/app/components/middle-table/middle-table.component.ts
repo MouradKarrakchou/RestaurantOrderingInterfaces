@@ -19,11 +19,6 @@ export class MiddleTableComponent implements OnInit {
   tab3Selected: boolean = false;
   tab4Selected: boolean = false;
 
-  @ViewChild('together') together!: ElementRef;
-  @ViewChild('separately') separately!: ElementRef;
-
-  paymentMethodSelected: string = "";
-
   @ViewChild('validate') validate!: ElementRef;
 
   constructor(private basketService: BasketService,
@@ -56,38 +51,8 @@ export class MiddleTableComponent implements OnInit {
     this.checkValidation();
   }
 
-  selectPaymentMethod(paymentMethod: string) {
-    if (this.together.nativeElement.style.background == ''
-      && this.separately.nativeElement.style.background == '') {
-      switch (paymentMethod) {
-        case 'together': this.together.nativeElement.style.background = 'rgb(114, 192, 114)'; break;
-        case 'separately': this.separately.nativeElement.style.background = 'rgb(114, 192, 114)'; break;
-      }
-    }
-    else if ((this.together.nativeElement.style.background == 'rgb(114, 192, 114)'
-      || this.together.nativeElement.style.background == '')
-      && (this.separately.nativeElement.style.background == 'rgb(169, 169, 169)'
-      || this.separately.nativeElement.style.background == '')
-      && paymentMethod != this.paymentMethodSelected) {
-      console.log("else if")
-      this.together.nativeElement.style.background = 'rgb(169, 169, 169)';
-      this.separately.nativeElement.style.background = 'rgb(114, 192, 114)';
-    }
-    else if (this.together.nativeElement.style.background == 'rgb(169, 169, 169)'
-      && this.separately.nativeElement.style.background == 'rgb(114, 192, 114)'
-      && paymentMethod != this.paymentMethodSelected) {
-      console.log("else if 2")
-      this.together.nativeElement.style.background = 'rgb(114, 192, 114)';
-      this.separately.nativeElement.style.background = 'rgb(169, 169, 169)';
-    }
-
-    this.paymentMethodSelected = paymentMethod;
-    this.checkValidation();
-  }
-
   validateSelection() {
-    if ((this.tab1Selected || this.tab2Selected || this.tab3Selected || this.tab4Selected)
-      && this.paymentMethodSelected != '') {
+    if (this.tab1Selected || this.tab2Selected || this.tab3Selected || this.tab4Selected) {
       if (this.tab1Selected) {
         this.basketService.setSelectedTable("1");
         this.states.setUserTabletState("1", UserTabletState.Normal);
@@ -112,20 +77,16 @@ export class MiddleTableComponent implements OnInit {
       } else {
         this.states.setUserTabletState("4", UserTabletState.Sleep);
       }
-      //TODO remember payment method
       this.router.navigate(['/summary', '0']);
     }
   }
 
   checkValidation() {
-    if ((this.tab1Selected || this.tab2Selected || this.tab3Selected || this.tab4Selected)
-      && this.paymentMethodSelected != '') {
+    if (this.tab1Selected || this.tab2Selected || this.tab3Selected || this.tab4Selected) {
       this.validate.nativeElement.style.background = 'rgb(114, 192, 114)';
-      return true;
     } else {
       this.validate.nativeElement.style.background = 'rgb(169, 169, 169)';
     }
-    return false;
   }
 
 }

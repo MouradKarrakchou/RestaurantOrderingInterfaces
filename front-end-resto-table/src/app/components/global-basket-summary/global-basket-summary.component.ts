@@ -36,7 +36,7 @@ export class GlobalBasketSummaryComponent implements OnInit {
     this.selectedSortOption = option;
   }
 
-  async myMethod(): Promise<void> {
+  async confirmOrder(): Promise<void> {
 
     if (this.basketService.getAllBaskets().length !== 0) {
         this.sendOrderToBFF().subscribe((orderInformation: any) => {
@@ -45,11 +45,11 @@ export class GlobalBasketSummaryComponent implements OnInit {
         });
     }
 
-    this.router.navigate([''])
+    //this.router.navigate([''])
   }
 
   sendOrderToBFF(): Observable<any> {
-    const url = "http://localhost:8080/api/connect-table/order";
+    const url = "http://localhost:8080/api/connected-table/order";
 
     const httpOptions = {
       headers: new HttpHeaders({

@@ -23,6 +23,7 @@
 
 
 .people-number-title {
+  margin-top: 4vh;
   height: 10vh;
   display: flex;
   font-size: 4vh;
@@ -52,7 +53,7 @@
   border-style: none;
 }
 
-.one, .two, .together, .separately, .validate {
+.one, .two, .validate {
   width: 35vh;
   height: 10vh;
 }
@@ -62,30 +63,8 @@
   height: 30vh;
 }
 
-.payment-method-title {
-  margin-top: 4vh;
-  height: 8vh;
-  display: flex;
-  font-size: 4vh;
-  justify-content: center;
-  align-items: center;
-}
-
-.payment-method-buttons {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.together, .separately {
-  font-size: 3vh;
-  background-color: #a9a9a9;
-  border-radius: 25px;
-  border-style: none;
-}
-
 .validate-title {
-  margin-top: 3vh;
+  margin-top: 10vh;
   height: 6vh;
   display: flex;
   font-size: 4vh;
@@ -94,6 +73,7 @@
 }
 
 .validate-button {
+  margin-top: 2vh;
   display: flex;
   justify-content: center;
 }
