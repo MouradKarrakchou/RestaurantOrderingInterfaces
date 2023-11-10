@@ -1,7 +1,9 @@
 package fr.teama.bff.controllers;
 
 import fr.teama.bff.components.OrderComponent;
+import fr.teama.bff.connectors.DiningProxy;
 import fr.teama.bff.connectors.externalDTO.KitchenPreparation;
+import fr.teama.bff.connectors.externalDTO.TableDTO;
 import fr.teama.bff.controllers.dto.ConnectedTableKioskOrderDTO;
 import fr.teama.bff.entities.KitchenPreparationStatus;
 import fr.teama.bff.entities.TableOrderInformation;
@@ -28,10 +30,19 @@ public class ConnectedTableController {
     @Autowired
     OrderComponent orderComponent;
 
+    @Autowired
+    DiningProxy diningProxy;
+
     @PostMapping("/order")
     public ResponseEntity<TableOrderInformation> startProcessingOrder(@RequestBody ConnectedTableKioskOrderDTO connectedTableKioskOrderDTO) throws DiningServiceUnavaibleException, TableAlreadyTakenException {
         LoggerHelper.logInfo("Processing order request for " + connectedTableKioskOrderDTO.toString());
-        TableOrderInformation tableOrderInformation = orderComponent.processConnectedTableOrder(connectedTableKioskOrderDTO);
+        TableDTO table = diningProxy.getTable(connectedTableKioskOrderDTO.getTableNumber());
+        TableOrderInformation tableOrderInformation;
+        if (table.isTaken()) {
+            tableOrderInformation = orderComponent.continueProcessingOrder(connectedTableKioskOrderDTO);
+        } else {
+            tableOrderInformation = orderComponent.processConnectedTableOrder(connectedTableKioskOrderDTO);
+        }
         return ResponseEntity.ok(tableOrderInformation);
     }
 
