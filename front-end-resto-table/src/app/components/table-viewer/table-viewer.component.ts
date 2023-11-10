@@ -23,6 +23,11 @@ export class TableViewerComponent implements OnInit {
   }
 
   changeTablette(number: number) {
-    this.router.navigate(['/home', number]);
+    if (number==0){
+      this.router.navigate(['/table-viewer/0/global-basket-summary']);
+    }
+    else{
+      this.router.navigate(['/home', number]);
+    }
   }
 }

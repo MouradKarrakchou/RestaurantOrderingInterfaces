@@ -32,13 +32,25 @@ export class BasketSummaryComponent implements OnInit {
   }
 
   initBasket(): void {
-    this.basket = this.basketService.getBasket(this.tabletId);
+    if (this.tabletId=== '0') {
+      this.basket = this.basketService.getAllBaskets();
+
+      for (const key in this.basketService.baskets) {
+        this.basketService.baskets[key].subscribe((basket: BasketItem[]) => {
+          this.basket = this.basketService.getAllBaskets();
+          this.splitBasketCategories();
+        });
+      }
+    }
+    else{
+      this.basket = this.basketService.getBasket(this.tabletId);
+      this.basketService.baskets[this.tabletId].subscribe((basket: BasketItem[]) => {
+        this.basket = basket;
+        this.splitBasketCategories();
+      });
+    }
     this.splitBasketCategories();
 
-    this.basketService.baskets[this.tabletId].subscribe((basket: BasketItem[]) => {
-      this.basket = basket;
-      this.splitBasketCategories();
-    });
   }
 
   splitBasketCategories(): void {

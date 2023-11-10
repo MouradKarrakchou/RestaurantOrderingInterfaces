@@ -25,6 +25,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import { MiddleTableComponent } from './components/middle-table/middle-table.component';
 import { TableViewerComponent } from './components/table-viewer/table-viewer.component';
+import { GlobalBasketSummaryComponent } from './components/global-basket-summary/global-basket-summary.component';
+import { SwitchToTabsComponent } from './components/header/switch-to-tabs/switch-to-tabs.component';
 
 
 const routes: Routes = [
@@ -35,6 +37,7 @@ const routes: Routes = [
   { path: 'order-number/:id', component: OrderNumberComponent },
   { path: 'middle-table', component: MiddleTableComponent },
   { path: 'table-viewer/:id', component: TableViewerComponent },
+  { path: 'table-viewer/:id/global-basket-summary', component: GlobalBasketSummaryComponent }
 ];
 
 @NgModule({
@@ -53,7 +56,9 @@ const routes: Routes = [
     DialogContentComponent,
     OrderNumberComponent,
     MiddleTableComponent,
-    TableViewerComponent
+    TableViewerComponent,
+    GlobalBasketSummaryComponent,
+    SwitchToTabsComponent
   ],
     imports: [
         BrowserModule,

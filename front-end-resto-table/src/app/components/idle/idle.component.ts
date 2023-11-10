@@ -20,7 +20,4 @@ export class IdleComponent implements OnInit {
       this.router.navigate(['/home', id]);
     });
   }
-  viewFullTable() {
-    this.router.navigate(['/table-viewer'])
-  }
 }
