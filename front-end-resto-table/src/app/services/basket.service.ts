@@ -151,15 +151,13 @@ export class BasketService {
   }
 
   confirmBasket() {
-    let readyMap = this.readyToOrder.value;
     for (let i = 1; i <= 4; i++) {
       if (this.baskets[i].value.length !== 0) {
         this.alreadyOrdered[i.toString()] = this.baskets[i].value;
         this.baskets[i].next([]);
       }
-      readyMap.set(i.toString(), false);
     }
-    this.readyToOrder.next(readyMap);
+    this.readyToOrder.next(new Map<string, boolean>([]));
   }
 
   isCustomerReady(tabletId: string) {

@@ -30,7 +30,7 @@ export class GlobalBasketSummaryComponent implements OnInit {
 
   paymentOnEachTab: boolean=!this.paymentService.getGroupPayment();
 
-  isEvryoneReady: boolean=this.basketService.checkIfEveryoneIsReadyToOrder();
+  isEveryoneReady: boolean=this.basketService.checkIfEveryoneIsReadyToOrder();
 
 
   ngOnInit(): void {
@@ -59,10 +59,6 @@ export class GlobalBasketSummaryComponent implements OnInit {
         this.sendOrderToBFF().subscribe((orderInformation: any) => {
           console.log(orderInformation);
           this.basketService.confirmBasket();
-          this.state.setMiddleTabletState(MiddleTabletState.Waiting);
-          this.allTabletteActivated.forEach((tabletId) => {
-            this.state.setUserTabletState(tabletId.toString(), UserTabletState.Game);
-          });
           this.router.navigate(['/waiting-screen']);
         });
     }
