@@ -31,6 +31,17 @@ export class BasketService {
 
   constructor() { }
 
+  checkIfEvryoneIsReadyToOrder(){
+    let everyoneReady = true;
+    let readyMap = this.readyToOrder.value;
+    for (const key in this.readyToOrder.value) {
+      if (!readyMap.get(key)) {
+        everyoneReady = false;
+      }
+    }
+    return everyoneReady;
+  }
+
   addToBasket(tabletId: string, item: MenuItem) {
     let basketItem = this.baskets[tabletId].value.find(basketItem => basketItem.menuItem.id === item.id);
     if (basketItem) {

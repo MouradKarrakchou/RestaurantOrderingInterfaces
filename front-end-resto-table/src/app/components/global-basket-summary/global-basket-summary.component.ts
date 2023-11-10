@@ -30,6 +30,8 @@ export class GlobalBasketSummaryComponent implements OnInit {
 
   paymentOnEachTab: boolean=!this.paymentService.getGroupPayment();
 
+  isEvryoneReady: boolean=this.basketService.checkIfEvryoneIsReadyToOrder();
+
 
   ngOnInit(): void {
     this.basket_total_price = this.basketService.getAllBasketsTotal();
@@ -53,7 +55,6 @@ export class GlobalBasketSummaryComponent implements OnInit {
   }
 
   async confirmOrder(): Promise<void> {
-
     if (this.basketService.getAllBaskets().length !== 0) {
         this.sendOrderToBFF().subscribe((orderInformation: any) => {
           console.log(orderInformation);
