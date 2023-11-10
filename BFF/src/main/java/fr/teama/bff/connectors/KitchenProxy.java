@@ -39,6 +39,9 @@ public class KitchenProxy implements IKitchenProxy {
             LoggerHelper.logInfo("Ask Dining service to get all kitchen preparations table order");
             TableOrder tableOrder = diningProxy.tableOrder(tableOrderId);
             List<KitchenPreparation> kitchenPreparations = new ArrayList<>();
+            if (tableOrder.getPreparations() == null) {
+                return kitchenPreparations;
+            }
             for (Preparation preparation : tableOrder.getPreparations()) {
                 KitchenPreparation kitchenPreparationDTO = restTemplate.getForEntity(apiBaseUrlHostAndPort +"/preparations/" + preparation.getId(), KitchenPreparation.class).getBody();
                 if (kitchenPreparationDTO != null) {

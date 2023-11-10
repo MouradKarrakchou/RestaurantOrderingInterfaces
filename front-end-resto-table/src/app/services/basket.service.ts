@@ -66,7 +66,10 @@ export class BasketService {
     this.baskets['4'].next([]);
   }
 
-  getBasketTotal(tabletId: string): number {
+  getBasketTotal(tabletId: string, final: boolean = false): number {
+    if (final) {
+        return this.alreadyOrdered[tabletId]!.reduce((total, basketItem) => total + basketItem.menuItem.price * basketItem.quantity, 0);
+    }
     return this.baskets[tabletId].value.reduce((total, basketItem) => total + basketItem.menuItem.price * basketItem.quantity, 0);
   }
 
@@ -77,7 +80,6 @@ export class BasketService {
     }
     return total;
   }
-
   getAllTabletteActivated(): number[] {
     let allTables = [];
     for (let i = 1; i <= 4; i++) {
@@ -87,15 +89,25 @@ export class BasketService {
     }
     return allTables;
   }
-
-  getBasket(tabletId: string): BasketItem[] {
+  getBasket(tabletId: string, final: boolean = false): BasketItem[] {
+    if(final) {
+      return this.alreadyOrdered[tabletId] || [];
+    }
     return this.baskets[tabletId].value;
   }
 
-  getAllBaskets(): BasketItem[] {
+  getAllBaskets(final: boolean = false): BasketItem[] {
     let allBaskets: any[] = [];
-    for (let i = 1; i <= 4; i++) {
-      allBaskets = allBaskets.concat(this.baskets[i].value);
+    if(final) {
+      for (let i = 1; i <= 4; i++) {
+        if (this.alreadyOrdered[i.toString()] !== undefined) {
+          allBaskets = allBaskets.concat(this.alreadyOrdered[i.toString()]);
+        }
+      }
+    } else {
+      for (let i = 1; i <= 4; i++) {
+        allBaskets = allBaskets.concat(this.baskets[i].value);
+      }
     }
     return allBaskets;
   }

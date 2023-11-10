@@ -1,15 +1,9 @@
 export class KitchenItem {
-  id: string;
   shortName: string;
-  souldStartAt: Date;
-  startedAt: Date;
-  finishedAt: Date;
+  howMany: number;
 
-  constructor(id: string, shortName: string, souldStartAt: Date, startedAt: Date, finishedAt: Date) {
-    this.id = id;
+  constructor(shortName: string, quantity: number) {
     this.shortName = shortName;
-    this.souldStartAt = souldStartAt;
-    this.startedAt = startedAt;
-    this.finishedAt = finishedAt;
+    this.howMany = quantity;
   }
 }

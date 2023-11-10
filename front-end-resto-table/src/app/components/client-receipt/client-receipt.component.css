@@ -1,0 +1,55 @@
+.pay-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.pay-body {
+  flex-grow: 1;
+  padding-inline: 2.5%;
+  max-height: 65%;
+  overflow-y: auto;
+}
+
+.pay-header {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  min-height: 12%;
+}
+
+.pay-footer {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  min-height: 12%;
+}
+
+hr {
+  border: none;
+  height: 5px;
+  background-color: #8BC34AFF;
+  opacity:1;
+}
+
+.pay-title {
+  font-size: 8vh;
+  width: 95%;
+  text-align: center;
+}
+
+.pay-total {
+  font-size: 5vh;
+  width: 95%;
+  text-align: center;
+}
+
+.pay-button {
+  font-size: 5vh;
+  border-radius: 25px;
+  width: 50vh;
+  height: 10vh;
+  color: white;
+  border: #C5E1A5FF solid 1px;
+  background-color: #8BC34AFF;
+}

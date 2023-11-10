@@ -1,0 +1,47 @@
+.category-title {
+  font-size: 2vh;
+}
+
+.category-title {
+  display: flex;
+  align-items: center;
+}
+
+.category {
+  margin-bottom: 6vh;
+}
+
+.category-icon {
+  height: 3vh;
+  width: 4vh;
+  margin-right: .5vh;
+}
+
+.category-icon mat-icon {
+  font-size: 4vh;
+}
+
+.category-text {
+  margin-top: 1.5vh;
+  font-size: 3vh;
+}
+
+hr {
+  border: none;
+  height: 5px;
+  background-color: #8BC34AFF;
+  opacity:1;
+}
+
+.category-up {
+  width: fit-content;
+}
+
+.container {
+  margin: auto;
+  width: fit-content;
+}
+
+.category-container {
+  margin-bottom: 2vh;
+}

@@ -1,0 +1,18 @@
+<div class="pay-container">
+  <div class="pay-header">
+    <div class="pay-title">
+      <p class="py-4">RECEIPT</p>
+      <hr>
+    </div>
+  </div>
+  <div class="pay-body">
+    <app-basket-summary [finalOrder]=true></app-basket-summary>
+  </div>
+  <div class="pay-footer">
+    <div class="pay-total">
+      <hr>
+      <p class="py-4">TOTAL: {{ basketFinalTotalPrice | currency:'USD' }}</p>
+      <button *ngIf="individualPayment" class="mb-4 p-3 pay-button" mat-raised-button (click)="redirectToEndPage()">PAY</button>
+    </div>
+  </div>
+</div>

@@ -19,6 +19,7 @@ export class BasketSummaryComponent implements OnInit {
   basketBeverages: BasketItem[] = [];
 
   @Input() canEdit: boolean = false;
+  @Input() finalOrder: boolean = false;
   @Input() tabletId!: string ;
 
   constructor(private basketService: BasketService,
@@ -33,22 +34,26 @@ export class BasketSummaryComponent implements OnInit {
   }
 
   initBasket(): void {
-    if (this.tabletId=== '0') {
-      this.basket = this.basketService.getAllBaskets();
+    if (this.tabletId === '0') {
+      this.basket = this.basketService.getAllBaskets(this.finalOrder);
 
-      for (const key in this.basketService.baskets) {
-        this.basketService.baskets[key].subscribe((basket: BasketItem[]) => {
-          this.basket = this.basketService.getAllBaskets();
-          this.splitBasketCategories();
-        });
+      if (!this.finalOrder) {
+        for (const key in this.basketService.baskets) {
+          this.basketService.baskets[key].subscribe((basket: BasketItem[]) => {
+            this.basket = this.basketService.getAllBaskets(this.finalOrder);
+            this.splitBasketCategories();
+          });
+        }
       }
     }
     else{
-      this.basket = this.basketService.getBasket(this.tabletId);
-      this.basketService.baskets[this.tabletId].subscribe((basket: BasketItem[]) => {
-        this.basket = basket;
-        this.splitBasketCategories();
-      });
+      this.basket = this.basketService.getBasket(this.tabletId, this.finalOrder);
+      if (!this.finalOrder) {
+        this.basketService.baskets[this.tabletId].subscribe((basket: BasketItem[]) => {
+          this.basket = basket;
+          this.splitBasketCategories();
+        });
+      }
     }
     this.splitBasketCategories();
 

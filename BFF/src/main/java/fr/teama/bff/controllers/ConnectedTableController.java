@@ -7,6 +7,7 @@ import fr.teama.bff.entities.KitchenPreparationStatus;
 import fr.teama.bff.entities.TableOrderInformation;
 import fr.teama.bff.exceptions.DiningServiceUnavaibleException;
 import fr.teama.bff.exceptions.KitchenServiceNoAvailableException;
+import fr.teama.bff.exceptions.OrderServiceUnavailableException;
 import fr.teama.bff.exceptions.TableAlreadyTakenException;
 import fr.teama.bff.helpers.LoggerHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,8 +43,8 @@ public class ConnectedTableController {
     }
 
 
-    @GetMapping("status/{tableOrderId}")
-    public ResponseEntity<List<KitchenPreparationStatus>> getPreparationsStatus(@PathVariable("tableOrderId") Long tableNumber) throws KitchenServiceNoAvailableException, DiningServiceUnavaibleException {
+    @GetMapping("status/{tableNumber}")
+    public ResponseEntity<List<KitchenPreparationStatus>> getPreparationsStatus(@PathVariable("tableNumber") Long tableNumber) throws KitchenServiceNoAvailableException, DiningServiceUnavaibleException, OrderServiceUnavailableException {
         LoggerHelper.logInfo("Getting preparations status for table " + tableNumber);
         List<KitchenPreparationStatus> kitchenPreparationStatus = orderComponent.getTableOrderKitchenPreparation(tableNumber);
         return ResponseEntity.ok(kitchenPreparationStatus);
