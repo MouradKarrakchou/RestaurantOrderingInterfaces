@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import BasketItem from "../models/BasketItem";
 
 export enum UserTabletState {
   Idle = 'Idle', // Before starting the order
