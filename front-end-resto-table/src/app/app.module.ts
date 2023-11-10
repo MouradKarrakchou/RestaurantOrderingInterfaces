@@ -27,9 +27,12 @@ import { MiddleTableComponent } from './components/middle-table/middle-table.com
 import { TableViewerComponent } from './components/table-viewer/table-viewer.component';
 import { GlobalBasketSummaryComponent } from './components/global-basket-summary/global-basket-summary.component';
 import { SwitchToTabsComponent } from './components/header/switch-to-tabs/switch-to-tabs.component';
+import { SleepModeComponent } from './components/sleep-mode/sleep-mode.component';
 import { ClientReceiptComponent } from './components/client-receipt/client-receipt.component';
 import { EndComponent } from './components/common/end/end.component';
 import { PreparationStatusComponent } from './components/preparation-status/preparation-status.component';
+import { GameLeaderboardComponent } from './components/game-leaderboard/game-leaderboard.component';
+import { WaitingScreenComponent } from './components/waiting-screen/waiting-screen.component';
 
 
 const routes: Routes = [
@@ -40,9 +43,11 @@ const routes: Routes = [
   { path: 'order-number/:id', component: OrderNumberComponent },
   { path: 'middle-table', component: MiddleTableComponent },
   { path: 'table-viewer/:id', component: TableViewerComponent },
+  { path: 'table-viewer/:id/global-basket-summary', component: GlobalBasketSummaryComponent },
+  { path: 'sleep-mode', component: SleepModeComponent },
   { path: 'client-receipt/:id', component: ClientReceiptComponent },
   { path: 'end/:id', component: EndComponent },
-  { path: 'status', component: PreparationStatusComponent},
+  { path: 'wait', component: WaitingScreenComponent},
   { path: 'middle-table/:id/global-basket-summary', component: GlobalBasketSummaryComponent },
   { path: '**', redirectTo: '/idle/1' } // GARDER TOUT EN BAS
 ];
@@ -66,9 +71,13 @@ const routes: Routes = [
     PreparationStatusComponent,
     SwitchToTabsComponent,
     GlobalBasketSummaryComponent,
+    SwitchToTabsComponent,
+    SleepModeComponent,
     ClientReceiptComponent,
     MiddleTableComponent,
     EndComponent,
+    GameLeaderboardComponent,
+    WaitingScreenComponent,
   ],
     imports: [
         BrowserModule,
