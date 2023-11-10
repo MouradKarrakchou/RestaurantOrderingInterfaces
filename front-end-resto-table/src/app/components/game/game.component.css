@@ -1,0 +1,99 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display:flex;
+  background-color: #709370;
+  width: 100%;
+  height: 15vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo{
+  height: 10vh;
+  margin-right: 10vh;
+}
+
+.welcome-text {
+  color: white;
+  font-size: 4.5vh;
+  padding-top: 2vh;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.cookie-image {
+  margin-top: 4vh;
+  width: 70vh;
+  height: auto;
+}
+
+.order-again {
+  position: absolute;
+  bottom: 5%;
+  left: 2%;
+  width: 35vh;
+  height: 10vh;
+  font-size: 3vh;
+  color: white;
+  background-color: #709370;
+  border-radius: 25px;
+  border-style: none;
+  margin-left: 4vh;
+}
+
+.increment {
+  position: absolute;
+  bottom: 6%;
+  left: 35%;
+  font-size: 4vh;
+}
+
+.alert {
+  display: none;
+  position: absolute;
+  top: 20%;
+  left: 2%;
+  background-color: #a9a9a9;
+  border-radius: 25px;
+  border-style: none;
+}
+
+.alert-content {
+  height: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.alert-text {
+  text-align: center;
+}
+
+.alert-buttons {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.alert-confirm, .alert-cancel {
+  border-radius: 25px;
+  border-style: none;
+  height: 6vh;
+  width: 16vh;
+  color: white;
+}
+
+.alert-confirm {
+  background-color: #709370;
+}
+
+.alert-cancel {
+  background-color: #be4848;
+}

@@ -34,21 +34,21 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    IdleComponent,
-    HomeComponent,
-    HeaderComponent,
-    BasketComponent,
-    HeaderComponent,
-    CatalogComponent,
-    TruncateTextDirective,
-    BasketSummaryComponent,
-    ConfirmationComponent,
-    FooterComponent,
-    DialogContentComponent,
-    OrderNumberComponent
-  ],
+    declarations: [
+        AppComponent,
+        IdleComponent,
+        HomeComponent,
+        HeaderComponent,
+        BasketComponent,
+        HeaderComponent,
+        CatalogComponent,
+        TruncateTextDirective,
+        BasketSummaryComponent,
+        ConfirmationComponent,
+        FooterComponent,
+        DialogContentComponent,
+        OrderNumberComponent
+    ],
     imports: [
         BrowserModule,
         RouterModule.forRoot(routes),
@@ -62,9 +62,12 @@ const routes: Routes = [
         HttpClientModule,
         MatSlideToggleModule
     ],
-  providers: [
-    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
-  ],
-  bootstrap: [AppComponent]
+    providers: [
+        {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
+    ],
+    exports: [
+        HeaderComponent
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -14,6 +14,7 @@ export class GameService {
 
   click(tabletId: string) {
     this.scores[tabletId]++;
+    console.log(this.scores[tabletId]);
   }
 
   getScore(tabletId: string) {
