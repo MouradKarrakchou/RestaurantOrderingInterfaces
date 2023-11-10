@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {BasketService} from "../../services/basket.service";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {MiddleTabletState, StateService} from "../../services/state.service";
 
 @Component({
   selector: 'app-global-basket-summary',
@@ -14,7 +15,8 @@ export class GlobalBasketSummaryComponent implements OnInit {
   private diningBaseUrlHostAndPort: string = "http://localhost:3001";
 
   constructor(private router: Router, private basketService: BasketService,
-              private route: ActivatedRoute,private http: HttpClient) {}
+              private route: ActivatedRoute,private http: HttpClient,
+              private state: StateService) {}
 
   basket_total_price = 0
   tabletId: string = "0";
@@ -27,14 +29,7 @@ export class GlobalBasketSummaryComponent implements OnInit {
     this.basket_total_price = this.basketService.getAllBasketsTotal();
     //this.allTabletteActivated= this.basketService.getAllTabletteActivated();
     console.log(this.basketService.baskets);
-  }
-
-  redirectToCatalog() {
-    this.router.navigate(['/home', this.tabletId]);
-  }
-
-  redirectToOrderNumber() {
-    this.router.navigate(['/order-number', this.tabletId]);
+    this.state.setMiddleTabletState(MiddleTabletState.Preorder);
   }
 
   setSortOption(option: string) {

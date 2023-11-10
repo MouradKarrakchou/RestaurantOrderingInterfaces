@@ -31,25 +31,26 @@ import { SleepModeComponent } from './components/sleep-mode/sleep-mode.component
 import { ClientReceiptComponent } from './components/client-receipt/client-receipt.component';
 import { EndComponent } from './components/common/end/end.component';
 import { PreparationStatusComponent } from './components/preparation-status/preparation-status.component';
+import { MatSnackBarModule} from "@angular/material/snack-bar";
 import { GameLeaderboardComponent } from './components/game-leaderboard/game-leaderboard.component';
 import { WaitingScreenComponent } from './components/waiting-screen/waiting-screen.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/idle/1', pathMatch: 'full' }, // default page
+  { path: '', redirectTo: '/table-viewer', pathMatch: 'full' }, // default page
   { path: 'idle/:id', component: IdleComponent },
   { path: 'home/:id', component: HomeComponent },
   { path: 'confirmation/:id', component: ConfirmationComponent },
   { path: 'order-number/:id', component: OrderNumberComponent },
   { path: 'middle-table', component: MiddleTableComponent },
-  { path: 'table-viewer/:id', component: TableViewerComponent },
-  { path: 'table-viewer/:id/global-basket-summary', component: GlobalBasketSummaryComponent },
+  { path: 'table-viewer', component: TableViewerComponent },
   { path: 'sleep-mode', component: SleepModeComponent },
   { path: 'client-receipt/:id', component: ClientReceiptComponent },
   { path: 'end/:id', component: EndComponent },
+  { path: 'status', component: PreparationStatusComponent},
   { path: 'wait', component: WaitingScreenComponent},
-  { path: 'middle-table/:id/global-basket-summary', component: GlobalBasketSummaryComponent },
-  { path: '**', redirectTo: '/idle/1' } // GARDER TOUT EN BAS
+  { path: 'summary/:id', component: GlobalBasketSummaryComponent },
+  { path: '**', redirectTo: '/table-viewer' } // GARDER TOUT EN BAS
 ];
 
 @NgModule({
@@ -71,13 +72,9 @@ const routes: Routes = [
     PreparationStatusComponent,
     SwitchToTabsComponent,
     GlobalBasketSummaryComponent,
-    SwitchToTabsComponent,
-    SleepModeComponent,
     ClientReceiptComponent,
     MiddleTableComponent,
     EndComponent,
-    GameLeaderboardComponent,
-    WaitingScreenComponent,
   ],
     imports: [
         BrowserModule,

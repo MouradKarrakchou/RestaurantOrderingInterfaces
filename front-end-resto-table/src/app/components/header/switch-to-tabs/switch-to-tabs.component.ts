@@ -18,11 +18,14 @@ export class SwitchToTabsComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.tabletId = params['id'];
+      if( this.tabletId == null) {
+        this.tabletId = "0";
+      }
     });
   }
 
   viewFullTable() {
-    this.router.navigate(['/table-viewer', this.tabletId])
+    this.router.navigate(['/table-viewer'])
   }
 
 }

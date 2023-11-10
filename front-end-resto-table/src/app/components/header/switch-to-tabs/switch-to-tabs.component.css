@@ -12,6 +12,7 @@
   left: 0;
   top: 0;
   color: black;
+  z-index: 999999;
 }
 .icon-table{
   font-size: 8vh;
