@@ -7,7 +7,7 @@ import {BehaviorSubject} from "rxjs";
   providedIn: 'root'
 })
 export class BasketService {
-
+  static TABLE_NUMBER: number = 1;
   basket: BehaviorSubject<BasketItem[]> = new BehaviorSubject<BasketItem[]>([]);
 
   constructor() { }

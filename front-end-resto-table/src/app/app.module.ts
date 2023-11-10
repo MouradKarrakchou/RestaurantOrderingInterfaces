@@ -24,6 +24,7 @@ import { OrderNumberComponent } from './components/order-number/order-number.com
 import {HttpClientModule} from "@angular/common/http";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import { TableViewerComponent } from './components/table-viewer/table-viewer.component';
+import { CentralBasketComponent } from './components/central-basket/central-basket.component';
 
 
 const routes: Routes = [
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'confirmation', component: ConfirmationComponent },
   { path: 'order-number', component: OrderNumberComponent },
   { path: 'table-viewer', component: TableViewerComponent },
+  { path: 'central-basket', component: CentralBasketComponent }
 ];
 
 @NgModule({
@@ -50,7 +52,8 @@ const routes: Routes = [
     FooterComponent,
     DialogContentComponent,
     OrderNumberComponent,
-    TableViewerComponent
+    TableViewerComponent,
+    CentralBasketComponent
   ],
     imports: [
         BrowserModule,
