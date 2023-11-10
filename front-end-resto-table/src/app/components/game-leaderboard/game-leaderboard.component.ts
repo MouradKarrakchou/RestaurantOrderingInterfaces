@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {GameService} from "../../services/game.service";
 import {PlayerScore} from "../../models/PlayerScore";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-game-leaderboard',
@@ -10,18 +11,21 @@ import {PlayerScore} from "../../models/PlayerScore";
 export class GameLeaderboardComponent implements OnInit {
   leaderboard: PlayerScore[] = [];
 
-  constructor(private gameService: GameService) { }
+  constructor(private gameService: GameService, private router: Router) { }
 
   ngOnInit(): void {
     this.fetchLeaderboard();
-    setInterval(() => {
-      this.fetchLeaderboard();
-    }, 100);
+    // setInterval(() => {
+    //   this.fetchLeaderboard();
+    // }, 1000);
+  }
+
+  redirectToSleepMode() {
+    this.router.navigate(['/sleep-mode']);
   }
 
   fetchLeaderboard() {
     this.leaderboard = this.gameService.getLeaderboard();
-    // console.log(this.leaderboard);
   }
 
   getMedalNameByRank(rank: number) {

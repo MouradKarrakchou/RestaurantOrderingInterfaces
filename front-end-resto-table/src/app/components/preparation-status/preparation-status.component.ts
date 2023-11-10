@@ -19,9 +19,9 @@ export class PreparationStatusComponent implements OnInit {
 
   ngOnInit(): void {
     this.displayOrderStatus();
-    // setInterval(() => {
-    //   this.displayOrderStatus();
-    // }, 10000);
+    setInterval(() => {
+      this.displayOrderStatus();
+    }, 10000);
   }
 
   displayOrderStatus() {
