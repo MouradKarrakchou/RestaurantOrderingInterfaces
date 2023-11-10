@@ -24,7 +24,7 @@ export class GlobalBasketSummaryComponent implements OnInit {
   selectedSortOption: string ="global";
   allTabletteActivated: number[]=[1,2] ;
 
-  isPaimentPage: boolean=false;
+  isPaymentPage: boolean=false;
 
   paymentOnEachTab: boolean=false;
 
@@ -59,6 +59,22 @@ export class GlobalBasketSummaryComponent implements OnInit {
     }
 
     //this.router.navigate([''])
+  }
+
+  payOrder() {
+    const url = "http://localhost:8080/api/connected-table/bill";
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    const data = {
+      tableNumber: 1
+    }
+
+    return this.http.post<any>(url, data, httpOptions);
   }
 
   sendOrderToBFF(): Observable<any> {
