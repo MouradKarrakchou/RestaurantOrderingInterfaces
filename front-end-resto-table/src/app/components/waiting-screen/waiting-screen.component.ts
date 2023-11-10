@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./waiting-screen.component.css']
 })
 export class WaitingScreenComponent implements OnInit {
+  time = new Date();
 
   constructor() { }
 
   ngOnInit(): void {
+    setInterval(() => {
+      this.time = new Date();
+    }, 1000);
   }
 
 }
