@@ -1,18 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {BasketService} from "../../services/basket.service";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable} from "rxjs";
-import MenuItem from "../../models/MenuItem";
 import {KitchenPreparationStatus} from "../../models/KitchenPreparationStatus";
-import basketItem from "../../models/BasketItem";
+import {BasketService} from "../../services/basket.service";
+import {HttpClient} from "@angular/common/http";
 import {KitchenItem} from "../../models/KitchenItem";
 
 @Component({
-  selector: 'app-central-basket',
-  templateUrl: './central-basket.component.html',
-  styleUrls: ['./central-basket.component.css']
+  selector: 'app-preparation-status',
+  templateUrl: './preparation-status.component.html',
+  styleUrls: ['./preparation-status.component.css']
 })
-export class CentralBasketComponent implements OnInit {
+export class PreparationStatusComponent implements OnInit {
   preparationStatus: KitchenPreparationStatus[] = [];
 
   constructor(private basketService: BasketService,
@@ -86,7 +83,7 @@ export class CentralBasketComponent implements OnInit {
 
   async getOrderStatus(): Promise<KitchenPreparationStatus[]> {
     try {
-      const response = await fetch("http://localhost:8080/api/connected-table/status/" + BasketService.TABLE_NUMBER,
+      const response = await fetch("http://localhost:8080/api/connected-table/status/" + 1,
         {
           method: "GET",
         });
@@ -103,8 +100,8 @@ export class CentralBasketComponent implements OnInit {
           item.status,
           item.preparedItems.map((item: any) => {
             return new KitchenItem(
-                item.shortName,
-                item.howMany,
+              item.shortName,
+              item.howMany,
             );
           })
         );

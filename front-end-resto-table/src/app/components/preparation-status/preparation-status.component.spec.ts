@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CentralBasketComponent } from './central-basket.component';
+import { PreparationStatusComponent } from './preparation-status.component';
 
-describe('CentralBasketComponent', () => {
-  let component: CentralBasketComponent;
-  let fixture: ComponentFixture<CentralBasketComponent>;
+describe('PreparationStatusComponent', () => {
+  let component: PreparationStatusComponent;
+  let fixture: ComponentFixture<PreparationStatusComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CentralBasketComponent ]
+      declarations: [ PreparationStatusComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CentralBasketComponent);
+    fixture = TestBed.createComponent(PreparationStatusComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

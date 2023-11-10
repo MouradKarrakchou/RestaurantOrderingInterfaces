@@ -25,11 +25,11 @@ import {HttpClientModule} from "@angular/common/http";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import { MiddleTableComponent } from './components/middle-table/middle-table.component';
 import { TableViewerComponent } from './components/table-viewer/table-viewer.component';
-import { CentralBasketComponent } from './components/central-basket/central-basket.component';
 import { GlobalBasketSummaryComponent } from './components/global-basket-summary/global-basket-summary.component';
 import { SwitchToTabsComponent } from './components/header/switch-to-tabs/switch-to-tabs.component';
 import { ClientReceiptComponent } from './components/client-receipt/client-receipt.component';
 import { EndComponent } from './components/common/end/end.component';
+import { PreparationStatusComponent } from './components/preparation-status/preparation-status.component';
 
 
 const routes: Routes = [
@@ -43,7 +43,7 @@ const routes: Routes = [
   { path: 'table-viewer/:id/global-basket-summary', component: GlobalBasketSummaryComponent },
   { path: 'client-receipt/:id', component: ClientReceiptComponent },
   { path: 'end/:id', component: EndComponent },
-  { path: 'central-basket', component: CentralBasketComponent },
+  { path: 'status', component: PreparationStatusComponent},
   { path: '**', redirectTo: '/idle/1' } // GARDER TOUT EN BAS
 ];
 
@@ -62,7 +62,13 @@ const routes: Routes = [
     FooterComponent,
     DialogContentComponent,
     OrderNumberComponent,
-    TableViewerComponent
+    TableViewerComponent,
+    PreparationStatusComponent,
+    SwitchToTabsComponent,
+    GlobalBasketSummaryComponent,
+    ClientReceiptComponent,
+    MiddleTableComponent,
+    EndComponent,
   ],
     imports: [
         BrowserModule,
