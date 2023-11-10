@@ -27,6 +27,7 @@ import { MiddleTableComponent } from './components/middle-table/middle-table.com
 import { TableViewerComponent } from './components/table-viewer/table-viewer.component';
 import { GlobalBasketSummaryComponent } from './components/global-basket-summary/global-basket-summary.component';
 import { SwitchToTabsComponent } from './components/header/switch-to-tabs/switch-to-tabs.component';
+import { SleepModeComponent } from './components/sleep-mode/sleep-mode.component';
 
 
 const routes: Routes = [
@@ -37,7 +38,8 @@ const routes: Routes = [
   { path: 'order-number/:id', component: OrderNumberComponent },
   { path: 'middle-table', component: MiddleTableComponent },
   { path: 'table-viewer/:id', component: TableViewerComponent },
-  { path: 'table-viewer/:id/global-basket-summary', component: GlobalBasketSummaryComponent }
+  { path: 'table-viewer/:id/global-basket-summary', component: GlobalBasketSummaryComponent },
+  { path: 'sleep-mode', component: SleepModeComponent }
 ];
 
 @NgModule({
@@ -58,7 +60,8 @@ const routes: Routes = [
     MiddleTableComponent,
     TableViewerComponent,
     GlobalBasketSummaryComponent,
-    SwitchToTabsComponent
+    SwitchToTabsComponent,
+    SleepModeComponent
   ],
     imports: [
         BrowserModule,
