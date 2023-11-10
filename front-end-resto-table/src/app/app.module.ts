@@ -47,7 +47,6 @@ const routes: Routes = [
   { path: 'sleep-mode', component: SleepModeComponent },
   { path: 'client-receipt/:id', component: ClientReceiptComponent },
   { path: 'end/:id', component: EndComponent },
-  { path: 'status', component: PreparationStatusComponent},
   { path: 'wait', component: WaitingScreenComponent},
   { path: 'summary/:id', component: GlobalBasketSummaryComponent },
   { path: '**', redirectTo: '/table-viewer' } // GARDER TOUT EN BAS
@@ -75,6 +74,8 @@ const routes: Routes = [
     ClientReceiptComponent,
     MiddleTableComponent,
     EndComponent,
+    GameLeaderboardComponent,
+    WaitingScreenComponent
   ],
     imports: [
         BrowserModule,
@@ -87,7 +88,8 @@ const routes: Routes = [
         MatButtonModule,
         MatDialogModule,
         HttpClientModule,
-        MatSlideToggleModule
+        MatSlideToggleModule,
+        MatSnackBarModule,
     ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
