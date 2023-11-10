@@ -3,6 +3,8 @@ import {KitchenPreparationStatus} from "../../models/KitchenPreparationStatus";
 import {BasketService} from "../../services/basket.service";
 import {HttpClient} from "@angular/common/http";
 import {KitchenItem} from "../../models/KitchenItem";
+import PreparationStatus from "../../models/PreparationStatus";
+import PreparationCategory from "../../models/PreparationCategory";
 
 @Component({
   selector: 'app-preparation-status',
@@ -17,9 +19,9 @@ export class PreparationStatusComponent implements OnInit {
 
   ngOnInit(): void {
     this.displayOrderStatus();
-    setInterval(() => {
-      this.displayOrderStatus();
-    }, 5000);
+    // setInterval(() => {
+    //   this.displayOrderStatus();
+    // }, 5000);
   }
 
   displayOrderStatus() {
@@ -31,11 +33,11 @@ export class PreparationStatusComponent implements OnInit {
 
   getCategoryText(category: string): string {
     switch (category) {
-      case 'BAR':
+      case PreparationCategory.BAR:
         return 'Drinks';
-      case 'COLD_DISH':
+      case PreparationCategory.COLD_DISH:
         return 'Cold dishes';
-      case 'HOT_DISH':
+      case PreparationCategory.HOT_DISH:
         return 'Hot dishes';
       default:
         return 'Error';
@@ -44,11 +46,11 @@ export class PreparationStatusComponent implements OnInit {
 
   getStatusText(status: string): string {
     switch (status) {
-      case 'NOT_STARTED':
+      case PreparationStatus.NOT_STARTED:
         return 'Not started';
-      case 'IN_PROGRESS':
+      case PreparationStatus.IN_PROGRESS:
         return 'In progress';
-      case 'FINISHED':
+      case PreparationStatus.FINISHED:
         return 'Finished';
       default:
         return 'Error';
@@ -57,11 +59,11 @@ export class PreparationStatusComponent implements OnInit {
 
   getStatusColor(status: string): string {
     switch (status) {
-      case 'NOT_STARTED':
+      case PreparationStatus.NOT_STARTED:
         return 'red';
-      case 'IN_PROGRESS':
+      case PreparationStatus.IN_PROGRESS:
         return 'orange';
-      case 'FINISHED':
+      case PreparationStatus.FINISHED:
         return 'green';
       default:
         return 'black';
@@ -113,4 +115,5 @@ export class PreparationStatusComponent implements OnInit {
     }
   }
 
+  protected readonly PreparationStatus = PreparationStatus;
 }

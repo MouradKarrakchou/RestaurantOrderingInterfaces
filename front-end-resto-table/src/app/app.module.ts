@@ -30,6 +30,7 @@ import { SwitchToTabsComponent } from './components/header/switch-to-tabs/switch
 import { ClientReceiptComponent } from './components/client-receipt/client-receipt.component';
 import { EndComponent } from './components/common/end/end.component';
 import { PreparationStatusComponent } from './components/preparation-status/preparation-status.component';
+import { GameLeaderboardComponent } from './components/game-leaderboard/game-leaderboard.component';
 
 
 const routes: Routes = [
@@ -44,6 +45,7 @@ const routes: Routes = [
   { path: 'client-receipt/:id', component: ClientReceiptComponent },
   { path: 'end/:id', component: EndComponent },
   { path: 'status', component: PreparationStatusComponent},
+  { path: 'leaderboard', component: GameLeaderboardComponent},
   { path: '**', redirectTo: '/idle/1' } // GARDER TOUT EN BAS
 ];
 
@@ -69,6 +71,7 @@ const routes: Routes = [
     ClientReceiptComponent,
     MiddleTableComponent,
     EndComponent,
+    GameLeaderboardComponent,
   ],
     imports: [
         BrowserModule,
