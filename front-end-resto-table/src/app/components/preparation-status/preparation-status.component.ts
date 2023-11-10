@@ -19,9 +19,9 @@ export class PreparationStatusComponent implements OnInit {
 
   ngOnInit(): void {
     this.displayOrderStatus();
-    setInterval(() => {
-      this.displayOrderStatus();
-    }, 10000);
+    // setInterval(() => {
+    //   this.displayOrderStatus();
+    // }, 10000);
   }
 
   displayOrderStatus() {
@@ -96,6 +96,7 @@ export class PreparationStatusComponent implements OnInit {
       return data.map((item: any) => {
         return new KitchenPreparationStatus(
           item.id,
+          item.shouldBeReadyAt,
           item.completedAt,
           item.takenForServiceAt,
           item.post,

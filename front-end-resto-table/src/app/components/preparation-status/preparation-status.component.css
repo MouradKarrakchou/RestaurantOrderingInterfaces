@@ -21,9 +21,15 @@
   font-size: 4vh;
 }
 
-.category-text {
+.category-title-text {
   margin-top: 1.5vh;
   font-size: 3vh;
+}
+
+.category-time {
+  font-size: 1.4vh;
+  margin: 0.5vh;
+  color: #656464;
 }
 
 hr {
@@ -31,10 +37,12 @@ hr {
   height: 5px;
   background-color: #8BC34AFF;
   opacity:1;
+  margin: 0;
 }
 
 .category-up {
   width: fit-content;
+  margin-block: 2vh;
 }
 
 .container {
