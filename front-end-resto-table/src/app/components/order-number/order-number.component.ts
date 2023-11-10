@@ -11,9 +11,6 @@ import {HttpClient} from "@angular/common/http";
 export class OrderNumberComponent implements OnInit {
 
   time: Date | undefined;
-  // orderNumber: string | undefined;
-  // shouldBeReadyAt: Date | undefined;
-  // idleTimeout: NodeJS.Timeout | undefined;
   tabletId: string = "0";
 
   constructor(private router: Router,
@@ -33,48 +30,12 @@ export class OrderNumberComponent implements OnInit {
       }, 1000);
 
       if (this.basketService.getBasketSize(this.tabletId) !== 0) {
-        // this.sendOrderToBFF().subscribe(orderInformation => {
-        //   this.orderNumber = orderInformation.orderId;
-        //   this.shouldBeReadyAt = new Date(orderInformation.shouldBeReadyAt);
-        //   console.log(orderInformation);
-        //   this.basketService.emptyBasket(this.tabletId);
-        // });
+
         this.basketService.getBasketReadyToOrder(this.tabletId);
       }
 
-      // this.idleTimeout = setTimeout(() => {
-      //   this.router.navigate(['/idle', this.tabletId])
-      // }, 20000);
     });
   }
-
-  /*
-  sendOrderToBFF(): Observable<any> {
-    const url = "http://localhost:8080/api/order";
-
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
-
-    const data = {
-      items: this.basketService.getBasket(this.tabletId).map(item => ({
-        itemID: item.menuItem.id,
-        shortName: item.menuItem.shortName,
-        quantity: item.quantity
-      }))
-    }
-
-    console.log(data);
-
-    return this.http.post<any>(url, data, httpOptions);
-  }
-
-  quit(): void {
-    clearTimeout(this.idleTimeout);
-    this.router.navigate(['/idle', this.tabletId])
-  }*/
 
   modify(): void {
     this.basketService.getBasketNotReadyToOrder(this.tabletId);

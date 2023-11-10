@@ -15,12 +15,12 @@ export class BasketService {
     '4': new BehaviorSubject<BasketItem[]>([]),
   };
 
-  alreadyOrdered: Map<string, BasketItem[] | undefined> = new Map<string, BasketItem[] | undefined>([
-    ["1", undefined],
-    ["2", undefined],
-    ["3", undefined],
-    ["4", undefined]
-  ]);
+  alreadyOrdered: { [key: string]: BasketItem[] | undefined } = {
+    '1': undefined,
+    '2': undefined,
+    '3': undefined,
+    '4': undefined,
+  };
 
   readyToOrder: BehaviorSubject<Map<string, boolean>> = new BehaviorSubject<Map<string, boolean>>(new Map<string, boolean>([
     ["1", false],
@@ -66,7 +66,10 @@ export class BasketService {
     this.baskets['4'].next([]);
   }
 
-  getBasketTotal(tabletId: string): number {
+  getBasketTotal(tabletId: string, final: boolean = false): number {
+    if (final) {
+        return this.alreadyOrdered[tabletId]!.reduce((total, basketItem) => total + basketItem.menuItem.price * basketItem.quantity, 0);
+    }
     return this.baskets[tabletId].value.reduce((total, basketItem) => total + basketItem.menuItem.price * basketItem.quantity, 0);
   }
 
@@ -78,14 +81,25 @@ export class BasketService {
     return total;
   }
 
-  getBasket(tabletId: string): BasketItem[] {
+  getBasket(tabletId: string, final: boolean = false): BasketItem[] {
+    if(final) {
+      return this.alreadyOrdered[tabletId] || [];
+    }
     return this.baskets[tabletId].value;
   }
 
-  getAllBaskets(): BasketItem[] {
+  getAllBaskets(final: boolean = false): BasketItem[] {
     let allBaskets: any[] = [];
-    for (let i = 1; i <= 4; i++) {
-      allBaskets = allBaskets.concat(this.baskets[i].value);
+    if(final) {
+      for (let i = 1; i <= 4; i++) {
+        if (this.alreadyOrdered[i.toString()] !== undefined) {
+          allBaskets = allBaskets.concat(this.alreadyOrdered[i.toString()]);
+        }
+      }
+    } else {
+      for (let i = 1; i <= 4; i++) {
+        allBaskets = allBaskets.concat(this.baskets[i].value);
+      }
     }
     return allBaskets;
   }
@@ -103,7 +117,7 @@ export class BasketService {
   }
 
   setSelectedTable(number: string) {
-    this.alreadyOrdered.set(number, []);
+    this.alreadyOrdered[number] = [];
   }
 
   getBasketReadyToOrder(tabletId: string) {
@@ -122,7 +136,7 @@ export class BasketService {
     let readyMap = this.readyToOrder.value;
     for (let i = 1; i <= 4; i++) {
       if (this.baskets[i].value.length !== 0) {
-        this.alreadyOrdered.set(i.toString(), this.baskets[i].value);
+        this.alreadyOrdered[i.toString()] = this.baskets[i].value;
         this.baskets[i].next([]);
       }
       readyMap.set(i.toString(), false);

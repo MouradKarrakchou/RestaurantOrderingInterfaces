@@ -27,6 +27,8 @@ import { MiddleTableComponent } from './components/middle-table/middle-table.com
 import { TableViewerComponent } from './components/table-viewer/table-viewer.component';
 import { GlobalBasketSummaryComponent } from './components/global-basket-summary/global-basket-summary.component';
 import { SwitchToTabsComponent } from './components/header/switch-to-tabs/switch-to-tabs.component';
+import { ClientReceiptComponent } from './components/client-receipt/client-receipt.component';
+import { EndComponent } from './components/common/end/end.component';
 
 
 const routes: Routes = [
@@ -37,7 +39,10 @@ const routes: Routes = [
   { path: 'order-number/:id', component: OrderNumberComponent },
   { path: 'middle-table', component: MiddleTableComponent },
   { path: 'table-viewer/:id', component: TableViewerComponent },
-  { path: 'table-viewer/:id/global-basket-summary', component: GlobalBasketSummaryComponent }
+  { path: 'table-viewer/:id/global-basket-summary', component: GlobalBasketSummaryComponent },
+  { path: 'client-receipt/:id', component: ClientReceiptComponent },
+  { path: 'end/:id', component: EndComponent },
+  { path: '**', redirectTo: '/idle/1' } // GARDER TOUT EN BAS
 ];
 
 @NgModule({
@@ -58,7 +63,9 @@ const routes: Routes = [
     MiddleTableComponent,
     TableViewerComponent,
     GlobalBasketSummaryComponent,
-    SwitchToTabsComponent
+    SwitchToTabsComponent,
+    ClientReceiptComponent,
+    EndComponent
   ],
     imports: [
         BrowserModule,

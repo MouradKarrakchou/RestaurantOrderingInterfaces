@@ -1,5 +1,6 @@
 <div *ngIf="basket.length == 0">
-  <p class="no-item">No item in your basket</p>
+  <p *ngIf="!finalOrder" class="no-item">No items in your basket</p>
+  <p *ngIf="finalOrder" class="no-item">No items ordered</p>
 </div>
 
 <!-- STARTERS -->
