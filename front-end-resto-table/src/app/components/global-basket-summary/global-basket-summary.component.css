@@ -66,10 +66,6 @@ hr {
   background-color: #8BC34AFF;
 }
 
-.darker-button{
-  background-color: #5f6b51;
-}
-
 
 .sort-button {
   flex-grow: 1;
@@ -113,9 +109,18 @@ hr {
   width: 7vh;
   margin-right: .5vh;
 }
+.category-icon-v2{
+  height: 4vh;
+  width: 4vh;
+  margin-right: .5vh;
+}
 
 .category-icon mat-icon {
   font-size: 7vh;
+}
+
+.category-icon-v2 mat-icon {
+  font-size: 4vh;
 }
 
 .category-text {
