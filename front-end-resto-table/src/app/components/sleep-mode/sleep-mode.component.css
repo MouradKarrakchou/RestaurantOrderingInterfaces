@@ -98,3 +98,11 @@ body {
   border-radius: 25px;
   border-style: none;
 }
+
+.selected {
+    background-color: #709370;
+}
+
+.unselected {
+    background-color: #a9a9a9;
+}

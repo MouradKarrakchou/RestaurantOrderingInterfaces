@@ -67,11 +67,13 @@ export class BasketService {
     this.baskets[tabletId].next([]);
   }
 
-  emptyAllBaskets() {
-    this.baskets['1'].next([]);
-    this.baskets['2'].next([]);
-    this.baskets['3'].next([]);
-    this.baskets['4'].next([]);
+  emptyAllBasketsAlreadyOrdered() {
+    this.alreadyOrdered = {
+        '1': undefined,
+        '2': undefined,
+        '3': undefined,
+        '4': undefined,
+        };
   }
 
   getBasketTotal(tabletId: string, final: boolean = false): number {

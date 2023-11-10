@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
+import {PaymentService} from "../../../services/payment.service";
+import {MiddleTabletState, StateService, UserTabletState} from "../../../services/state.service";
 
 @Component({
   selector: 'app-end',
@@ -13,7 +15,9 @@ export class EndComponent implements OnInit {
   time: Date | undefined;
 
   constructor(private route: ActivatedRoute,
-              private router: Router,)
+              private router: Router,
+              private paymentService: PaymentService,
+              private state: StateService)
   { }
 
   ngOnInit(): void {
@@ -26,9 +30,20 @@ export class EndComponent implements OnInit {
         this.time = new Date();
       }, 1000);
 
-      this.idleTimeout = setTimeout(() => {
-        this.router.navigate(['/idle', this.tabletId])
-      }, 20000);
+      if (this.tabletId == "0") {
+        this.idleTimeout = setTimeout(() => {
+          this.router.navigate(['/idle', this.tabletId])
+        }, 20000);
+      } else {
+        this.state.setUserTabletState(this.tabletId, UserTabletState.Billed);
+        if (this.paymentService.everyonePaid) {
+          this.idleTimeout = setTimeout(() => {
+            this.state.setAllUserTabletState(UserTabletState.Idle);
+            this.state.setMiddleTabletState(MiddleTabletState.Idle);
+            this.router.navigate(['/idle', this.tabletId])
+          }, 20000);
+        }
+      }
     });
   }
 

@@ -36,7 +36,11 @@ export class GlobalBasketSummaryComponent implements OnInit {
   ngOnInit(): void {
     this.basket_total_price = this.basketService.getAllBasketsTotal();
     this.allTabletteActivated= this.basketService.getAllTabletteActivated();
-    this.state.setMiddleTabletState(MiddleTabletState.Preorder);
+    if (this.state.getMiddleTabletState() == MiddleTabletState.Final) {
+        this.isPaymentPage = true;
+    } else {
+      this.state.setMiddleTabletState(MiddleTabletState.Preorder);
+    }
   }
 
   redirectToCatalog() {
@@ -72,7 +76,8 @@ export class GlobalBasketSummaryComponent implements OnInit {
         'Content-Type': 'application/json'
       })
     };
-    //TODO : if everyone has paid then reset everything
+    this.state.setAllUserTabletState(UserTabletState.Idle);
+    this.basketService.emptyAllBasketsAlreadyOrdered();
     this.router.navigate(['/end',0]);
   }
 

@@ -21,6 +21,7 @@ export class GameComponent implements OnInit {
   ngOnInit(): void {
       this.route.params.subscribe(params => {
           this.tabletId = params['id'];
+          this.score = this.gameService.getScore(this.tabletId);
       });
   }
 

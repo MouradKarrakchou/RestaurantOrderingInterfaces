@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {KitchenPreparationStatus} from "../../models/KitchenPreparationStatus";
-import {BasketService} from "../../services/basket.service";
-import {HttpClient} from "@angular/common/http";
 import {KitchenItem} from "../../models/KitchenItem";
 import PreparationStatus from "../../models/PreparationStatus";
 import PreparationCategory from "../../models/PreparationCategory";
@@ -14,8 +12,7 @@ import PreparationCategory from "../../models/PreparationCategory";
 export class PreparationStatusComponent implements OnInit {
   preparationStatus: KitchenPreparationStatus[] = [];
 
-  constructor(private basketService: BasketService,
-              private http: HttpClient) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.displayOrderStatus();
