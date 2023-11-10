@@ -8,19 +8,26 @@ import {BehaviorSubject} from "rxjs";
 })
 export class BasketService {
 
-    basket: BehaviorSubject<BasketItem[]> = new BehaviorSubject<BasketItem[]>([]);
-    baskets: { [key: string]: BehaviorSubject<BasketItem[]> } = {
+  baskets: { [key: string]: BehaviorSubject<BasketItem[]> } = {
     '1': new BehaviorSubject<BasketItem[]>([]),
     '2': new BehaviorSubject<BasketItem[]>([]),
     '3': new BehaviorSubject<BasketItem[]>([]),
     '4': new BehaviorSubject<BasketItem[]>([]),
   };
-  selectedTables: Map<number, BasketItem[] | string> = new Map<number, BasketItem[] | string>([
-    [1, "empty"],
-    [2, "empty"],
-    [3, "empty"],
-    [4, "empty"]
+
+  alreadyOrdered: Map<string, BasketItem[] | undefined> = new Map<string, BasketItem[] | undefined>([
+    ["1", undefined],
+    ["2", undefined],
+    ["3", undefined],
+    ["4", undefined]
   ]);
+
+  readyToOrder: BehaviorSubject<Map<string, boolean>> = new BehaviorSubject<Map<string, boolean>>(new Map<string, boolean>([
+    ["1", false],
+    ["2", false],
+    ["3", false],
+    ["4", false]
+  ]));
 
   constructor() { }
 
@@ -94,7 +101,32 @@ export class BasketService {
     }
     return total;
   }
-  setSelectedTable(number: number) {
-    this.selectedTables.set(number, []);
+
+  setSelectedTable(number: string) {
+    this.alreadyOrdered.set(number, []);
+  }
+
+  getBasketReadyToOrder(tabletId: string) {
+    let readyMap = this.readyToOrder.value;
+    readyMap.set(tabletId, true);
+    this.readyToOrder.next(readyMap);
+  }
+
+  getBasketNotReadyToOrder(tabletId: string) {
+    let readyMap = this.readyToOrder.value;
+    readyMap.set(tabletId, false);
+    this.readyToOrder.next(readyMap);
+  }
+
+  confirmBasket() {
+    let readyMap = this.readyToOrder.value;
+    for (let i = 1; i <= 4; i++) {
+      if (this.baskets[i].value.length !== 0) {
+        this.alreadyOrdered.set(i.toString(), this.baskets[i].value);
+        this.baskets[i].next([]);
+      }
+      readyMap.set(i.toString(), false);
+    }
+    this.readyToOrder.next(readyMap);
   }
 }

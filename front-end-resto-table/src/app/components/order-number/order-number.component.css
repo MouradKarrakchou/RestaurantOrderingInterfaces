@@ -30,12 +30,12 @@
   text-align: center;
 }
 
-.quit-button {
+.modify-button {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 4vh;
-  width: 20%;
+  width: fit-content;
   height: 10%;
   border-radius: 25px;
   color: white;

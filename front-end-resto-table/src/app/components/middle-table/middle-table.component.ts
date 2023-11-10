@@ -85,16 +85,16 @@ export class MiddleTableComponent implements OnInit {
     if ((this.tab1Selected || this.tab2Selected || this.tab3Selected || this.tab4Selected)
       && this.paymentMethodSelected != '') {
       if (this.tab1Selected) {
-        this.basketService.setSelectedTable(1);
+        this.basketService.setSelectedTable("1");
       }
       if (this.tab2Selected) {
-        this.basketService.setSelectedTable(2);
+        this.basketService.setSelectedTable("2");
       }
       if (this.tab3Selected) {
-        this.basketService.setSelectedTable(3);
+        this.basketService.setSelectedTable("3");
       }
       if (this.tab4Selected) {
-        this.basketService.setSelectedTable(4);
+        this.basketService.setSelectedTable("4");
       }
       //TODO remember payment method
     }
