@@ -51,7 +51,7 @@ const routes: Routes = [
   { path: 'status', component: PreparationStatusComponent},
   { path: 'waiting-screen', component: WaitingScreenComponent},
   { path: 'summary/:id', component: GlobalBasketSummaryComponent },
-  { path: 'game', component: GameComponent },
+  { path: 'game/:id', component: GameComponent },
   { path: '**', redirectTo: '/table-viewer' } // GARDER TOUT EN BAS
 ];
 
