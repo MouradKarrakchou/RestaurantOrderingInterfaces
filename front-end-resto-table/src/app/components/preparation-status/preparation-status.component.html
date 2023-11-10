@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="category-container" *ngFor="let categoryStatus of preparationStatus">
+    <div *ngIf="categoryStatus.status !== 'SERVED'">
+      <div class="category-up">
+        <div class="category-title">
+          <div class="category-icon">
+            <mat-icon>{{getCategoryIconText(categoryStatus.post)}}</mat-icon>
+          </div>
+          <span class="category-text">
+            {{getCategoryText(categoryStatus.post)}} -
+            <span [ngStyle]="{'color': getStatusColor(categoryStatus.status)}">
+              {{getStatusText(categoryStatus.status)}}
+            </span>
+          </span>
+        </div>
+        <hr>
+      </div>
+      <div *ngFor="let item of categoryStatus.preparedItems">
+        <p>x{{item.howMany}} {{item.shortName}}</p>
+      </div>
+    </div>
+  </div>
+</div>

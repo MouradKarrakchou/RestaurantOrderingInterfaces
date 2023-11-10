@@ -12,13 +12,15 @@ public class KitchenPreparationStatus {
     private LocalDateTime completedAt;
     private LocalDateTime takenForServiceAt;
     private Post post;
+    private Status status;
     private List<Item> preparedItems;
 
-    public KitchenPreparationStatus(UUID id, LocalDateTime completedAt, LocalDateTime takenForServiceAt, Post post) {
+    public KitchenPreparationStatus(UUID id, LocalDateTime completedAt, LocalDateTime takenForServiceAt, Post post, Status status) {
         this.id = id;
         this.completedAt = completedAt;
         this.takenForServiceAt = takenForServiceAt;
         this.post = post;
+        this.status = status;
         this.preparedItems = new ArrayList<>();
     }
 
@@ -60,5 +62,13 @@ public class KitchenPreparationStatus {
 
     public void setPreparedItems(List<Item> preparedItems) {
         this.preparedItems = preparedItems;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }
