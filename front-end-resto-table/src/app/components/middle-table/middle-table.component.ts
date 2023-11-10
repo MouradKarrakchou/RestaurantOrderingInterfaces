@@ -22,6 +22,8 @@ export class MiddleTableComponent implements OnInit {
 
   paymentMethodSelected: string = "";
 
+  @ViewChild('validate') validate!: ElementRef;
+
   constructor(private basketService: BasketService) { }
 
   ngOnInit(): void {
@@ -46,7 +48,7 @@ export class MiddleTableComponent implements OnInit {
         this.tab4Selected = !this.tab4Selected;
         break;
     }
-
+    this.checkValidation();
   }
 
   selectPaymentMethod(paymentMethod: string) {
@@ -76,6 +78,7 @@ export class MiddleTableComponent implements OnInit {
     }
 
     this.paymentMethodSelected = paymentMethod;
+    this.checkValidation();
   }
 
   validateSelection() {
@@ -100,8 +103,12 @@ export class MiddleTableComponent implements OnInit {
   checkValidation() {
     if ((this.tab1Selected || this.tab2Selected || this.tab3Selected || this.tab4Selected)
       && this.paymentMethodSelected != '') {
-      //TODO change validate button background color
+      this.validate.nativeElement.style.background = 'rgb(114, 192, 114)';
+      return true;
+    } else {
+      this.validate.nativeElement.style.background = 'rgb(169, 169, 169)';
     }
+    return false;
   }
 
 }
