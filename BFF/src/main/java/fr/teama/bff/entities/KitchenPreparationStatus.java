@@ -9,14 +9,16 @@ import java.util.UUID;
 
 public class KitchenPreparationStatus {
     private UUID id;
+    private LocalDateTime shouldBeReadyAt;
     private LocalDateTime completedAt;
     private LocalDateTime takenForServiceAt;
     private Post post;
     private Status status;
     private List<Item> preparedItems;
 
-    public KitchenPreparationStatus(UUID id, LocalDateTime completedAt, LocalDateTime takenForServiceAt, Post post, Status status) {
+    public KitchenPreparationStatus(UUID id, LocalDateTime shouldBeReadyAt, LocalDateTime completedAt, LocalDateTime takenForServiceAt, Post post, Status status) {
         this.id = id;
+        this.shouldBeReadyAt = shouldBeReadyAt;
         this.completedAt = completedAt;
         this.takenForServiceAt = takenForServiceAt;
         this.post = post;
@@ -70,5 +72,13 @@ public class KitchenPreparationStatus {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public LocalDateTime getShouldBeReadyAt() {
+        return shouldBeReadyAt;
+    }
+
+    public void setShouldBeReadyAt(LocalDateTime shouldBeReadyAt) {
+        this.shouldBeReadyAt = shouldBeReadyAt;
     }
 }

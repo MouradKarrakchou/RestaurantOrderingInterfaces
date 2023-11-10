@@ -9,6 +9,7 @@
   padding-inline: 2.5%;
   max-height: 65%;
   overflow-y: auto;
+  margin-top: 2vh;
 }
 
 .confirm-header {

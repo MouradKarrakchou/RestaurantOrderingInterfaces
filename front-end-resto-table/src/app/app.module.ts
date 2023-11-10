@@ -47,7 +47,7 @@ const routes: Routes = [
   { path: 'sleep-mode', component: SleepModeComponent },
   { path: 'client-receipt/:id', component: ClientReceiptComponent },
   { path: 'end/:id', component: EndComponent },
-  { path: 'wait', component: WaitingScreenComponent},
+  { path: 'waiting-screen', component: WaitingScreenComponent},
   { path: 'summary/:id', component: GlobalBasketSummaryComponent },
   { path: '**', redirectTo: '/table-viewer' } // GARDER TOUT EN BAS
 ];

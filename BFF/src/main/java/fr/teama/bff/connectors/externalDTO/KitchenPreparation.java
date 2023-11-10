@@ -8,6 +8,7 @@ import java.util.UUID;
 
 public class KitchenPreparation {
     private UUID id;
+    private LocalDateTime shouldBeReadyAt;
     private LocalDateTime completedAt;
     private LocalDateTime takenForServiceAt; // brought to the table
     private List<KitchenItem> preparedItems;
@@ -42,5 +43,13 @@ public class KitchenPreparation {
 
     public void setPreparedItems(List<KitchenItem> preparedItems) {
         this.preparedItems = preparedItems;
+    }
+
+    public LocalDateTime getShouldBeReadyAt() {
+        return shouldBeReadyAt;
+    }
+
+    public void setShouldBeReadyAt(LocalDateTime shouldBeReadyAt) {
+        this.shouldBeReadyAt = shouldBeReadyAt;
     }
 }
