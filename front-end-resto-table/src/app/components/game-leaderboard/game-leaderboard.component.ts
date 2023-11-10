@@ -15,9 +15,9 @@ export class GameLeaderboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchLeaderboard();
-    setInterval(() => {
-      this.fetchLeaderboard();
-    }, 100);
+    // setInterval(() => {
+    //   this.fetchLeaderboard();
+    // }, 1000);
   }
 
   redirectToSleepMode() {
@@ -26,7 +26,6 @@ export class GameLeaderboardComponent implements OnInit {
 
   fetchLeaderboard() {
     this.leaderboard = this.gameService.getLeaderboard();
-    // console.log(this.leaderboard);
   }
 
   getMedalNameByRank(rank: number) {
