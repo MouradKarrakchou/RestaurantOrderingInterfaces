@@ -20,6 +20,11 @@
   color: white;
 }
 
+.estimated-time-text {
+  font-size: 3vh;
+  text-align: center;
+}
+
 .order-number-text {
   font-size: 6vh;
   text-align: center;
