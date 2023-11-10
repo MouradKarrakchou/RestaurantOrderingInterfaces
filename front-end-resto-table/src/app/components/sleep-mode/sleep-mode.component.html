@@ -13,10 +13,11 @@
     <button class="exit-sleep-mode-button" #sleepMode (click)="power()">Turn on this screen</button>
   </div>
 
-  <div class="order-or-pay-title">Still hungry or full? :)</div>
-  <div class="order-or-pay-buttons">
-    <button class="order-again" (click)="orderAgain()">Order again</button>
-    <button class="pay" (click)="pay()">Let's pay</button>
+  <div class="payment-method-title">Do you want to proceed to the payment?</div>
+  <div class="payment-method-buttons">
+    <button class="together" #together (click)="selectPaymentMethod('together')">Pay together</button>
+    <button class="validate" #validate (click)="validatePayment()">Validate ➜</button>
+    <button class="separately" #separately (click)="selectPaymentMethod('separately')">Pay separately</button>
   </div>
 
 <div class="black" #black></div>

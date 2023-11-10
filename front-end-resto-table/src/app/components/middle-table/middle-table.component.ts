@@ -104,11 +104,9 @@ export class MiddleTableComponent implements OnInit {
     if ((this.tab1Selected || this.tab2Selected || this.tab3Selected || this.tab4Selected)
       && this.paymentMethodSelected != '') {
       this.validate.nativeElement.style.background = 'rgb(114, 192, 114)';
-      return true;
     } else {
       this.validate.nativeElement.style.background = 'rgb(169, 169, 169)';
     }
-    return false;
   }
 
 }
