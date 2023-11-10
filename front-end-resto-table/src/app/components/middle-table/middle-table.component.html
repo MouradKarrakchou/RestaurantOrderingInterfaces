@@ -20,6 +20,6 @@
 </div>
 <div class="payment-method-title">Do you want to pay together or separately?</div>
 <div class="payment-method-buttons">
-  <button class="together" (click)="selectPaymentMethod()">Together</button>
-  <button class="separately">Separately</button>
+  <button class="together" #together (click)="selectPaymentMethod('together')">Together</button>
+  <button class="separately" #separately (click)="selectPaymentMethod('separately')">Separately</button>
 </div>

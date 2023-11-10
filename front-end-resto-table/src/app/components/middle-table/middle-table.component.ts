@@ -17,6 +17,11 @@ export class MiddleTableComponent implements OnInit {
   tab3Selected: boolean = false;
   tab4Selected: boolean = false;
 
+  @ViewChild('together') together!: ElementRef;
+  @ViewChild('separately') separately!: ElementRef;
+
+  paymentMethodSelected: string = "";
+
   constructor(private basketService: BasketService) { }
 
   ngOnInit(): void {
@@ -44,8 +49,33 @@ export class MiddleTableComponent implements OnInit {
 
   }
 
-  selectPaymentMethod() {
+  selectPaymentMethod(paymentMethod: string) {
+    if (this.together.nativeElement.style.background == ''
+      && this.separately.nativeElement.style.background == '') {
+      console.log("if")
+      switch (paymentMethod) {
+        case 'together': this.together.nativeElement.style.background = 'rgb(114, 192, 114)'; break;
+        case 'separately': this.separately.nativeElement.style.background = 'rgb(114, 192, 114)'; break;
+      }
+    }
+    else if ((this.together.nativeElement.style.background == 'rgb(114, 192, 114)'
+      || this.together.nativeElement.style.background == '')
+      && (this.separately.nativeElement.style.background == 'rgb(169, 169, 169)'
+      || this.separately.nativeElement.style.background == '')
+      && paymentMethod != this.paymentMethodSelected) {
+      console.log("else if")
+      this.together.nativeElement.style.background = 'rgb(169, 169, 169)';
+      this.separately.nativeElement.style.background = 'rgb(114, 192, 114)';
+    }
+    else if (this.together.nativeElement.style.background == 'rgb(169, 169, 169)'
+      && this.separately.nativeElement.style.background == 'rgb(114, 192, 114)'
+      && paymentMethod != this.paymentMethodSelected) {
+      console.log("else if 2")
+      this.together.nativeElement.style.background = 'rgb(114, 192, 114)';
+      this.separately.nativeElement.style.background = 'rgb(169, 169, 169)';
+    }
 
+    this.paymentMethodSelected = paymentMethod;
   }
 
   validateSelection() {
