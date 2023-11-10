@@ -28,7 +28,7 @@ import { TableViewerComponent } from './components/table-viewer/table-viewer.com
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/idle', pathMatch: 'full' }, // default page
+  { path: '', redirectTo: '/idle/1', pathMatch: 'full' }, // default page
   { path: 'idle/:id', component: IdleComponent },
   { path: 'home/:id', component: HomeComponent },
   { path: 'confirmation/:id', component: ConfirmationComponent },

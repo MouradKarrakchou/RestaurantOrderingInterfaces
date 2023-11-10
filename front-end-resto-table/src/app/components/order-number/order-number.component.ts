@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {BasketService} from "../../services/basket.service";
-import {Observable} from "rxjs";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-order-number',
@@ -12,9 +11,9 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 export class OrderNumberComponent implements OnInit {
 
   time: Date | undefined;
-  orderNumber: string | undefined;
-  shouldBeReadyAt: Date | undefined;
-  idleTimeout: NodeJS.Timeout | undefined;
+  // orderNumber: string | undefined;
+  // shouldBeReadyAt: Date | undefined;
+  // idleTimeout: NodeJS.Timeout | undefined;
   tabletId: string = "0";
 
   constructor(private router: Router,
@@ -34,20 +33,22 @@ export class OrderNumberComponent implements OnInit {
       }, 1000);
 
       if (this.basketService.getBasketSize(this.tabletId) !== 0) {
-        this.sendOrderToBFF().subscribe(orderInformation => {
-          this.orderNumber = orderInformation.orderId;
-          this.shouldBeReadyAt = new Date(orderInformation.shouldBeReadyAt);
-          console.log(orderInformation);
-          this.basketService.emptyBasket(this.tabletId);
-        });
+        // this.sendOrderToBFF().subscribe(orderInformation => {
+        //   this.orderNumber = orderInformation.orderId;
+        //   this.shouldBeReadyAt = new Date(orderInformation.shouldBeReadyAt);
+        //   console.log(orderInformation);
+        //   this.basketService.emptyBasket(this.tabletId);
+        // });
+        this.basketService.getBasketReadyToOrder(this.tabletId);
       }
 
-      this.idleTimeout = setTimeout(() => {
-        this.router.navigate(['/idle', this.tabletId])
-      }, 20000);
+      // this.idleTimeout = setTimeout(() => {
+      //   this.router.navigate(['/idle', this.tabletId])
+      // }, 20000);
     });
   }
 
+  /*
   sendOrderToBFF(): Observable<any> {
     const url = "http://localhost:8080/api/order";
 
@@ -73,6 +74,11 @@ export class OrderNumberComponent implements OnInit {
   quit(): void {
     clearTimeout(this.idleTimeout);
     this.router.navigate(['/idle', this.tabletId])
+  }*/
+
+  modify(): void {
+    this.basketService.getBasketNotReadyToOrder(this.tabletId);
+    this.router.navigate(['/home', this.tabletId])
   }
 
 }
