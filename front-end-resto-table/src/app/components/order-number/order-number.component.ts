@@ -44,8 +44,8 @@ export class OrderNumberComponent implements OnInit {
       if (this.basketService.getBasketSize(this.tabletId) !== 0) {
         this.basketService.getBasketReadyToOrder(this.tabletId);
         this.isOrderAgain=this.state.getUserTabletState(this.tabletId)==="OrderAgain";
-        this.state.setUserTabletState(this.tabletId, UserTabletState.Game);
         if (this.isOrderAgain){
+          this.state.setUserTabletState(this.tabletId, UserTabletState.Game);
           this.sendOrderToBFF().subscribe((orderInformation: { orderId: string | undefined; shouldBeReadyAt: string | number | Date; }) => {
             this.orderNumber = orderInformation.orderId;
             this.shouldBeReadyAt = new Date(orderInformation.shouldBeReadyAt);

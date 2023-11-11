@@ -34,13 +34,13 @@
           </div>
           <span *ngIf="isCustomerReady(tabletId.toString()); else notReady">
               <div class="category-icon-v2" *ngIf="!isPaymentPage">
-                <mat-icon style="color: green;">check</mat-icon>
+                <mat-icon style="color: green;">circle</mat-icon>
               </div>
 
             </span>
           <ng-template #notReady>
             <div class="category-icon-v2" *ngIf="!isPaymentPage">
-              <mat-icon style="color: red;">clear</mat-icon>
+              <mat-icon style="color: orange;">circle</mat-icon>
             </div>
           </ng-template>
         </div>

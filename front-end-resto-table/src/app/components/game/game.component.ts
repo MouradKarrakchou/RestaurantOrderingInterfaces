@@ -27,6 +27,7 @@ export class GameComponent implements OnInit {
           this.tabletId = params['id'];
           this.score = this.gameService.getScore(this.tabletId);
       });
+      this.score = this.gameService.getScore(this.tabletId);
   }
 
   OrderAgain() {
