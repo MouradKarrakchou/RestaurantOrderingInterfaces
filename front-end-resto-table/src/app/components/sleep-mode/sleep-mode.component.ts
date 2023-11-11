@@ -79,7 +79,6 @@ export class SleepModeComponent implements OnInit {
         && this.separately.nativeElement.style.background == 'rgb(169, 169, 169)')
       || (this.together.nativeElement.style.background == 'rgb(169, 169, 169)'
         && this.separately.nativeElement.style.background == '')) {
-      console.log("if")
       switch (paymentMethod) {
         case 'together':
           this.together.nativeElement.style.background = 'rgb(112, 147, 112)';
@@ -107,7 +106,6 @@ export class SleepModeComponent implements OnInit {
       && (this.separately.nativeElement.style.background == 'rgb(169, 169, 169)'
         || this.separately.nativeElement.style.background == '')
       && paymentMethod != this.paymentMethodSelected) {
-      console.log("else if")
       this.together.nativeElement.style.background = 'rgb(169, 169, 169)';
       this.separately.nativeElement.style.background = 'rgb(112, 147, 112)';
       this.paymentMethodSelected = paymentMethod;
@@ -117,7 +115,6 @@ export class SleepModeComponent implements OnInit {
           && (this.separately.nativeElement.style.background == 'rgb(112, 147, 112)'
               || this.separately.nativeElement.style.background == '')
           && paymentMethod != this.paymentMethodSelected) {
-        console.log("else if 2")
         this.together.nativeElement.style.background = 'rgb(112, 147, 112)';
         this.separately.nativeElement.style.background = 'rgb(169, 169, 169)';
         this.paymentMethodSelected = paymentMethod;
