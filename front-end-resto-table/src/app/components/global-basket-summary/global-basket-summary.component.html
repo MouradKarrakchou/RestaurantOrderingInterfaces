@@ -18,6 +18,18 @@
           (click)="setSortOption('global')">Global recap
   </button>
   </div>
+  <div style="display: flex">
+    <div class="category-icon-v2">
+      <mat-icon style="color: green;">circle</mat-icon>
+      : Ready to order
+    </div>
+
+    <div class="category-icon-v2" s>
+      <mat-icon style="color: orange;">circle</mat-icon>
+      : Ordering
+    </div>
+
+  </div>
 
   <div class="confirm-body" *ngIf="selectedSortOption == 'global'">
     <app-basket-summary [finalOrder]="isPaymentPage" ></app-basket-summary>
@@ -33,14 +45,14 @@
             <span> Customer {{ tabletId }}</span>
           </div>
           <span *ngIf="isCustomerReady(tabletId.toString()); else notReady">
-              <div class="category-icon-v2">
-                <mat-icon style="color: green;">check</mat-icon>
+              <div class="category-icon-v2" *ngIf="!isPaymentPage">
+                <mat-icon style="color: green;">circle</mat-icon>
               </div>
 
             </span>
           <ng-template #notReady>
-            <div class="category-icon-v2">
-              <mat-icon style="color: red;">clear</mat-icon>
+            <div class="category-icon-v2" *ngIf="!isPaymentPage">
+              <mat-icon style="color: orange;">circle</mat-icon>
             </div>
           </ng-template>
         </div>
