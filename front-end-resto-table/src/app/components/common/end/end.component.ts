@@ -31,17 +31,18 @@ export class EndComponent implements OnInit {
       }, 1000);
 
       if (this.tabletId == "0") {
+        this.state.setMiddleTabletState(MiddleTabletState.Idle);
         this.idleTimeout = setTimeout(() => {
           this.router.navigate(['/idle', this.tabletId])
-        }, 20000);
+        }, 15000);
       } else {
         this.state.setUserTabletState(this.tabletId, UserTabletState.Billed);
         if (this.paymentService.everyonePaid) {
+          this.state.setAllUserTabletState(UserTabletState.Idle);
+          this.state.setMiddleTabletState(MiddleTabletState.Idle);
           this.idleTimeout = setTimeout(() => {
-            this.state.setAllUserTabletState(UserTabletState.Idle);
-            this.state.setMiddleTabletState(MiddleTabletState.Idle);
             this.router.navigate(['/idle', this.tabletId])
-          }, 20000);
+          }, 15000);
         }
       }
     });
