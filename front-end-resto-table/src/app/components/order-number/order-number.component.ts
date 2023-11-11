@@ -56,7 +56,7 @@ export class OrderNumberComponent implements OnInit {
           this.idleTimeout = setTimeout(() => {
             if (this.state.getMiddleTabletState()=== 'Sleep'){
               this.state.setUserTabletState(this.tabletId, UserTabletState.Sleep);
-              this.router.navigate(['/sleep-mode',this.tabletId])
+              this.router.navigate(['/table-viewer'])
             }
             else{
               this.router.navigate(['/game',this.tabletId])
