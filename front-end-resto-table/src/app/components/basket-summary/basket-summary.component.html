@@ -4,14 +4,14 @@
 </div>
 
 <!-- STARTERS -->
-<div *ngIf="basketStarters.length != 0" class="category">
+<div *ngIf="basketStarters.length != 0" [ngClass]="{'category': normalDisplay, 'category-resized': !normalDisplay}">
   <div class="category-up">
     <div class="category-title">
-      <div class="category-icon">
-        <mat-icon>local_restaurant</mat-icon>
+      <div [ngClass]="{'category-icon': normalDisplay, 'category-icon-resized': !normalDisplay}">
+        <mat-icon [ngClass]="{'category-mat-icon': normalDisplay, 'category-mat-icon-resized': !normalDisplay}">local_restaurant</mat-icon>
       </div>
-      <div class="category-text">
-        <span>Starters</span>
+      <div [ngClass]="{'category-text': normalDisplay, 'category-text-resized': !normalDisplay}">
+        <span >Starters</span>
       </div>
     </div>
     <hr>
@@ -59,14 +59,14 @@
 </div>
 
 <!-- MAINS -->
-<div *ngIf="basketMains.length != 0" class="category">
+<div *ngIf="basketMains.length != 0" [ngClass]="{'category': normalDisplay, 'category-resized': !normalDisplay}">
   <div class="category-up">
     <div class="category-title">
-      <div class="category-icon">
-        <mat-icon>set_meal</mat-icon>
+      <div [ngClass]="{'category-icon': normalDisplay, 'category-icon-resized': !normalDisplay}">
+        <mat-icon [ngClass]="{'category-mat-icon': normalDisplay, 'category-mat-icon-resized': !normalDisplay}">set_meal</mat-icon>
       </div>
-      <div class="category-text">
-        <span>Mains</span>
+      <div [ngClass]="{'category-text': normalDisplay, 'category-text-resized': !normalDisplay}">
+        <span >Mains</span>
       </div>
     </div>
     <hr>
@@ -114,14 +114,14 @@
 </div>
 
 <!-- DESSERTS -->
-<div *ngIf="basketDesserts.length != 0" class="category">
+<div *ngIf="basketDesserts.length != 0" [ngClass]="{'category': normalDisplay, 'category-resized': !normalDisplay}">
   <div class="category-up">
     <div class="category-title">
-      <div class="category-icon">
-        <mat-icon>icecream</mat-icon>
+      <div [ngClass]="{'category-icon': normalDisplay, 'category-icon-resized': !normalDisplay}">
+        <mat-icon [ngClass]="{'category-mat-icon': normalDisplay, 'category-mat-icon-resized': !normalDisplay}">icecream</mat-icon>
       </div>
-      <div class="category-text">
-        <span>Desserts</span>
+      <div [ngClass]="{'category-text': normalDisplay, 'category-text-resized': !normalDisplay}">
+        <span >Desserts</span>
       </div>
     </div>
     <hr>
@@ -169,14 +169,14 @@
 </div>
 
 <!-- BEVERAGES -->
-<div *ngIf="basketBeverages.length != 0" class="category">
+<div *ngIf="basketBeverages.length != 0" [ngClass]="{'category': normalDisplay, 'category-resized': !normalDisplay}">
   <div class="category-up">
     <div class="category-title">
-      <div class="category-icon">
-        <mat-icon>emoji_food_beverages</mat-icon>
+      <div [ngClass]="{'category-icon': normalDisplay, 'category-icon-resized': !normalDisplay}">
+        <mat-icon [ngClass]="{'category-mat-icon': normalDisplay, 'category-mat-icon-resized': !normalDisplay}">emoji_food_beverages</mat-icon>
       </div>
-      <div class="category-text">
-        <span>Beverages</span>
+      <div [ngClass]="{'category-text': normalDisplay, 'category-text-resized': !normalDisplay}">
+        <span >Beverages</span>
       </div>
     </div>
     <hr>

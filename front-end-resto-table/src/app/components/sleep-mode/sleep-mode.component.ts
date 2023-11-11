@@ -22,7 +22,7 @@ export class SleepModeComponent implements OnInit {
   tab3Selected: boolean = false;
   tab4Selected: boolean = false;
 
-  powerUp: boolean = false;
+  powerUp: boolean = true;
 
   @ViewChild('black') black!: ElementRef;
 
