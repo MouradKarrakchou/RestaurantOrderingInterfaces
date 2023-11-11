@@ -54,7 +54,7 @@ export class OrderNumberComponent implements OnInit {
             this.basketService.confirmBasketForIndex(this.tabletId);
           });
           this.idleTimeout = setTimeout(() => {
-            if (this.state.getUserTabletState('0')=== 'Sleep'){
+            if (this.state.getMiddleTabletState()=== 'Sleep'){
               this.state.setUserTabletState(this.tabletId, UserTabletState.Sleep);
               this.router.navigate(['/sleep-mode',this.tabletId])
             }
