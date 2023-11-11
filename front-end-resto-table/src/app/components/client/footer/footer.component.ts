@@ -46,6 +46,7 @@ export class FooterComponent implements OnInit {
               question: 'Are you sure?',
               message: 'You will lose your basket',
               tabletId: this.tabletId,
+              abort: false
       },
     });
   }

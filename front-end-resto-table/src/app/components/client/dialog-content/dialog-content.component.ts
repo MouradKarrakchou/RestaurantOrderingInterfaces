@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {BasketService} from "../../../services/basket.service";
 import {Router} from "@angular/router";
+import {MiddleTabletState, StateService, UserTabletState} from "../../../services/state.service";
 
 @Component({
   selector: 'app-dialog-content',
@@ -14,7 +15,8 @@ export class DialogContentComponent implements OnInit {
     public dialogRef: MatDialogRef<DialogContentComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private router: Router,
-    private basketService: BasketService
+    private basketService: BasketService,
+    private state: StateService,
   ) { }
 
   ngOnInit(): void {
@@ -27,9 +29,17 @@ export class DialogContentComponent implements OnInit {
 
   onYesClick(): void {
     console.log(this.data.tabletId);
-    this.basketService.emptyBasket(this.data.tabletId);
-    this.router.navigate(['/home', this.data.tabletId]);
-    this.dialogRef.close(true);
+    if (this.data.abort) {
+      this.basketService.emptyAllBaskets();
+      this.state.setMiddleTabletState(MiddleTabletState.Idle);
+      this.state.setAllUserTabletState(UserTabletState.Idle);
+      this.router.navigate(['/idle', 0]);
+      this.dialogRef.close(true);
+    } else {
+      this.basketService.emptyBasket(this.data.tabletId);
+      this.router.navigate(['/home', this.data.tabletId]);
+      this.dialogRef.close(true);
+    }
   }
 
 }

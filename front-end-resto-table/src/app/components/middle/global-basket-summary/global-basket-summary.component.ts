@@ -5,6 +5,8 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {MiddleTabletState, StateService, UserTabletState} from "../../../services/state.service";
 import {PaymentService} from "../../../services/payment.service";
+import {DialogContentComponent} from "../../client/dialog-content/dialog-content.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-global-basket-summary',
@@ -15,8 +17,10 @@ export class GlobalBasketSummaryComponent implements OnInit {
 
   constructor(private router: Router, private basketService: BasketService,
               private paymentService: PaymentService,
-              private route: ActivatedRoute,private http: HttpClient,
-              private state: StateService) {}
+              private http: HttpClient,
+              private state: StateService,
+              private dialog: MatDialog,
+              private route: ActivatedRoute) {}
 
   basket_total_price = 0
   tabletId: string = "0";
@@ -31,6 +35,10 @@ export class GlobalBasketSummaryComponent implements OnInit {
   isEveryoneReady: boolean=this.basketService.checkIfEveryoneIsReadyToOrder();
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.tabletId = params['id'];
+    });
+
     this.allTabletteActivated= this.basketService.getAllTabletteActivated();
     if (this.state.getMiddleTabletState() == MiddleTabletState.Final) {
         this.isPaymentPage = true;
@@ -39,17 +47,6 @@ export class GlobalBasketSummaryComponent implements OnInit {
       this.state.setMiddleTabletState(MiddleTabletState.Preorder);
       this.basket_total_price = this.basketService.getAllBasketsTotal();
     }
-  }
-
-  redirectToCatalog() {
-    this.router.navigate(['/home', this.tabletId]);
-  }
-
-  redirectToOrderNumber() {
-    this.router.navigate(['/order-number', this.tabletId]);
-    //this.allTabletteActivated= this.basketService.getAllTabletteActivated();
-    console.log(this.basketService.baskets);
-    this.state.setMiddleTabletState(MiddleTabletState.Preorder);
   }
 
   setSortOption(option: string) {
@@ -116,5 +113,18 @@ export class GlobalBasketSummaryComponent implements OnInit {
 
   isCustomerReady(tabletId: string) {
     return this.basketService.isCustomerReady(tabletId);
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogContentComponent, {
+      width: '40vh',
+      height: '35vh',
+      data: { title: 'Abort order',
+        question: 'Are you sure?',
+        message: 'You\'ll lose your baskets',
+        tabletId: this.tabletId,
+        abort: true,
+      },
+    });
   }
 }

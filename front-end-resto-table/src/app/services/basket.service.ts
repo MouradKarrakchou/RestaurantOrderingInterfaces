@@ -66,6 +66,12 @@ export class BasketService {
     this.baskets[tabletId].next([]);
   }
 
+  emptyAllBaskets() {
+    for (let i = 1; i <= 4; i++) {
+      this.baskets[i].next([]);
+    }
+  }
+
   emptyAllBasketsAlreadyOrdered() {
     this.alreadyOrdered = {
         '1': undefined,
