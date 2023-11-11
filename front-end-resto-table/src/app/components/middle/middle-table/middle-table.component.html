@@ -1,0 +1,27 @@
+<app-switch-to-tabs></app-switch-to-tabs>
+
+<div class="header">
+  <img class="logo" src="../../../../assets/resto-logo.png" alt="RESTo app logo">
+  <p class="welcome-text">Welcome to RESTo</p>
+</div>
+
+
+<!--Affichage panier global-->
+<!--Bouton valider la commande si tout le monde à valider son panier perso-->
+<!--Suivi de la commande-->
+<!--"Jeux" (juste montrer que ca communique entre les tablette)-->
+
+<div class="people-number-title">Where are you all sitting?</div>
+<div class="people-number-buttons">
+  <button class="number three" #tab3 (click)="selectTab('tab3')">3</button>
+  <div class="one-and-two">
+    <button class="number one" #tab1 (click)="selectTab('tab1')">1</button>
+    <button class="number two" #tab2 (click)="selectTab('tab2')">2</button>
+  </div>
+  <button class="number four" #tab4 (click)="selectTab('tab4')">4</button>
+</div>
+
+<div class="validate-title">Ready to order?</div>
+<div class="validate-button">
+  <button class="validate" #validate (click)="validateSelection()">Validate ➜</button>
+</div>

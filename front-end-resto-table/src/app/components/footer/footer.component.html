@@ -1,9 +1,0 @@
-<div class="background-div p-3">
-  <button class="button abort" (click)="openDialog()">
-    <span class="button-text">Abort Order</span>
-  </button>
-  <p class="total-text pt-4">TOTAL: {{ basketTotalPrice | currency:'USD' }}</p>
-  <button [disabled]="basketSize === 0" class="button confirm" (click)="redirectToConfirmation()">
-    <span class="button-text">Confirm Order</span>
-  </button>
-</div>

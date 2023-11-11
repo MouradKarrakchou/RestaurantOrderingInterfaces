@@ -1,9 +1,0 @@
-<div class="basket" *ngIf="isOpen" [@dropUpBasket]>
-    <app-basket-summary class="basket-item" [canEdit]="true"></app-basket-summary>
-</div>
-<div class="basket-trigger" (click)="isOpen = !isOpen">
-  <i [ngClass]="isOpen ? 'gg-chevron-down' : 'gg-chevron-up'"></i>
-  <img class="basket-icon"
-       src="../../../assets/basket-icon.png"
-       alt="Basket icon"/>
-</div>
