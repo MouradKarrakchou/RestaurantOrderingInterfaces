@@ -56,7 +56,6 @@ export class BasketSummaryComponent implements OnInit {
       }
     }
     this.splitBasketCategories();
-
   }
 
   splitBasketCategories(): void {

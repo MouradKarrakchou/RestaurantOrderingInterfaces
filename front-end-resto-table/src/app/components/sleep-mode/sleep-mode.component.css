@@ -29,6 +29,10 @@ body {
   border-style: none;
 }
 
+.exit-sleep-mode-text {
+  margin-top: 2vh;
+}
+
 .people-number-title {
   color: white;
   height: 10vh;
@@ -97,4 +101,12 @@ body {
   background-color: #a9a9a9;
   border-radius: 25px;
   border-style: none;
+}
+
+.selected {
+    background-color: #709370;
+}
+
+.unselected {
+    background-color: #a9a9a9;
 }

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import BasketItem from "../models/BasketItem";
 import {BasketService} from "./basket.service";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 
@@ -18,6 +17,8 @@ export class PaymentService {
   };
 
   constructor(private basketService: BasketService,private http: HttpClient) { }
+  everyonePaid: boolean = false;
+
 
   setGroupPayment(groupPayment: boolean) {
     this.groupPayment = groupPayment;
@@ -49,8 +50,9 @@ export class PaymentService {
         tableNumber: 1
       }
       this.http.post<any>(url, data, httpOptions);
-    }
+      this.basketService.emptyAllBasketsAlreadyOrdered();
+      this.everyonePaid = true;
 
-    //TODO : if everyone has paid then reset everything
+    }
   }
 }

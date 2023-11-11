@@ -30,13 +30,17 @@ export class GlobalBasketSummaryComponent implements OnInit {
 
   paymentOnEachTab: boolean=!this.paymentService.getGroupPayment();
 
-  isEvryoneReady: boolean=this.basketService.checkIfEveryoneIsReadyToOrder();
+  isEveryoneReady: boolean=this.basketService.checkIfEveryoneIsReadyToOrder();
 
 
   ngOnInit(): void {
     this.basket_total_price = this.basketService.getAllBasketsTotal();
     this.allTabletteActivated= this.basketService.getAllTabletteActivated();
-    this.state.setMiddleTabletState(MiddleTabletState.Preorder);
+    if (this.state.getMiddleTabletState() == MiddleTabletState.Final) {
+        this.isPaymentPage = true;
+    } else {
+      this.state.setMiddleTabletState(MiddleTabletState.Preorder);
+    }
   }
 
   redirectToCatalog() {
@@ -59,10 +63,6 @@ export class GlobalBasketSummaryComponent implements OnInit {
         this.sendOrderToBFF().subscribe((orderInformation: any) => {
           console.log(orderInformation);
           this.basketService.confirmBasket();
-          this.state.setMiddleTabletState(MiddleTabletState.Waiting);
-          this.allTabletteActivated.forEach((tabletId) => {
-            this.state.setUserTabletState(tabletId.toString(), UserTabletState.Game);
-          });
           this.router.navigate(['/waiting-screen']);
         });
     }
@@ -76,6 +76,8 @@ export class GlobalBasketSummaryComponent implements OnInit {
         'Content-Type': 'application/json'
       })
     };
+    this.state.setAllUserTabletState(UserTabletState.Idle);
+    this.basketService.emptyAllBasketsAlreadyOrdered();
     const data = {
       tableNumber: 1
     }

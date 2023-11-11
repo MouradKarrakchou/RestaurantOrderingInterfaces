@@ -36,3 +36,8 @@
   font-size: 5vh;
   flex-direction: column;
 }
+
+.disabled {
+    background-color: #b4b3b3 !important;
+    border-color: rgb(128, 128, 128) !important;
+}

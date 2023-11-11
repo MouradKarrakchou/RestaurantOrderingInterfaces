@@ -75,10 +75,12 @@ const routes: Routes = [
     GlobalBasketSummaryComponent,
     ClientReceiptComponent,
     MiddleTableComponent,
+    SleepModeComponent,
     EndComponent,
     GameLeaderboardComponent,
     WaitingScreenComponent,
     GameComponent,
+    SleepModeComponent,
   ],
     imports: [
         BrowserModule,

@@ -27,9 +27,15 @@
 }
 
 .category-time {
-  font-size: 1.4vh;
+  font-size: 1.6vh;
   margin: 0.5vh;
   color: #656464;
+  padding-top: 1vh;
+}
+
+.item-line {
+  font-size: 1.6vh;
+  margin: 0;
 }
 
 hr {
@@ -43,6 +49,7 @@ hr {
 .category-up {
   width: fit-content;
   margin-block: 2vh;
+  margin-top: 3vh;
 }
 
 .status-container {
