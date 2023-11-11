@@ -65,4 +65,37 @@ public class KitchenProxy implements IKitchenProxy {
             throw new KitchenServiceNoAvailableException();
         }
     }
+
+    @Override
+    public void startCook(UUID itemId) throws KitchenServiceNoAvailableException {
+        try {
+            LoggerHelper.logInfo("Ask Kitchen service to start cooking " + itemId);
+            restTemplate.postForEntity(apiBaseUrlHostAndPort + "/preparedItems/" + itemId + "/start", null, Void.class);
+        } catch (Exception e) {
+            LoggerHelper.logError(e.toString());
+            throw new KitchenServiceNoAvailableException();
+        }
+    }
+
+    @Override
+    public void finishCook(UUID itemId) throws KitchenServiceNoAvailableException {
+        try {
+            LoggerHelper.logInfo("Ask Kitchen service to finish cooking " + itemId);
+            restTemplate.postForEntity(apiBaseUrlHostAndPort + "/preparedItems/" + itemId + "/finish", null, Void.class);
+        } catch (Exception e) {
+            LoggerHelper.logError(e.toString());
+            throw new KitchenServiceNoAvailableException();
+        }
+    }
+
+    @Override
+    public void takeToTablePreparation(UUID preparationId) throws KitchenServiceNoAvailableException {
+        try {
+            LoggerHelper.logInfo("Ask Kitchen service to take to table preparation " + preparationId);
+            restTemplate.postForEntity(apiBaseUrlHostAndPort + "/preparations/" + preparationId + "/takenToTable", null, Void.class);
+        } catch (Exception e) {
+            LoggerHelper.logError(e.toString());
+            throw new KitchenServiceNoAvailableException();
+        }
+    }
 }

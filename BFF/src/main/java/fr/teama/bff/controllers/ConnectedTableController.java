@@ -66,4 +66,30 @@ public class ConnectedTableController {
         LoggerHelper.logInfo("Bill request for table " + tableNumber);
         orderComponent.bill(tableNumber);
     }
+
+
+
+
+
+
+    /**
+     * Demo methods
+     */
+    @PostMapping("/start-cook-all/{tableNumber}")
+    public void startCookAll(@PathVariable("tableNumber") Long tableNumber) throws DiningServiceUnavaibleException, KitchenServiceNoAvailableException {
+        LoggerHelper.logInfo("Start cook all request for table " + tableNumber);
+        orderComponent.startCookAll(tableNumber);
+    }
+
+    @PostMapping("/finish-cook-all/{tableNumber}")
+    public void finishCookAll(@PathVariable("tableNumber") Long tableNumber) throws DiningServiceUnavaibleException, KitchenServiceNoAvailableException {
+        LoggerHelper.logInfo("Finish cook all request for table " + tableNumber);
+        orderComponent.finishCookAll(tableNumber);
+    }
+
+    @PostMapping("/take-to-table-all/{tableNumber}")
+    public void takeToTableAll(@PathVariable("tableNumber") Long tableNumber) throws DiningServiceUnavaibleException, KitchenServiceNoAvailableException {
+        LoggerHelper.logInfo("Take to table all request for table " + tableNumber);
+        orderComponent.takeToTableAll(tableNumber);
+    }
 }
