@@ -169,14 +169,15 @@ export class BasketService {
     this.readyToOrder.next(new Map<string, boolean>([]));
   }
 
-  confirmBasketForIndex(i : string) {
-    let readyMap = this.readyToOrder.value;
-    if (this.baskets[i].value.length !== 0) {
-      this.alreadyOrdered[i.toString()] = this.baskets[i].value;
-      this.baskets[i].next([]);
+  confirmBasketForIndex(tableId : string) {
+    if (this.baskets[tableId].value.length !== 0) {
+      if (this.alreadyOrdered[tableId] !== undefined) {
+        this.alreadyOrdered[tableId] = this.alreadyOrdered[tableId]!.concat(this.baskets[tableId].value);
+      } else {
+        this.alreadyOrdered[tableId] = this.baskets[tableId].value;
+      }
+      this.baskets[tableId].next([]);
     }
-    readyMap.set(i.toString(), false);
-    this.readyToOrder.next(readyMap);
   }
 
   isCustomerReady(tabletId: string) {

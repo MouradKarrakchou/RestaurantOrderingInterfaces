@@ -39,10 +39,10 @@ export class SleepModeComponent implements OnInit {
 
   ngOnInit(): void {
     this.state.setMiddleTabletState(MiddleTabletState.Sleep);
-    this.tab1Selected = this.state.getUserTabletState('1') == UserTabletState.Normal;
-    this.tab2Selected = this.state.getUserTabletState('2') == UserTabletState.Normal;
-    this.tab3Selected = this.state.getUserTabletState('3') == UserTabletState.Normal;
-    this.tab4Selected = this.state.getUserTabletState('4') == UserTabletState.Normal;
+    this.tab1Selected = this.state.getUserTabletState('1') == UserTabletState.OrderAgain;
+    this.tab2Selected = this.state.getUserTabletState('2') == UserTabletState.OrderAgain;
+    this.tab3Selected = this.state.getUserTabletState('3') == UserTabletState.OrderAgain;
+    this.tab4Selected = this.state.getUserTabletState('4') == UserTabletState.OrderAgain;
     this.allTabletsActivated = this.basketService.getAllTabletteActivated();
   }
 
@@ -52,19 +52,19 @@ export class SleepModeComponent implements OnInit {
       switch (tabNumber) {
         case 'tab1':
           this.tab1Selected = !this.tab1Selected;
-          this.state.setUserTabletState('1', this.tab1Selected ? UserTabletState.Normal : UserTabletState.Sleep);
+          this.state.setUserTabletState('1', this.tab1Selected ? UserTabletState.OrderAgain : UserTabletState.Sleep);
           break;
         case 'tab2':
           this.tab2Selected = !this.tab2Selected;
-          this.state.setUserTabletState('2', this.tab2Selected ? UserTabletState.Normal : UserTabletState.Sleep);
+          this.state.setUserTabletState('2', this.tab2Selected ? UserTabletState.OrderAgain : UserTabletState.Sleep);
           break;
         case 'tab3':
           this.tab3Selected = !this.tab3Selected;
-          this.state.setUserTabletState('3', this.tab3Selected ? UserTabletState.Normal : UserTabletState.Sleep);
+          this.state.setUserTabletState('3', this.tab3Selected ? UserTabletState.OrderAgain : UserTabletState.Sleep);
           break;
         case 'tab4':
           this.tab4Selected = !this.tab4Selected;
-          this.state.setUserTabletState('4', this.tab4Selected ? UserTabletState.Normal : UserTabletState.Sleep);
+          this.state.setUserTabletState('4', this.tab4Selected ? UserTabletState.OrderAgain : UserTabletState.Sleep);
           break;
       }
     }
