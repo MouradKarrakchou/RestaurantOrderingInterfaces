@@ -13,8 +13,6 @@ import {PaymentService} from "../../services/payment.service";
 })
 export class GlobalBasketSummaryComponent implements OnInit {
 
-  private diningBaseUrlHostAndPort: string = "http://localhost:3001";
-
   constructor(private router: Router, private basketService: BasketService,
               private paymentService: PaymentService,
               private route: ActivatedRoute,private http: HttpClient,
@@ -32,14 +30,14 @@ export class GlobalBasketSummaryComponent implements OnInit {
 
   isEveryoneReady: boolean=this.basketService.checkIfEveryoneIsReadyToOrder();
 
-
   ngOnInit(): void {
-    this.basket_total_price = this.basketService.getAllBasketsTotal();
     this.allTabletteActivated= this.basketService.getAllTabletteActivated();
     if (this.state.getMiddleTabletState() == MiddleTabletState.Final) {
         this.isPaymentPage = true;
+      this.basket_total_price = this.basketService.getAllBasketsTotal(true)
     } else {
       this.state.setMiddleTabletState(MiddleTabletState.Preorder);
+      this.basket_total_price = this.basketService.getAllBasketsTotal();
     }
   }
 

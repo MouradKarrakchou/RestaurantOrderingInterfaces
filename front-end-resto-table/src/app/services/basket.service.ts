@@ -83,10 +83,18 @@ export class BasketService {
     return this.baskets[tabletId].value.reduce((total, basketItem) => total + basketItem.menuItem.price * basketItem.quantity, 0);
   }
 
-  getAllBasketsTotal(): number {
+  getAllBasketsTotal(final: boolean = false): number {
     let total = 0;
-    for (let i = 1; i <= 4; i++) {
-      total += this.baskets[i].value.reduce((total, basketItem) => total + basketItem.menuItem.price * basketItem.quantity, 0);
+    if (final) {
+      for (let i = 1; i <= 4; i++) {
+        if (this.alreadyOrdered[i.toString()] !== undefined) {
+          total += this.alreadyOrdered[i.toString()]!.reduce((total, basketItem) => total + basketItem.menuItem.price * basketItem.quantity, 0);
+        }
+      }
+    } else {
+      for (let i = 1; i <= 4; i++) {
+        total += this.baskets[i].value.reduce((total, basketItem) => total + basketItem.menuItem.price * basketItem.quantity, 0);
+      }
     }
     return total;
   }
