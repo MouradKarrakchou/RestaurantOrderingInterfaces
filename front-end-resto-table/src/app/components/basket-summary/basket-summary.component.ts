@@ -21,6 +21,7 @@ export class BasketSummaryComponent implements OnInit {
   @Input() canEdit: boolean = false;
   @Input() finalOrder: boolean = false;
   @Input() tabletId!: string;
+  @Input() normalDisplay: boolean = true;
 
   constructor(private basketService: BasketService,
               private route: ActivatedRoute) { }
@@ -56,7 +57,6 @@ export class BasketSummaryComponent implements OnInit {
       }
     }
     this.splitBasketCategories();
-
   }
 
   splitBasketCategories(): void {

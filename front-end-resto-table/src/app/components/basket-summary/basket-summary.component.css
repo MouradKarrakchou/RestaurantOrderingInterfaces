@@ -7,14 +7,29 @@
   margin-bottom: 6vh;
 }
 
+.category-resized {
+  margin-bottom: 2vh;
+}
+
 .category-icon {
   height: 7vh;
   width: 7vh;
   margin-right: .5vh;
 }
 
-.category-icon mat-icon {
+.category-icon-resized {
+  height: 5vh;
+  width: 5vh;
+  margin-right: .5vh;
+}
+
+.category-mat-icon {
   font-size: 7vh;
+}
+
+.category-mat-icon-resized {
+  font-size: 5vh;
+  margin-top: 0.3vh;
 }
 
 .category-text {
@@ -22,6 +37,10 @@
   font-size: 5vh;
 }
 
+.category-text-resized {
+  margin-top: 1.5vh;
+  font-size: 3vh;
+}
 
 hr {
   border: none;

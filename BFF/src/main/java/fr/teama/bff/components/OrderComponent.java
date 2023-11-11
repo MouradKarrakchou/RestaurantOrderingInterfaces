@@ -96,7 +96,7 @@ public class OrderComponent implements IOrderComponent {
             }
             KitchenPreparationStatus kitchenPreparationStatus = new KitchenPreparationStatus(
                     kitchenPreparation.getId(),
-                    kitchenPreparation.getShouldBeReadyAt(),
+                    kitchenPreparation.getShouldBeReadyAt().plusHours(1),
                     kitchenPreparation.getCompletedAt(),
                     kitchenPreparation.getTakenForServiceAt(),
                     post,

@@ -13,8 +13,6 @@ import {PaymentService} from "../../services/payment.service";
 })
 export class GlobalBasketSummaryComponent implements OnInit {
 
-  private diningBaseUrlHostAndPort: string = "http://localhost:3001";
-
   constructor(private router: Router, private basketService: BasketService,
               private paymentService: PaymentService,
               private route: ActivatedRoute,private http: HttpClient,
@@ -32,14 +30,14 @@ export class GlobalBasketSummaryComponent implements OnInit {
 
   isEveryoneReady: boolean=this.basketService.checkIfEveryoneIsReadyToOrder();
 
-
   ngOnInit(): void {
-    this.basket_total_price = this.basketService.getAllBasketsTotal();
     this.allTabletteActivated= this.basketService.getAllTabletteActivated();
     if (this.state.getMiddleTabletState() == MiddleTabletState.Final) {
         this.isPaymentPage = true;
+      this.basket_total_price = this.basketService.getAllBasketsTotal(true)
     } else {
       this.state.setMiddleTabletState(MiddleTabletState.Preorder);
+      this.basket_total_price = this.basketService.getAllBasketsTotal();
     }
   }
 
@@ -68,6 +66,7 @@ export class GlobalBasketSummaryComponent implements OnInit {
     }
   }
 
+
   payOrder() {
     const url = "http://localhost:8080/api/connected-table/bill";
 
@@ -78,7 +77,17 @@ export class GlobalBasketSummaryComponent implements OnInit {
     };
     this.state.setAllUserTabletState(UserTabletState.Idle);
     this.basketService.emptyAllBasketsAlreadyOrdered();
-    this.router.navigate(['/end',0]);
+    this.http.post<any>(url, 1, httpOptions).subscribe(
+      (response) => {
+        console.log('POST request successful: ', response);
+        this.router.navigate(['/end',0]);
+      },
+      (error) => {
+        console.error('Error in POST request: ', error);
+        this.router.navigate(['/end',0]);
+      }
+    );
+
   }
 
   sendOrderToBFF(): Observable<any> {

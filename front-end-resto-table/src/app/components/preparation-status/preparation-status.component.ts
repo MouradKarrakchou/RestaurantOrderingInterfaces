@@ -23,7 +23,6 @@ export class PreparationStatusComponent implements OnInit {
 
   displayOrderStatus() {
     this.getOrderStatus().then((data) => {
-      //console.log(data);
       this.preparationStatus = data;
     });
   }
