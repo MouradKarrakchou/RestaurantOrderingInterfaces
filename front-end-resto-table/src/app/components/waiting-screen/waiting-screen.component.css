@@ -62,3 +62,16 @@ hr {
   overflow-y: auto;
   max-height: 75vh;
 }
+
+::-webkit-scrollbar {
+  width: 6px;
+  overflow-y: scroll;
+  background: #c7c7c7;
+  box-shadow: inset 0 0 4px #a4a4a4;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #466c46;
+  border-radius: 10px;
+}
