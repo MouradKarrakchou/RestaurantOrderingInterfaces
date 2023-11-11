@@ -46,9 +46,7 @@ export class PaymentService {
           'Content-Type': 'application/json'
         })
       };
-      const data = {
-        tableNumber: 1
-      }
+      const data = 1
       this.http.post<any>(url, data, httpOptions);
       this.basketService.emptyAllBasketsAlreadyOrdered();
       this.everyonePaid = true;
