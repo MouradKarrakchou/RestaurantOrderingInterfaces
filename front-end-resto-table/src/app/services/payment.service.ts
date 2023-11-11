@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BasketService} from "./basket.service";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {UserTabletState} from "./state.service";
 
 @Injectable({
   providedIn: 'root'
@@ -41,16 +42,26 @@ export class PaymentService {
     if (everyonePaid){
       const url = "http://localhost:8080/api/connected-table/bill";
 
+
       const httpOptions = {
         headers: new HttpHeaders({
           'Content-Type': 'application/json'
         })
       };
-      const data = 1
-      this.http.post<any>(url, data, httpOptions);
-      this.basketService.emptyAllBasketsAlreadyOrdered();
-      this.everyonePaid = true;
+      this.http.post<any>(url, 1, httpOptions).subscribe(
+        (response) => {
+          console.log('POST request successful: ', response);
+          this.basketService.emptyAllBasketsAlreadyOrdered();
+          this.everyonePaid = true;
+        },
+        (error) => {
+          console.error('Error in POST request: ', error);
+          this.basketService.emptyAllBasketsAlreadyOrdered();
+          this.everyonePaid = true;
+        }
+      );
 
     }
+
   }
 }
