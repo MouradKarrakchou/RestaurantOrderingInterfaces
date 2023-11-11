@@ -3,6 +3,7 @@ import {KitchenPreparationStatus} from "../../models/KitchenPreparationStatus";
 import {KitchenItem} from "../../models/KitchenItem";
 import PreparationStatus from "../../models/PreparationStatus";
 import PreparationCategory from "../../models/PreparationCategory";
+import {StateService} from "../../services/state.service";
 
 @Component({
   selector: 'app-preparation-status',
@@ -11,17 +12,22 @@ import PreparationCategory from "../../models/PreparationCategory";
 })
 export class PreparationStatusComponent implements OnInit {
   preparationStatus: KitchenPreparationStatus[] = [];
+  displayOrderStatusInterval: any;
 
-  constructor() { }
+  constructor(private state: StateService) { }
 
   ngOnInit(): void {
     this.displayOrderStatus();
-    setInterval(() => {
+    this.displayOrderStatusInterval = setInterval(() => {
       this.displayOrderStatus();
     }, 10000);
   }
 
   displayOrderStatus() {
+    if (this.state.getMiddleTabletState() === 'Sleep') {
+      console.log('clear display order status interval')
+      clearTimeout(this.displayOrderStatusInterval);
+    }
     this.getOrderStatus().then((data) => {
       this.preparationStatus = data;
     });

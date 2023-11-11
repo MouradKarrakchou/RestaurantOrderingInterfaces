@@ -24,13 +24,6 @@ export class GameLeaderboardComponent implements OnInit {
     // }, 1000);
   }
 
-  redirectToSleepMode() {
-    this.basketService.getAllTabletteActivated().forEach((tabletId) => {
-      this.state.setUserTabletState(tabletId.toString(), UserTabletState.Sleep);
-    });
-    this.router.navigate(['/sleep-mode']);
-  }
-
   fetchLeaderboard() {
     this.leaderboard = this.gameService.getLeaderboard();
   }

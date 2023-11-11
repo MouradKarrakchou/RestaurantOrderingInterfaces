@@ -75,3 +75,17 @@ hr {
   background: #466c46;
   border-radius: 10px;
 }
+
+.stop-game-button {
+  font-size: 4vh;
+  height: 7vh;
+  border: #619461 solid 3px;
+  color: white;
+  background-color: #8BC34AFF;
+  cursor: pointer;
+  margin-top: 2vh;
+}
+
+.stop-game-button:active {
+  background-color: #619461;
+}
