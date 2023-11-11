@@ -128,3 +128,11 @@ hr {
   margin-top: 1.5vh;
   font-size: 5vh;
 }
+
+
+.legend-text{
+  position: relative;
+  top: 12px;
+  left: 16px;
+  font-size: 1.5vw ;
+}

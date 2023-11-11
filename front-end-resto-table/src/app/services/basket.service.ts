@@ -35,7 +35,6 @@ export class BasketService {
         everyoneReady = false;
       }
     }
-    console.log(this.readyToOrder.value);
     return everyoneReady && this.readyToOrder.value.size > 0;
   }
 

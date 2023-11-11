@@ -66,6 +66,7 @@ export class GlobalBasketSummaryComponent implements OnInit {
     }
   }
 
+
   payOrder() {
     const url = "http://localhost:8080/api/connected-table/bill";
 
@@ -76,12 +77,17 @@ export class GlobalBasketSummaryComponent implements OnInit {
     };
     this.state.setAllUserTabletState(UserTabletState.Idle);
     this.basketService.emptyAllBasketsAlreadyOrdered();
-    const data = {
-      tableNumber: 1
-    }
-    this.http.post<any>(url, data, httpOptions);
-    //TODO : if everyone has paid then reset everything
-    this.router.navigate(['/end',0]);
+    this.http.post<any>(url, 1, httpOptions).subscribe(
+      (response) => {
+        console.log('POST request successful: ', response);
+        this.router.navigate(['/end',0]);
+      },
+      (error) => {
+        console.error('Error in POST request: ', error);
+        this.router.navigate(['/end',0]);
+      }
+    );
+
   }
 
   sendOrderToBFF(): Observable<any> {
