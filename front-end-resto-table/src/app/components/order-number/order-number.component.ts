@@ -54,7 +54,13 @@ export class OrderNumberComponent implements OnInit {
             this.basketService.confirmBasketForIndex(this.tabletId);
           });
           this.idleTimeout = setTimeout(() => {
-            this.router.navigate(['/game',this.tabletId])
+            if (this.state.getUserTabletState('0')=== 'Sleep'){
+              this.state.setUserTabletState(this.tabletId, UserTabletState.Sleep);
+              this.router.navigate(['/sleep-mode',this.tabletId])
+            }
+            else{
+              this.router.navigate(['/game',this.tabletId])
+            }
           }, 5000);
         }
       }
