@@ -18,15 +18,15 @@
           (click)="setSortOption('global')">Global recap
   </button>
   </div>
-  <div style="display: flex">
-    <div class="category-icon-v2">
+  <div style="display: flex; margin: auto; margin-top:2vh;"  *ngIf="selectedSortOption == 'byPerson'&& !isPaymentPage">
+    <div class="category-icon-v2" style="width: 20vw; display: flex">
       <mat-icon style="color: green;">circle</mat-icon>
-      : Ready to order
+      <div class="legend-text">: Ready to order</div>
     </div>
 
-    <div class="category-icon-v2" s>
-      <mat-icon style="color: orange;">circle</mat-icon>
-      : Ordering
+    <div class="category-icon-v2" style="display: flex; width: 15vw; margin-left: 20vw">
+      <mat-icon style="color: orange">circle</mat-icon>
+      <div class="legend-text">: Ordering</div>
     </div>
 
   </div>
