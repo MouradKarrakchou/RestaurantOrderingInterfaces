@@ -43,7 +43,7 @@ export class OrderNumberComponent implements OnInit {
 
       if (this.basketService.getBasketSize(this.tabletId) !== 0) {
         this.basketService.getBasketReadyToOrder(this.tabletId);
-        this.isOrderAgain=this.state.getUserTabletState(this.tabletId)==="OrderAgain";
+        this.isOrderAgain=this.state.getUserTabletState(this.tabletId)===UserTabletState.OrderAgain;
         this.state.setUserTabletState(this.tabletId, UserTabletState.Prevalidated);
         if (this.isOrderAgain){
           this.state.setUserTabletState(this.tabletId, UserTabletState.Game);

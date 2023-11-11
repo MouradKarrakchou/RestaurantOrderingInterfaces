@@ -70,6 +70,9 @@ export class TableViewerComponent implements OnInit {
             duration: 5000,
           });
           break;
+        case UserTabletState.OrderAgain:
+          this.router.navigate(['/home', number]);
+          break;
         case UserTabletState.Final:
           this.router.navigate(['/client-receipt', number]);
           break;
