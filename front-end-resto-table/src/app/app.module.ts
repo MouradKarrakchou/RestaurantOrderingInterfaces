@@ -80,6 +80,7 @@ const routes: Routes = [
     GameLeaderboardComponent,
     WaitingScreenComponent,
     GameComponent,
+    SleepModeComponent,
   ],
     imports: [
         BrowserModule,

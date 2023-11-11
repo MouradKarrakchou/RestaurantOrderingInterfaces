@@ -73,6 +73,9 @@ export class TableViewerComponent implements OnInit {
         case UserTabletState.Final:
           this.router.navigate(['/client-receipt', number]);
           break;
+        case UserTabletState.Billed:
+            this.router.navigate(['/end', number]);
+            break;
       }
     }
   }

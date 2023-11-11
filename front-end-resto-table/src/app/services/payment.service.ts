@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import BasketItem from "../models/BasketItem";
 import {BasketService} from "./basket.service";
 
 @Injectable({
@@ -15,6 +14,8 @@ export class PaymentService {
     '3': false,
     '4': false,
   };
+
+  everyonePaid: boolean = false;
 
   constructor(private basketService: BasketService) { }
 
@@ -36,6 +37,9 @@ export class PaymentService {
         everyonePaid = false;
       }
     }
-    //TODO : if everyone has paid then reset everything
+    if (everyonePaid) {
+      this.basketService.emptyAllBasketsAlreadyOrdered();
+      this.everyonePaid = true;
+    }
   }
 }

@@ -54,10 +54,10 @@
     <div class="confirm-total">
       <hr>
       <p class="py-4">TOTAL: {{ basket_total_price | currency:'USD' }}</p>
-      <button *ngIf="!isPaymentPage" class="mb-4 p-3 confirm-button" [disabled]="!isEvryoneReady"
+      <button *ngIf="!isPaymentPage" class="mb-4 p-3 confirm-button" [disabled]="!isEveryoneReady"
               mat-raised-button (click)="confirmOrder()">  {{'CONFIRM' }}
       </button>
-      <button *ngIf="paymentOnEachTab && isPaymentPage" class="mb-4 p-3 confirm-button" mat-raised-button (click)="payOrder()">  {{ 'PAY' }}
+      <button *ngIf="!paymentOnEachTab && isPaymentPage" class="mb-4 p-3 confirm-button" mat-raised-button (click)="payOrder()">  {{ 'PAY' }}
       </button>
     </div>
   </div>

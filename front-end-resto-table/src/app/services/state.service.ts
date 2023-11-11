@@ -6,8 +6,9 @@ export enum UserTabletState {
   OrderAgain = 'OrderAgain', //Ordering again
   Prevalidated = 'Prevalidated', // /order-number
   Game = 'Game', // /game
-  Sleep = 'Sleep', // TODO: no route needed (after order served)
-  Final = 'Final', // TODO: /client-receipt (after click on payment on middle tablet)
+  Sleep = 'Sleep', // no route needed
+  Final = 'Final', // /client-receipt
+  Billed = 'Billed', // /end
 }
 
 export enum MiddleTabletState {
@@ -15,8 +16,8 @@ export enum MiddleTabletState {
   Config = 'Config', // /middle-table
   Preorder = 'Preorder', // /summary
   Waiting = 'Status', // /waiting-screen
-  Sleep = 'Sleep', // TODO: /sleep-mode (after order served)
-  Final = 'Final', // TODO: /summary (after click on payment)
+  Sleep = 'Sleep', // /sleep-mode
+  Final = 'Final', // /summary
 }
 
 @Injectable({
@@ -49,5 +50,11 @@ export class StateService {
 
   setMiddleTabletState(newState: MiddleTabletState) {
     this.middleTabletState = newState;
+  }
+
+  setAllUserTabletState(state: UserTabletState) {
+    for (const key in this.userTabletStates) {
+      this.userTabletStates[key] = state;
+    }
   }
 }

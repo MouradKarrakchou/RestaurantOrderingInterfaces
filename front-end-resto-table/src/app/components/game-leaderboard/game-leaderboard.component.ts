@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {GameService} from "../../services/game.service";
 import {PlayerScore} from "../../models/PlayerScore";
 import {Router} from "@angular/router";
+import {StateService, UserTabletState} from "../../services/state.service";
+import {BasketService} from "../../services/basket.service";
 
 @Component({
   selector: 'app-game-leaderboard',
@@ -11,7 +13,9 @@ import {Router} from "@angular/router";
 export class GameLeaderboardComponent implements OnInit {
   leaderboard: PlayerScore[] = [];
 
-  constructor(private gameService: GameService, private router: Router) { }
+  constructor(private gameService: GameService, private router: Router,
+              private state: StateService,
+              private basketService: BasketService) { }
 
   ngOnInit(): void {
     this.fetchLeaderboard();
@@ -21,6 +25,9 @@ export class GameLeaderboardComponent implements OnInit {
   }
 
   redirectToSleepMode() {
+    this.basketService.getAllTabletteActivated().forEach((tabletId) => {
+      this.state.setUserTabletState(tabletId.toString(), UserTabletState.Sleep);
+    });
     this.router.navigate(['/sleep-mode']);
   }
 

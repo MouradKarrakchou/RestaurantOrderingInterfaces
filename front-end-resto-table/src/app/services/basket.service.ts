@@ -67,11 +67,13 @@ export class BasketService {
     this.baskets[tabletId].next([]);
   }
 
-  emptyAllBaskets() {
-    this.baskets['1'].next([]);
-    this.baskets['2'].next([]);
-    this.baskets['3'].next([]);
-    this.baskets['4'].next([]);
+  emptyAllBasketsAlreadyOrdered() {
+    this.alreadyOrdered = {
+        '1': undefined,
+        '2': undefined,
+        '3': undefined,
+        '4': undefined,
+        };
   }
 
   getBasketTotal(tabletId: string, final: boolean = false): number {
@@ -151,15 +153,13 @@ export class BasketService {
   }
 
   confirmBasket() {
-    let readyMap = this.readyToOrder.value;
     for (let i = 1; i <= 4; i++) {
       if (this.baskets[i].value.length !== 0) {
         this.alreadyOrdered[i.toString()] = this.baskets[i].value;
         this.baskets[i].next([]);
       }
-      readyMap.set(i.toString(), false);
     }
-    this.readyToOrder.next(readyMap);
+    this.readyToOrder.next(new Map<string, boolean>([]));
   }
 
   confirmBasketForIndex(i : string) {
