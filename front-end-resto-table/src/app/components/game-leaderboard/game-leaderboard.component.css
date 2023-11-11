@@ -17,6 +17,10 @@
   margin-top: 2vh;
 }
 
+.stop-game-button:active {
+  background-color: #619461;
+}
+
 .leaderboard {
   display: flex;
   flex-direction: column;

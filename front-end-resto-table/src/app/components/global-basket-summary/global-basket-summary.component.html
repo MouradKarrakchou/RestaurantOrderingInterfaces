@@ -45,13 +45,13 @@
             <span> Customer {{ tabletId }}</span>
           </div>
           <span *ngIf="isCustomerReady(tabletId.toString()); else notReady">
-              <div class="category-icon-v2">
+              <div class="category-icon-v2" *ngIf="!isPaymentPage">
                 <mat-icon style="color: green;">circle</mat-icon>
               </div>
 
             </span>
           <ng-template #notReady>
-            <div class="category-icon-v2">
+            <div class="category-icon-v2" *ngIf="!isPaymentPage">
               <mat-icon style="color: orange;">circle</mat-icon>
             </div>
           </ng-template>
