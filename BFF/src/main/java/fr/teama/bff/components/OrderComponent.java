@@ -140,7 +140,7 @@ public class OrderComponent implements IOrderComponent {
                 shouldBeReadyAt = preparationDTO.getShouldBeReadyAt();
             }
         }
-        shouldBeReadyAt = shouldBeReadyAt.plusHours(2); // Convert to UTC+2
+        shouldBeReadyAt = shouldBeReadyAt.plusHours(1); // Convert to UTC+1
         LoggerHelper.logInfo("Table order should be ready at :" + shouldBeReadyAt);
         return shouldBeReadyAt;
     }
