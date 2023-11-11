@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import BasketItem from "../models/BasketItem";
 import {BasketService} from "./basket.service";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class PaymentService {
     '4': false,
   };
 
-  constructor(private basketService: BasketService) { }
+  constructor(private basketService: BasketService,private http: HttpClient) { }
 
   setGroupPayment(groupPayment: boolean) {
     this.groupPayment = groupPayment;
@@ -36,6 +37,20 @@ export class PaymentService {
         everyonePaid = false;
       }
     }
+    if (everyonePaid){
+      const url = "http://localhost:8080/api/connected-table/bill";
+
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      };
+      const data = {
+        tableNumber: 1
+      }
+      this.http.post<any>(url, data, httpOptions);
+    }
+
     //TODO : if everyone has paid then reset everything
   }
 }

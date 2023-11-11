@@ -76,6 +76,10 @@ export class GlobalBasketSummaryComponent implements OnInit {
         'Content-Type': 'application/json'
       })
     };
+    const data = {
+      tableNumber: 1
+    }
+    this.http.post<any>(url, data, httpOptions);
     //TODO : if everyone has paid then reset everything
     this.router.navigate(['/end',0]);
   }
