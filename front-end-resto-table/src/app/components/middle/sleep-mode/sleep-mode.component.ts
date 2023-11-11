@@ -82,11 +82,9 @@ export class SleepModeComponent implements OnInit {
       switch (paymentMethod) {
         case 'together':
           this.together.nativeElement.style.background = 'rgb(112, 147, 112)';
-          this.paymentService.setGroupPayment(true);
           break;
         case 'separately':
           this.separately.nativeElement.style.background = 'rgb(112, 147, 112)';
-          this.paymentService.setGroupPayment(false);
           break;
       }
       this.paymentMethodSelected = paymentMethod;
@@ -135,11 +133,16 @@ export class SleepModeComponent implements OnInit {
 
   validatePayment() {
     if (this.powerUp && this.checkValidation()) {
-        this.state.setMiddleTabletState(MiddleTabletState.Final);
-        this.basketService.getAllTabletteActivated().forEach((tabletId) => {
-            this.state.setUserTabletState(tabletId.toString(), UserTabletState.Final);
-        });
-        this.router.navigate(['/summary/0']);
+      if (this.paymentMethodSelected == 'together') {
+        this.paymentService.setGroupPayment(true);
+      } else {
+        this.paymentService.setGroupPayment(false);
+      }
+      this.state.setMiddleTabletState(MiddleTabletState.Final);
+      this.basketService.getAllTabletteActivated().forEach((tabletId) => {
+        this.state.setUserTabletState(tabletId.toString(), UserTabletState.Final);
+      });
+      this.router.navigate(['/summary/0']);
     }
   }
 
