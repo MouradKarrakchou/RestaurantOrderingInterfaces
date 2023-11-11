@@ -19,14 +19,14 @@
   </button>
   </div>
   <div style="display: flex; margin: auto; margin-top:2vh;"  *ngIf="selectedSortOption == 'byPerson'&& !isPaymentPage">
-    <div class="category-icon-v2" style="width: 20vw; display: flex">
+    <div class="category-icon-v2" style="width: 20vw; display: flex; align-items: center;">
       <mat-icon style="color: green;">circle</mat-icon>
-      <div class="legend-text">: Ready to order</div>
+      <div class="legend-text" style="margin-left: 0.5vh">: Ready to order</div>
     </div>
 
-    <div class="category-icon-v2" style="display: flex; width: 15vw; margin-left: 20vw">
+    <div class="category-icon-v2" style="display: flex; width: 15vw; margin-left: 20vw; align-items: center;">
       <mat-icon style="color: orange">circle</mat-icon>
-      <div class="legend-text">: Ordering</div>
+      <div class="legend-text" style="margin-left: 0.5vh">: Ordering</div>
     </div>
 
   </div>
