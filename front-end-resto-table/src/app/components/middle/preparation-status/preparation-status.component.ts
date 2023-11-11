@@ -12,24 +12,31 @@ import {StateService} from "../../../services/state.service";
 })
 export class PreparationStatusComponent implements OnInit {
   preparationStatus: KitchenPreparationStatus[] = [];
+  hasPreparationStatusToDisplay: boolean = false;
   displayOrderStatusInterval: any;
 
   constructor(private state: StateService) { }
 
   ngOnInit(): void {
-    this.displayOrderStatus();
+    this.displayOrderStatusInterval = setTimeout(() => {
+      this.displayOrderStatus();
+    }, 200);
+    this.displayOrderStatusInterval = setTimeout(() => {
+      this.displayOrderStatus();
+    }, 500);
     this.displayOrderStatusInterval = setInterval(() => {
       this.displayOrderStatus();
-    }, 10000);
+    }, 5000);
   }
 
   displayOrderStatus() {
-    if (this.state.getMiddleTabletState() === 'Sleep') {
+    if (this.state.getMiddleTabletState() !== 'Status') {
       console.log('clear display order status interval')
       clearTimeout(this.displayOrderStatusInterval);
     }
     this.getOrderStatus().then((data) => {
       this.preparationStatus = data;
+      this.hasPreparationStatusToDisplay = this.getPreparationStatusWithoutTakenLength() > 0;
     });
   }
 
@@ -116,6 +123,10 @@ export class PreparationStatusComponent implements OnInit {
       console.error("Une erreur s'est produite lors de la récupération des menu items :", error);
       throw error;
     }
+  }
+
+  getPreparationStatusWithoutTakenLength(): number {
+    return this.preparationStatus.filter((status) => status.status !== PreparationStatus.TAKEN_FOR_SERVICE).length;
   }
 
   protected readonly PreparationStatus = PreparationStatus;

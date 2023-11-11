@@ -1,4 +1,7 @@
-<div class="status-container">
+<div class="status-container" *ngIf="!hasPreparationStatusToDisplay">
+  All orders has been taken for service.
+</div>
+<div class="status-container" *ngIf="hasPreparationStatusToDisplay">
   <div class="category-container" *ngFor="let categoryStatus of preparationStatus">
     <div *ngIf="categoryStatus.status !== 'TAKEN_FOR_SERVICE'">
       <div class="category-up">

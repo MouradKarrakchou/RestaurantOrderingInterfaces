@@ -77,6 +77,9 @@ public class OrderComponent implements IOrderComponent {
     // methode to get preparation status
     public List<KitchenPreparationStatus> getTableOrderKitchenPreparation(Long tableNumber) throws KitchenServiceNoAvailableException, DiningServiceUnavaibleException, OrderServiceUnavailableException {
         UUID tableOrderId = diningProxy.getTable(tableNumber).getTableOrderId();
+        if (tableOrderId == null) {
+            return new ArrayList<>();
+        }
         Map<String, String> menuNamesMap = getMenuNamesMap();
         List<KitchenPreparationStatus> kitchenPreparationStatusList = new ArrayList<>();
         List<KitchenPreparation> kitchenPreparationList = kitchenProxy.getTableOrderKitchenPreparation(tableOrderId);
@@ -109,6 +112,39 @@ public class OrderComponent implements IOrderComponent {
         return kitchenPreparationStatusList;
     }
 
+    public void startCookAll(Long tableNumber) throws DiningServiceUnavaibleException, KitchenServiceNoAvailableException {
+        UUID tableOrderId = diningProxy.getTable(tableNumber).getTableOrderId();
+        List<KitchenPreparation> kitchenPreparationList = kitchenProxy.getTableOrderKitchenPreparation(tableOrderId);
+        for (KitchenPreparation kitchenPreparation : kitchenPreparationList) {
+            for (KitchenItem kitchenItem : kitchenPreparation.getPreparedItems()) {
+                if (kitchenItem.getStartedAt() == null) {
+                    kitchenProxy.startCook(kitchenItem.getId());
+                }
+            }
+        }
+    }
+
+    public void finishCookAll(Long tableNumber) throws DiningServiceUnavaibleException, KitchenServiceNoAvailableException {
+        UUID tableOrderId = diningProxy.getTable(tableNumber).getTableOrderId();
+        List<KitchenPreparation> kitchenPreparationList = kitchenProxy.getTableOrderKitchenPreparation(tableOrderId);
+        for (KitchenPreparation kitchenPreparation : kitchenPreparationList) {
+            for (KitchenItem kitchenItem : kitchenPreparation.getPreparedItems()) {
+                if (kitchenItem.getFinishedAt() == null) {
+                    kitchenProxy.finishCook(kitchenItem.getId());
+                }
+            }
+        }
+    }
+
+    public void takeToTableAll(Long tableNumber) throws DiningServiceUnavaibleException, KitchenServiceNoAvailableException {
+        UUID tableOrderId = diningProxy.getTable(tableNumber).getTableOrderId();
+        List<KitchenPreparation> kitchenPreparationList = kitchenProxy.getTableOrderKitchenPreparation(tableOrderId);
+        for (KitchenPreparation kitchenPreparation : kitchenPreparationList) {
+            if (kitchenPreparation.getTakenForServiceAt() == null) {
+                kitchenProxy.takeToTablePreparation(kitchenPreparation.getId());
+            }
+        }
+    }
 
     private TableOrderInformation processOrder(TableDTO table, List<KioskItemDTO> kioskItemDTOList, boolean bill) throws DiningServiceUnavaibleException {
         TableOrder tableOrderDTO = diningProxy.openTable(table.getNumber());
