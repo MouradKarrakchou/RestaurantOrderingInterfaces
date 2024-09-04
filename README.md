@@ -8,5 +8,5 @@
 - [Ayoub IMAMI](https://github.com/AyoubIMAMI)
 - [Mourad KARRAKCHOU](https://github.com/MouradKarrakchou)
 ---
-### Check the [report](/CI_Rapport_RESTo.pdf) for more details on our work and for pictures of the Application.
+### For Screenshots of the Application and more details on our work check the [report](/CI_Rapport_RESTo.pdf) .
 ---
